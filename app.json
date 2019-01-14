@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index_search/index_search",
+    "pages/index_lifeService/index_lifeService",
+    "pages/index_plus/index_plus",
+    "pages/sort/sort",
+    "pages/shoppingCart/shoppingCart",
+    "pages/my/my",
+    "pages/authorizationLogin/authorizationLogin",
+    "pages/logs/logs",
+    "pages/index_lifeService"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "兆鲜生",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "color": "#DEDEDE",
+    "selectedColor": "#1B5A8D",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/tabIcon/tab_1.png",
+        "selectedIconPath": "assets/tabIcon/tab_1_act.png"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "text": "分类",
+        "iconPath": "assets/tabIcon/tab_2.png",
+        "selectedIconPath": "assets/tabIcon/tab_2_act.png"
+      },
+      {
+        "pagePath": "pages/shoppingCart/shoppingCart",
+        "text": "购物车",
+        "iconPath": "assets/tabIcon/tab_3.png",
+        "selectedIconPath": "assets/tabIcon/tab_3_act.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "assets/tabIcon/tab_4.png",
+        "selectedIconPath": "assets/tabIcon/tab_4_act.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}

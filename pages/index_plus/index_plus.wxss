@@ -1,0 +1,57 @@
+.HuiYuanText {
+  position: absolute;
+  left: 53rpx;
+  top: 423rpx;
+  width: 126rpx;
+  height: 30rpx;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  line-height: 32rpx;
+}
+
+.plus_smallBar {
+  width: 2rpx;
+  height: 29rpx;
+  position: absolute;
+  left: 31rpx;
+  top: 424rpx;
+}
+
+.plusText1 {
+  position: absolute;
+  width: 690rpx;
+  top: 483rpx;
+  left: 30rpx;
+}
+
+.plusText2 {
+  position: absolute;
+  width: 690rpx;
+  top: 699rpx;
+  left: 30rpx;
+}
+
+.btn {
+  position: absolute;
+  top: 1104rpx;
+  left: 80rpx;
+  width: 590rpx;
+  height: 80rpx;
+  background: linear-gradient(0deg, rgba(233, 172, 122, 1), rgba(244, 197, 142, 1));
+  border-radius: 10rpx;
+}
+
+.text {
+  position: absolute;
+  top: 1128rpx;
+  left: 316rpx;
+  width: 126rpx;
+  height: 30rpx;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 32rpx;
+}

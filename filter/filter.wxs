@@ -1,0 +1,11 @@
+// 不支持es6，Date
+function isNull(str) {
+  return str === null ? 0 : str;
+}
+function zhiChen(str){
+  
+}
+
+module.exports = {
+  isNull: isNull
+}

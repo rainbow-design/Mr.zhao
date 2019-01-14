@@ -1,0 +1,144 @@
+.showText {
+  position: absolute;
+  top: 374rpx;
+  width: 408rpx;
+  height: 29rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 18rpx;
+}
+
+.getDataText {
+  position: absolute;
+  top: 422rpx;
+  width: 440rrpx;
+  height: 27rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 18rrpx;
+}
+
+.shouQuanBtn, .shouQuanBtn2 {
+  position: absolute;
+  top: 529rpx;
+  width: 590rpx;
+  height: 80rpx;
+  background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
+  border-radius: 10rpx;
+}
+
+.shouQuanBtn2 {
+  top: 281rpx;
+}
+
+.text {
+  width: 124rpx;
+  height: 28rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 28rpx;
+}
+
+.zhaoAvator {
+  position: absolute;
+  top: 185rpx;
+  width: 199rpx;
+  height: 139rpx;
+}
+
+/* login */
+
+.login {
+  display: flex;
+  position: absolute;
+  top: 40rpx;
+  width: 750rpx;
+  height: 161rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 1);
+}
+
+.firstBlock {
+  width: 154rpx;
+  float: left;
+}
+
+.login label {
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 52rpx;
+}
+
+.login input {
+  width: 536rpx;
+}
+
+.fixHeight {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+}
+
+.place_shouji {
+  width: 169rpx;
+  height: 27rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 52rpx;
+}
+
+.place_code {
+  width: 198rpx;
+  height: 27px;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 52rpx;
+}
+
+.verificationCode {
+  position: absolute;
+  right: 52rpx;
+  width: 140rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(88, 181, 48, 1);
+  line-height: 52rpx;
+}
+
+.error {
+  position: absolute;
+  top: 211rpx;
+  left: 30rpx;
+  width: 241rpx;
+  height: 22rpx;
+  font-size: 22rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(246, 16, 16, 1);
+  line-height: 23rpx;
+}
+
+.time {
+  position: absolute;
+  right: 100rpx;
+  width: 43rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 52rpx;
+}

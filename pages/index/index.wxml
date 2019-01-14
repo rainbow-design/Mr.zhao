@@ -1,0 +1,171 @@
+<view class='indexPage'>
+  <image class='ad' mode="widthFix" src="../../assets/invite.png"></image>
+  <view class='header borderBox oneLineEnd'>
+    <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
+    <view class='location ellipsis'>测试文字的个数</view>
+    <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
+    <input class='inputText borderBox' placeholder='搜索' placeholder-class='place_input'></input>
+    <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
+  </view>
+  <view class='menu borderBox oneLineBetween'>
+    <view class='menuItem' bindtap='toLifeService'>
+      <image class='menuItem_img' mode="widthFix" src="../../assets/lifeService.png" ></image>
+      <view class='menuItem_text'>生活服务</view>
+    </view>
+    <view class='menuItem' bindtap='toPlus'>
+      <image class='menuItem_img' mode="widthFix" src="../../assets/plus.png"></image>
+      <view class='menuItem_text'>plus会员</view>
+    </view>
+    <view class='menuItem'>
+      <image class='menuItem_img' mode="widthFix" src="../../assets/star.png"></image>
+      <view class='menuItem_text'>推荐好友</view>
+    </view>
+    <view class='menuItem'>
+      <image class='menuItem_img' mode="widthFix" src="../../assets/calendar.png"></image>
+      <view class='menuItem_text'>每日签到</view>
+    </view>
+  </view>
+  <!-- 轮播 -->
+  <view class='Carousel'>
+  </view>
+  <!-- 子菜单 -->
+  <view class='subMenu f-wrap  borderBox oneLineBetween mulitLineBetween'>
+    <view class='subNemuItem noMargin' bindtap='test'>
+      <image class='subMenuItem_img' mode="widthFix" src="../../assets/menu/hot.png"></image>
+      <view class='subMenuItem_text'>热卖</view>
+    </view>
+    <view class='subNemuItem'>
+      <image class='subMenuItem_img' mode="widthFix" src="../../assets/menu/fruit.png"></image>
+      <view class='subMenuItem_text'>水果</view>
+    </view>
+    <view class='subNemuItem'>
+      <image class='subMenuItem_img' mode="widthFix" src="../../assets/menu/guozhi.png"></image>
+      <view class='subMenuItem_text'>果汁</view>
+    </view>
+    <view class='subNemuItem'>
+      <image class='subMenuItem_img' mode="widthFix" src="../../assets/menu/meat.png"></image>
+      <view class='subMenuItem_text'>肉类</view>
+    </view>
+    <view class='subNemuItem'>
+      <image class='subMenuItem_img' mode="widthFix" src="../../assets/menu/oil.png"></image>
+      <view class='subMenuItem_text'>粮油</view>
+    </view>
+    <view class='subNemuItem noMargin'>
+      <image class='subMenuItem_img' mode="widthFix" src="../../assets/menu/milk.png"></image>
+      <view class='subMenuItem_text' style='width:78rpx'>乳制品</view>
+    </view>
+    <view class='subNemuItem'>
+      <image class='subMenuItem_img' mode="widthFix" src="../../assets/menu/ganguo.png"></image>
+      <view class='subMenuItem_text'>干果</view>
+    </view>
+    <view class='subNemuItem'>
+      <image class='subMenuItem_img' mode="widthFix" src="../../assets/menu/yinliao.png"></image>
+      <view class='subMenuItem_text'>饮料</view>
+    </view>
+    <view class='subNemuItem'>
+      <image class='subMenuItem_img' mode="widthFix" src="../../assets/menu/lingshi.png"></image>
+      <view class='subMenuItem_text'>副食</view>
+    </view>
+    <view class='subNemuItem'>
+      <image class='subMenuItem_img' mode="widthFix" src="../../assets/menu/baihuo.png"></image>
+      <view class='subMenuItem_text'>百货</view>
+    </view>
+  </view>
+  <view class='gap' style='height:20rpx;'></view>
+  <!-- 热卖商品开始 -->
+  <view class='hotSell'>
+    <view class='commonTitle'>
+      <view class='title'>热卖商品</view>
+      <view class='leftBorder'></view>
+      <view class='rightBorder'></view>
+    </view>
+
+    <view class='hotSellItem borderBox oneLineBetween bor_Bottom'>
+      <view class='hotSellItem_img'></view>
+      <view class='hotSellItem_content hotContentFlexStyle'>
+        <view class='title line-clamp '>
+          蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
+        </view>
+        <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
+        <view class='price nowrap'>¥69.9999</view>
+        <view class='offerPrice nowrap'>¥69.9999
+
+          <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+            <view class='youhuiText'>会员9折</view>
+          </image>
+        </view>
+        <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
+      </view>
+
+    </view>
+    <view class='hotSellItem borderBox oneLineBetween'>
+      <view class='hotSellItem_img'></view>
+      <view class='hotSellItem_content hotContentFlexStyle'>
+        <view class='title line-clamp '>
+          蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
+        </view>
+        <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
+        <view class='price nowrap'>¥69.9999</view>
+        <view class='offerPrice nowrap'>¥69.9999
+          <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+            <view class='youhuiText'>会员9折</view>
+          </image>
+        </view>
+
+
+        <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
+      </view>
+
+    </view>
+  </view>
+  <view class='gap' style='height:20rpx;'></view>
+  <view class='hotSell'>
+    <view class='commonTitle'>
+      <view class='title'>推荐购买</view>
+      <view class='leftBorder'></view>
+      <view class='rightBorder'></view>
+    </view>
+
+    <view class='hotSellItem borderBox oneLineBetween bor_Bottom'>
+      <view class='hotSellItem_img'></view>
+      <view class='hotSellItem_content hotContentFlexStyle'>
+        <view class='title line-clamp '>
+          蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
+        </view>
+        <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
+        <view class='price nowrap'>¥69.9999</view>
+        <view class='offerPrice nowrap'>¥69.9999
+          <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+            <view class='youhuiText'>会员9折</view>
+          </image>
+
+
+        </view>
+
+        <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
+      </view>
+
+    </view>
+    <view class='hotSellItem borderBox oneLineBetween'>
+      <view class='hotSellItem_img'></view>
+      <view class='hotSellItem_content hotContentFlexStyle'>
+        <view class='title line-clamp '>
+          蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
+        </view>
+        <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
+        <view class='price nowrap'>¥69.9999</view>
+        <view class='offerPrice nowrap'>¥69.9999
+
+          <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+            <view class='youhuiText'>会员9折</view>
+          </image>
+        </view>
+
+
+        <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
+      </view>
+
+    </view>
+  </view>
+
+</view>

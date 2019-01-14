@@ -1,0 +1,348 @@
+/**app.wxss 全局css样式**/
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.red {
+  border: 1px solid red;
+}
+.green {
+  border:  1px solid greenn;
+}
+.borderBox {
+  box-sizing: border-box;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.b_border {
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+.posScroll {
+  /* position:absolute; */
+  padding-top: 128rpx;
+}
+
+/* 全局使用的灰色块 */
+
+.maskContent {
+  width: 750rpx;
+  height: 1206rpx;
+  background: #f0f0f0;
+}
+
+.page-head {
+  position: fixed;
+  height: 128rpx;
+  text-align: center;
+  z-index: 1000;
+}
+
+.page-head-normal {
+  height: 128rpx;
+  text-align: center;
+  z-index: 1000;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.page-head-title {
+  width: 750rpx;
+  display: inline-block;
+  padding: 56rpx 40rpx 26rpx 40rpx;
+  height: 120rpx;
+  box-sizing: border-box;
+  font-size: 34rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #000;
+}
+
+.page-head-line {
+  margin: 0 auto;
+  width: 750rpx;
+  height: 1rpx;
+  position: relative;
+  bottom: -2px;
+  /* background-color: #d8d8d8; */
+}
+
+.page-head-desc {
+  padding-top: 20rpx;
+  color: #9b9b9b;
+  font-size: 32rpx;
+}
+
+.gap {
+  width: 750rpx;
+  background: rgba(240, 240, 240, 1);
+}
+
+.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.tac {
+  text-align: center;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tar {
+  text-align: right;
+}
+
+.vm {
+  vertical-align: middle;
+}
+
+/*单行文字截断*/
+
+.ellipsis {
+  word-wrap: normal;
+  /* for IE */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/*多行文字截断*/
+
+.line-clamp {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp2 {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp3 {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* 颜色 */
+
+.gray {
+  color: #9f9f9f;
+}
+
+.fff {
+  color: #fff;
+}
+
+.black1 {
+  color: #1e1e1e;
+}
+
+.black {
+  color: #000;
+}
+
+/* 字号 */
+
+.smFont {
+  color: rgba(159, 159, 159, 1);
+  font-size: 20rpx;
+  line-height: 28rpx;
+  font-family: PingFangSC-Regular;
+}
+
+.yahei {
+  font-family: "微软雅黑";
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.jiantou {
+  width: 0;
+  height: 0;
+  border-top: 14rpx solid rgba(74, 74, 74, 1);
+  border-left: 14rpx solid transparent;
+  border-right: 14rpx solid transparent;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 单行水平垂直 */
+
+.oneLineCenter {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 单行垂直居中，水平向左 */
+
+.oneLineStart {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* 单行垂直居中，水平向右 */
+
+.oneLineEnd {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 单行垂直居中，水平保持间距 */
+
+.oneLineAround {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 单行垂直居中，两端对齐 */
+
+.oneLineBetween {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 超过单行设置的最大宽度，允许换行显示 */
+
+.f-wrap {
+  flex-wrap: wrap;
+}
+
+/* 多轴线方向，一般配合  wrap 使用 */
+
+/* 宽度不足换行后，垂直方向靠上排列 */
+
+.mulitLineStart {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+/* 宽度不足换行后，垂直方向居中排列 */
+
+.mulitLineCenter {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+/* 宽度不足换行后，垂直方向靠下排列 */
+
+.mulitLineEnd {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+
+/* 宽度不足换行后，垂直方向上保持间隔排列 */
+
+.mulitLineAround {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+/* 宽度不足换行后，垂直方向上靠两侧最顶开始间隔排列 */
+
+.mulitLineBetween {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+/* 纵轴变主轴，垂直靠上，水平居中 */
+
+.columnStart {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直靠下，水平居中 */
+
+.columnEnd {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直居中，水平居中 */
+
+.columnCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直间隔排列，水平居中 */
+
+.columnAround {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直上下两侧按间隔排列，水平居中 */
+
+.columnBetween {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
