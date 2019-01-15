@@ -1,0 +1,8 @@
+<view class="invite">
+  <image class='img' src="../../assets/yaoqinghaoyou.png" mode="widthFix"></image>
+  <view class='btn'>
+  <view class='text'>
+  立即邀请
+  </view>
+  </view>
+</view>

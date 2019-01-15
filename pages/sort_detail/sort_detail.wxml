@@ -1,0 +1,67 @@
+<view class="goodsDetail">
+  <view class='imgText'>
+    <image class='foodsImg'></image>
+    <view class='sellCount'>已售5592份</view>
+    <view class='contentBox flexStyle'>
+      <view class='title line-clamp'>
+        蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
+      </view>
+      <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
+      <view class='price nowrap'>¥69.9999</view>
+      <view class='offerPrice nowrap'>¥69.9999
+        <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+          <view class='youhuiText'>会员9折</view>
+        </image>
+      </view>
+      <view class='bottomText'>现货，19:00前下单最快30分钟送达</view>
+    </view>
+  </view>
+  <view class='gap' style='height:21rpx;'></view>
+  <view class='bottomDetail'>
+    <view class='title'>
+      <view class='text'>商品详情</view>
+    </view>
+    <view class='showDetail'>
+      <view class='detail1 oneLineStart'>
+        <view class='name'>
+          产地 :
+        </view>
+        <view class='data'>
+          见包装
+        </view>
+      </view>
+      <view class='detail2 oneLineStart'>
+        <view class='name'>
+          规格 :
+        </view>
+        <view class='data'>
+          250ml*16
+        </view>
+      </view>
+      <view class='detail3 oneLineStart'>
+        <view class='name'>
+          保质期:
+        </view>
+        <view class='data'>
+          250ml*16
+        </view>
+      </view>
+    </view>
+    <view class='render'>
+      <image class='renderImg'></image>
+    </view>
+  </view>
+  <view class='cart'>
+    <view class='icon'>
+      <view class='number'>
+        <view class='text'>99
+        </view>
+      </view>
+    </view>
+    <view class='gotoCart'>
+      <view class='text'>
+        加入购物车
+      </view>
+    </view>
+  </view>
+</view>

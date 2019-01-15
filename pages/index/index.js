@@ -27,6 +27,11 @@ Page({
       url: `../index_plus/index_plus`
     })
   },
+  toInviteFriend(){
+    wx.navigateTo({
+      url: `../index_inviteFriend/index_inviteFriend`
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

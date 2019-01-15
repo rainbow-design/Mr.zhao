@@ -9,14 +9,14 @@
   </view>
   <view class='menu borderBox oneLineBetween'>
     <view class='menuItem' bindtap='toLifeService'>
-      <image class='menuItem_img' mode="widthFix" src="../../assets/lifeService.png" ></image>
+      <image class='menuItem_img' mode="widthFix" src="../../assets/lifeService.png"></image>
       <view class='menuItem_text'>生活服务</view>
     </view>
     <view class='menuItem' bindtap='toPlus'>
       <image class='menuItem_img' mode="widthFix" src="../../assets/plus.png"></image>
       <view class='menuItem_text'>plus会员</view>
     </view>
-    <view class='menuItem'>
+    <view class='menuItem' bindtap='toInviteFriend'>
       <image class='menuItem_img' mode="widthFix" src="../../assets/star.png"></image>
       <view class='menuItem_text'>推荐好友</view>
     </view>

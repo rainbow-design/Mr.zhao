@@ -3,13 +3,14 @@
     "pages/index/index",
     "pages/index_search/index_search",
     "pages/index_lifeService/index_lifeService",
+    "pages/index_inviteFriend/index_inviteFriend",
     "pages/index_plus/index_plus",
     "pages/sort/sort",
+    "pages/sort_detail/sort_detail",
     "pages/shoppingCart/shoppingCart",
     "pages/my/my",
     "pages/authorizationLogin/authorizationLogin",
-    "pages/logs/logs",
-    "pages/index_lifeService"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

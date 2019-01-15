@@ -1,0 +1,28 @@
+.invite {
+  height: 100%;
+  width: 750rpx;
+}
+
+.invite .img {
+  width: 750rpx;
+}
+
+.btn {
+  position: absolute;
+  top: 1079rpx;
+  left: 75rpx;
+  width: 600rpx;
+  height: 80rpx;
+  background: rgba(88, 181, 48, 1);
+  border-radius: 10rpx;
+  text-align: center;
+}
+
+.text {
+  height: 31rpx;
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+}

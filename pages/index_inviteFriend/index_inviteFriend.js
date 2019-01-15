@@ -1,11 +1,11 @@
-// pages/my.js
+// pages/index_lifeService.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    hasYouhuiQuan: true
+
   },
 
   /**
@@ -13,11 +13,6 @@ Page({
    */
   onLoad: function (options) {
 
-  },
-  toDetail(){
-    wx.navigateTo({
-      url: `../sort_detail/sort_detail`
-    })
   },
 
   /**
