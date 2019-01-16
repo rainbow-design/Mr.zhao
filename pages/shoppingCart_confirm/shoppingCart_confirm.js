@@ -14,11 +14,6 @@ Page({
   onLoad: function (options) {
 
   },
-  toJieSuan(){
-    wx.navigateTo({
-      url: `../shoppingCart_confirm/shoppingCart_confirm`
-    })
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

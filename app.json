@@ -8,6 +8,7 @@
     "pages/sort/sort",
     "pages/sort_detail/sort_detail",
     "pages/shoppingCart/shoppingCart",
+    "pages/shoppingCart_confirm/shoppingCart_confirm",
     "pages/my/my",
     "pages/authorizationLogin/authorizationLogin",
     "pages/logs/logs"

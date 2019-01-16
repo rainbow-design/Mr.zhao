@@ -1,2 +1,96 @@
-<!--pages/my.wxml-->
-<text>pages/my.wxml</text>
+<view class="shoppingCart maskContent">
+  <view class='address'>
+    <view class='whiteBox'>
+      <view class='zhuzhi'>
+        <view class='greenBox'>
+          <view class='keyword'>
+            住宅
+          </view>
+        </view>
+        北京市 朝阳区 美景东方4号楼324号 楼324号楼322
+      </view>
+      <view class='presonInfo'>
+        李洋 18284923857
+      </view>
+      <image class='caidai' src="../../assets/icon/huaBian.png"></image>
+    </view>
+  </view>
+  <view class='foods'>
+    <view class='name'>
+      <image class='check' data-name="checkAll" src="../../assets/icon/round.png"></image>
+      <image class='shopIcon' src="../../assets/icon/shopIcon.png"></image>
+      <view class='text'>兆鲜生门店</view>
+    </view>
+    <view class='orderBox'>
+      <view class='order_item'>
+        <view class='leftBox'>
+          <image class='check' src="../../assets/icon/round.png"></image>
+        </view>
+        <view class='rightBox oneLineBetween'>
+          <image class='img'></image>
+          <view class='content flexStyle'>
+            <view class='title line-clamp '>
+              蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
+            </view>
+            <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
+            <view class='price nowrap'>¥69.9999</view>
+            <view class='offerPrice nowrap'>¥69.9999
+              <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+                <view class='youhuiText'>会员9折</view>
+              </image>
+            </view>
+          </view>
+          <view class='countControl'>
+            <image class='add' style='width:38rpx;' mode="widthFix" src="../../assets/icon/add.png"></image>
+            <view class='number'>1</view>
+            <image class='minus' style='width:38rpx;' mode="widthFix" src="../../assets/icon/minus.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='order_item'>
+      <view class='leftBox'>
+        <image class='check' mode="widthFix" src="../../assets/icon/round.png"></image>
+      </view>
+      <view class='rightBox oneLineBetween'>
+        <image class='img'></image>
+        <view class='content flexStyle'>
+          <view class='title line-clamp '>
+            蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
+          </view>
+          <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
+          <view class='price nowrap'>¥69.9999</view>
+          <view class='offerPrice nowrap'>¥69.9999
+            <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+              <view class='youhuiText'>会员9折</view>
+            </image>
+          </view>
+        </view>
+        <view class='countControl'>
+          <image class='add' style='width:38rpx;' mode="widthFix" src="../../assets/icon/add.png"></image>
+          <view class='number'>1</view>
+          <image class='minus' style='width:38rpx;' mode="widthFix" src="../../assets/icon/minus.png"></image>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+  <view class='fixedBottom'>
+    <view class='leftBox'>
+      <image class='check' mode="widthFix" src="../../assets/icon/round.png"></image>
+      <view class='chooseAll'>全选</view>
+      <view class='heji '>
+        <view class='name'>合计:
+          <view class='price'>¥91.8</view>
+        </view>
+        <view class='content'>满50元免配送费</view>
+      </view>
+    </view>
+    <view class='rightBox' bindtap='toJieSuan'>
+      <view class='text'>去结算</view>
+      <image class='toRight' mode="widthFix" src="../../assets/icon/toRight.png"></image>
+    </view>
+  </view>
+</view>
