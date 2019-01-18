@@ -1,0 +1,103 @@
+/* pages/my_shippingAddress/my_shippingAddress.wxss */
+
+.addressList {
+  width: 750rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  background: #fff;
+}
+
+.leftAddress {
+  height: 100%;
+}
+
+.item {
+  height: 134rpx;
+  width: 100%;
+  padding: 29rpx 1rpx 31rpx;
+  box-sizing: border-box;
+}
+
+.item image {
+  width: 34rpx;
+  margin-right: 20rpx;
+}
+
+.borderBottom {
+  border-bottom: 1px solid rgba(204, 204, 204, 1);
+}
+
+.bottomBox {
+  height: 25rpx;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 25rpx;
+}
+
+.upBox .name {
+  height: 27rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 27rpx;
+  margin-right: 52rpx;
+}
+
+.upBox .phoneNumber {
+  height: 22rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 22rpx;
+  margin-right: 20rpx;
+}
+
+.upBox .greenBox {
+  width: 53rpx;
+  height: 26rpx;
+  background: rgba(240, 255, 234, 1);
+  border: 1px solid rgba(88, 181, 48, 1);
+  border-radius: 10rpx;
+  text-align: center;
+}
+
+.upBox .greenBox .text {
+  height: 15rpx;
+  font-size: 16rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(88, 181, 48, 1);
+  line-height: 26rpx;
+}
+
+.addBtn {
+  position: absolute;
+  left: 80rpx;
+  top: 1076rpx;
+  width: 590rpx;
+  height: 80rpx;
+  background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
+  border-radius: 10rpx;
+  line-height: 80rpx;
+}
+
+.addBtn .text {
+  height: 29px;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.addBtn .text::before {
+  content: '+';
+  display: inline-block;
+  width: 25rpx;
+  height: 25rpx;
+  color: #fff;
+}

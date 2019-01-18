@@ -1,0 +1,110 @@
+/* pages/my_memberInfo.wxss */
+
+.member {
+  position: relative;
+}
+
+page {
+  height: 100%;
+}
+
+.whiteBox {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  top: 25rpx;
+  width: 750rpx;
+  height: 351rpx;
+  background: rgba(255, 255, 255, 1);
+}
+
+.line {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 88rpx;
+  padding: 0 1rpx;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.line:last-child {
+  border: none;
+}
+
+.line .name {
+  height: 26rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 26rpx;
+}
+
+.firstBox {
+  width: 83rpx;
+  margin-right: 91rpx;
+}
+
+.line .content {
+  height: 22rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 22rpx;
+}
+
+.man, .women {
+  width: 139rpx;
+}
+
+.man .text, .women .text {
+  display: inline;
+  height: 30rpx;
+  margin-left: 11rpx;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 30rpx;
+}
+
+.green_act .text {
+  color: #58b530 !important;
+}
+
+.selectDate {
+  height: 26rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 26rpx;
+}
+
+.sex image {
+  width: 30rpx;
+}
+.toRight {
+  position: absolute;
+  left: 706rpx;
+}
+
+.saveBtn {
+  position: absolute;
+  left: 80rpx;
+  top: 1076rpx;
+  width: 590rpx;
+  height: 80rpx;
+  background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.saveBtn .text {
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+}

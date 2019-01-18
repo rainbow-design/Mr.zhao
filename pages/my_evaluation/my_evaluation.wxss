@@ -1,0 +1,113 @@
+/* pages/my_evaluation/my_evaluation.wxss */
+
+.peisong {
+  position: absolute;
+  top: 20rpx;
+  left: 30rpx;
+  width: 690rpx;
+  height: 196rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 25rpx;
+}
+
+.title {
+  width: 100%;
+  height: 97rpx;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(224, 224, 224, 1);
+  text-align: center;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 96rpx;
+}
+
+.shangjia {
+  position: absolute;
+  top: 236rpx;
+  left: 30rpx;
+  width: 690rpx;
+  height: 587rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 25rpx;
+}
+
+.submit {
+  position: absolute;
+  top: 1071rpx;
+  left: 80rpx;
+  width: 590rpx;
+  height: 80rpx;
+  background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.starBox {
+  width: 100%;
+  height: 99rpx;
+  box-sizing: border-box;
+  padding: 30rpx 178rpx 30rpx 183rpx;
+}
+
+.starBox image {
+  width: 41rpx;
+}
+
+.contentBox {
+  position: relative;
+  width: 100%;
+  height: 391rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx 31rpx;
+}
+
+.textareaBox {
+  width: 630rpx;
+  height: 209rpx;
+  background: rgba(240, 240, 240, 1);
+  border: 1px solid rgba(224, 224, 224, 1);
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  padding: 20rpx 22rpx;
+}
+
+.place {
+  height: 27rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(179, 179, 179, 1);
+  line-height: 27px;
+}
+
+.imgBox {
+  margin-top: 42rpx;
+  width: 126rpx;
+  height: 109rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(224, 224, 224, 1);
+  border-radius: 10rpx;
+}
+
+.imgBox image {
+  width: 52rpx;
+}
+
+.contentBox .text {
+  position: absolute;
+  left: 176rpx;
+  top: 276rpx;
+  height: 27rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 27rpx;
+}

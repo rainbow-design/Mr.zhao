@@ -24,6 +24,14 @@
 
     </view>
     <view class='imageBox red'>
+      <scroll-view scroll-x="{{canScroll}}" class='foodsImgs' bindtap='toProductList'>
+        <image></image>
+        <image></image>
+        <image></image>
+        <image></image>
+        <image></image>
+        <image></image>
+      </scroll-view>
       <view class='Count center'>共354件
         <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
       </view>
@@ -44,11 +52,13 @@
       <view class='content content_orange'>￥101.8</view>
     </view>
 
-    <view class='line2 border_bottom oneLineStart' style='height:91rpx;'>
+    <view class='line2 border_bottom oneLineBetween'>
       <view class='name'>优惠券</view>
-      <view class='content content_orange'>1张可用</view>
+      <view class='content content_orange' bindtap='toCoupon'>1张可用
+        <image mode="widthFix" src="../../assets/icon/toRightH40.png"></image>
+      </view>
     </view>
-    <view class='line2 border_bottom oneLineBetween' style='height:91rpx;'>
+    <view class='line3 border_bottom oneLineBetween'>
       <view class='name_normal'>当前有40积分（满50积分可用）</view>
     </view>
     <view class='lineLast oneLineEnd'>
@@ -65,7 +75,7 @@
         <view class='price'>¥91.8</view>
       </view>
     </view>
-    <view class='rightBox'>
+    <view class='rightBox' bindtap='toPay'>
       <view class='text'>去支付</view>
       <image class='toRight' mode="widthFix" src="../../assets/icon/toRight.png"></image>
     </view>

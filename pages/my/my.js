@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showCallTelMask: false
 
   },
 
@@ -13,6 +14,65 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  toMemberInfo() {
+    wx.navigateTo({
+      url: `../my_memberInfo/my_memberInfo`
+    })
+  },
+  // 优惠券
+  toCoupon() {
+    wx.navigateTo({
+      url: `../my_coupon/my_coupon`
+    })
+  },
+  // 我的积分
+  toIntegral() {
+    wx.navigateTo({
+      url: `../my_integral/my_integral`
+    })
+
+  },
+  // 我的邀请
+  toinvite() {
+    wx.navigateTo({
+      url: `../my_invite/my_invite`
+    })
+
+  },
+  // 我的订单
+  toOrder() {
+    wx.navigateTo({
+      url: `../my_order/my_order`
+    })
+  },
+  // 显示客服帮助
+  showCallMe() {
+    this.setData({
+      showCallTelMask: true
+    })
+  },
+  // 收货地址
+  toShippingAddress() {
+    wx.navigateTo({
+      url: `../my_shippingAddress/my_shippingAddress`
+    })
+  },
+  cancelToCallTel() {
+    this.setData({
+      showCallTelMask: false
+    })
+  },
+  toContactUs() {
+    wx.makePhoneCall({
+      phoneNumber: '400-686-2367'
+    })
+  },
+  toMyOrderPage(e) {
+    let tabNumber = e.currentTarget.dataset.tab;
+    wx.navigateTo({
+      url: `../my_order/my_order?tab=${tabNumber}`
+    })
   },
 
   /**

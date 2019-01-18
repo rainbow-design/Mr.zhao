@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showSignIn: false
 
   },
   test() {
@@ -27,9 +28,19 @@ Page({
       url: `../index_plus/index_plus`
     })
   },
-  toInviteFriend(){
+  toInviteFriend() {
     wx.navigateTo({
       url: `../index_inviteFriend/index_inviteFriend`
+    })
+  },
+  toSelectAddress() {
+    wx.navigateTo({
+      url: `../selectAddress/selectAddress`
+    })
+  },
+  toSignIn() {
+    this.setData({
+      showSignIn: !this.data.showSignIn
     })
   },
 

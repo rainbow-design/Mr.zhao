@@ -1,0 +1,92 @@
+<view class="coupon maskContent">
+
+  <view class="swiper-tab">
+    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">未使用
+      <view class="border {{currentTab==0?'show':'hide'}}"></view>
+    </view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">已使用
+      <view class="border {{currentTab==1?'show':'hide'}}"></view>
+    </view>
+    <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">已失效
+      <view class="border {{currentTab==2?'show':'hide'}}"></view>
+    </view>
+  </view>
+
+  <swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
+    <swiper-item>
+      <!-- 未使用 -->
+      <view class='ticket'>
+        <view class='upBox'>
+          <view class='priceBox columnBetween'>
+            <view class='bigPrice'>
+              <view class='symbol'>￥</view>
+              <view class='price'>10</view>
+            </view>
+            <view class='condition'>满98元可用</view>
+          </view>
+          <view class='contentBox columnBetweenStart'>
+            <view class='title'>兆鲜生10元优惠券
+            </view>
+            <view class='normal'>全品类优惠券</view>
+            <view class='normal'>会员、非会员通用
+            </view>
+          </view>
+        </view>
+        <view class='bottomBox'>
+          <view class='text'>有效期：2018-12-18 至 2018-12-30</view>
+        </view>
+      </view>
+
+    </swiper-item>
+    <swiper-item>
+      <!-- <view>已使用</view> -->
+      <view class='ticket used usedIcon'>
+      <image style='width:120rpx;' src="../../assets/icon/used.png" mode='widthFix'></image>
+        <view class='upBox'>
+          <view class='priceBox columnBetween'>
+            <view class='bigPrice'>
+              <view class='symbol'>￥</view>
+              <view class='price'>10</view>
+            </view>
+            <view class='condition'>满98元可用</view>
+          </view>
+          <view class='contentBox columnBetweenStart'>
+            <view class='title'>兆鲜生10元优惠券
+            </view>
+            <view class='normal'>全品类优惠券</view>
+            <view class='normal'>会员、非会员通用
+            </view>
+          </view>
+        </view>
+        <view class='bottomBox'>
+          <view class='text'>有效期：2018-12-18 至 2018-12-30</view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <!-- <view>已失效</view> -->
+      <view class='ticket used expired'>
+      <image style='width:120rpx;' src="../../assets/icon/expired.png" mode='widthFix'></image>
+        <view class='upBox'>
+          <view class='priceBox columnBetween'>
+            <view class='bigPrice'>
+              <view class='symbol'>￥</view>
+              <view class='price'>10</view>
+            </view>
+            <view class='condition'>满98元可用</view>
+          </view>
+          <view class='contentBox columnBetweenStart'>
+            <view class='title'>兆鲜生10元优惠券
+            </view>
+            <view class='normal'>全品类优惠券</view>
+            <view class='normal'>会员、非会员通用
+            </view>
+          </view>
+        </view>
+        <view class='bottomBox'>
+          <view class='text'>有效期：2018-12-18 至 2018-12-30</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

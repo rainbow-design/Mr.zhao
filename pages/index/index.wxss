@@ -1,4 +1,5 @@
 @import '../../style/shopingListItem.wxss';
+
 .header {
   width: 750rpx;
   height: 99rpx;
@@ -267,10 +268,71 @@
   color: rgba(88, 181, 48, 1);
   z-index: 10;
 }
+
 .ad {
   position: fixed;
   left: 615rpx;
   top: 818rpx;
   width: 130rpx;
-  z-index: 999;
+  z-index: 777;
+}
+
+.signIn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 137rpx;
+  top: 295rpx;
+  width: 477rpx;
+  height: 388rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 20rpx 40rpx 0px rgba(28, 23, 47, 0.2);
+  border-radius: 28rpx;
+  opacity: 1;
+  z-index: 10000;
+}
+
+.signIn image {
+  width: 333rpx;
+  position: absolute;
+  left: 71rpx;
+  top: -67rpx;
+}
+
+.signIn .greenText {
+  position: absolute;
+  top: 129rpx;
+  height: 28rpx;
+  font-size: 29rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(88, 181, 48, 1);
+  line-height: 28rpx;
+}
+
+.signIn .add {
+  position: absolute;
+  top: 177rpx;
+  height: 28rpx;
+  font-size: 29rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 28rpx;
+}
+
+.signIn .greenBtn {
+  position: absolute;
+  top: 246rpx;
+  width: 385rpx;
+  height: 74rpx;
+  background: rgba(88, 181, 48, 1);
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 74rpx;
+  text-align: center;
 }

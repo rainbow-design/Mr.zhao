@@ -184,7 +184,6 @@
 .Count {
   position: absolute;
   right: 0;
-  width: 149rpx;
   height: 139rpx;
   font-size: 20rpx;
   font-family: SourceHanSansCN-Regular;
@@ -200,21 +199,33 @@
 .detail {
   margin-top: 20rpx;
   width: 750rpx;
-  height: 543rpx;
+  height: 542rpx;
   background: #fff;
 }
 
 .line {
- 
-  height: 84rpx;
+  height: 85rpx;
   box-sizing: border-box;
   padding: 0 29rpx 0 31rpx;
 }
 
 .line2 {
-   position: relative;
+  position: relative;
   top: 1rpx;
-  height: 90rpx;
+  height: 91rpx;
+  box-sizing: border-box;
+  padding: 0 29rpx 0 31rpx;
+}
+
+.line2 image {
+  width: 11rpx;
+  margin-left: 9rpx;
+}
+
+.line3 {
+  position: relative;
+  top: 1rpx;
+  height: 92rpx;
   box-sizing: border-box;
   padding: 0 29rpx 0 31rpx;
 }
@@ -251,7 +262,7 @@
 
 .lineLast {
   position: relative;
-  top: 4rpx;
+  top: 2rpx;
   height: 91rpx;
   box-sizing: border-box;
   padding: 0 29rpx 0 31rpx;
@@ -274,4 +285,21 @@
   color: #58b530;
   font-size: 32rpx;
   line-height: 27rpx;
+}
+
+.foodsImgs {
+  float: left;
+  position: absolute;
+  height: 139rpx;
+  width: 1619rpx;
+  overflow: hidden;
+}
+
+.foodsImgs image {
+  margin-top: 5rpx;
+  width: 181rpx;
+  height: 128rpx;
+  border-radius: 10rpx;
+  background: pink;
+  margin-right: 36rpx;
 }

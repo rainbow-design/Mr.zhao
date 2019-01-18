@@ -1,0 +1,37 @@
+<view class="productList maskContent">
+
+  <view class='productsBox'>
+    <view class='item oneLineBetween'>
+      <image class='productImg'></image>
+      <view class='contentItem flexStyle'>
+        <view class='title line-clamp '>
+          蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
+        </view>
+        <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
+        <view class='price nowrap'>¥69.9999</view>
+        <view class='offerPrice nowrap'>¥69.9999
+          <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+            <view class='youhuiText'>会员9折</view>
+          </image>
+        </view>
+      </view>
+      <view class='amount'>16盒X1
+      </view>
+    </view>
+    <view class='item oneLineBetween'>
+      <image class='productImg'></image>
+      <view class='contentItem flexStyle'>
+        <view class='title line-clamp '>
+          蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
+        </view>
+        <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
+        <view class='price nowrap'>¥69.9999</view>
+        <view class='offerPrice nowrap'>¥69.9999
+          <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+            <view class='youhuiText'>会员9折</view>
+          </image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

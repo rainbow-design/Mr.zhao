@@ -81,6 +81,11 @@ App({
       }
     })
   },
+  toIndex() {
+    wx.switchTab({
+      url: '../index/index'
+    })
+  },
   // 返回上一页
   returnLastPage() {
     wx.navigateBack({

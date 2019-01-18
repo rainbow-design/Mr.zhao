@@ -1,0 +1,38 @@
+<view class="selectAddress maskContent">
+  <view class='searchAndNowAddress columnBetweenStart'>
+    <view>
+      <input class='searchInp' placeholder='请输入您的地址' placeholder-class='place'></input>
+      <image class='searchIcon'></image>
+    </view>
+    <view class='current'>当前定位</view>
+    <view class='refreshLocation oneLineBetween'>
+      <view class='currentCityName'>高碑店</view>
+      <view class='refresh'>
+        <image src="../../assets/icon/location.png" mode='widthFix'></image>
+        刷新定位</view>
+    </view>
+
+  </view>
+  <view class='myShippingAddress'>
+    <view class='title'>我的收货地址</view>
+    <view class='itemAddress columnBetween borderBottom'>
+      <view class='upBox oneLineStart'>
+        <view class='greenBox'>
+          <view class='text'>住宅</view>
+        </view>
+        <view class='address'>北京市 朝阳区 美景东方4号楼322</view>
+      </view>
+      <view class='underBox'>于双硕 18284923857</view>
+    </view>
+    <view class='itemAddress columnBetween'>
+      <view class='upBox oneLineStart'>
+        <view class='greenBox'>
+          <view class='text'>住宅</view>
+        </view>
+        <view class='address'>北京市 朝阳区 美景东方4号楼322</view>
+      </view>
+      <view class='underBox'>于双硕 18284923857</view>
+    </view>
+  </view>
+
+</view>

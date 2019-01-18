@@ -1,0 +1,133 @@
+.integral {
+  position: relative;
+}
+
+.integralBox {
+  position: fixed;
+  left: 1rpx;
+  top: -1rpx;
+  width: 749rpx;
+  height: 311rpx;
+  background: #fff;
+}
+
+.numberBox {
+  position: absolute;
+  left: 39rpx;
+  top: 1rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 47rpx 0 40rpx 0;
+  width: 683rpx;
+  height: 208rpx;
+  background: #fff;
+  z-index: 11;
+}
+
+.number {
+  height: 72rpx;
+  font-size: 94rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(88, 181, 48, 1);
+  line-height: 72rpx;
+}
+
+.intro {
+  height: 30rpx;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(88, 181, 48, 1);
+  line-height: 30rpx;
+}
+
+.listBox {
+  position: absolute;
+  top: 210rpx;
+  left: 30rpx;
+  width: 690rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 3rpx 18rpx 0px rgba(52, 107, 28, 0.25);
+  border-radius: 25rpx;
+  box-sizing: border-box;
+  padding-top: 40rpx;
+}
+
+.listBox .title {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 29rpx;
+}
+
+.listBox .title .text {
+  height: 30rpx;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 30rpx;
+}
+
+.listBox .title .line {
+  position: absolute;
+  left: 17rpx;
+  top: 45rpx;
+  width: 2rpx;
+  height: 21rpx;
+  background: rgba(88, 181, 48, 1);
+}
+
+.row {
+  width: 690rpx;
+  height: 125rpx;
+  box-sizing: border-box;
+  padding: 30rpx 34rpx 29rpx 31rpx;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+.leftBox {
+  height: 100%;
+}
+
+.leftBox .name {
+  height: 25rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 25rpx;
+}
+
+.leftBox .date {
+  height: 20rpx;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 18rpx;
+}
+
+.leftBox_flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.rightBox {
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  line-height: 18rpx;
+}
+
+.add {
+  color: rgba(88, 181, 48, 1);
+}
+.jian {
+  color:rgba(26,26,26,1);
+}

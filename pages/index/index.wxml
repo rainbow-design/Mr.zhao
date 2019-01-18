@@ -1,8 +1,21 @@
 <view class='indexPage'>
+  <!-- 首页弹窗模块 start -->
+  <block wx:if="{{showSignIn}}">
+    <view class='Mask'>
+      <view class='signIn'>
+        <image src="../../assets/signIn.png" mode='widthFix'></image>
+        <view class='greenText'>恭喜您今日签到成功！</view>
+        <view class='add'>+10积分</view>
+        <view class='greenBtn' bindtap='toSignIn'>确认</view>
+      </view>
+
+    </view>
+  </block>
+  <!-- 首页弹窗模块 end -->
   <image class='ad' mode="widthFix" src="../../assets/invite.png"></image>
   <view class='header borderBox oneLineEnd'>
     <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
-    <view class='location ellipsis'>测试文字的个数</view>
+    <view class='location ellipsis' bindtap='toSelectAddress'>测试文字的个数</view>
     <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
     <input class='inputText borderBox' placeholder='搜索' placeholder-class='place_input'></input>
     <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
@@ -20,7 +33,7 @@
       <image class='menuItem_img' mode="widthFix" src="../../assets/star.png"></image>
       <view class='menuItem_text'>推荐好友</view>
     </view>
-    <view class='menuItem'>
+    <view class='menuItem' bindtap='toSignIn'>
       <image class='menuItem_img' mode="widthFix" src="../../assets/calendar.png"></image>
       <view class='menuItem_text'>每日签到</view>
     </view>
@@ -138,10 +151,7 @@
           <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
             <view class='youhuiText'>会员9折</view>
           </image>
-
-
         </view>
-
         <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
       </view>
 
@@ -160,8 +170,6 @@
             <view class='youhuiText'>会员9折</view>
           </image>
         </view>
-
-
         <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
       </view>
 

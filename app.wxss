@@ -5,12 +5,26 @@
   display: flex;
   box-sizing: border-box;
 }
+.Mask {
+  position: fixed;
+  width: 750rpx;
+  height: 100%;
+  background: rgba(0, 0, 0, 1);
+  opacity: 0.5;
+  z-index: 999;
+}
+/* 辅助线 */
 .red {
   border: 1px solid red;
 }
+
 .green {
-  border:  1px solid greenn;
+  border: 1px solid greenn;
 }
+.pink {
+  border: 1px solid pink;
+}
+
 .borderBox {
   box-sizing: border-box;
 }
@@ -23,17 +37,21 @@
   border-bottom: 1px solid rgba(224, 224, 224, 1);
 }
 
-.posScroll {
-  /* position:absolute; */
-  padding-top: 128rpx;
+page {
+  height: 100%;
 }
 
 /* 全局使用的灰色块 */
 
 .maskContent {
   width: 750rpx;
-  height: 1206rpx;
+  height: 100%;
   background: #f0f0f0;
+}
+.maskContentWhite {
+  width: 750rpx;
+  height: 100%;
+  background: #fff;
 }
 
 .page-head {
@@ -300,6 +318,7 @@
   flex-wrap: wrap;
   align-content: space-between;
 }
+
 /* 纵轴变主轴，垂直靠上，水平居中 */
 
 .columnStart {
@@ -344,4 +363,13 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+/* 纵轴变主轴，垂直上下两侧按间隔排列，水平靠左 */
+
+.columnBetweenStart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }

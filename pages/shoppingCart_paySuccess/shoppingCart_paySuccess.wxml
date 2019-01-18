@@ -1,0 +1,12 @@
+<view class="paySuccess maskContentWhite">
+  <image src="../../assets/icon/right.png" class='rightIcon' mode='widthFix'></image>
+  <view class='successText columnBetween'>
+
+    <view class='up'>支付成功</view>
+    <view class='under'>预计17:30前送达</view>
+  </view>
+  <view class='seeOrder' bindtap='toSeeOrder'>查看订单</view>
+  <view class='backToIndex' bindtap='toIndex'>返回首页</view>
+  <view class='shareText'>分享给好友赚积分</view>
+  <image class='shareImg' mode='widthFix' src="../../assets/icon/share.png"></image>
+</view>

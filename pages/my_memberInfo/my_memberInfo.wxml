@@ -1,0 +1,33 @@
+<view class="member maskContent">
+  <view class='whiteBox'>
+    <view class='line'>
+      <label class='name firstBox'>昵称</label>
+      <view class='content'>souperme</view>
+    </view>
+    <view class='line'>
+      <label class='name firstBox'>手机号</label>
+      <view class='content'>13520646170</view>
+    </view>
+    <view class='line'>
+      <label class='name firstBox'>性别</label>
+      <view class='sex oneLineStart'>
+        <view class='man'>
+          <image mode='widthFix' src="../../assets/icon/checkBox.png"></image>
+          <view class='text'>男</view>
+        </view>
+        <view class='women green_act'>
+          <image mode='widthFix' src="../../assets/icon/checkBox_act.png"></image>
+          <view class='text'>女</view>
+        </view>
+      </view>
+    </view>
+    <view class='line'>
+      <label class='name firstBox'>生日</label>
+      <view class='selectDate'>点击选择日期 </view>
+      <image class='toRight' mode='widthFix' style='width:12rpx;' src="../../assets/icon/toRightH40.png"></image>
+    </view>
+  </view>
+  <view class='saveBtn'>
+    <view class='text'>保存</view>
+  </view>
+</view>

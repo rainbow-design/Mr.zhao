@@ -11,7 +11,21 @@
     "pages/shoppingCart_confirm/shoppingCart_confirm",
     "pages/my/my",
     "pages/authorizationLogin/authorizationLogin",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/my_memberInfo/my_memberInfo",
+    "pages/my_integral/my_integral",
+    "pages/my_coupon/my_coupon",
+    "pages/my_invite/my_invite",
+    "pages/my_order/my_order",
+    "pages/my_evaluation/my_evaluation",
+    "pages/my_shippingAddress/my_shippingAddress",
+    "pages/my_addShippingAddress/my_addShippingAddress",
+    "pages/selectAddress/selectAddress",
+    "pages/shoppingCart_productList/shoppingCart_productList",
+    "pages/shoppingCart_paySuccess/shoppingCart_paySuccess",
+    "pages/shoppingCart_orderDetail/shoppingCart_orderDetail",
+    "pages/shoppingCart_coupon/shoppingCart_coupon",
+    "pages/index_openPlus/index_openPlus"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,8 +35,8 @@
   },
   "tabBar": {
     "backgroundColor": "#fff",
-    "color": "#DEDEDE",
-    "selectedColor": "#1B5A8D",
+    "color": "#646663",
+    "selectedColor": "#58B530",
     "borderStyle": "white",
     "list": [
       {

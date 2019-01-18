@@ -1,0 +1,50 @@
+<view class="addShippingAddress maskContent">
+  <block wx:if="{{showCitySelect}}">
+    <view class='Mask'>
+      <view class='selectCity'>
+
+      </view>
+    </view>
+  </block>
+  <view class='detailMessage'>
+    <view class='line borderBottom oneLineStart'>
+      <label class='labelName'>收货人</label>
+      <input class='input username' placeholder='姓名' placeholder-class='place'></input>
+    </view>
+    <view class='line borderBottom oneLineStart'>
+      <label class='labelName'>联系电话</label>
+      <input class='input username' placeholder='手机号或固话' placeholder-class='place'></input>
+    </view>
+    <view class='line borderBottom oneLineStart'>
+      <label class='labelName'>选择城市</label>
+      <view class='input username' bindtap='selectCity'>
+        <view class='place'>请选择您所在的城市</view>
+      </view>
+    </view>
+    <view class='line borderBottom oneLineStart'>
+      <label class='labelName'>收货地址</label>
+      <input class='input username' placeholder='请输入您的收货地址' placeholder-class='place'></input>
+    </view>
+    <view class='line borderBottom oneLineStart'>
+      <label class='labelName'>楼号门牌</label>
+      <input class='input username' placeholder='楼号/单元/门牌号' placeholder-class='place'></input>
+    </view>
+    <view class='line oneLineStart'>
+      <label class='labelName'>地址类型</label>
+      <view class='wrapper oneLineStart'>
+        <view class="Box {{selectAddress === 0 ?'green_act':''}}" data-num="0" bindtap='selectAddress'>
+          <view class='text'>住宅</view>
+        </view>
+        <view class="Box {{selectAddress === 1 ?'green_act':''}}" data-num="1" bindtap='selectAddress'>
+          <view class='text'>公司</view>
+        </view>
+        <view class="Box {{selectAddress === 2 ?'green_act':''}}" data-num="2" bindtap='selectAddress'>
+          <view class='text'>学校</view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+  <view class='submitBtn'>保存地址</view>
+
+</view>

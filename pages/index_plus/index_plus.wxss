@@ -41,17 +41,10 @@
   height: 80rpx;
   background: linear-gradient(0deg, rgba(233, 172, 122, 1), rgba(244, 197, 142, 1));
   border-radius: 10rpx;
-}
-
-.text {
-  position: absolute;
-  top: 1128rpx;
-  left: 316rpx;
-  width: 126rpx;
-  height: 30rpx;
   font-size: 32rpx;
   font-family: SourceHanSansCN-Regular;
   font-weight: 400;
   color: rgba(26, 26, 26, 1);
-  line-height: 32rpx;
+  line-height: 80rpx;
+  text-align: center;
 }

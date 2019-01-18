@@ -1,0 +1,201 @@
+.header {
+  box-sizing: border-box;
+  padding: 29rpx 49rpx 30rpx 29rpx;
+  width: 750rpx;
+  height: 86rpx;
+  background: rgba(255, 255, 255, 1);
+}
+
+.header .title {
+  height: 27rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 27rpx;
+}
+
+.header image {
+  width: 30rpx;
+}
+
+.ticketBox {
+  position: relative;
+  padding-top: 78rpx;
+}
+
+.ticket {
+  position: relative;
+  margin: 0rpx 31rpx 30rpx 29rpx;
+  width: 690rpx;
+  height: 234rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.upBox {
+  height: 171rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30rpx 0 32rpx 29rpx;
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+.bottomBox {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 0 19rpx 30rpx;
+}
+
+.bottomBox .text {
+  height: 23rpx;
+  font-size: 24rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 23rpx;
+  text-align: left;
+}
+
+/* 优惠券主要结构 */
+
+.contentBox {
+  position: absolute;
+  left: 240rpx;
+  top: 30rpx;
+  width: 260rpx;
+  height: 106rpx;
+}
+
+.contentBox .title {
+  height: 28rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 28rpx;
+}
+
+.contentBox .normal {
+  height: 25rpx;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 25rpx;
+}
+
+.contentBox .view {
+  text-align: left;
+}
+
+/* priceBox */
+
+.priceBox {
+  position: absolute;
+  left: 29rpx;
+  top: 31rpx;
+  width: 144rpx;
+  height: 108rpx;
+}
+
+.bigPrice {
+  width: 100%;
+  height: 62rpx;
+}
+
+.bigPrice .symbol {
+  display: inline;
+  font-size: 42rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 93, 22, 1);
+  line-height: 42rpx;
+}
+
+.bigPrice .price {
+  display: inline;
+  font-size: 80rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 93, 22, 1);
+  height: 62rpx;
+  line-height: 62rpx;
+}
+
+.condition {
+  height: 26rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 93, 22, 1);
+  line-height: 26rpx;
+}
+
+/* 已失效 */
+
+.used {
+  height: 296rpx !important;
+}
+
+.used .contentBox .title {
+  color: rgba(153, 153, 153, 1) !important;
+}
+
+.used .bigPrice .symbol, .used .bigPrice .price, .used .condition {
+  color: #999 !important;
+}
+
+/* tishi */
+
+.tishi {
+  position: absolute;
+  top: 28rpx;
+  left: 30rpx;
+  height: 23rpx;
+}
+
+.tishi image {
+  width: 22rpx;
+  margin-right: 11rpx;
+}
+
+.tishi .intro {
+  font-size: 24rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 23rpx;
+}
+
+.selectIcon_act {
+  width: 30rpx;
+  position: absolute;
+  top: 26rpx;
+  left: 640rpx;
+}
+
+/* appendNewLine */
+
+.appendNewLine {
+  position: absolute;
+  bottom: 0;
+  width: 690rpx;
+  height: 62rpx;
+  background: rgba(247, 247, 247, 1);
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  padding-left: 31rpx;
+}
+
+.new_title,.new_content {
+  font-size: 24rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 93, 22, 1);
+  line-height: 62rpx;
+}
+.new_content {
+  color: #666666 !important;
+}

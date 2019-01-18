@@ -1,0 +1,110 @@
+/* pages/shoppingCart_productList/shoppingCart_productList.wxss */
+
+.productsBox {
+  background: #fff;
+}
+
+.item {
+  position: relative;
+  height: 220rpx;
+  width: 750rpx;
+  box-sizing: border-box;
+  padding: 20rpx 28rpx 20rpx 30rpx;
+}
+
+.productImg {
+  margin-top: 1rpx;
+  width: 230rpx;
+  height: 179rpx;
+  background: pink;
+}
+
+.contentItem {
+  position: relative;
+  height: 100%;
+}
+
+.flexStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.contentItem .title {
+  margin-top: 5rpx;
+  width: 440rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 27rpx;
+}
+
+.contentItem .introduction {
+  position: absolute;
+  top: 49rpx;
+  width: 424rpx;
+  font-size: 24rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 24rpx;
+}
+
+.contentItem .price {
+  position: absolute;
+  top: 126rpx;
+  height: 22rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 22rpx;
+}
+
+.contentItem .offerPrice {
+  position: absolute;
+  top: 157rpx;
+  height: 22rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(88, 181, 48, 1);
+  line-height: 22rpx;
+}
+
+.bor_Bottom {
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+.youhuiBox {
+  position: relative;
+  width: 79rpx;
+}
+
+.youhuiText {
+  position: absolute;
+  left: 12rpx;
+  top: 5rpx;
+  width: 56rpx;
+  height: 15rpx;
+  line-height: 15rpx;
+  font-size: 16rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(88, 181, 48, 1);
+  z-index: 10;
+}
+
+.amount {
+  position: absolute;
+  right: 28rpx;
+  bottom: 19rpx;
+  height: 25rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 25rpx;
+}

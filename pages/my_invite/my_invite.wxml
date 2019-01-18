@@ -1,0 +1,16 @@
+<view class="invite maskContent">
+
+  <view class='invitList'>
+    <view class='item oneLineBetween'>
+      <image class='avator'></image>
+      <view class='personInfo columnBetweenStart'>
+        <view class='name'>W草</view>
+        <view class='phone'>186****9606</view>
+      </view>
+      <view class='date'>
+      2018-12-19
+      </view>
+    </view>
+
+  </view>
+</view>

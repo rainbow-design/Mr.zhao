@@ -1,0 +1,69 @@
+<view class="coupon maskContent">
+
+  <view class="header oneLineBetween">
+    <view class='title'>不使用优惠券</view>
+    <image src="../../assets/icon/round.png" mode='widthFix'></image>
+  </view>
+  <view class='ticketBox'>
+    <view class='tishi oneLineStart'>
+      <image src="../../assets/icon/tan.png" mode='widthFix'></image>
+      <view class='intro'>优惠券不可叠加使用</view>
+    </view>
+    <!-- 可使用 -->
+    <!-- ticket start -->
+    <view class='ticket'>
+      <image class='selectIcon_act' mode='widthFix' src="../../assets/icon/right_orange.png"></image>
+      <view class='upBox'>
+        <view class='priceBox columnBetween'>
+          <view class='bigPrice'>
+            <view class='symbol'>￥</view>
+            <view class='price'>10</view>
+          </view>
+          <view class='condition'>满98元可用</view>
+        </view>
+        <view class='contentBox columnBetweenStart'>
+          <view class='title'>兆鲜生10元优惠券
+          </view>
+          <view class='normal'>全品类优惠券</view>
+          <view class='normal'>会员、非会员通用
+          </view>
+        </view>
+      </view>
+      <view class='bottomBox'>
+        <view class='text'>有效期：2018-12-18 至 2018-12-30</view>
+      </view>
+    </view>
+    <!-- ticket end -->
+    <!-- 不使用 -->
+    <!-- ticket start -->
+    <view class='ticket used'>
+      <image class='selectIcon_act' mode='widthFix' src="../../assets/icon/round.png"></image>
+      <view class='upBox'>
+        <view class='priceBox columnBetween'>
+          <view class='bigPrice'>
+            <view class='symbol'>￥</view>
+            <view class='price'>10</view>
+          </view>
+          <view class='condition'>满98元可用</view>
+        </view>
+        <view class='contentBox columnBetweenStart'>
+          <view class='title'>兆鲜生10元优惠券
+          </view>
+          <view class='normal'>全品类优惠券</view>
+          <view class='normal'>会员、非会员通用
+          </view>
+        </view>
+      </view>
+      <view class='bottomBox'>
+        <view class='text'>有效期：2018-12-18 至 2018-12-30</view>
+      </view>
+      <!-- 不可使用新的注解 -->
+      <view class='appendNewLine oneLineStart'>
+        <view class='new_title'>本单不可用:</view>
+        <view class='new_content'>非会员不可用个,不满足使用金额</view>
+      </view>
+      <!-- 注解结束 -->
+    </view>
+    <!-- ticket end -->
+  </view>
+</view>
