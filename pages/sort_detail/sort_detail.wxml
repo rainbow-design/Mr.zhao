@@ -1,67 +1,74 @@
 <view class="goodsDetail">
-  <view class='imgText'>
-    <image class='foodsImg'></image>
-    <view class='sellCount'>已售5592份</view>
-    <view class='contentBox flexStyle'>
-      <view class='title line-clamp'>
-        蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
-      </view>
-      <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
-      <view class='price nowrap'>¥69.9999</view>
-      <view class='offerPrice nowrap'>¥69.9999
-        <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-          <view class='youhuiText'>会员9折</view>
-        </image>
-      </view>
-      <view class='bottomText'>现货，19:00前下单最快30分钟送达</view>
+    <view class='imgText'>
+        <swiper indicator-dots="true" circular="true" indicator-color="#F4F7FB" autoplay="true" indicator-active-color="#0D84F4" class="swiper">
+            <block wx:key="" wx:for="{{proList}}">
+                <swiper-item class="swiper_item" bindtap='swiperJunmp' data-type="{{item.type}}" data-id="{{item.attr}}">
+                    <image mode="scaleToFill" class="swiper_item_img" src="{{item.banner}}" width="355" height="150"></image>
+                </swiper-item>
+            </block>
+        </swiper>
+        <image class='foodsImg'></image>
+        <view class='sellCount'>已售{{proList.sale_num}}份</view>
+        <view class='contentBox flexStyle'>
+            <view class='title line-clamp'>
+                {{proList.name}}
+            </view>
+            <view class='introduction line-clamp'> {{proList.desc}} </view>
+            <view class='price nowrap'>¥{{proList.price}}</view>
+            <view class='offerPrice nowrap'>¥{{proList.plus_price}}
+                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+                    <view class='youhuiText'>会员{{proList.plus}}折</view>
+                </image>
+            </view>
+            <view class='bottomText'>{{proList.is_stock}}{{proList.send_desc}}</view>
+        </view>
     </view>
-  </view>
-  <view class='gap' style='height:21rpx;'></view>
-  <view class='bottomDetail'>
-    <view class='title'>
-      <view class='text'>商品详情</view>
+    <view class='gap' style='height:21rpx;'></view>
+    <view class='bottomDetail'>
+        <view class='title'>
+            <view class='text'>商品详情</view>
+        </view>
+        <view class='showDetail'>
+            <view class='detail1 oneLineStart'>
+                <view class='name'>
+                    产地 :
+                </view>
+                <view class='data'>
+                    {{proList.origin_place}}
+                </view>
+            </view>
+            <view class='detail2 oneLineStart'>
+                <view class='name'>
+                    规格 :
+                </view>
+                <view class='data'>
+                    {{proList.extends}}
+                </view>
+            </view>
+            <view class='detail3 oneLineStart'>
+                <view class='name'>
+                    保质期:
+                </view>
+                <view class='data'>
+                    {{proList.shelf_life}}
+                </view>
+            </view>
+        </view>
+        <view class='render'>
+            <image class='renderImg'></image>
+        </view>
     </view>
-    <view class='showDetail'>
-      <view class='detail1 oneLineStart'>
-        <view class='name'>
-          产地 :
+    <view class='cart'>
+        <view class='icon'>
+            <view class='number'>
+                <view class='text'>99
+                </view>
+            </view>
         </view>
-        <view class='data'>
-          见包装
+        <view class='gotoCart'>
+            <view class='text'>
+                加入购物车
+            </view>
         </view>
-      </view>
-      <view class='detail2 oneLineStart'>
-        <view class='name'>
-          规格 :
-        </view>
-        <view class='data'>
-          250ml*16
-        </view>
-      </view>
-      <view class='detail3 oneLineStart'>
-        <view class='name'>
-          保质期:
-        </view>
-        <view class='data'>
-          250ml*16
-        </view>
-      </view>
     </view>
-    <view class='render'>
-      <image class='renderImg'></image>
-    </view>
-  </view>
-  <view class='cart'>
-    <view class='icon'>
-      <view class='number'>
-        <view class='text'>99
-        </view>
-      </view>
-    </view>
-    <view class='gotoCart'>
-      <view class='text'>
-        加入购物车
-      </view>
-    </view>
-  </view>
 </view>

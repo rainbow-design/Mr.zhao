@@ -1,226 +1,106 @@
 <!--pages/my.wxml-->
 <view class='sort'>
-  <view class='header borderBox oneLineEnd'>
-    <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
-    <view class='location ellipsis'>测试文字的个数</view>
-    <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
-    <input class='inputText borderBox' placeholder='搜索' placeholder-class='place_input'></input>
-    <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
-  </view>
-  <view class='scrollShopList'>
-
-    <view class='mainMenu'>
-      <scroll-view scroll-y="true" scroll-into-view="a2" style='height:1023rpx;white-space:nowrap'>
-        <view class='item' data-id="a1">
-          <view class='text'>
-            热媒产品
-          </view>
+    <block wx:if="{{showYouhuiQuan}}">
+        <view class='Mask'>
+            <view class='bottomCoupon'>
+                <view class='title1'>
+                    优惠券
+                    <image mode='widthFix' src="../../assets/icon/close.png" style='width:32rpx;' bindtap='closeCoupon'></image>
+                </view>
+                <view class='ticket'>
+                    <view class='get'>领取</view>
+                    <view class='upBox'>
+                        <view class='priceBox columnBetween'>
+                            <view class='bigPrice'>
+                                <view class='symbol'>￥</view>
+                                <view class='price'>10</view>
+                            </view>
+                            <view class='condition'>满98元可用</view>
+                        </view>
+                        <view class='contentBox columnBetweenStart'>
+                            <view class='title'>兆鲜生10元优惠券
+                            </view>
+                            <view class='normal'>全品类优惠券</view>
+                            <view class='normal'>会员、非会员通用
+                            </view>
+                        </view>
+                    </view>
+                    <view class='bottomBox'>
+                        <view class='text'>有效期：2018-12-18 至 2018-12-30</view>
+                    </view>
+                </view>
+            </view>
         </view>
-        <view class='item' data-id="a2">
-          <view class='text'>
-            安心肉蛋
-          </view>
-        </view>
-        <view class='item' data-id="a3">
-          <view class='text'>
-            热媒产品
-          </view>
-        </view>
-        <view class='item'>
-          <view class='text'>
-            安心肉蛋
-          </view>
-        </view>
-        <view class='item'>
-          <view class='text'>
-            热媒产品
-          </view>
-        </view>
-        <view class='item'>
-          <view class='text'>
-            安心肉蛋
-          </view>
-        </view>
-        <view class='item item_act'>
-          <view class='text'>
-            会员特价
-          </view>
-        </view>
-        <view class='item'>
-          <view class='text'>
-            安心肉蛋
-          </view>
-        </view>
-        <view class='item'>
-          <view class='text'>
-            热媒产品
-          </view>
-        </view>
-        <view class='item'>
-          <view class='text'>
-            安心肉蛋
-          </view>
-        </view>
-        <view class='item'>
-          <view class='text'>
-            安心肉蛋
-          </view>
-        </view>
-        <view class='item'>
-          <view class='text'>
-            热媒产品
-          </view>
-        </view>
-        <view class='item'>
-          <view class='text'>
-            安心肉蛋
-          </view>
-        </view>
-      </scroll-view>
+    </block>
+    <view class='header borderBox oneLineEnd'>
+        <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
+        <view class='location ellipsis'>测试文字的个数</view>
+        <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
+        <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='test'></input>
+        <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
     </view>
-    <!-- 左侧 mainMenu end -->
-    <view class='rightBox'>
-      <block wx:if="{{hasYouhuiQuan}}">
-        <view class='getYouhuiQuan'>
-          <image mode="widthFix" src="../../assets/youhuijuan_bg.png"></image>
-          <view class='youhui_tit'> 优惠券</view>
-          <view class='count'>( 共2张 )</view>
-          <view class='get'>
-            <view class='text'>去领取</view>
-          </view>
+    <view class='scrollShopList'>
+
+        <view class='mainMenu'>
+            <scroll-view class="scroll_a" scroll-y="true" style='white-space:nowrap'>
+                <block wx:for="{{classA}}" wx:key="">
+                    <view class="item {{classShowA == index ? 'item_act' : ''}}" bindtap='chooseClass' data-id="{{item.id}}" data-index="{{index}}" data-pro_type="{{item.type}}" data-type="1">
+                        <view class='text'>
+                            {{item.name}}
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
         </view>
-      </block>
-      <!-- 没有优惠券展示列表 -->
-      <block wx:if="{{!hasYouhuiQuan}}">
-        <view class='subMenu'>
-          <view class='item'>
-            <view class='text'>
-              安心蔬菜
-
+        <!-- 左侧 mainMenu end -->
+        <view class='rightBox'>
+            <!-- 没有优惠券展示列表 -->
+            <scroll-view class='subMenu' scroll-x style="white-space:nowrap;">
+                <block wx:for="{{classB}}" wx:key="">
+                    <view class="item {{classShowB == index ? 'item_act' : ''}}" bindtap='chooseClass' data-id="{{item.id}}" data-index="{{index}}" data-pro_id="{{item.id}}" data-type="2">
+                        <view class='text'>
+                            {{item.name}}
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+            <!-- subMenu end -->
+            <view class='shoppingList'>
+                <scroll-view class="scroll_b" scroll-y="true" style='white-space:nowrap'>
+                    <block wx:if="{{hasYouhuiQuan}}">
+                        <view class='getYouhuiQuan'>
+                            <image mode="widthFix" src="../../assets/youhuijuan_bg.png"></image>
+                            <view class='youhui_tit'> 优惠券</view>
+                            <view class='count'>( 共{{}}张 )</view>
+                            <view class='get'>
+                                <view class='text' bindtap='getCoupon'>去领取</view>
+                            </view>
+                        </view>
+                    </block>
+                    <!-- 单个商品开始 -->
+                    <!-- <block wx:for="{{productList}}" wx:key=""> -->
+                    <view class='goods_item oneLineBetween' bindtap='toDetail'>
+                        <image class='img'></image>
+                        <view class='content'>
+                            <view class='title'>
+                                蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
+                            </view>
+                            <view class='introduction'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
+                            <view class='price'>¥69.9999</view>
+                            <view class='offerPrice'>¥69.9999
+                                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+                                    <view class='youhuiText'>会员9折</view>
+                                </image>
+                            </view>
+                            <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
+                        </view>
+                    </view>
+                    <!-- </block> -->
+                    <!-- 单个商品结束 -->
+                </scroll-view>
             </view>
-          </view>
-          <view class='item '>
-            <view class='text'>
-              安心蔬菜
 
-            </view>
-          </view>
-          <view class='item item_act'>
-            <view class='text'>
-              安心蔬菜
-
-            </view>
-          </view>
-          <view class='item'>
-            <view class='text'>
-              安心蔬菜
-
-            </view>
-          </view>
         </view>
-      </block>
-      <!-- subMenu end -->
-      <view class='shoppingList'>
-        <scroll-view scroll-y="true" scroll-into-view="a2" style='height:1023rpx;white-space:nowrap'>
-          <!-- 单个商品开始 -->
-          <view class='goods_item oneLineBetween' bindtap='toDetail'>
-            <image class='img'></image>
-            <view class='content flexStyle'>
-              <view class='title line-clamp'>
-                蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
-              </view>
-              <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
-              <view class='price nowrap'>¥69.9999</view>
-              <view class='offerPrice nowrap'>¥69.9999
-                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-                  <view class='youhuiText'>会员9折</view>
-                </image>
-              </view>
-
-              <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
-            </view>
-          </view>
-          <!-- 单个商品结束 -->
-          <!-- 单个商品开始 -->
-          <view class='goods_item oneLineBetween'>
-            <image class='img'></image>
-            <view class='content flexStyle'>
-              <view class='title line-clamp'>
-                蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
-              </view>
-              <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
-              <view class='price nowrap'>¥69.9999</view>
-              <view class='offerPrice nowrap'>¥69.9999
-                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-                  <view class='youhuiText'>会员9折</view>
-                </image>
-              </view>
-
-              <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
-            </view>
-          </view>
-          <!-- 单个商品结束 -->
-          <!-- 单个商品开始 -->
-          <view class='goods_item oneLineBetween'>
-            <image class='img'></image>
-            <view class='content flexStyle'>
-              <view class='title line-clamp'>
-                蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
-              </view>
-              <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
-              <view class='price nowrap'>¥69.9999</view>
-              <view class='offerPrice nowrap'>¥69.9999
-                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-                  <view class='youhuiText'>会员9折</view>
-                </image>
-              </view>
-
-              <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
-            </view>
-          </view>
-          <!-- 单个商品结束 -->
-          <!-- 单个商品开始 -->
-          <view class='goods_item oneLineBetween'>
-            <image class='img'></image>
-            <view class='content flexStyle'>
-              <view class='title line-clamp'>
-                蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
-              </view>
-              <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
-              <view class='price nowrap'>¥69.9999</view>
-              <view class='offerPrice nowrap'>¥69.9999
-                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-                  <view class='youhuiText'>会员9折</view>
-                </image>
-              </view>
-
-              <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
-            </view>
-          </view>
-          <!-- 单个商品结束 -->
-          <!-- 单个商品开始 -->
-          <view class='goods_item oneLineBetween'>
-            <image class='img'></image>
-            <view class='content flexStyle'>
-              <view class='title line-clamp'>
-                蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
-              </view>
-              <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
-              <view class='price nowrap'>¥69.9999</view>
-              <view class='offerPrice nowrap'>¥69.9999
-                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-                  <view class='youhuiText'>会员9折</view>
-                </image>
-              </view>
-
-              <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
-            </view>
-          </view>
-          <!-- 单个商品结束 -->
-        </scroll-view>
-      </view>
 
     </view>
-
-  </view>
 </view>

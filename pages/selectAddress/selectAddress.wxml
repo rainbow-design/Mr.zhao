@@ -1,38 +1,49 @@
 <view class="selectAddress maskContent">
-  <view class='searchAndNowAddress columnBetweenStart'>
+  <view class="searchAndNowAddress columnBetweenStart {{keyword ? 'h100':''}}">
     <view>
-      <input class='searchInp' placeholder='请输入您的地址' placeholder-class='place'></input>
-      <image class='searchIcon'></image>
-    </view>
-    <view class='current'>当前定位</view>
-    <view class='refreshLocation oneLineBetween'>
-      <view class='currentCityName'>高碑店</view>
-      <view class='refresh'>
-        <image src="../../assets/icon/location.png" mode='widthFix'></image>
-        刷新定位</view>
+      <input class='searchInp' placeholder='请输入您的地址' bindinput='searchInp' placeholder-class='place'></input>
+      <image class='searchIcon' src="../../assets/search.png" mode='widthFix'></image>
     </view>
 
-  </view>
-  <view class='myShippingAddress'>
-    <view class='title'>我的收货地址</view>
-    <view class='itemAddress columnBetween borderBottom'>
-      <view class='upBox oneLineStart'>
-        <view class='greenBox'>
-          <view class='text'>住宅</view>
-        </view>
-        <view class='address'>北京市 朝阳区 美景东方4号楼322</view>
+    <block wx:if="{{!keyword}}">
+      <view class='current'>当前定位</view>
+      <view class='refreshLocation oneLineBetween'>
+        <block wx:if="{{loading}}">
+          <view class='currentCityName'>定位中...</view>
+        </block>
+        <block wx:elif="{{loading === false}}">
+          <view class='currentCityName'>{{initAddress || reAddress}}</view>
+        </block>
+        <view class='refresh' bindtap='reGetLocation'>
+          <image src="../../assets/icon/location.png" mode='widthFix'></image>
+          刷新定位</view>
       </view>
-      <view class='underBox'>于双硕 18284923857</view>
-    </view>
-    <view class='itemAddress columnBetween'>
-      <view class='upBox oneLineStart'>
-        <view class='greenBox'>
-          <view class='text'>住宅</view>
-        </view>
-        <view class='address'>北京市 朝阳区 美景东方4号楼322</view>
-      </view>
-      <view class='underBox'>于双硕 18284923857</view>
-    </view>
-  </view>
+    </block>
 
+
+
+  </view>
+  <block wx:if="{{!keyword}}">
+    <view class='myShippingAddress'>
+      <view class='title'>我的收货地址</view>
+      <view class="itemAddress columnBetween {{addressData.length > 1 && index != addressData.length-1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}">
+        <view class='upBox oneLineStart'>
+          <view class='greenBox'>
+            <view class='text'>{{item.type_name}}</view>
+          </view>
+          <view class='address'> {{item.city_name}} {{item.area_name}} {{item.detail_addr}}</view>
+        </view>
+        <view class='underBox'>{{item.name}} {{item.phone}}</view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{showSearchData && result.length > 0}}">
+    <view class='result'>
+      <view class="item columnBetweenStart {{index != result.length - 1? 'result_border':''}}" data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}" wx:for="{{result}}" wx:key="{{item.id}}">
+        <view class='name'>{{item.title}}</view>
+        <view class='address'>{{item.address}}</view>
+      </view>
+    </view>
+  </block>
 </view>

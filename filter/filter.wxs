@@ -1,11 +1,13 @@
 // 不支持es6，Date
-function isNull(str) {
-  return str === null ? 0 : str;
+
+function splitByC(str) {
+  return str.split(',');
 }
-function zhiChen(str){
-  
+function splitByS(str) {
+  return str.split(' ');
 }
 
 module.exports = {
-  isNull: isNull
+  splitByC: splitByC, // my_coupon 有使用
+  splitByS: splitByS
 }

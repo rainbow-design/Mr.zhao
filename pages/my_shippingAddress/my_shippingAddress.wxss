@@ -1,5 +1,28 @@
 /* pages/my_shippingAddress/my_shippingAddress.wxss */
 
+/* nodata */
+
+.nodata {
+  width: 750rpx;
+  height: 100%;
+}
+
+.nodata image {
+  position: absolute;
+  top: 289rpx;
+}
+
+.nodata .nodata_content {
+  position: absolute;
+  top: 566rpx;
+  height: 40rpx;
+  font-size: 42rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 40rpx;
+}
+
 .addressList {
   width: 750rpx;
   box-sizing: border-box;

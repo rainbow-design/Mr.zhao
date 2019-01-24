@@ -1,41 +1,37 @@
 <view class="shoppingAddress maskContent">
-  <view class='addressList'>
+  <block wx:if="{{!addressData}}">
+    <view class='nodata columnBetween'>
+      <image src="../../assets/nodata/invite.png" mode="widthFix" style='width:430rpx;'></image>
+      <view class='nodata_content'>您没有邀请过好友</view>
 
-    <view class='item borderBottom oneLineBetween'>
-      <view class='leftAddress columnBetweenStart'>
-        <view class='upBox oneLineStart'>
-          <view class='name'>于双硕</view>
-          <view class='phoneNumber'>18284923857</view>
-          <view class='greenBox'>
-            <view class='text'>住宅</view>
-          </view>
-        </view>
-        <view class='bottomBox'>
-          北京市 朝阳区 美景东方4号楼322
-        </view>
-
+      <view class='addBtn' bindtap='toAddShippingAddress' style='top:726rpx;'>
+        <view class='text'> 新增收货地址</view>
       </view>
-      <image mode='widthFix' src="../../assets/icon/edit.png"></image>
     </view>
-    <view class='item oneLineBetween'>
-      <view class='leftAddress columnBetweenStart'>
-        <view class='upBox oneLineStart'>
-          <view class='name'>于双硕</view>
-          <view class='phoneNumber'>18284923857</view>
-          <view class='greenBox'>
-            <view class='text'>住宅</view>
+  </block>
+  <block wx:if="{{addressData}}">
+    <view class='addressList'>
+
+      <view class="item oneLineBetween {{index != addressData.length - 1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-isdefault="{{item.is_default}}">
+        <view class='leftAddress columnBetweenStart'>
+          <view class='upBox oneLineStart'>
+            <view class='name'>{{item.name}}</view>
+            <view class='phoneNumber'>{{item.phone}}</view>
+            <view class='greenBox'>
+              <view class='text'>{{item.type_name}}</view>
+            </view>
           </view>
-        </view>
-        <view class='bottomBox'>
-          北京市 朝阳区 美景东方4号楼322
-        </view>
+          <view class='bottomBox'>
+            {{item.city_name}} {{item.area_name}} {{item.detail_addr}}
+          </view>
 
+        </view>
+        <image mode='widthFix' data-item="{{item}}" src="../../assets/icon/edit.png" bindtap='toEdit'></image>
       </view>
-      <image mode='widthFix' src="../../assets/icon/edit.png"></image>
     </view>
-  </view>
 
-  <view class='addBtn' bindtap='toAddShippingAddress'>
-    <view class='text'> 新增收货地址</view>
-  </view>
+    <view class='addBtn' bindtap='toAddShippingAddress'>
+      <view class='text'> 新增收货地址</view>
+    </view>
+  </block>
 </view>

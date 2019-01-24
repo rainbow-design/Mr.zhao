@@ -165,25 +165,16 @@ function getCityInfo(lat, lng, mapKey, callback) {
     }
   })
 }
-// 根据 stick 排序，同时对每个数据处理
-function sortByStick(arr, otherChoose) {
-  var newArr = [];
-  for (var i = 0; i < arr.length; i++) {
-    var item = arr[i];
-    item.stick === "1" ? newArr.push(item) && arr.splice(i, 1) && i-- : "";
-    typeof otherChoose === 'function' ? otherChoose(item) : '';
-  }
-  return newArr.concat(arr)
-}
 
 function getChinaCityList(qqmapSDK, callback) {
+ 
   //调用获取城市列表接口
   qqmapSDK.getCityList({
-    success: function (res) {//成功后的回调
+    success: function (res) { //成功后的回调
       callback(res);
-      // console.log('省份数据：', res.result[0]); //打印省份数据
-      // console.log('城市数据：', res.result[1]); //打印城市数据
-      // console.log('区县数据：', res.result[2]); //打印区县数据
+      console.log('省份数据：', res.result[0]); //打印省份数据
+      console.log('城市数据：', res.result[1]); //打印城市数据
+      console.log('区县数据：', res.result[2]); //打印区县数据
     },
     fail: function (error) {
       console.error(error);
@@ -192,6 +183,73 @@ function getChinaCityList(qqmapSDK, callback) {
       console.log(res);
     }
   });
+}
+
+
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function () {
+    console.log('timeout name:' + timeout)
+    var context = this;
+    var args = arguments;
+    if (timeout) clearTimeout(timeout);
+    if (immediate) {
+      var canApply = !timeout;
+      timeout = setTimeout(function () {
+        timeout = null; // 在 wait 时间后防抖函数才可以再次被触发
+      }, wait)
+      console.log('canApply:' + canApply);
+      if (canApply) func.apply(context, args) // 第一次 !undefined 执行
+    } else {
+      timeout = setTimeout(() => {
+        func.apply(context, args)
+      }, wait);
+    }
+
+  }
+}
+
+function checkType(str, type) {
+  switch (type) {
+    case 'email':
+      return /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(str);
+    case 'phone':
+      return /^1[3|4|5|7|8][0-9]{9}$/.test(str);
+    case 'tel':
+      return /^(0\d{2,3}-\d{7,8})(-\d{1,4})?$/.test(str);
+    case 'number':
+      return /^[0-9]$/.test(str);
+    /**
+     * 校验邮政编码
+     * @param {string} str 字符串
+     * @return {bool}
+     */
+    case 'isZipCode':
+      return /^(\d){6}$/.test(str);
+    case 'isURL':
+      return /^(https|http):\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/.test(str);
+    case 'english':
+      return /^[a-zA-Z]+$/.test(str);
+    case 'allChinese':
+      return /^[\u4E00-\u9FA5]+$/.test(str);
+    case 'hasChinese':
+      return /^[\u4E00-\u9FA5]/.test(str);
+    case 'lower':
+      return /^[a-z]+$/.test(str);
+    case 'upper':
+      return /^[A-Z]+$/.test(str);
+    default:
+      return true;
+  }
+}
+
+function addKey(arr, obj) {
+  var temp = arr.forEach(v => {
+    for (var key in obj) {
+      v[key] = obj[key]
+    }
+  })
 }
 module.exports = {
   sendRequest: sendRequest,
@@ -204,6 +262,8 @@ module.exports = {
   log: printDetail,
   getLocation: getLocation,
   getCityInfo: getCityInfo,
-  sortByStick: sortByStick,
-  getChinaCityList: getChinaCityList
+  getChinaCityList: getChinaCityList,
+  debounce: debounce,
+  checkType: checkType,
+  addKey: addKey
 }

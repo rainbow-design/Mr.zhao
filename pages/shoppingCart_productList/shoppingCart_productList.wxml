@@ -1,7 +1,7 @@
 <view class="productList maskContent">
-
+  <view class='gap20'></view>
   <view class='productsBox'>
-    <view class='item oneLineBetween'>
+    <view class='item oneLineBetween bor_Bottom'>
       <image class='productImg'></image>
       <view class='contentItem flexStyle'>
         <view class='title line-clamp '>

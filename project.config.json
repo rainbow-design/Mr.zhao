@@ -9,11 +9,12 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
-	"appid": "wx429614b3258abe8d",
+	"appid": "wx03c4a725e43fad9b",
 	"projectname": "Mr.zhao",
 	"debugOptions": {
 		"hidedInDevtools": []

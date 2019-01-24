@@ -1,3 +1,26 @@
+/* nodata */
+
+.nodata {
+  width: 750rpx;
+  height: 100%;
+}
+
+.nodata image {
+  position: absolute;
+  top: 344rpx;
+}
+
+.nodata .nodata_content {
+  position: absolute;
+  top: 631rpx;
+  height: 40rpx;
+  font-size: 42rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 40rpx;
+}
+
 .invitList {
   position: relative;
   top: 20rpx;
@@ -6,7 +29,7 @@
 }
 
 .item {
-  height: 156rpx;
+  height: 158rpx;
   box-sizing: border-box;
   width: 100%;
   padding: 0 30rpx 0 31rpx;
@@ -27,12 +50,14 @@
   color: rgba(26, 26, 26, 1);
   line-height: 30rpx;
 }
+
 .personInfo {
   position: absolute;
   left: 164rpx;
   top: 47rpx;
   height: 63rpx;
 }
+
 .personInfo .phone {
   height: 18rpx;
   font-size: 22rpx;
@@ -48,4 +73,9 @@
   font-family: SourceHanSansCN-Regular;
   font-weight: 400;
   color: rgba(153, 153, 153, 1);
+  line-height: 22rpx;
+}
+
+.borderTop {
+  border-top: 2rpx solid rgba(224, 224, 224, 1);
 }

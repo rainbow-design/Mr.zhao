@@ -43,7 +43,7 @@
 
 .input_searchIcon {
   position: absolute;
-  top: 34rpx;
+  top: 35rpx;
   left: 374rpx;
   width: 30rpx;
   height: 30rpx;
@@ -91,7 +91,19 @@
   width: 690rpx;
   height: 260rpx;
   margin: 0 auto;
-  background: pink;
+  border-radius: 20px;
+}
+
+.Carousel Swiper {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.Carousel .slide-image {
+  display: block;
+  width: 690rpx;
+  height: 260rpx;
   border-radius: 20px;
 }
 
@@ -100,15 +112,15 @@
   display: flex;
   width: 750rpx;
   height: 355rpx;
-  padding: 35rpx 37rpx 44rpx 37rpx;
+  padding: 35rpx 17rpx 44rpx 17rpx;
 }
 
 .subMenuItem_img {
   width: 84rpx;
+  height: 88rpx;
 }
 
 .subMenuItem_text {
-  width: 52rpx;
   height: 26rpx;
   font-size: 26rpx;
   font-family: MicrosoftYaHei;
@@ -121,8 +133,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 84rpx;
-  margin-left: 64rpx;
+  width: 104rpx;
+  padding: 0 10rpx;
 }
 
 .noMargin {
@@ -291,6 +303,7 @@
   border-radius: 28rpx;
   opacity: 1;
   z-index: 10000;
+  /* background: rgba(0,0,0,.3);  */
 }
 
 .signIn image {
@@ -336,3 +349,169 @@
   line-height: 74rpx;
   text-align: center;
 }
+
+.index_delete {
+  position: absolute;
+  left: 333rpx;
+  top: 883rpx;
+  width: 81rpx;
+}
+
+.quan {
+  position: fixed;
+  left: 58rpx;
+  top: 200rpx;
+  width: 634rpx;
+  height: 653rpx;
+  background: rgba(255, 93, 22, 1);
+  border-radius: 10rpx;
+  padding-top: 127rpx;
+  box-sizing: border-box;
+}
+
+.quan .redImg {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 634rpx;
+}
+
+.quan .quan_title {
+  position: absolute;
+  top: 41rpx;
+  height: 47rpx;
+  width: 100%;
+  font-size: 49rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  line-height: 47rpx;
+  text-align: center;
+}
+
+.ticket {
+  position: relative;
+  margin: 0 30rpx 20rpx;
+  width: 574rpx;
+  height: 234rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.ticket .get {
+  position: absolute;
+  left: 433rpx;
+  top: 30rpx;
+  width: 121rpx;
+  height: 45rpx;
+  background: rgba(255, 111, 61, 1);
+  border-radius: 23rpx;
+  font-size: 26rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 45rpx;
+  text-align: center;
+}
+
+.upBox {
+  height: 171rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30rpx 0 32rpx 29rpx;
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+.bottomBox {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 0 19rpx 0;
+}
+
+.bottomBox .text {
+  height: 23rpx;
+  font-size: 24rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 23rpx;
+  text-align: center;
+}
+
+/* 优惠券主要结构 */
+
+.contentBox {
+  position: absolute;
+  left: 181rpx;
+  top: 30rpx;
+  width: 260rpx;
+  height: 106rpx;
+}
+
+.contentBox .title {
+  height: 28rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 28rpx;
+}
+
+.contentBox .normal {
+  height: 25rpx;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 25rpx;
+}
+
+.contentBox .view {
+  text-align: left;
+}
+
+/* priceBox */
+
+.priceBox {
+  position: absolute;
+  left: 29rpx;
+  top: 66rpx;
+  width: 91rpx;
+  height: 46rpx;
+}
+
+.bigPrice {
+  width: 100%;
+  height: 46rpx;
+}
+
+.bigPrice .symbol {
+  display: inline;
+  font-size: 36rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 93, 22, 1);
+  line-height: 46rpx;
+}
+
+.bigPrice .price {
+  display: inline;
+  font-size: 59rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 93, 22, 1);
+  height: 46rpx;
+  line-height: 46rpx;
+}
+
+.condition {
+  height: 26rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 93, 22, 1);
+  line-height: 26rpx;
+}
+
+/* 优惠券结束 */

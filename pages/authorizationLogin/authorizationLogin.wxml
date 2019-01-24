@@ -1,5 +1,5 @@
 <!--pages/iThink/iThink.wxml-->
-<view>
+<view style='height:100%'>
   <block wx:if="{{!isShouQuan}}">
     <view class='maskContent columnCenter'>
       <image class='zhaoAvator' src="../../assets/shouQuan.png"></image>
@@ -12,25 +12,31 @@
       </button>
     </view>
   </block>
-  <block wx:if="{{isShouQuan}}">
+  <block wx:if="{{isRegister}}">
     <view class='maskContent loginCtrl columnCenter'>
 
       <view class='login columnCenter'>
 
         <view class='b_border fixHeight'>
           <label class='firstBlock'>手机号</label>
-          <input placeholder='请输入手机号' placeholder-class='place_shouji'></input>
+          <input placeholder='请输入手机号' data-name="phone" bindinput="bindKeyInput" value='{{phoneNumber}}' placeholder-class='place_shouji'></input>
         </view>
         <view class='fixHeight'>
           <label class='firstBlock'>验证码</label>
-          <input placeholder='请输入验证码' placeholder-class='place_code'></input>
-          <!-- <view class='verificationCode'>获取验证码</view> -->
-          <view class='time nowrap'>60s </view>
+          <input placeholder='请输入验证码' data-name="verificationCode" bindinput="bindKeyInput" placeholder-class='place_code'></input>
+          <block wx:if="{{!showTime}}">
+            <view class='verificationCode' bindtap='getVerificationCode'>获取验证码</view>
+          </block>
+          <block wx:elif="{{showTime}}">
+            <view class='time nowrap'>{{time}}s </view>
+          </block>
         </view>
 
       </view>
-      <view class='error nowrap'>验证码错误，请重新输入</view>
-      <button class='shouQuanBtn2 center'>
+      <block wx:if="{{throwError}}">
+        <view class='error nowrap'>验证码错误，请重新输入</view>
+      </block>
+      <button class='shouQuanBtn2 center' bindtap='shouQuan'>
         <view class='text'>
           确认授权
         </view>

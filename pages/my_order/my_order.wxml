@@ -59,8 +59,31 @@
             </view>
           </view>
           <view class='bottomBox oneLineEnd'>
-            <view class='greenBox'>
+            <view class='greenBox' bindtap='toPay'>
               <view class='text'>去支付</view>
+            </view>
+            <view class='heijiBox'>
+              <view class='name'>合计：</view>
+              <view class='price'>¥10.00</view>
+            </view>
+          </view>
+        </view>
+        <view class='order'>
+          <view class='message oneLineBetween'>
+            <view class='date'>2018-12-18 16:35:38</view>
+            <view class='action'>已取消</view>
+          </view>
+          <view class='imgsBox oneLineStart'>
+            <view class='item center'>
+              <image></image>
+            </view>
+            <view class='item center'>
+              <image></image>
+            </view>
+          </view>
+          <view class='bottomBox oneLineEnd'>
+            <view class='greenBox' style='width:139rpx;'>
+              <view class='text'>再来一单</view>
             </view>
             <view class='heijiBox'>
               <view class='name'>合计：</view>
@@ -71,7 +94,12 @@
       </view>
     </swiper-item>
     <swiper-item>
-      <view>待支付</view>
+      <block wx:if="{{['1']}}">
+        <view class='nodata columnBetween'>
+          <image src="../../assets/nodata/order.png" mode="widthFix" style='width:430rpx;'></image>
+          <view class='nodata_content'>您还没有相关订单</view>
+        </view>
+      </block>
     </swiper-item>
     <swiper-item>
       <view>待配送</view>

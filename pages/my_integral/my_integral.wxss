@@ -1,3 +1,18 @@
+.nodata .content {
+  position: absolute;
+  top: 454rpx;
+  height: 40rpx;
+  font-size: 42rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 40rpx;
+}
+.nodata image {
+  position: absolute;
+  top: 201rpx;
+}
+
 .integral {
   position: relative;
 }
@@ -128,6 +143,7 @@
 .add {
   color: rgba(88, 181, 48, 1);
 }
+
 .jian {
-  color:rgba(26,26,26,1);
+  color: rgba(26, 26, 26, 1);
 }

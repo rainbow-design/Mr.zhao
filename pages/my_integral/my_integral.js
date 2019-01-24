@@ -1,18 +1,22 @@
 // pages/my_integral/my_integral.js
+const app = getApp();
+const util = require("../../utils/util.js");
+const api = require("../../utils/api.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    integralData: [],
+    totalScore: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getMy_integral();
   },
 
   /**
@@ -27,6 +31,26 @@ Page({
    */
   onShow: function () {
 
+  },
+  getMy_integral() {
+    var y = this;
+    util.promiseRequest(api.score_list, {
+      access_token: app.globalData.access_token
+    })
+      .then(res => {
+        var data = res.data.response_data.lists;
+        var totalScore = 0;
+        console.log(data);
+        data.forEach(v => {
+          v.shortDate = v.time.split(' ')[0];
+          totalScore += v.type === "+" ? Number(v.score) : - Number(v.score) ;
+        })
+        console.log(totalScore)
+        y.setData({
+          integralData: data,
+          totalScore: totalScore
+        })
+      })
   },
 
   /**

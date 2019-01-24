@@ -5,21 +5,38 @@ var Event = (function () {
     pub,
     sub,
     remove;
+
+  var cached = {
+  };
+
   sub = function (key, fn) {
     if (!clientList[key]) {
       clientList[key] = [];
     }
-    clientList[key].push(fn);
+    // 使用缓存执行的订阅不用多次调用执行
+    cached[key + 'time'] == undefined ? clientList[key].push(fn) : '';
+    if (cached[key] instanceof Array) {
+      //说明有缓存的 可以执行
+      fn.apply(null, cached[key]);
+      cached[key + 'time'] = 1;
+      // delete cached[key];
+    }
   };
   pub = function () {
     var key = Array.prototype.shift.call(arguments),
       fns = clientList[key];
     if (!fns || fns.length === 0) {
+      //初始默认缓存
+      cached[key] = Array.prototype.slice.call(arguments, 0);
       return false;
     }
+
     for (var i = 0, fn; fn = fns[i++];) {
+      // 再次发布更新缓存中的 data 参数
+      cached[key + 'time'] != undefined ? cached[key] = Array.prototype.slice.call(arguments, 0) : '';
       fn.apply(this, arguments);
     }
+
   };
   remove = function (key, fn) {
     var fns = clientList[key];
@@ -39,7 +56,7 @@ var Event = (function () {
   return {
     pub: pub,
     sub: sub,
-    remove: remove
+    remove: remove,
   }
 })();
 App({

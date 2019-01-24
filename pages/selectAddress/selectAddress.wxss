@@ -1,5 +1,9 @@
 /* pages/selectAddress/selectAddress.wxss */
 
+.h100 {
+  height: 100rpx !important;
+}
+
 .searchAndNowAddress {
   width: 750rpx;
   height: 226rpx;
@@ -22,6 +26,7 @@
   background: rgba(245, 245, 245, 1);
   border-radius: 30rpx;
   padding-left: 80rpx;
+  font-size: 26rpx;
   box-sizing: border-box;
 }
 
@@ -38,8 +43,6 @@
   left: 60rpx;
   top: 35rpx;
   width: 30rpx;
-  height: 30rpx;
-  background: pink;
 }
 
 .currentCityName {
@@ -77,6 +80,7 @@
   font-family: MicrosoftYaHei;
   font-weight: 400;
   color: rgba(102, 102, 102, 1);
+  line-height: 26rpx;
 }
 
 .myShippingAddress .title {
@@ -138,6 +142,44 @@
   font-weight: 400;
   color: rgba(26, 26, 26, 1);
 }
+
 .borderBottom {
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.result {
+  margin-top: 20rpx;
+  width: 750rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.result .item {
+  box-sizing: border-box;
+  padding: 20rpx 0 30rpx;
+  height: 130rpx;
+  width: 100%;
+}
+
+.result .item .name {
+  height: 29rpx;
+  font-size: 28rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 29rpx;
+}
+
+.result .item .address {
+  height: 26rpx;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 26rpx;
+}
+
+.result_border {
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
 }

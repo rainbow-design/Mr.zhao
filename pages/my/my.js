@@ -1,11 +1,15 @@
 // pages/my/my.js
+const app = getApp();
+const util = require("../../utils/util.js");
+const api = require("../../utils/api.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showCallTelMask: false
+    showCallTelMask: false,
+    userInfo: {}
 
   },
 
@@ -13,9 +17,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getUserInfo();
   },
-  toMemberInfo() {
+  getUserInfo() {
+    var y = this;
+    util.promiseRequest(api.basicInfo, { access_token: app.globalData.access_token })
+      .then(res => {
+        var data = res.data.response_data;
+        y.setData({
+          userInfo: data
+        })
+
+      })
+  },
+  toMemberInfo(e) {
+    var data = e.currentTarget.dataset.info;
+    wx.yue.pub("userInfo", data);
     wx.navigateTo({
       url: `../my_memberInfo/my_memberInfo`
     })
@@ -40,6 +57,12 @@ Page({
     })
 
   },
+  // 开通会员
+  openPlus() {
+    wx.navigateTo({
+      url: `../index_plus/index_plus`
+    })
+  },
   // 我的订单
   toOrder() {
     wx.navigateTo({
@@ -50,6 +73,11 @@ Page({
   showCallMe() {
     this.setData({
       showCallTelMask: true
+    })
+  },
+  toInviteFriend() {
+    wx.navigateTo({
+      url: `../index_inviteFriend/index_inviteFriend`
     })
   },
   // 收货地址

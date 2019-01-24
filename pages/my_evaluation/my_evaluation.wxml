@@ -3,29 +3,26 @@
   <view class='peisong'>
     <view class='title'>配送评价</view>
     <view class='starBox oneLineBetween'>
-      <image mode='widthFix' src="../../assets/icon/star.png"></image>
-      <image mode='widthFix' src="../../assets/icon/star.png"></image>
-      <image mode='widthFix' src="../../assets/icon/star.png"></image>
-      <image mode='widthFix' src="../../assets/icon/star.png"></image>
-      <image mode='widthFix' src="../../assets/icon/star.png"></image>
+      <block wx:for="{{PS_star}}">
+        <image mode='widthFix' src="{{Ps_num > item ? stared :normal}}" data-key="{{index}}" bindtap="ps_start"></image>
+      </block>
+
     </view>
   </view>
   <view class='shangjia'>
     <view class='title'>商家评价</view>
     <view class='starBox oneLineBetween'>
-      <image mode='widthFix' src="../../assets/icon/star_act.png"></image>
-      <image mode='widthFix' src="../../assets/icon/star_act.png"></image>
-      <image mode='widthFix' src="../../assets/icon/star.png"></image>
-      <image mode='widthFix' src="../../assets/icon/star.png"></image>
-      <image mode='widthFix' src="../../assets/icon/star.png"></image>
+      <block wx:for="{{SJ_star}}">
+        <image mode='widthFix' src="{{SJ_num > item ? stared :normal}}" data-key="{{index}}" bindtap="sj_start"></image>
+      </block>
     </view>
     <view class='contentBox'>
-    <textarea class='textareaBox' placeholder="详细评价" placeholder-class="place"></textarea>
-    <view class='imgBox center'>
-    <image src="../../assets/icon/camera.png" mode='widthFix'></image>
-    </view>
-    <view class='text'>添加图片</view>
+      <textarea class='textareaBox' placeholder="详细评价" bindinput="textareaInp" placeholder-class="place"></textarea>
+      <view class='imgBox center'>
+        <image src="../../assets/icon/camera.png" mode='widthFix'></image>
+      </view>
+      <view class='text'>添加图片</view>
     </view>
   </view>
-  <view class='submit'>提交评价</view>
+  <view class='submit' bindtap='submitMsg'>提交评价</view>
 </view>

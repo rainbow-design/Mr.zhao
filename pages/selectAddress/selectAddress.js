@@ -1,18 +1,39 @@
 // pages/selectAddress/selectAddress.js
+const app = getApp();
+var QQMapWX = require('../../libs/qqmap-wx-jssdk.min.js');
+const util = require("../../utils/util.js");
+const api = require("../../utils/api.js");
+const Storage = require("../../utils/storage.js");
+// 实例化API核心类
+var mapKey = 'GRBBZ-C6A35-IJLI7-QKHAT-NXZ7S-IQBG6'
+const qqmapsdk = new QQMapWX({
+  key: mapKey // 必填
+});
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    initAddress: '',
+    loading: false,
+    addressData: [],
+    keyword: '',
+    showSearchData: false,
+    result: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.address) {
+      this.setData({
+        initAddress: options.address
+      })
+    }
 
+    this.getMy_shippingAddress();
   },
 
   /**
@@ -27,6 +48,83 @@ Page({
    */
   onShow: function () {
 
+  },
+  getMy_shippingAddress() {
+    var y = this;
+    util.promiseRequest(api.addr_list, {
+      access_token: app.globalData.access_token
+    })
+      .then(res => {
+        var data = res.data.response_data.lists;
+        console.log(data);
+        y.setData({
+          addressData: data
+        })
+      })
+  },
+  searchInp(e) {
+    var val = e.detail.value;
+    console.log(val);
+    this.setData({
+      keyword: val,
+      showSearchData: true
+    })
+    var lat = Storage.getItem("lat"),
+      lng = Storage.getItem("lng");
+    let isChinese = util.checkType(val, "hasChinese");
+    if (isChinese) {
+      this.searchArea(lat, lng, val);
+    }
+  },
+  reGetLocation() {
+    var y = this;
+    this.setData({
+      initAddress: '',
+      loading: true
+    })
+    util.getLocation((lat, lng) => {
+      console.log(lat + ',' + lng)
+      // 更新经纬度
+      Storage.setItem("lat", lat)
+      Storage.setItem("lng", lng)
+      // 位置信息
+      util.getCityInfo(lat, lng, mapKey, function (cityInfo) {
+        console.log(cityInfo);
+        setTimeout(() => {
+          y.setData({
+            loading: false,
+            reAddress: cityInfo.address,
+            reShortAddress: cityInfo.address_component.street_number
+          })
+        }, 1000)
+      })
+    })
+  },
+
+  searchArea: function (lat, lng, keyWord) {
+    var _this = this;
+    var location = lat + "," + lng;
+    qqmapsdk.search({
+      keyword: keyWord, //搜索关键词
+      location: location,
+      success: function (res) { //搜索成功后的回调
+        if (res.data && res.data.length) {
+          _this.setData({
+            result: res.data
+          })
+          console.log(res.data);
+        } else {
+          util.toast("未查询到位置...")
+        }
+
+      },
+      fail: function (res) {
+        console.log(res);
+      },
+      complete: function (res) {
+        console.log(res);
+      }
+    })
   },
 
   /**

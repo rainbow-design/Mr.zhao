@@ -3,10 +3,14 @@
 .productsBox {
   background: #fff;
 }
+.gap20 {
+  width: 750rpx;
+  height: 20rpx;
+}
 
 .item {
   position: relative;
-  height: 220rpx;
+  height: 221rpx;
   width: 750rpx;
   box-sizing: border-box;
   padding: 20rpx 28rpx 20rpx 30rpx;
@@ -21,6 +25,8 @@
 
 .contentItem {
   position: relative;
+  box-sizing: border-box;
+  padding-top: 5rpx;
   height: 100%;
 }
 
@@ -32,7 +38,6 @@
 }
 
 .contentItem .title {
-  margin-top: 5rpx;
   width: 440rpx;
   font-size: 28rpx;
   font-family: SourceHanSansCN-Regular;

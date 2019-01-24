@@ -80,6 +80,10 @@
 
 .login input {
   width: 536rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
 }
 
 .fixHeight {
@@ -117,6 +121,7 @@
   font-weight: 400;
   color: rgba(88, 181, 48, 1);
   line-height: 52rpx;
+  z-index: 4;
 }
 
 .error {

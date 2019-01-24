@@ -27,12 +27,18 @@ Page({
       that.setData({
         currentTab: e.target.dataset.current
       })
-    }
+    } 
   },
   // 去评价
-  toEvaluation(){
+  toEvaluation() {
     wx.navigateTo({
       url: `../my_evaluation/my_evaluation`
+    })
+  },
+  // 去支付
+  toPay() {
+    wx.navigateTo({
+      url: `../my_orderDetail/my_orderDetail`
     })
   }
 })

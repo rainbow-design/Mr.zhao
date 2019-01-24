@@ -76,6 +76,8 @@
   box-sizing: border-box;
   border-radius: 10rpx;
   padding: 20rpx 22rpx;
+  font-size: 28rpx;
+  color: rgba(26, 26, 26, 1);
 }
 
 .place {

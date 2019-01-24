@@ -1,0 +1,118 @@
+/* pages/my_addShippingAddress/my_addShippingAddress.wxss */
+
+.detailMessage {
+  position: absolute;
+  top: 25rpx;
+  width: 750rpx;
+  height: 524rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  background: rgba(255, 255, 255, 1);
+}
+
+.submitBtn {
+  position: absolute;
+  left: 80rpx;
+  top: 966rpx;
+  width: 590rpx;
+  height: 80rpx;
+  background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+  text-align: center;
+  z-index: 4;
+}
+
+.deleteBtn {
+  position: absolute;
+  top: 1076rpx;
+  left: 80rpx;
+  width: 590rpx;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(88, 181, 48, 1);
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.line {
+  height: 87rpx;
+  width: 100%;
+}
+
+.line .labelName {
+  width: 112rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 87rpx;
+  margin-right: 61rpx;
+}
+
+.line .input {
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 27rpx;
+  width: 500rpx;
+}
+
+.borderBottom {
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+.Box {
+  width: 53rpx;
+  height: 26rpx;
+  background: #fff;
+  border: 1px solid#E0E0E0;
+  border-radius: 10rpx;
+  text-align: center;
+  margin-right: 20rpx;
+}
+
+.Box .text {
+  font-size: 18rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: #1a1a1a;
+  line-height: 26rpx;
+}
+
+.green_act {
+  width: 53rpx;
+  height: 26rpx;
+  background: rgba(240, 255, 234, 1);
+  border: 1px solid rgba(88, 181, 48, 1);
+  border-radius: 10rpx;
+  text-align: center;
+}
+
+.green_act .text {
+  height: 16rpx;
+  font-size: 18rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(88, 181, 48, 1);
+  line-height: 26rpx;
+}
+
+.selectCity {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 750rpx;
+  height: 604rpx;
+  background: #f0f2f5;
+  z-index: 1000;
+}

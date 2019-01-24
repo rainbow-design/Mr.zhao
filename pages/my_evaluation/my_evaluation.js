@@ -5,7 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    SJ_star: [0, 1, 2, 3, 4],
+    PS_star: [0, 1, 2, 3, 4],
+    normal: '../../assets/icon/star.png',
+    stared: '../../assets/icon/star_act.png',
+    Ps_num: 0,
+    SJ_num: 0,
+    text: ''
   },
 
   /**
@@ -27,6 +33,30 @@ Page({
    */
   onShow: function () {
 
+  },
+  textareaInp(e) {
+    this.setData({
+      text: event.detail.value
+    })
+  },
+  ps_start(e) {
+    var data = e.currentTarget.dataset;
+    console.log(data.key);
+    this.setData({
+      Ps_num: data.key + 1
+    })
+  },
+  sj_start(e) {
+    var data = e.currentTarget.dataset;
+    console.log(data.key);
+    this.setData({
+      SJ_num: data.key + 1
+    })
+  },
+  submitMsg() {
+    console.log('配送评价:' + this.data.Ps_num)
+    console.log('商家评价:' + this.data.SJ_num)
+    console.log('详细评价' + this.data.text)
   },
 
   /**

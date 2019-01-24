@@ -12,38 +12,38 @@
   </block>
   <view class='greenBox'>
     <image class='greenBg' mode="widthFix" src="../../assets/green_bg.png"></image>
-    <image class="avator" mode="widthFix"></image>
+    <image class="avator" mode="widthFix" src="{{userInfo.lists[0].img_url}}"></image>
     <view class='userInfo oneLineBetween'>
       <view class='user columnBetween'>
         <view class='userBox oneLineStart'>
-          <view class='username'>小越越</view>
+          <view class='username'>{{userInfo.lists[0].nickname}}</view>
           <view class='memberGrade'>
-            <view class='text'>普通会员</view>
+            <!-- 会员分类 =》普通会员，plus会员 -->
+            <view class='text'>{{userInfo.lists[0].is_plus}}</view>
           </view>
-
         </view>
-        <view class='tel'>13520646170</view>
+        <view class='tel'>{{userInfo.lists[0].mobile}}</view>
       </view>
-      <image class='memberInfo' mode='widthFix' src="../../assets/memberInfo.png" bindtap='toMemberInfo'></image>
+      <image class='memberInfo' mode='widthFix' src="../../assets/memberInfo.png" data-info="{{userInfo.lists[0]}}" bindtap='toMemberInfo'></image>
     </view>
     <view class='sysInfo oneLineBetween'>
       <!-- 我的积分 -->
       <view class='item columnBetween' bindtap='toIntegral'>
-        <view class='number'>669
+        <view class='number'>{{userInfo.score || 0}}
         </view>
         <view class='sysName'>积分</view>
       </view>
       <view class='sysLine'></view>
       <!-- 我的优惠券 -->
       <view class='item columnBetween' bindtap='toCoupon'>
-        <view class='number'>2
+        <view class='number'>{{userInfo.coupons_num || 0}}
         </view>
         <view class='sysName'>优惠券</view>
       </view>
       <view class='sysLine'></view>
       <!-- 我的邀请 -->
       <view class='item columnBetween' bindtap='toinvite'>
-        <view class='number'>3
+        <view class='number'>{{userInfo.friend_num || 0}}
         </view>
         <view class='sysName'>我的邀请</view>
       </view>
@@ -53,11 +53,19 @@
     <view class="plusText">plus 会员
     </view>
     <view class='line'></view>
-    <view class='propaganda columnBetween'>
-      <view>每月仅需9.9元</view>
-      <view>平均可省60元</view>
-    </view>
-    <image mode='widthFix' src="../../assets/kaitong.png"></image>
+    <block wx:if="{{userInfo.lists[0].is_plus === '普通会员'}}">
+      <view class='propaganda columnBetween'>
+        <view>每月仅需9.9元</view>
+        <view>平均可省60元</view>
+      </view>
+      <image mode='widthFix' src="../../assets/kaitong.png" bindtap='openPlus'></image>
+    </block>
+    <block wx:elif="{{userInfo.lists[0].is_plus === 'plus会员'}}">
+      <view class='propaganda columnBetween'>
+        <view>开始时间 {{userInfo.lists[0].begin_time}}</view>
+        <view>结束时间 {{userInfo.lists[0].end_time}}</view>
+      </view>
+    </block>
   </view>
   <view class='myOrder'>
     <view class='title oneLineBetween'>
@@ -92,7 +100,7 @@
     </view>
     <view class='menuBox oneLineBetween'>
       <view class='menu_item columnBetween'>
-        <image src="../../assets/money.png" mode='widthFix'></image>
+        <image src="../../assets/money.png" mode='widthFix' bindtap='toInviteFriend'></image>
         <view class='text'>邀请得积分</view>
       </view>
       <view class='menu_item columnBetween' bindtap='toShippingAddress'>

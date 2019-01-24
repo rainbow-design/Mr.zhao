@@ -1,114 +1,114 @@
 @import '../../style/shopingListItem.wxss';
 
 .searchContorl {
-  width: 750rpx;
-  padding: 20rpx 30rpx 31rpx 30rpx;
+    width: 750rpx;
+    padding: 20rpx 30rpx 21rpx 30rpx;
 }
 
 .inputBox {
-  position: relative;
-  /* width:  */
+    position: relative;
+    /* width:  */
 }
 
 .inputText {
-  position: relative;
-  width: 590rpx;
-  height: 60rpx;
-  background: rgba(245, 245, 245, 1);
-  border-radius: 30rpx;
-  padding-left: 80rpx;
-  font-size: 26rpx;
+    position: relative;
+    width: 590rpx;
+    height: 60rpx;
+    background: rgba(245, 245, 245, 1);
+    border-radius: 30rpx;
+    padding-left: 80rpx;
+    font-size: 26rpx;
 }
 
 .input_searchIcon {
-  position: absolute;
-  left: 30rpx;
-  top: 15rpx;
-  width: 30rpx;
+    position: absolute;
+    left: 30rpx;
+    top: 15rpx;
+    width: 30rpx;
 }
 
 .place_input {
-  width: 156rpx;
-  height: 27rpx;
-  font-size: 26rpx;
-  font-family: MicrosoftYaHei;
-  font-weight: 400;
-  color: rgba(153, 153, 153, 1);
+    width: 156rpx;
+    height: 27rpx;
+    font-size: 26rpx;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
 }
 
 .searchText {
-  position: absolute;
-  left: 630rpx;
-  top: 16rpx;
-  width: 59rpx;
-  height: 30rpx;
-  line-height: 30rpx;
-  font-size: 30rpx;
-  font-family: MicrosoftYaHei;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
+    position: absolute;
+    left: 630rpx;
+    top: 16rpx;
+    width: 59rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size: 30rpx;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
 }
 
 .hotSearchText {
-  margin-top: 41rpx;
-  width: 128px;
-  height: 32rpx;
-  font-size: 32rpx;
-  font-family: MicrosoftYaHei;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
+    margin-top: 41rpx;
+    width: 128px;
+    height: 32rpx;
+    font-size: 32rpx;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
 }
 
 .keyWords {
-  margin-top: 39rpx;
-  height: 120rpx;
+    margin-top: 39rpx;
 }
 
 .keyWords .item {
-  float: left;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 144rpx;
-  height: 45rpx;
-  background: rgba(240, 240, 240, 1);
-  border-radius: 10rpx;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 144rpx;
+    height: 45rpx;
+    background: rgba(240, 240, 240, 1);
+    border-radius: 10rpx;
+    margin-bottom: 10rpx;
 }
 
 .keyWords .text {
-  height: 26rpx;
-  line-height: 26rpx;
-  font-size: 26rpx;
-  font-family: MicrosoftYaHei;
-  font-weight: 400;
-  color: rgba(102, 102, 102, 1);
+    height: 26rpx;
+    line-height: 26rpx;
+    font-size: 26rpx;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
 }
 
 .flexStyle {
-  display: flex;
-  align-content: space-between;
+    display: flex;
+    align-content: space-between;
 }
 
 .keyWords .item {
-  margin-right: 30rpx;
+    margin-right: 30rpx;
 }
 
 /* 推荐 */
 
 .tuijian {
-  padding-top: 29rpx;
+    padding-top: 29rpx;
 }
 
 .tuijianText {
-  position: relative;
-  left: 1;  
-  padding-left: 29rpx;
-  margin-bottom: 5rpx;
-  width: 128rpx;
-  height: 32rpx;
-  line-height: 32rpx;
-  font-size: 32rpx;
-  font-family: MicrosoftYaHei;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
+    position: relative;
+    left: 1;
+    padding-left: 29rpx;
+    margin-bottom: 5rpx;
+    width: 128rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    font-size: 32rpx;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
 }

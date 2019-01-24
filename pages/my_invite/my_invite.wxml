@@ -1,16 +1,22 @@
 <view class="invite maskContent">
-
-  <view class='invitList'>
-    <view class='item oneLineBetween'>
-      <image class='avator'></image>
-      <view class='personInfo columnBetweenStart'>
-        <view class='name'>W草</view>
-        <view class='phone'>186****9606</view>
-      </view>
-      <view class='date'>
-      2018-12-19
+  <block wx:if="{{!initData}}">
+    <view class='nodata columnBetween'>
+      <image src="../../assets/nodata/invite.png" mode="widthFix" style='width:430rpx;'></image>
+      <view class='nodata_content'>您没有邀请过好友</view>
+    </view>
+  </block>
+  <block wx:elif="{{initData}}">
+    <view class='invitList'>
+      <view class="item oneLineBetween {{index != 0 ? 'borderTop':''}}" wx:for="{{initData}}" wx:key="{{item}}">
+        <image class='avator' mode='widthFix' src="{{item.img_url}}"></image>
+        <view class='personInfo columnBetweenStart'>
+          <view class='name'>{{item.nickname}}</view>
+          <view class='phone'>{{item.mobile}}</view>
+        </view>
+        <view class='date'>
+          {{item.shortDate}}
+        </view>
       </view>
     </view>
-
-  </view>
+  </block>
 </view>

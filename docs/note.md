@@ -1,5 +1,13 @@
 # Note
+## sub pub
+````js
+ var that = this;
+ wx.yue.sub("hasToken", function (token) {
+    that.getForYourAnswer(token);
+    })
 
+ wx.yue.pub("hasToken", data.access_token)
+````
 ## 组件
 
 ### 1. image
@@ -93,7 +101,7 @@ setTimeout(() => {
     }, 0);
 ````
 - class
-  + `<view wx:for="{{mediaData}}"class="coverageBox {{(index < mediaData.length -1) ? 'border_bottom':''  }}" data-index ="{{index}}"  ></view>`
+  + `<view wx:for="{{mediaData}}" class="coverageBox {{(index < mediaData.length -1) ? 'border_bottom':''  }}" data-index ="{{index}}"  ></view>`
   + `  <view wx:for="{{hotcityList}}" class="weui-grid {{(index +1) %3 == 0 ? 'flexWrap':''  }}" data-index="{{index}}" data-code="110000" data-city="北京市" bindtap="bindCity"></view>`
 
 - 页面跳转传递参数 

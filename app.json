@@ -20,12 +20,15 @@
     "pages/my_evaluation/my_evaluation",
     "pages/my_shippingAddress/my_shippingAddress",
     "pages/my_addShippingAddress/my_addShippingAddress",
+    "pages/my_editShippingAddress/my_editShippingAddress",
     "pages/selectAddress/selectAddress",
     "pages/shoppingCart_productList/shoppingCart_productList",
     "pages/shoppingCart_paySuccess/shoppingCart_paySuccess",
     "pages/shoppingCart_orderDetail/shoppingCart_orderDetail",
     "pages/shoppingCart_coupon/shoppingCart_coupon",
-    "pages/index_openPlus/index_openPlus"
+    "pages/index_openPlus/index_openPlus",
+    "pages/index_leaveAMessage/index_leaveAMessage",
+    "pages/my_orderDetail/my_orderDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

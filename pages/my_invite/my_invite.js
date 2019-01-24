@@ -1,18 +1,21 @@
 // pages/my_invite/my_invite.js
+const app = getApp();
+const util = require("../../utils/util.js");
+const api = require("../../utils/api.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    initData: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getFrientInvit();
   },
 
   /**
@@ -27,6 +30,22 @@ Page({
    */
   onShow: function () {
 
+  },
+  getFrientInvit() {
+    var y = this;
+    util.promiseRequest(api.my_friends, {
+      access_token: app.globalData.access_token
+    })
+      .then(res => {
+        var data = res.data.response_data.lists;
+        data.forEach(v => {
+          v.shortDate = v.create_time.split(' ')[0];
+        })
+        
+        y.setData({
+          initData: data
+        })
+      })
   },
 
   /**

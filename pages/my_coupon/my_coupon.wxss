@@ -1,3 +1,30 @@
+/* nodata */
+
+.nodata {
+  width: 750rpx;
+  height: 100%;
+  position: relative;
+}
+
+.nodata image {
+  position: absolute;
+  top: 264rpx;
+  z-index: 1000;
+}
+
+.nodata .nodata_content {
+  position: absolute;
+  top: 530rpx;
+  height: 40rpx;
+  font-size: 42rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 40rpx;
+}
+.coupon  {
+  box-sizing: border-box;
+}
 .swiper-tab {
   width: 100%;
   text-align: center;
@@ -11,7 +38,9 @@
   font-weight: 400;
   background: #fff;
 }
-
+.swiper-item {
+  height: 1117rpx;
+}
 .border {
   position: absolute;
   left: 94rpx;
@@ -19,7 +48,9 @@
   height: 3rpx;
   background: rgba(88, 181, 48, 1);
 }
-
+swiper {
+  height: 100%;
+}
 .swiper-tab-item {
   position: relative;
   width: 30%;
@@ -159,6 +190,7 @@ swiper {
   left: 570rpx;
   bottom: 122rpx;
 }
+
 .expired image:first-child {
   position: absolute;
   left: 570rpx;
