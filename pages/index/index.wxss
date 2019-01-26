@@ -88,6 +88,7 @@
 }
 
 .Carousel {
+  position: relative;
   width: 690rpx;
   height: 260rpx;
   margin: 0 auto;

@@ -7,6 +7,6 @@
   </view>
   <view class='seeOrder' bindtap='toSeeOrder'>查看订单</view>
   <view class='backToIndex' bindtap='toIndex'>返回首页</view>
-  <view class='shareText'>分享给好友赚积分</view>
-  <image class='shareImg' mode='widthFix' src="../../assets/icon/share.png"></image>
+  <view class='shareText' bindtap='toInviteFriend'>分享给好友赚积分</view>
+  <image class='shareImg' mode='widthFix' src="../../assets/icon/share.png" bindtap='toInviteFriend'></image>
 </view>

@@ -2,24 +2,12 @@
   <block wx:if="{{!kaiTong}}">
     <view class='priceList'>
       <view class='taocan oneLineBetween'>
-        <view class='item columnBetween item_act'>
-          <image class='select' mode='widthFix' src='../../assets/icon/right_taocan.png'></image>
-          <view class='date'>1个月</view>
-          <view class='money'>¥38
-          </view>
-        </view>
-        <view class='item columnBetween'>
-          <image class='select' mode='widthFix' src='../../assets/icon/round.png'></image>
-          <view class='date'>3个月</view>
-          <view class='money'>¥98
-            <view class='gray'>¥32.7</view>
-          </view>
-        </view>
-        <view class='item columnBetween'>
-          <image class='select' mode='widthFix' src='../../assets/icon/round.png'></image>
-          <view class='date'>12个月</view>
-          <view class='money'>¥98
-            <view class='gray'>¥24.8</view>
+        <view class='item columnBetween {{ defaultIndex === index ? "item_act":"" }}' wx:for="{{initData}}" wx:key="{{item.id}}">
+          <view class='bg'></view>
+          <image class='select' mode='widthFix' src='{{defaultIndex === index ? checked : normal}}' data-index="{{index}}" bindtap='selectTaocan'></image>
+          <view class='date'>{{item.time}}</view>
+          <view class='money'>¥{{item.price}}
+            <view class='gray'>{{item.desc}}</view>
           </view>
         </view>
       </view>

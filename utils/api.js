@@ -15,6 +15,7 @@ var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
 
     //购物车
     cart_list = RootUrl + "rest/2.0/cart/cart/cart_list", // 购物车列表
+    cart_add = RootUrl + "rest/2.0/cart/cart/cart_add", // 添加删除数量同步到购物车
 
     //个人中心
     basicInfo = RootUrl + "rest/2.0/user/user/basic_info", // 用户基本资料
@@ -53,7 +54,7 @@ module.exports = {
     product_detail,
     get_coupons,
     // 购物车
-    cart_list: cart_list,
+    cart_list,
     // 我的
     basicInfo,
     add_user_info,
@@ -63,4 +64,5 @@ module.exports = {
     addr_list,
     edit_addr,
     remove_addr,
+    cart_add
 }

@@ -18,7 +18,8 @@ const banner = [{
   "status": "1",
   "relat_id": "12",
   "type": "3"
-}];
+}
+];
 
 const cartList = [{
   "user_id": 1,
@@ -52,7 +53,28 @@ const cartList = [{
 
 }
 ]
+
+const plus = [{
+  "id": 1,
+  "time": '1个月',
+  "price": 38,
+  "desc": "描述"
+},
+{
+  "id": 2,
+  "time": '3个月',
+  "price": 98,
+  "desc": "描述"
+},
+{
+  "id": 3,
+  "time": '12个月',
+  "price": 300,
+  "desc": "描述"
+}
+]
 module.exports = {
-  banner: banner,
-  cartList: cartList
+  banner,
+  cartList,
+  plus
 }

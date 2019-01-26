@@ -66,12 +66,12 @@
     </view>
   </block>
   <!-- 首页优惠券弹窗模块 end -->
-  <image class='ad' mode="widthFix" src="../../assets/invite.png"></image>
+  <image class='ad' bindtap='toInviteFriend' mode="widthFix" src="../../assets/invite.png"></image>
   <view class='header borderBox oneLineEnd'>
     <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
     <view class='location ellipsis' bindtap='toSelectAddress' data-address="{{address}}">{{shortAddress}}</view>
     <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
-    <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='test'></input>
+    <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='toIndexSearch'></input>
     <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
   </view>
   <view class='menu borderBox oneLineBetween'>

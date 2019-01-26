@@ -6,7 +6,7 @@
       <input class='content' data-name="nickname" bindinput="changeInput" value="{{initData.nickname}}" maxlength="7"></input>
     </view>
     <view class='line'>
-      <label class='name firstBox'>手机号</label>
+      <label class='name firstBox nowrap'>手机号</label>
       <view class='content' maxlength="11">{{initData.mobile}} </view>
     </view>
     <view class='line'>
@@ -46,7 +46,11 @@
     </view>
     <view class='line'>
       <label class='name firstBox'>生日</label>
-      <input class='selectDate' data-name="birthday" bindinput="changeInput" value="{{filter.splitByS(initData.birthday)[0]}}" style='color:rgba(26, 26, 26, 1)'> </input>
+      <picker class='content' mode="date" start="1950-09-01" end="2017-09-01" bindchange="bindDateChange" style='color:rgba(26, 26, 26, 1)'>
+      <view class="content">
+        {{birthday || filter.splitByS(initData.birthday)[0]}}
+      </view>
+      </picker>
       <!-- <view class='selectDate'>{{initData.birthday}} </view> -->
       <!-- 点击选择日期 -->
       <image class='toRight' mode='widthFix' style='width:12rpx;' src="../../assets/icon/toRightH40.png"></image>

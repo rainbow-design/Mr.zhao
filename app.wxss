@@ -5,22 +5,27 @@
   display: flex;
   box-sizing: border-box;
 }
+
 .Mask {
   position: fixed;
   width: 750rpx;
   height: 100%;
-  background: rgba(0, 0, 0, .5);
+  background: rgba(0, 0, 0, 0.5);
   /* opacity: 0.5; */
   z-index: 999;
 }
+
 /* 无数据块 */
+
 .noData {
   position: relative;
   box-sizing: border-box;
   width: 750rpx;
   height: 100%;
 }
+
 /* 辅助线 */
+
 .red {
   border: 1px solid red;
 }
@@ -28,6 +33,7 @@
 .green {
   border: 1px solid greenn;
 }
+
 .pink {
   border: 1px solid pink;
 }
@@ -55,6 +61,7 @@ page {
   height: 100%;
   background: #f0f0f0;
 }
+
 .maskContentWhite {
   width: 750rpx;
   height: 100%;
@@ -101,6 +108,29 @@ page {
   padding-top: 20rpx;
   color: #9b9b9b;
   font-size: 32rpx;
+}
+
+/* 首页轮播 */
+
+#boxCell {
+  position: relative;
+  top: -20rpx;
+  height: 12rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  width: 12rpx;
+  height: 12rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.dot_active {
+  background: #4c9c29 !important;
 }
 
 .gap {

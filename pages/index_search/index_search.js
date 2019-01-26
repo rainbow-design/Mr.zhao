@@ -11,6 +11,34 @@ Page({
      */
     data: {
         searchValue: '',
+        productList: [],
+        proBottom: true
+    },
+    toDetail(e) {
+        wx.navigateTo({
+            url: '../sort_detail/sort_detail?id=' + e.currentTarget.dataset.id
+        })
+    },
+    // 商品列表
+    getproduct_list(type) {
+        if (!this.data.proBottom && type == 1) {
+            return;
+        }
+        let that = this;
+        let params = {
+            keyword: this.data.searchValue,
+            num: 20,
+            page: this.data.page
+        };
+        util.promiseRequest(api.product_list, params).then((res) => {
+            let data = type == 1 ? that.data.productList.concat(res.data.response_data) : res.data.response_data
+            if (res.data.response_data.length < 20) {
+                that.data.proBottom = false;
+            }
+            that.setData({
+                productList: data
+            })
+        })
     },
     getSearchList() {
         let that = this;
@@ -19,6 +47,18 @@ Page({
                 searchListTop: res.data.response_data.top,
                 searchListHistory: res.data.response_data.history
             })
+        })
+    },
+    search() {
+        this.setData({
+            page: 1,
+            proBottom: true
+        });
+        this.getproduct_list();
+    },
+    inputData(e) {
+        this.setData({
+            searchValue: e.detail.value
         })
     },
     chooseKey(e) {
@@ -72,7 +112,10 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function() {
-
+        this.setData({
+            page: this.data.page + 1
+        });
+        this.getproduct_list(1);
     },
 
     /**

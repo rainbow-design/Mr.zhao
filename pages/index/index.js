@@ -22,7 +22,7 @@ Page({
     categoryList: [],
     productList: [],
     shortAddress: '',
-    address:''
+    address: ''
   },
   // 分类列表
   getCetegoryList() {
@@ -42,7 +42,7 @@ Page({
       })
     })
   },
-  test() {
+  toIndexSearch() {
     wx.navigateTo({
       url: `../index_search/index_search`
     })
@@ -117,14 +117,17 @@ Page({
     var y = this;
     util.getLocation((lat, lng) => {
       console.log(lat + ',' + lng);
-      Storage.setItem("lat",lat)
+      Storage.setItem("lat", lat)
       Storage.setItem("lng", lng)
       // 位置信息
       util.getCityInfo(lat, lng, mapKey, function (cityInfo) {
         console.log(cityInfo);
+        var shortAddress = cityInfo.address_component.street_number;
+        Storage.setItem("shortAddress", shortAddress)
+        Storage.setItem("address", cityInfo.address)
         y.setData({
-          address:cityInfo.address,
-          shortAddress: cityInfo.address_component.street_number
+          address: cityInfo.address,
+          shortAddress: shortAddress
         })
       })
     })
@@ -188,9 +191,7 @@ Page({
     })
   },
   toInviteFriend() {
-    wx.navigateTo({
-      url: `../index_inviteFriend/index_inviteFriend`
-    })
+    app.share();
   },
   toSelectAddress(e) {
     var data = e.currentTarget.dataset;

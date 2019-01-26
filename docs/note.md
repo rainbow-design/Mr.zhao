@@ -8,8 +8,10 @@
 
  wx.yue.pub("hasToken", data.access_token)
 ````
-## 组件
+## 补充
 
+- [picker](https://developers.weixin.qq.com/miniprogram/dev/component/picker.html)
+## 组件
 ### 1. image
  - mode = "scaleToFill" 不保持横纵比例缩放占满区域
  - mode ="aspectFit" 保持纵横比缩放图片，长边完全显示

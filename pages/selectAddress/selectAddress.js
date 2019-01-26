@@ -20,6 +20,7 @@ Page({
     addressData: [],
     keyword: '',
     showSearchData: false,
+    formAddAddress: false,
     result: []
   },
 
@@ -27,6 +28,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.getAddress === "true") {
+      console.log("获取地址传回去")
+      this.setData({
+        formAddAddress: true
+      })
+    }
     if (options.address) {
       this.setData({
         initAddress: options.address
@@ -124,6 +131,13 @@ Page({
       complete: function (res) {
         console.log(res);
       }
+    })
+  },
+  toJump(e) {
+    var data = e.currentTarget.dataset;
+    wx.yue.pub("addAddress", data.info);
+    wx.navigateTo({
+      url: `../my_addShippingAddress/my_addShippingAddress`
     })
   },
 

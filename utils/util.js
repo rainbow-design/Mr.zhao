@@ -51,7 +51,8 @@ function parseCtime(str) {
   }
   return new Date(temp).formate("yyyy-MM-dd");
 }
-
+// 四舍五入 格式化数字
+// toFix(8440.55,1) => 8440.6
 function toFixed(number, fractionDigits) {
   var times = Math.pow(10, fractionDigits);
   var roundNum = Math.round(number * times) / times;
@@ -167,7 +168,7 @@ function getCityInfo(lat, lng, mapKey, callback) {
 }
 
 function getChinaCityList(qqmapSDK, callback) {
- 
+
   //调用获取城市列表接口
   qqmapSDK.getCityList({
     success: function (res) { //成功后的回调
@@ -244,8 +245,33 @@ function checkType(str, type) {
   }
 }
 
-function addKey(arr, obj) {
-  var temp = arr.forEach(v => {
+// 安全到达需要跳转的地方
+function toHrefSafe(href, param) {
+  var func = function () {
+    wx.navigateTo({
+      url: param ? `../${href}/${href}?${param}` : `../${href}/${href}`
+    })
+  }
+  throttle(() => {
+    func.apply();
+  })();
+}
+
+function throttle(fn, gapTime = 1500) {
+  let _lastTime = null
+  // 返回新的函数
+  return function () {
+    let _nowTime = + new Date()
+    if (_nowTime - _lastTime > gapTime || !_lastTime) {
+      fn.apply(this, arguments)   //将this和参数传给原函数
+      _lastTime = _nowTime
+    }
+  }
+}
+
+function addKey(arr, obj, callback) {
+  var temp = arr.forEach((v, index, arr) => {
+    typeof callback === 'function' ? callback(v, index) : '';
     for (var key in obj) {
       v[key] = obj[key]
     }
@@ -265,5 +291,8 @@ module.exports = {
   getChinaCityList: getChinaCityList,
   debounce: debounce,
   checkType: checkType,
-  addKey: addKey
+  addKey: addKey,
+  toFixed,
+  toHrefSafe,
+  throttle
 }

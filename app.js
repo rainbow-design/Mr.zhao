@@ -1,15 +1,14 @@
 //app.js
 var app = getApp();
-var Event = (function () {
+var Event = (function() {
   var clientList = {},
     pub,
     sub,
     remove;
 
-  var cached = {
-  };
+  var cached = {};
 
-  sub = function (key, fn) {
+  sub = function(key, fn) {
     if (!clientList[key]) {
       clientList[key] = [];
     }
@@ -22,7 +21,7 @@ var Event = (function () {
       // delete cached[key];
     }
   };
-  pub = function () {
+  pub = function() {
     var key = Array.prototype.shift.call(arguments),
       fns = clientList[key];
     if (!fns || fns.length === 0) {
@@ -38,11 +37,12 @@ var Event = (function () {
     }
 
   };
-  remove = function (key, fn) {
+  remove = function(key, fn) {
     var fns = clientList[key];
     if (!fns) {
       return false;
-    } if (!fn) {
+    }
+    if (!fn) {
       fns && (fns.length = 0);
     } else {
       for (var l = fns.length - 1; l >= 0; l--) {
@@ -60,7 +60,7 @@ var Event = (function () {
   }
 })();
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     console.log('wx-----------------------------')
@@ -118,5 +118,10 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+  share() {
+    wx.navigateTo({
+      url: `../index_inviteFriend/index_inviteFriend`
+    })
   }
 })

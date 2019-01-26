@@ -4,7 +4,6 @@
   position: absolute;
   top: 25rpx;
   width: 750rpx;
-  height: 524rpx;
   box-sizing: border-box;
   padding: 0 30rpx;
   background: rgba(255, 255, 255, 1);
@@ -47,8 +46,9 @@
   font-family: SourceHanSansCN-Regular;
   font-weight: 400;
   color: rgba(26, 26, 26, 1);
-  line-height: 27rpx;
   width: 500rpx;
+  height: 100%;
+  line-height: 87rpx;
 }
 
 .borderBottom {

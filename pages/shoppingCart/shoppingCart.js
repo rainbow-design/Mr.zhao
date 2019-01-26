@@ -12,14 +12,18 @@ Page({
     startX: '', // 初始手指接触位置,
     delBtnWidth: 120
   },
-
+  changeCart(id, num) {
+    let params = {
+      goods_id: id,
+      type: 1,
+      num: num
+    }
+    util.promiseRequest(api.cart_add, params).then((res) => { })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.showCartList();
-
-  },
+  onLoad: function (options) { },
   toJieSuan() {
     wx.navigateTo({
       url: `../shoppingCart_confirm/shoppingCart_confirm`
@@ -29,23 +33,19 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () { },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.showCartList();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () { },
   // 开始滑动事件
   touchS: function (e) {
     if (e.touches.length == 1) {
@@ -114,31 +114,40 @@ Page({
 
   showCartList() {
     var y = this;
-    // 真实无数据
-    // util.promiseRequest(api.cart_list, {
-    //   access_token: app.globalData.access_token
-    // })
-    //   .then(res => {
-    //     var data = res.data.response_data.lists;
-    //     if (data === "" || data.length === 0) {
-    //       y.setData({
-    //         noCartData: true
-    //       })
-    //     }
-    //   })
+    util.promiseRequest(api.cart_list, {
+      access_token: app.globalData.access_token
+    })
+      .then(res => {
+        var data = res.data.response_data.lists;
+        if (data === "" || data.length === 0) {
+          y.setData({
+            noCartData: true
+          })
+        } else {
+          util.addKey(data, {
+            "y_isCheck": false
+          })
+          console.log(data)
+          y.setData({
+            cartList: data,
+            noCartData: false,
+          })
+          y.getTotalPrice(data);
+        }
+      })
     // 切换mock
-    setTimeout(() => {
+    // setTimeout(() => {
 
-      util.addKey(mock.cartList, {
-        "y_isCheck": false
-      })
-      console.log(mock.cartList)
-      y.setData({
-        cartList: mock.cartList,
-        noCartData: false,
-      })
-      y.getTotalPrice(mock.cartList);
-    }, 300)
+    //   util.addKey(mock.cartList, {
+    //     "y_isCheck": false
+    //   })
+    //   console.log(mock.cartList)
+    //   y.setData({
+    //     cartList: mock.cartList,
+    //     noCartData: false,
+    //   })
+    //   y.getTotalPrice(mock.cartList);
+    // }, 300)
   },
   getTotalPrice(data) {
     var data = data || this.data.cartList;
@@ -146,6 +155,8 @@ Page({
     data.forEach(item => {
       item.y_isCheck ? cost += item.price * item.num : '';
     });
+
+    cost = util.toFixed(Number(cost), 1);
 
     this.setData({
       totalPrice: cost
@@ -201,30 +212,30 @@ Page({
   },
   // 加
   numAdd(e) {
-    var data = e.currentTarget.dataset,
+    let data = e.currentTarget.dataset,
       cartList = this.data.cartList;
-    var index = data.index,
-      num = data.num;
+    let index = data.index;
+    let num = data.num;
 
     this.setData({
       [`cartList[${index}].num`]: cartList[`${index}`].num + 1
     })
     // 计算总价
     this.getTotalPrice();
+    this.changeCart(e.currentTarget.dataset.id, Number(num) + 1);
   },
   // 减
   minusNum(e) {
-    var data = e.currentTarget.dataset,
+    let data = e.currentTarget.dataset,
       cartList = this.data.cartList;
-    var index = data.index,
+    let index = data.index,
       num = data.num;
-    var newNum = cartList[`${index}`].num > 0 ? cartList[`${index}`].num - 1 : 0;
+    let newNum = cartList[`${index}`].num > 1 ? cartList[`${index}`].num - 1 : 1;
     this.setData({
       [`cartList[${index}].num`]: newNum
     })
-
     // 计算总价
     this.getTotalPrice();
+    this.changeCart(e.currentTarget.dataset.id, newNum);
   }
-
 })

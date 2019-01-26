@@ -336,7 +336,6 @@
 .goods_item .img {
     width: 188rpx;
     height: 146rpx;
-    background: pink;
 }
 
 .content {

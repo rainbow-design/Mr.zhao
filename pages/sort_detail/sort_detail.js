@@ -1,6 +1,7 @@
 const app = getApp();
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
+const WxParse = require('../../component/wxParse/wxParse.js');
 Page({
 
     /**
@@ -8,16 +9,38 @@ Page({
      */
     data: {
         hasYouhuiQuan: true,
-        proList: [],
+        productList: [],
+        id: '',
+        detailText: {
+            content: ''
+        }
     },
-    // 详情
+    // 商品列表
     getproduct_detail() {
         let that = this;
-        util.promiseRequest(api.product_detail, {
-            id: 7
-        }).then((res) => {
+        let params = {
+            id: this.data.id
+        };
+        util.promiseRequest(api.product_detail, params).then((res) => {
             that.setData({
-                proList: res.data.response_data[0]
+                productList: res.data.response_data[0],
+                detailText: {
+                    content: WxParse.wxParse('detailTextt', 'html', res.data.response_data[0].content, that),
+                }
+            })
+        })
+    },
+    joinCart() {
+        let params = {
+            goods_id: this.data.id,
+            type: 1,
+            num: 1
+        }
+        util.promiseRequest(api.cart_add, params).then((res) => {
+            wx.showToast({
+                title: '加入购物车成功',
+                icon: 'none',
+                duration: 1500
             })
         })
     },
@@ -25,6 +48,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        this.setData({
+            id: options.id
+        })
         this.getproduct_detail();
     },
 

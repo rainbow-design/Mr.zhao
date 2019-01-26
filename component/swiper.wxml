@@ -5,8 +5,8 @@
         </swiper-item>
     </swiper>
     <view id="boxCell">
-        <block wx:for="{{bannerList}}" wx:for-index="index" wx:key="{{item.banner}}">
-            <view id="{{index}}" class="dot {{index === swiperCurrent ? 'active':''}}" bindtap="selectCarouselByIndex" />
+        <block wx:for="{{bannerList.length > 1}}" wx:for-index="index" wx:key="{{item.banner}}">
+            <view id="{{index}}" class="dot {{index === swiperCurrent ? 'dot_active':''}}" bindtap="selectCarouselByIndex" />
         </block>
     </view>
 </template>

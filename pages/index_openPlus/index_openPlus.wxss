@@ -30,16 +30,27 @@
   position: relative;
   width: 211rpx;
   height: 202rpx;
-  background: rgba(230, 230, 230, 1);
-  /* opacity: 0.4;  */
   border-radius: 10rpx;
   box-sizing: border-box;
   padding: 64rpx 0 63rpx 0;
 }
 
-.taocan .item_act {
-  background: linear-gradient(0deg, rgba(232, 171, 121, 1), rgba(246, 201, 146, 1)) !important;
+.taocan .item .bg {
+  position: absolute;
+  top: 0;
+  width: 211rpx;
+  height: 202rpx;
+  background: rgba(230, 230, 230, 1);
   opacity: 0.4;
+  border-radius: 10rpx;
+}
+
+.taocan .item_act .bg {
+  width: 211rpx;
+  height: 202rpx;
+  background: linear-gradient(0deg, rgba(232, 171, 121, 1), rgba(246, 201, 146, 1));
+  opacity: 0.4;
+  border-radius: 10rpx;
 }
 
 .item .date {
@@ -57,7 +68,7 @@
   font-family: SourceHanSansCN-Bold;
   font-weight: bold;
   color: rgba(34, 34, 34, 1);
-  line-height: 32rpx;
+  line-height: 25rpx;
 }
 
 .item .gray {

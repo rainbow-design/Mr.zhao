@@ -46,12 +46,13 @@ page {
 }
 
 .line .content {
-  height: 22rpx;
+  height: 100%;
   font-size: 28rpx;
   font-family: SourceHanSansCN-Regular;
   font-weight: 400;
   color: rgba(26, 26, 26, 1);
-  line-height: 22rpx;
+  line-height: 88rpx;
+  width: 400rpx;
 }
 
 .man, .women {

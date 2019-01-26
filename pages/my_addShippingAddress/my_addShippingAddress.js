@@ -1,4 +1,5 @@
 // pages/my_addShippingAddress/my_addShippingAddress.js
+const Storage = require("../../utils/storage.js");
 Page({
 
   /**
@@ -6,7 +7,8 @@ Page({
    */
   data: {
     selectAddress: 0,
-    showCitySelect: false
+    showCitySelect: false,
+    address: ''
 
   },
 
@@ -14,31 +16,40 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var y = this;
+    wx.yue.sub("addAddress", function (data) {
+      Storage.setItem("addAddress", data);
+    })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  },
+  onReady: function () { },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var y = this;
+    var addressData = Storage.getItem("addAddress");
+    addressData != "" ? y.setData({
+      address: addressData.address
+    }) : ''
+    Storage.removeItem("addAddress")
   },
-  selectAddress(e) {
+  selectAddressType(e) {
     var data = e.currentTarget.dataset;
     this.setData({
       selectAddress: Number(data.num)
     })
 
   },
-  selectCity() {
-    this.setData({
-      showCitySelect: true
+  selectYourAddress() {
+    var y = this;
+    var from = true;
+
+    wx.navigateTo({
+      url: `../selectAddress/selectAddress?getAddress=${from}`
     })
   },
 

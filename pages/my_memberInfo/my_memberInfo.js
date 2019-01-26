@@ -12,7 +12,8 @@ Page({
     nickname: '',
     phone: '',
     sex: '',
-    birthday: ''
+    birthday: '',
+    date: '2016-09-01',
   },
 
   /**
@@ -56,6 +57,12 @@ Page({
       sex: sex == '男' ? '0' : '1',
       'initData.sex_name': sex
 
+    })
+  },
+  bindDateChange(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      birthday: e.detail.value
     })
   },
   saveUserInfo() {

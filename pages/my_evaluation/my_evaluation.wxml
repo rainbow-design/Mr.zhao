@@ -3,7 +3,7 @@
   <view class='peisong'>
     <view class='title'>配送评价</view>
     <view class='starBox oneLineBetween'>
-      <block wx:for="{{PS_star}}">
+      <block wx:for="{{PS_star}}" wx:key="{{item}}">
         <image mode='widthFix' src="{{Ps_num > item ? stared :normal}}" data-key="{{index}}" bindtap="ps_start"></image>
       </block>
 
@@ -12,7 +12,7 @@
   <view class='shangjia'>
     <view class='title'>商家评价</view>
     <view class='starBox oneLineBetween'>
-      <block wx:for="{{SJ_star}}">
+      <block wx:for="{{SJ_star}}" wx:key="{{item}}">
         <image mode='widthFix' src="{{SJ_num > item ? stared :normal}}" data-key="{{index}}" bindtap="sj_start"></image>
       </block>
     </view>

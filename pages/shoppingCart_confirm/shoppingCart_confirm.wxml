@@ -18,9 +18,12 @@
   <view class='foods'>
     <view class='titleBox oneLineBetween'>
       <view class='name'>配送时间</view>
-      <view class='toPeisong center'>立即配送
-        <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
-      </view>
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class='toPeisong center'>立即配送
+          <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
+        </view>
+      </picker>
+
 
     </view>
     <view class='imageBox red'>

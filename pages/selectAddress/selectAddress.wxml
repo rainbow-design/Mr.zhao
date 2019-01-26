@@ -23,7 +23,7 @@
 
 
   </view>
-  <block wx:if="{{!keyword}}">
+  <block wx:if="{{addressData.length > 0}}">
     <view class='myShippingAddress'>
       <view class='title'>我的收货地址</view>
       <view class="itemAddress columnBetween {{addressData.length > 1 && index != addressData.length-1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}">
@@ -40,7 +40,7 @@
 
   <block wx:if="{{showSearchData && result.length > 0}}">
     <view class='result'>
-      <view class="item columnBetweenStart {{index != result.length - 1? 'result_border':''}}" data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}" wx:for="{{result}}" wx:key="{{item.id}}">
+      <view class="item columnBetweenStart {{index != result.length - 1? 'result_border':''}}" data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}" wx:for="{{result}}" wx:key="{{item.id}}" data-info="{{item}}" bindtap="toJump">
         <view class='name'>{{item.title}}</view>
         <view class='address'>{{item.address}}</view>
       </view>

@@ -76,9 +76,7 @@ Page({
     })
   },
   toInviteFriend() {
-    wx.navigateTo({
-      url: `../index_inviteFriend/index_inviteFriend`
-    })
+    app.share();
   },
   // 收货地址
   toShippingAddress() {

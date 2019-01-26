@@ -99,8 +99,8 @@
       <view class='name'>我的服务</view>
     </view>
     <view class='menuBox oneLineBetween'>
-      <view class='menu_item columnBetween'>
-        <image src="../../assets/money.png" mode='widthFix' bindtap='toInviteFriend'></image>
+      <view class='menu_item columnBetween' bindtap='toInviteFriend'>
+        <image src="../../assets/money.png" mode='widthFix' ></image>
         <view class='text'>邀请得积分</view>
       </view>
       <view class='menu_item columnBetween' bindtap='toShippingAddress'>

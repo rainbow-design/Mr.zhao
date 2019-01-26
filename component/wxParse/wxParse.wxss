@@ -18,7 +18,8 @@
     line-height: 1.8;
 }
 view{
-    word-break:break-all; overflow:auto;
+    word-break:break-all;
+    /* overflow:hidden; */
 }
 .wxParse-inline{
     display: inline;
@@ -81,7 +82,7 @@ view{
 .wxParse-a{
     color: deepskyblue;
     word-break:break-all;
-    overflow:auto;
+    /* overflow:auto; */
 }
 
 .wxParse-video{
