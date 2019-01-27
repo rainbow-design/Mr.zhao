@@ -1,5 +1,6 @@
 // pages/iThink/iThink.js
 const app = getApp();
+const Storage = require("../../utils/storage.js");
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
 Page({
@@ -46,6 +47,7 @@ Page({
                 app.globalData.userData = data;
                 app.globalData.openid = data.openid;
                 app.globalData.access_token = data.access_token;
+                Storage.setItem("token", data.access_token);
                 console.log("app.globalData-----------------------")
                 console.dir(app.globalData);
                 that.delayToIndex();
@@ -140,6 +142,7 @@ Page({
           // console.log(data);
           if (data.access_token) {
             app.globalData.access_token = data.access_token;
+            Storage.setItem("token", data.access_token);
             // wx.yue.pub("hasToken", data.access_token)
             y.delayToIndex();
           }

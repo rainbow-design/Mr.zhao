@@ -23,7 +23,7 @@
 
 
   </view>
-  <block wx:if="{{addressData.length > 0}}">
+  <block wx:if="{{showMyShoppingAddress}}">
     <view class='myShippingAddress'>
       <view class='title'>我的收货地址</view>
       <view class="itemAddress columnBetween {{addressData.length > 1 && index != addressData.length-1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}">
@@ -31,7 +31,7 @@
           <view class='greenBox'>
             <view class='text'>{{item.type_name}}</view>
           </view>
-          <view class='address'> {{item.city_name}} {{item.area_name}} {{item.detail_addr}}</view>
+          <view class='address line-clamp2'> {{item.address}} {{item.detail_addr}}</view>
         </view>
         <view class='underBox'>{{item.name}} {{item.phone}}</view>
       </view>

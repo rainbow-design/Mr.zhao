@@ -1,5 +1,8 @@
 // pages/my_addShippingAddress/my_addShippingAddress.js
 const Storage = require("../../utils/storage.js");
+const util = require("../../utils/util.js");
+const api = require("../../utils/api.js");
+const app = getApp();
 Page({
 
   /**
@@ -7,9 +10,12 @@ Page({
    */
   data: {
     selectAddress: 0,
-    showCitySelect: false,
-    address: ''
-
+    name: '',
+    phone: '',
+    address: '',
+    detail_addr: '',
+    longitude: '', // 经度
+    latitude: '', // 纬度
   },
 
   /**
@@ -33,9 +39,11 @@ Page({
     var y = this;
     var addressData = Storage.getItem("addAddress");
     addressData != "" ? y.setData({
-      address: addressData.address
+      address: addressData.address,
+      longitude: addressData.location.lng,
+      latitude: addressData.location.lat
     }) : ''
-    Storage.removeItem("addAddress")
+    // Storage.removeItem("addAddress")
   },
   selectAddressType(e) {
     var data = e.currentTarget.dataset;
@@ -44,48 +52,59 @@ Page({
     })
 
   },
+  changeInput(e) {
+    var name = e.currentTarget.dataset.name;
+    var thisData = this.data;
+    this.setData({
+      [name]: e.detail.value,
+
+    })
+  },
   selectYourAddress() {
     var y = this;
     var from = true;
-
     wx.navigateTo({
-      url: `../selectAddress/selectAddress?getAddress=${from}`
+      url: `../selectAddress/selectAddress?addAddress=${from}`
     })
   },
-
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  saveNewAddress() {
+    var y = this,
+      yData = y.data;
+    var paramObj = {
+      name: yData.name,
+      phone: yData.phone,
+      longitude: yData.longitude,
+      latitude: yData.latitude,
+      address: yData.address,
+      detail_addr: yData.detail_addr,
+      type: yData.selectAddress,
+      access_token: app.globalData.access_token
+    }
+    util.promiseRequest(api.edit_addr, paramObj).then(res => {
+      var data = res.response_data.lists;
+      if (data == 1) {
+        wx.showToast({
+          title: '添加地址成功...',
+          icon: 'none',
+          duration: 1000,
+          complete: function () {
+            setTimeout(() => {
+              app.returnLastPage();
+            }, 1000)
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '添加失败...',
+          icon: 'none',
+          duration: 1000,
+          complete: function () {
+            setTimeout(() => {
+              app.returnLastPage();
+            }, 1000)
+          }
+        })
+      }
+    })
   }
 })

@@ -21,8 +21,8 @@
               <view class='text'>{{item.type_name}}</view>
             </view>
           </view>
-          <view class='bottomBox'>
-            {{item.city_name}} {{item.area_name}} {{item.detail_addr}}
+          <view class='bottomBox line-clamp2'>
+            {{item.address}} {{item.detail_addr}}
           </view>
 
         </view>

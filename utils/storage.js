@@ -1,3 +1,4 @@
+// 扩展至  wx.Storage = Storage;
 const Storage = {
   setItem: function (key, obj) {
     wx.setStorage({

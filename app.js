@@ -1,6 +1,23 @@
 //app.js
 var app = getApp();
-var Event = (function() {
+const Storage = {
+  setItem: function (key, obj) {
+    wx.setStorage({
+      key: key,
+      data: obj
+    })
+  },
+  getItem: function (key) {
+    return wx.getStorageSync(key);
+  },
+  removeItem: function (key) {
+    wx.removeStorage({
+      key: key
+    })
+  }
+}
+
+var Event = (function () {
   var clientList = {},
     pub,
     sub,
@@ -8,7 +25,7 @@ var Event = (function() {
 
   var cached = {};
 
-  sub = function(key, fn) {
+  sub = function (key, fn) {
     if (!clientList[key]) {
       clientList[key] = [];
     }
@@ -21,7 +38,7 @@ var Event = (function() {
       // delete cached[key];
     }
   };
-  pub = function() {
+  pub = function () {
     var key = Array.prototype.shift.call(arguments),
       fns = clientList[key];
     if (!fns || fns.length === 0) {
@@ -37,7 +54,7 @@ var Event = (function() {
     }
 
   };
-  remove = function(key, fn) {
+  remove = function (key, fn) {
     var fns = clientList[key];
     if (!fns) {
       return false;
@@ -60,7 +77,7 @@ var Event = (function() {
   }
 })();
 App({
-  onLaunch: function() {
+  onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     console.log('wx-----------------------------')
@@ -70,6 +87,9 @@ App({
     wx.setStorageSync('logs', logs);
     // 注册发布订阅模式
     wx.yue = Event;
+    // 注册 storage
+    wx.Storage = Storage;
+
 
     // 登录
     wx.login({

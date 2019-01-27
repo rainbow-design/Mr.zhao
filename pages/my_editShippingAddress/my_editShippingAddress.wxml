@@ -1,11 +1,4 @@
 <view class="addShippingAddress maskContent">
-  <block wx:if="{{showCitySelect}}">
-    <view class='Mask'>
-      <view class='selectCity'>
-
-      </view>
-    </view>
-  </block>
   <view class='detailMessage'>
     <view class='line borderBottom oneLineStart'>
       <label class='labelName'>收货人</label>
@@ -16,15 +9,8 @@
       <input class='input username' data-name="phone" bindinput="changeInput" placeholder='手机号或固话' placeholder-class='place' value="{{nowdata.phone}}" maxlength="11"></input>
     </view>
     <view class='line borderBottom oneLineStart'>
-      <label class='labelName'>选择城市</label>
-      <!-- <view class='input username' bindtap='selectCity'> -->
-      <input class='input username' data-name="cityMsg" bindinput="changeInput" placeholder='请选择您所在的城市' placeholder-class='place' value="{{nowdata.province_name + ' ' +nowdata.city_name}}" maxlength="11"></input>
-      <!-- <view class='place'> {{nowdata.province_name + ' ' +nowdata.city_name || '请选择您所在的城市'}}</view> -->
-      <!-- <view class='place'> {{nowdata.province_name + ' ' +nowdata.city_name || '请选择您所在的城市'}}</view> -->
-    </view>
-    <view class='line borderBottom oneLineStart'>
       <label class='labelName'>收货地址</label>
-      <input class='input username' data-name="addressMsg" bindinput="changeInput" placeholder='请输入您的收货地址' placeholder-class='place' value="{{nowdata.city_name}} {{nowdata.area_name}} {{nowdata.detail_addr}}"></input>
+      <view class='input username line-clamp' bindtap='selectYourAddress'>{{address || '请选择您的收货地址'}}</view>
     </view>
     <view class='line borderBottom oneLineStart'>
       <label class='labelName'>楼号门牌</label>
@@ -33,13 +19,13 @@
     <view class='line oneLineStart'>
       <label class='labelName'>地址类型</label>
       <view class='wrapper oneLineStart'>
-        <view class="Box {{addressType === 0 || nowdata.type_name === '住宅' ?'green_act':''}}" data-num="0" bindtap='selectAddressType'>
+        <view class="Box {{addressType === 0  ?'green_act':''}}" data-num="0" bindtap='selectAddressType'>
           <view class='text'>住宅</view>
         </view>
-        <view class="Box {{addressType === 1 || nowdata.type_name === '公司'?'green_act':''}}" data-num="1" bindtap='selectAddressType'>
+        <view class="Box {{addressType === 1 ?'green_act':''}}" data-num="1" bindtap='selectAddressType'>
           <view class='text'>公司</view>
         </view>
-        <view class="Box {{addressType === 2 || nowdata.type_name === '学校' ?'green_act':''}}" data-num="2" bindtap='selectAddressType'>
+        <view class="Box {{addressType === 2  ?'green_act':''}}" data-num="2" bindtap='selectAddressType'>
           <view class='text'>学校</view>
         </view>
 

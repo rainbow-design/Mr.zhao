@@ -86,6 +86,7 @@ Page({
                 app.globalData.userData = data;
                 app.globalData.openid = data.openid;
                 app.globalData.access_token = data.access_token;
+                Storage.setItem("token", data.access_token);
                 console.log("app.globalData-----------------------")
                 console.dir(app.globalData);
               }

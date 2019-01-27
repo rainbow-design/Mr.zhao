@@ -89,6 +89,7 @@ function sendRequest(path, data, callback) {
 
 function promiseRequest(url, data = {}) {
   return new Promise(function (resolve, reject) {
+    data.access_token === undefined ? data.access_token = wx.getStorageSync("token") : '';
     wx.request({
       url: url,
       data: data,
@@ -191,7 +192,6 @@ function getChinaCityList(qqmapSDK, callback) {
 function debounce(func, wait, immediate) {
   var timeout;
   return function () {
-    console.log('timeout name:' + timeout)
     var context = this;
     var args = arguments;
     if (timeout) clearTimeout(timeout);
@@ -200,7 +200,6 @@ function debounce(func, wait, immediate) {
       timeout = setTimeout(function () {
         timeout = null; // 在 wait 时间后防抖函数才可以再次被触发
       }, wait)
-      console.log('canApply:' + canApply);
       if (canApply) func.apply(context, args) // 第一次 !undefined 执行
     } else {
       timeout = setTimeout(() => {
@@ -245,18 +244,6 @@ function checkType(str, type) {
   }
 }
 
-// 安全到达需要跳转的地方
-function toHrefSafe(href, param) {
-  var func = function () {
-    wx.navigateTo({
-      url: param ? `../${href}/${href}?${param}` : `../${href}/${href}`
-    })
-  }
-  throttle(() => {
-    func.apply();
-  })();
-}
-
 function throttle(fn, gapTime = 1500) {
   let _lastTime = null
   // 返回新的函数
@@ -293,6 +280,5 @@ module.exports = {
   checkType: checkType,
   addKey: addKey,
   toFixed,
-  toHrefSafe,
   throttle
 }

@@ -20,7 +20,9 @@ Page({
     addressData: [],
     keyword: '',
     showSearchData: false,
+    showMyShoppingAddress: true,
     formAddAddress: false,
+    formEditAddress: false,
     result: []
   },
 
@@ -28,16 +30,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.getAddress === "true") {
+    if (options.addAddress === "true") {
       console.log("获取地址传回去")
       this.setData({
-        formAddAddress: true
+        formAddAddress: true,
+        showMyShoppingAddress: false
       })
     }
+    if (options.editAddress === "true") {
+      console.log("获取地址传回去")
+      this.setData({
+        formEditAddress: true,
+        showMyShoppingAddress: false
+      })
+    }
+
     if (options.address) {
+      // 有默认地址直接设置
       this.setData({
         initAddress: options.address
       })
+    } else {
+      this.reGetLocation();
     }
 
     this.getMy_shippingAddress();
@@ -135,10 +149,19 @@ Page({
   },
   toJump(e) {
     var data = e.currentTarget.dataset;
-    wx.yue.pub("addAddress", data.info);
-    wx.navigateTo({
-      url: `../my_addShippingAddress/my_addShippingAddress`
-    })
+    var yData = this.data;
+    if (yData.formAddAddress) {
+      wx.yue.pub("addAddress", data.info);
+      wx.navigateTo({
+        url: `../my_addShippingAddress/my_addShippingAddress`
+      })
+    } else if (yData.formEditAddress) {
+      wx.yue.pub("editAddress_selectAddress", data.info);
+      wx.navigateTo({
+        url: `../my_editShippingAddress/my_editShippingAddress`
+      })
+    }
+
   },
 
   /**

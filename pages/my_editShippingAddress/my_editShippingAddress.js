@@ -2,7 +2,7 @@
 const app = getApp();
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
-var QQMapWX = require('../../libs/qqmap-wx-jssdk.min.js');
+const Storage = require("../../utils/storage.js");
 Page({
 
   /**
@@ -10,44 +10,59 @@ Page({
    */
   data: {
     addressType: '', // 无初始值，不影响结果
-    showCitySelect: false,
     nowdata: [],
     name: '',
     phone: '',
-    province_name: '', // 省
-    city_name: '', // 市
-    area_name: '', // 区
+    address: '', // 收货地址
     detail_addr: '', // 详细
-    type_name: ''
+    longitude: '', // 经度
+    latitude: '' // 纬度
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var y = this;
-    console.dir(options.data)
-
+    wx.yue.sub("addAddress", function (data) {
+      Storage.setItem("addAddress", data);
+    })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {},
+  onReady: function () { },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     var y = this;
-    wx.yue.sub("editAddress", function(data) {
-      console.log(data);
+    wx.yue.sub("editAddress", function (data) {
+      var info = data.item;
+      console.log(info);
       y.setData({
-        nowdata: data.item
+        address: info.address,
+        nowdata: info,
+        addressType: Number(info.type),
+        longitude: info.longitude, // 经度
+        latitude: info.latitude // 纬度
       })
+      if (Storage.getItem("editAddress_selectAddress") != "") {
+        var newAddressData = Storage.getItem("editAddress_selectAddress");
+        y.setData({
+          address: newAddressData.address,
+          longitude: newAddressData.location.lng, // 经度
+          latitude: newAddressData.location.lat// 纬度
+        })
+      }
+    })
+    wx.yue.sub("editAddress_selectAddress", function (data) {
+      Storage.setItem("editAddress_selectAddress", data);
     })
 
-    console.log(this.data.nowdata)
+
+    // console.log(this.data.nowdata)
   },
   changeInput(e) {
     var name = e.currentTarget.dataset.name;
@@ -65,38 +80,61 @@ Page({
     })
 
   },
-  selectCity() {
-    this.setData({
-      showCitySelect: true
+  selectYourAddress() {
+    var y = this;
+    var from = true;
+    wx.navigateTo({
+      url: `../selectAddress/selectAddress?editAddress=${from}`
     })
   },
+
   saveAddressToSubmit() {
     var y = this,
+      yData = y.data,
       nowdata = y.data.nowdata;
-    let name = this.data.name || nowdata.name;
-    let phone = this.data.phone || nowdata.phone;
-    let detail_addr = this.data.detail_addr || nowdata.detail_addr;
-    var AdTypeObj = {
-      '0': '住宅',
-      '1': '公司',
-      '2': '学校'
+
+    var type = yData.addressType;
+
+    var paramObj = {
+      id: nowdata.id,
+      name: yData.name || nowdata.name,
+      phone: yData.phone || nowdata.phone,
+      address: yData.address || nowdata.address,
+      detail_addr: yData.detail_addr || nowdata.detail_addr,
+      longitude: yData.longitude,
+      latitude: yData.latitude,
+      access_token: app.globalData.access_token,
+      type: type
     }
-    var defaultType = nowdata.type_name;
-    var type = Object.values(AdTypeObj).findIndex((v) => {
-      return v === defaultType
-    });
-    var is_default = nowdata.is_default;
-    var id = nowdata.id;
-    const qqmapsdk = new QQMapWX({
-      key: `GRBBZ-C6A35-IJLI7-QKHAT-NXZ7S-IQBG6` // 必填
-    });
-    util.getChinaCityList(qqmapsdk, function(res) {
-      console.log(res);
+    util.promiseRequest(api.edit_addr, paramObj).then(res => {
+      // 清楚数据缓存
+      Storage.removeItem("editAddress_selectAddress")
+      var data = res.response_data.lists;
+      if (data == 1) {
+        wx.showToast({
+          title: '重置地址成功...',
+          icon: 'none',
+          duration: 1000,
+          complete: function () {
+            setTimeout(() => {
+              app.returnLastPage();
+            }, 1000)
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '重置信息失败...',
+          icon: 'none',
+          duration: 1000,
+          complete: function () {
+            setTimeout(() => {
+              app.returnLastPage();
+            }, 1000)
+          }
+        })
+      }
     })
-    console.log(type)
-    console.log(name)
-    console.log(phone)
-    console.log(detail_addr)
+
   },
   deleteAddress() {
     var y = this,
@@ -137,35 +175,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

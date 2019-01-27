@@ -35,7 +35,7 @@
 }
 
 .item {
-  height: 134rpx;
+  height: 100%;
   width: 100%;
   padding: 29rpx 1rpx 31rpx;
   box-sizing: border-box;
@@ -51,7 +51,8 @@
 }
 
 .bottomBox {
-  height: 25rpx;
+  width: 542rpx;
+  margin-top: 21rpx;
   font-size: 26rpx;
   font-family: SourceHanSansCN-Regular;
   font-weight: 400;
