@@ -1,195 +1,215 @@
-  
 /* nodata */
+
 .nodata {
-  width: 750rpx;
-  height: 100%;
+    width: 750rpx;
+    height: 100%;
 }
 
 .nodata image {
-  position: absolute;
-  top: 273rpx;
+    position: absolute;
+    top: 273rpx;
 }
 
 .nodata .nodata_content {
-  position: absolute;
-  top: 560rpx;
-  height: 40rpx;
-  font-size: 42rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
-  line-height: 40rpx;
+    position: absolute;
+    top: 560rpx;
+    height: 40rpx;
+    font-size: 42rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
+    line-height: 40rpx;
 }
+
+.coupon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .swiper-tab {
-  width: 100%;
-  text-align: center;
-  height: 88rpx;
-  line-height: 88rpx;
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  font-size: 32rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  background: #fff;
+    width: 100%;
+    text-align: center;
+    height: 88rpx;
+    line-height: 88rpx;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    font-size: 32rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    background: #fff;
+    z-index: 99;
 }
 
 .border {
-  position: absolute;
-  left: 56rpx;
-  width: 34rpx;
-  height: 3rpx;
-  background: rgba(88, 181, 48, 1);
+    position: absolute;
+    left: 56rpx;
+    width: 34rpx;
+    height: 3rpx;
+    background: rgba(88, 181, 48, 1);
 }
 
 .swiper-tab-item {
-  position: relative;
-  width: 20%;
-  color: #999;
-  font-size: 32rpx;
+    position: relative;
+    width: 20%;
+    color: #999;
+    font-size: 32rpx;
 }
 
 .active {
-  color: #58b530;
+    color: #58b530;
 }
 
 swiper {
-  text-align: center;
-  height: 100%;
+    text-align: center;
+    display: flex;
+    flex: 1;
 }
 
 .ticket {
-  position: relative;
-  margin: 30rpx 31rpx 0 29rpx;
-  width: 690rpx;
-  height: 234rpx;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 10rpx;
-  overflow: hidden;
+    position: relative;
+    margin: 30rpx 31rpx 0 29rpx;
+    width: 690rpx;
+    height: 234rpx;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 10rpx;
+    overflow: hidden;
 }
 
 .upBox {
-  height: 171rpx;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 30rpx 0 32rpx 29rpx;
-  border-bottom: 1px dashed #e0e0e0;
+    height: 171rpx;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30rpx 0 32rpx 29rpx;
+    border-bottom: 1px dashed #e0e0e0;
 }
 
 .bottomBox {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 20rpx 0 19rpx 30rpx;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20rpx 0 19rpx 30rpx;
 }
 
 .bottomBox .text {
-  height: 23rpx;
-  font-size: 24rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(153, 153, 153, 1);
-  line-height: 23rpx;
-  text-align: left;
+    height: 23rpx;
+    font-size: 24rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    line-height: 23rpx;
+    text-align: left;
 }
 
 /* AllOrder */
 
 .allOrder {
-  display: inline-block;
-  width: 750rpx;
-  padding: 30rpx 30rpx 30rpx 30rpx;
-  box-sizing: border-box;
+    display: inline-block;
+    width: 750rpx;
+    padding: 30rpx 30rpx 30rpx 30rpx;
+    box-sizing: border-box;
 }
 
 .order {
-  width: 690rpx;
-  height: 339rpx;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 25rpx;
-  box-sizing: border-box;
-  padding: 0 30rpx;
-  margin-bottom: 30rpx;
+    width: 690rpx;
+    height: 339rpx;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 25rpx;
+    box-sizing: border-box;
+    padding: 0 30rpx;
+    margin-bottom: 30rpx;
 }
 
 .order .message {
-  height: 81rpx;
-  border-bottom: 1px solid rgba(224, 224, 224, 1);
+    height: 81rpx;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
 }
 
 .order .action {
-  height: 28rpx;
-  font-size: 30rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(88, 181, 48, 1);
-  line-height: 28rpx;
+    height: 28rpx;
+    font-size: 30rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(88, 181, 48, 1);
+    line-height: 28rpx;
 }
 
 .order .date {
-  height: 21rpx;
-  font-size: 28rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
-  line-height: 21rpx;
+    height: 21rpx;
+    font-size: 28rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
+    line-height: 21rpx;
 }
 
 .imgsBox {
-  height: 166rpx;
-  width: 100%;
-  border-bottom: 1px solid rgba(224, 224, 224, 1);
+    height: 166rpx;
+    width: 100%;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
 }
 
 .bottomBox {
-  height: 90rpx;
-  width: 100%;
+    height: 90rpx;
+    width: 100%;
 }
 
 .greenBox {
-  width: 111rpx;
-  height: 48rpx;
-  border: 1px solid #58b530;
-  border-radius: 24rpx;
+    width: 111rpx;
+    height: 48rpx;
+    border: 1px solid #58b530;
+    border-radius: 24rpx;
 }
 
 .greenBox .text {
-  height: 26rpx;
-  font-size: 28rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: #58b530;
-  line-height: 48rpx;
-  text-align: center;
+    height: 26rpx;
+    font-size: 28rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: #58b530;
+    line-height: 48rpx;
+    text-align: center;
 }
 
 .heijiBox {
-  display: flex;
-  align-items: center;
-  height: 29rpx;
-  font-size: 28rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 1);
-  line-height: 29px;
-  margin-left: 40rpx;
+    display: flex;
+    align-items: center;
+    height: 29rpx;
+    font-size: 28rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
+    line-height: 29px;
+    margin-left: 40rpx;
 }
 
 .heijiBox .price {
-  font-size: 34rpx;
-  font-weight: Bold;
+    font-size: 34rpx;
+    font-weight: Bold;
 }
 
 .imgsBox .item {
-  width: 160rpx;
-  height: 106rpx;
-  background: rgba(255, 255, 255, 1);
-  border: 1px solid rgba(240, 240, 240, 1);
-  border-radius: 10rpx;
-  margin-right: 20rpx;
+    width: 160rpx;
+    height: 106rpx;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(240, 240, 240, 1);
+    border-radius: 10rpx;
+    margin-right: 20rpx;
 }
 
 .imgsBox .item image {
-  width: 140rpx;
-  height: 93rpx;
-  border-radius: 10rpx;
+    width: 140rpx;
+    height: 93rpx;
+    border-radius: 10rpx;
+}
+
+.foodsImgs {
+    width: 630rpx;
+    height: 100%;
+    padding: 30rpx 0;
+    box-sizing: border-box;
+}
+
+.foodsImgs .item {
+    float: left;
 }

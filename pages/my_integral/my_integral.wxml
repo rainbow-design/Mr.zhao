@@ -23,7 +23,7 @@
 
     </view>
   </block>
-  <block wx:if="{{!integralData}}">
+  <block wx:if="{{integralData.length === 0}}">
     <view class='integralBox'>
       <view class='numberBox'>
         <view class='number'>0</view>

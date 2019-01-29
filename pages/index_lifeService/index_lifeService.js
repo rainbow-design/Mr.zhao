@@ -8,7 +8,7 @@ Page({
    */
   data: {
     lifeList: [],
-    defaultPhone: '1234567',
+    defaultPhone: '',
     currentPhone: ''
   },
   // 获取生活服务

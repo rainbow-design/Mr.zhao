@@ -1,3 +1,4 @@
+<wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <import src="../../component/swiper.wxml" />
 <view class='indexPage'>
   <!-- 首页签到弹窗模块 start -->
@@ -7,7 +8,7 @@
         <image src="../../assets/signIn.png" mode='widthFix'></image>
         <view class='greenText'>恭喜您今日签到成功！</view>
         <view class='add'>+10积分</view>
-        <view class='greenBtn' bindtap='toSignIn'>确认</view>
+        <view class='greenBtn' bindtap='closeB'>确认</view>
       </view>
     </view>
   </block>
@@ -69,7 +70,7 @@
   <image class='ad' bindtap='toInviteFriend' mode="widthFix" src="../../assets/invite.png"></image>
   <view class='header borderBox oneLineEnd'>
     <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
-    <view class='location ellipsis' bindtap='toSelectAddress' data-address="{{address}}">{{shortAddress}}</view>
+    <view class='location ellipsis' bindtap='toSelectAddress' data-address="{{address}}">{{globalAddress.detail_addr || shortAddress}}</view>
     <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
     <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='toIndexSearch'></input>
     <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
@@ -113,24 +114,22 @@
       <view class='leftBorder'></view>
       <view class='rightBorder'></view>
     </view>
-    <block wx:for="{{productList}}" wx:key="">
-      <view class='hotSellItem borderBox oneLineBetween bor_Bottom'>
-        <view class='hotSellItem_img'></view>
-        <view class='hotSellItem_content hotContentFlexStyle'>
-          <view class='title line-clamp '>
-            蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
-          </view>
-          <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
-          <view class='price nowrap'>¥69.9999</view>
-          <view class='offerPrice nowrap'>¥69.9999
-            <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-              <view class='youhuiText'>会员9折</view>
-            </image>
-          </view>
-          <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
+    <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{productList_a}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
+      <image class='hotSellItem_img' mode='widthFix' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
+      <view class='hotSellItem_content hotContentFlexStyle'>
+        <view class='title line-clamp '>
+          {{item.name}}
         </view>
+        <view class='introduction line-clamp'>{{item.desc}}</view>
+        <view class='price nowrap'>¥{{item.price}}</view>
+        <view class='offerPrice nowrap'>¥{{item.plus_price}}
+          <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+            <view class='youhuiText'>会员{{item.plus}}折</view>
+          </image>
+        </view>
+        <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
       </view>
-    </block>
+    </view>
   </view>
 </view>
 <view class='gap' style='height:20rpx;'></view>
@@ -140,22 +139,20 @@
     <view class='leftBorder'></view>
     <view class='rightBorder'></view>
   </view>
-  <block wx:for="recommendList" wx:key="">
-    <view class='hotSellItem borderBox oneLineBetween bor_Bottom'>
-      <view class='hotSellItem_img'></view>
-      <view class='hotSellItem_content hotContentFlexStyle'>
-        <view class='title line-clamp '>
-          蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装
-        </view>
-        <view class='introduction line-clamp'> 蒙牛特仑苏纯牛奶250ml*16 礼盒装礼盒装礼盒装 </view>
-        <view class='price nowrap'>¥69.9999</view>
-        <view class='offerPrice nowrap'>¥69.9999
-          <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-            <view class='youhuiText'>会员9折</view>
-          </image>
-        </view>
-        <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
+  <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{productList_b}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
+    <image class='hotSellItem_img' mode='widthFix' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
+    <view class='hotSellItem_content hotContentFlexStyle'>
+      <view class='title line-clamp '>
+        {{item.name}}
       </view>
+      <view class='introduction line-clamp'>{{item.desc}}</view>
+      <view class='price nowrap'>¥{{item.price}}</view>
+      <view class='offerPrice nowrap'>¥{{item.plus_price}}
+        <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+          <view class='youhuiText'>会员{{item.plus}}折</view>
+        </image>
+      </view>
+      <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
     </view>
-  </block>
+  </view>
 </view>

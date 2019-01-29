@@ -1,46 +1,42 @@
 <!--pages/iThink/iThink.wxml-->
 <view style='height:100%'>
-  <block wx:if="{{!isShouQuan}}">
-    <view class='maskContent columnCenter'>
-      <image class='zhaoAvator' src="../../assets/shouQuan.png"></image>
-      <view class='showText center'>兆鲜生申请获得以下权限：</view>
-      <view class='getDataText center'>获得您的公开信息（昵称，头像等）</view>
-      <button class='shouQuanBtn center' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
-        <view class='text'>
-          确认授权
+    <block wx:if="{{!isShouQuan}}">
+        <view class='maskContent columnCenter'>
+            <image class='zhaoAvator' src="../../assets/shouQuan.png"></image>
+            <view class='showText center'>兆鲜生申请获得以下权限：</view>
+            <view class='getDataText center'>获得您的公开信息（昵称，头像等）</view>
+            <button class='shouQuanBtn center' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+                    确认授权
+            </button>
         </view>
-      </button>
-    </view>
-  </block>
-  <block wx:if="{{isRegister}}">
-    <view class='maskContent loginCtrl columnCenter'>
+    </block>
+    <block wx:if="{{isRegister}}">
+        <view class='maskContent loginCtrl columnCenter'>
 
-      <view class='login columnCenter'>
+            <view class='login columnCenter'>
 
-        <view class='b_border fixHeight'>
-          <label class='firstBlock'>手机号</label>
-          <input placeholder='请输入手机号' data-name="phone" bindinput="bindKeyInput" value='{{phoneNumber}}' placeholder-class='place_shouji'></input>
-        </view>
-        <view class='fixHeight'>
-          <label class='firstBlock'>验证码</label>
-          <input placeholder='请输入验证码' data-name="verificationCode" bindinput="bindKeyInput" placeholder-class='place_code'></input>
-          <block wx:if="{{!showTime}}">
-            <view class='verificationCode' bindtap='getVerificationCode'>获取验证码</view>
-          </block>
-          <block wx:elif="{{showTime}}">
-            <view class='time nowrap'>{{time}}s </view>
-          </block>
-        </view>
+                <view class='b_border fixHeight'>
+                    <label class='firstBlock'>手机号</label>
+                    <input placeholder='请输入手机号' data-name="phone" bindinput="bindKeyInput" value='{{phoneNumber}}' placeholder-class='place_shouji'></input>
+                </view>
+                <view class='fixHeight'>
+                    <label class='firstBlock'>验证码</label>
+                    <input placeholder='请输入验证码' data-name="verificationCode" bindinput="bindKeyInput" placeholder-class='place_code'></input>
+                    <block wx:if="{{!showTime}}">
+                        <view class='verificationCode' bindtap='getVerificationCode'>获取验证码</view>
+                    </block>
+                    <block wx:elif="{{showTime}}">
+                        <view class='time nowrap'>{{time}}s </view>
+                    </block>
+                </view>
 
-      </view>
-      <block wx:if="{{throwError}}">
-        <view class='error nowrap'>验证码错误，请重新输入</view>
-      </block>
-      <button class='shouQuanBtn2 center' bindtap='shouQuan'>
-        <view class='text'>
-          确认授权
+            </view>
+            <block wx:if="{{throwError}}">
+                <view class='error nowrap'>验证码错误，请重新输入</view>
+            </block>
+            <button class='shouQuanBtn2 center' bindtap='shouQuan'>
+                确认授权
+            </button>
         </view>
-      </button>
-    </view>
-  </block>
+    </block>
 </view>

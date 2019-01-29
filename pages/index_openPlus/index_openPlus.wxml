@@ -5,9 +5,9 @@
         <view class='item columnBetween {{ defaultIndex === index ? "item_act":"" }}' wx:for="{{initData}}" wx:key="{{item.id}}">
           <view class='bg'></view>
           <image class='select' mode='widthFix' src='{{defaultIndex === index ? checked : normal}}' data-index="{{index}}" bindtap='selectTaocan'></image>
-          <view class='date'>{{item.time}}</view>
+          <view class='date'>{{item.length}}</view>
           <view class='money'>¥{{item.price}}
-            <view class='gray'>{{item.desc}}</view>
+            <view class='gray'>{{item.describe}}</view>
           </view>
         </view>
       </view>

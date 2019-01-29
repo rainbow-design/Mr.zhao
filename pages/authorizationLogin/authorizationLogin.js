@@ -32,7 +32,7 @@ Page({
 
   },
   login() {
-    var that = this;
+    var that = this; 
     wx.login({
       success(res) {
         if (res.code) {
@@ -51,7 +51,7 @@ Page({
                 console.log("app.globalData-----------------------")
                 console.dir(app.globalData);
                 that.delayToIndex();
-                // wx.yue.pub("hasToken", data.access_token)
+                wx.yue.pub("hasToken", data.access_token)
               } else if (data.result === false) {
                 app.globalData.openid = data.openid;
                 // 需要去注册
@@ -134,6 +134,9 @@ Page({
         code: yData.verificationCode,
         openid: app.globalData.openid,
         img_url: userInfo.avatarUrl,
+        sex: userInfo.gender === 2 ? 1 : 0, // 1 =》男性，值为2时是女性，值为0时是未知
+        nickname: userInfo.nickName,
+        invite_id: app.data.id
       }
       util.promiseRequest(api.register, paramObj)
         .then(res => {

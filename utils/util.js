@@ -212,6 +212,8 @@ function debounce(func, wait, immediate) {
 
 function checkType(str, type) {
   switch (type) {
+    case 'empty':
+      return (str == null || str == '' || str == undefined || typeof (str) == typeof (undefined));
     case 'email':
       return /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(str);
     case 'phone':
@@ -220,11 +222,11 @@ function checkType(str, type) {
       return /^(0\d{2,3}-\d{7,8})(-\d{1,4})?$/.test(str);
     case 'number':
       return /^[0-9]$/.test(str);
-    /**
-     * 校验邮政编码
-     * @param {string} str 字符串
-     * @return {bool}
-     */
+      /**
+       * 校验邮政编码
+       * @param {string} str 字符串
+       * @return {bool}
+       */
     case 'isZipCode':
       return /^(\d){6}$/.test(str);
     case 'isURL':
@@ -248,9 +250,9 @@ function throttle(fn, gapTime = 1500) {
   let _lastTime = null
   // 返回新的函数
   return function () {
-    let _nowTime = + new Date()
+    let _nowTime = +new Date()
     if (_nowTime - _lastTime > gapTime || !_lastTime) {
-      fn.apply(this, arguments)   //将this和参数传给原函数
+      fn.apply(this, arguments) //将this和参数传给原函数
       _lastTime = _nowTime
     }
   }

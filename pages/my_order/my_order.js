@@ -1,8 +1,12 @@
-var app = getApp()
+const app = getApp();
+const util = require("../../utils/util.js");
+const api = require("../../utils/api.js");
 Page({
   data: {
     currentTab: 0,
-    noOrder:false
+    selectTabData: [],
+    page: 1,
+    num: 5
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -10,7 +14,23 @@ Page({
     this.setData({
       currentTab: tabNumber
     })
+    // 数据初始化
+    this.getSelectTabData();
 
+  },
+  getSelectTabData() {
+    var y = this,
+      yData = y.data;
+    util.promiseRequest(api.order_list, {
+      status: yData.currentTab,
+      page: yData.page,
+      num: yData.num
+    }).then(res => {
+      var data = res.data.response_data.lists;
+      y.setData({
+        selectTabData: data
+      })
+    })
   },
   //滑动切换
   swiperTab: function (e) {
@@ -18,6 +38,7 @@ Page({
     that.setData({
       currentTab: e.detail.current
     });
+    this.getSelectTabData();
   },
   //点击切换
   clickTab: function (e) {
@@ -28,7 +49,8 @@ Page({
       that.setData({
         currentTab: e.target.dataset.current
       })
-    } 
+      this.getSelectTabData();
+    }
   },
   // 去评价
   toEvaluation() {

@@ -19,6 +19,21 @@ Page({
   onLoad: function (options) {
     this.getUserInfo();
   },
+
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.getUserInfo();
+  },
   getUserInfo() {
     var y = this;
     util.promiseRequest(api.basicInfo, { access_token: app.globalData.access_token })
@@ -99,20 +114,6 @@ Page({
     wx.navigateTo({
       url: `../my_order/my_order?tab=${tabNumber}`
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
   },
 
   /**

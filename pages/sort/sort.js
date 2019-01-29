@@ -25,27 +25,34 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.setData({
-      shortAddress: Storage.getItem("shortAddress"),
-      address: Storage.getItem("address")
-    })
-    this.getProduct_cate();
-    this.get_coupons();
-  },
+  onLoad: function (options) { },
 
   // 优惠券
   get_coupons() {
     let that = this;
     util.promiseRequest(api.get_coupons, {}).then((res) => {
-      let data = res.data.response_data;
-      data.forEach((item, i) => {
-        data[i].time = item.expire.split(',')
-      })
+      let data = res.data.response_data.lists;
       that.setData({
         card: data,
         total: data.length
       })
+      if (data.length == 0) {
+        showYouhuiQuan: false
+      }
+    })
+  },
+  // 领取优惠券
+  receive_coupons(e) {
+    let that = this;
+    util.promiseRequest(api.receive_coupons, {
+      id: e.currentTarget.dataset.id
+    }).then((res) => {
+      wx.showToast({
+        title: '领取成功',
+        icon: 'none',
+        duration: 2000
+      });
+      that.get_coupons();
     })
   },
   // 商品列表
@@ -76,7 +83,7 @@ Page({
     });
     this.getproduct_list(1);
   },
-  toSelectAddress() {
+  toSelectAddress(e) {
     var data = e.currentTarget.dataset;
     wx.navigateTo({
       url: `../selectAddress/selectAddress?address=${data.address}`
@@ -153,13 +160,26 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () { },
+  onShow: function () {
+    this.setData({
+      shortAddress: Storage.getItem("shortAddress"),
+      address: Storage.getItem("address")
+    })
+    this.getProduct_cate();
+    this.get_coupons();
+    var globalAddress = wx.Storage.getItem("globalAddress");
+    if (globalAddress) {
+      this.setData({
+        globalAddress: globalAddress
+      })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    app.getShoppingCartNum();
   },
 
   /**

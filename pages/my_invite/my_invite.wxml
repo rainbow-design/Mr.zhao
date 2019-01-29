@@ -1,5 +1,5 @@
 <view class="invite maskContent">
-  <block wx:if="{{!initData}}">
+  <block wx:if="{{initData.length === 0}}">
     <view class='nodata columnBetween'>
       <image src="../../assets/nodata/invite.png" mode="widthFix" style='width:430rpx;'></image>
       <view class='nodata_content'>您没有邀请过好友</view>

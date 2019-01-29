@@ -147,6 +147,11 @@ Page({
       }
     })
   },
+  selectGlobalAddress(e) {
+    var data = e.currentTarget.dataset;
+    wx.Storage.setItem("globalAddress", data.info);
+    app.returnLastPage();
+  },
   toJump(e) {
     var data = e.currentTarget.dataset;
     var yData = this.data;

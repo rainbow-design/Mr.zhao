@@ -128,7 +128,7 @@
 .foods {
     width: 750rpx;
     background: rgba(255, 255, 255, 1);
-    padding: 30rpx 0 96rpx 30rpx;
+    padding: 30rpx 0 0rpx 30rpx;
     box-sizing: border-box;
 }
 
@@ -192,7 +192,6 @@
 .rightBox .img {
     width: 190rpx;
     height: 139rpx;
-    background: pink;
 }
 
 .rightBox .content {
@@ -298,7 +297,7 @@
     float: left;
     width: 508rpx;
     height: 95rpx;
-    padding: 0 157rpx 19rpx 30rpx;
+    padding: 0 57rpx 19rpx 30rpx;
     box-sizing: border-box;
     background: #fff;
     z-index: 100;
@@ -357,7 +356,7 @@
     position: absolute;
     left: 183rpx;
     top: 21rpx;
-    width: 168rpx;
+    width: 268rpx;
     height: 55rpx;
 }
 

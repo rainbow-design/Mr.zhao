@@ -2,19 +2,19 @@
   <view class='detailMessage'>
     <view class='line borderBottom oneLineStart'>
       <label class='labelName'>收货人</label>
-      <input class='input username' placeholder='姓名' data-name="name" bindinput="changeInput" placeholder-class='place' maxlength="5"></input>
+      <input class='input username' placeholder='姓名' value="{{name}}" data-name="name" bindinput="changeInput" placeholder-class='place' maxlength="5"></input>
     </view>
     <view class='line borderBottom oneLineStart'>
       <label class='labelName'>联系电话</label>
-      <input class='input username' placeholder='手机号或固话' data-name="phone" bindinput="changeInput" placeholder-class='place' maxlength="11"></input>
+      <input class='input username' placeholder='手机号或固话' value="{{phone}}" data-name="phone" bindinput="changeInput" placeholder-class='place' maxlength="11"></input>
     </view>
     <view class='line borderBottom oneLineStart'>
       <label class='labelName'>收货地址</label>
-      <view class='input username line-clamp' bindtap='selectYourAddress'>{{address || '请选择您的收货地址'}}</view>
+      <view class='input username line-clamp {{address ?"":"place_color"}}' bindtap='selectYourAddress'>{{address || '请选择您的收货地址'}}</view>
     </view>
     <view class='line borderBottom oneLineStart'>
       <label class='labelName'>楼号门牌</label>
-      <input class='input username'  data-name="detail_addr" bindinput="changeInput" placeholder='楼号/单元/门牌号' placeholder-class='place'></input>
+      <input class='input username' data-name="detail_addr" value="{{detail_addr}}" bindinput="changeInput" placeholder='楼号/单元/门牌号' placeholder-class='place'></input>
     </view>
     <view class='line oneLineStart'>
       <label class='labelName'>地址类型</label>

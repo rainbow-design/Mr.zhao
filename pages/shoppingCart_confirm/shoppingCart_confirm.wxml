@@ -1,16 +1,17 @@
+<wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <view class="shoppingCart maskContent">
   <view class='address'>
     <view class='whiteBox'>
       <view class='zhuzhi'>
         <view class='greenBox'>
           <view class='keyword'>
-            住宅
+            {{addrInfo.type}}
           </view>
         </view>
-        北京市 朝阳区 美景东方4号楼324号 楼324号楼322
+        {{addrInfo.address}} {{addrInfo.detail_addr}}
       </view>
       <view class='presonInfo'>
-        李洋 18284923857
+        {{addrInfo.name}} {{addrInfo.phone}}
       </view>
       <image class='caidai' src="../../assets/icon/huaBian.png"></image>
     </view>
@@ -18,7 +19,7 @@
   <view class='foods'>
     <view class='titleBox oneLineBetween'>
       <view class='name'>配送时间</view>
-      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{delivery_time_Arr}}">
         <view class='toPeisong center'>立即配送
           <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
         </view>
@@ -26,16 +27,11 @@
 
 
     </view>
-    <view class='imageBox red'>
-      <scroll-view scroll-x="{{canScroll}}" class='foodsImgs' bindtap='toProductList'>
-        <image></image>
-        <image></image>
-        <image></image>
-        <image></image>
-        <image></image>
-        <image></image>
+    <view class='imageBox'>
+      <scroll-view scroll-x class='foodsImgs' bindtap='toProductList' style="white-space: nowrap;">
+        <image wx:for="{{goodsInfo}}" wx:key="{{item}}" src="{{filter.filterImgUrl(item.thumb_img)}}"></image>
       </scroll-view>
-      <view class='Count center'>共354件
+      <view class='Count'>共{{count}}件
         <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
       </view>
     </view>
@@ -44,29 +40,43 @@
   <view class='detail'>
     <view class='line border_bottom oneLineBetween'>
       <view class='name'>商品总价</view>
-      <view class='content'>￥101.8</view>
+      <view class='content'>￥{{Info.total_price}}</view>
     </view>
     <view class='line2 border_bottom oneLineBetween'>
       <view class='name'>配送费</view>
-      <view class='content'>￥101.8</view>
+      <view class='content'>￥{{deliver_cost[0].cost}}</view>
     </view>
     <view class='line2 border_bottom oneLineBetween'>
       <view class='name'>优惠立减</view>
-      <view class='content content_orange'>￥101.8</view>
+      <view class='content content_orange'>￥{{Info.sale_price}}</view>
     </view>
 
     <view class='line2 border_bottom oneLineBetween'>
       <view class='name'>优惠券</view>
-      <view class='content content_orange' bindtap='toCoupon'>1张可用
-        <image mode="widthFix" src="../../assets/icon/toRightH40.png"></image>
-      </view>
+      <block wx:if="{{can_use_coupons.count > 0}}">
+        <view class='content content_orange' bindtap='toCoupon' data-ids="{{can_use_coupons.ids}}">{{can_use_coupons.count}}张可用
+          <image mode="widthFix" src="../../assets/icon/toRightH40.png"></image>
+        </view>
+      </block>
+      <block wx:elif="{{can_use_coupons.count == 0}}">
+        <view class='content'>暂无可用
+        </view>
+      </block>
     </view>
     <view class='line3 border_bottom oneLineBetween'>
-      <view class='name_normal'>当前有40积分（满50积分可用）</view>
+      <block wx:if="{{Info.score < jifenShouldOver}}">
+        <view class='name_normal'>当前有{{Info.score}}积分（满{{jifenShouldOver}}积分可用）</view>
+      </block>
+      <block wx:elif="{{Info.score > jifenShouldOver}}">
+        <view class='name'>当前可用{{Info.score}}积分抵现</view>
+        <view class='content' bindtap='useJifen' data-score="{{Info.score}}">
+          <image mode="widthFix" src="{{default_useJifen ? checked:normal}}" style='width:30rpx;'></image>
+        </view>
+      </block>
     </view>
     <view class='lineLast oneLineEnd'>
       <view class='heJiName'>付款:
-        <view class='price'>¥91.8</view>
+        <view class='price'>¥{{amount}}</view>
       </view>
     </view>
 
@@ -75,10 +85,10 @@
   <view class='fixedBottom'>
     <view class='leftBox'>
       <view class='name'>付款:
-        <view class='price'>¥91.8</view>
+        <view class='price'>{{amount}}</view>
       </view>
     </view>
-    <view class='rightBox' bindtap='toPay'>
+    <view class='rightBox' bindtap='toAddOrder'>
       <view class='text'>去支付</view>
       <image class='toRight' mode="widthFix" src="../../assets/icon/toRight.png"></image>
     </view>

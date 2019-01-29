@@ -29,7 +29,8 @@
 
     </view>
     <view class='imageBox red'>
-      <scroll-view scroll-x="{{canScroll}}" class='foodsImgs' bindtap='toProductList'>
+
+      <scroll-view scroll-x class='foodsImgs' bindtap='toProductList' style="white-space: nowrap;">
         <image></image>
         <image></image>
         <image></image>

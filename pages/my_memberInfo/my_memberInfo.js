@@ -14,6 +14,8 @@ Page({
     sex: '',
     birthday: '',
     date: '2016-09-01',
+    noBirthDay: '',
+    birthdayColor: '#999'
   },
 
   /**
@@ -22,18 +24,30 @@ Page({
   onLoad: function (options) {
     var y = this;
     wx.yue.sub("userInfo", function (data) {
-      y.setData({
-        initData: data
-      })
-      console.log(data);
+      var birthdatyStr = '';
+      if (data.birthday === null) {
+        birthdatyStr = '请选择您的生日'
+        y.setData({
+          initData: data,
+          birthday: birthdatyStr,
+          noBirthDay: true,
+        })
+      } else {
+        birthdatyStr = data.birthday.split(' ')[0];
+        y.setData({
+          initData: data,
+          birthday: birthdatyStr,
+          noBirthDay: false
+        })
+      }
+
     });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  },
+  onReady: function () { },
 
   /**
    * 生命周期函数--监听页面显示
@@ -62,7 +76,8 @@ Page({
   bindDateChange(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      birthday: e.detail.value
+      birthday: e.detail.value,
+      birthdayColor: 'rgba(26, 26, 26, 1)'
     })
   },
   saveUserInfo() {

@@ -1,110 +1,110 @@
 <!--pages/my.wxml-->
 <view class='sort'>
-  <block wx:if="{{showYouhuiQuan}}">
-    <view class='Mask'>
-      <view class='bottomCoupon'>
-        <view class='title1'>
-          优惠券
-          <image mode='widthFix' src="../../assets/icon/close.png" style='width:32rpx;' bindtap='closeCoupon'></image>
+    <block wx:if="{{showYouhuiQuan && card.length>0}}">
+        <view class='Mask'>
+            <view class='bottomCoupon'>
+                <view class='title1'>
+                    优惠券
+                    <image mode='widthFix' src="../../assets/icon/close.png" style='width:32rpx;' bindtap='closeCoupon'></image>
+                </view>
+                <scroll-view class="scroll_a" scroll-y="true" style='padding-bottom:92rpx;box-sizing:border-box;white-space:nowrap'>
+                    <block wx:for="{{card}}" wx:key="">
+                        <view class='ticket'>
+                            <view class='get' bindtap='receive_coupons' data-id="{{item.id}}">领取</view>
+                            <view class='upBox'>
+                                <view class='priceBox columnBetween'>
+                                    <view class='bigPrice'>
+                                        <view class='symbol'>￥</view>
+                                        <view class='price'>{{item.money}}</view>
+                                    </view>
+                                    <view class='condition'>满{{item.use_money}}元可用</view>
+                                </view>
+                                <view class='contentBox columnBetweenStart'>
+                                    <view class='title'>{{item.name}}
+                                    </view>
+                                    <view class='normal'>{{item.class}}类优惠券</view>
+                                    <view class='normal'>{{item.role}}
+                                    </view>
+                                </view>
+                            </view>
+                            <view class='bottomBox'>
+                                <view class='text'>有效期：{{item.begin_time}} 至 {{item.end_time}}</view>
+                            </view>
+                        </view>
+                    </block>
+                </scroll-view>
+            </view>
         </view>
-        <scroll-view class="scroll_a" scroll-y="true" style='padding-bottom:92rpx;box-sizing:border-box;white-space:nowrap'>
-          <block wx:for="{{card}}" wx:key="">
-            <view class='ticket'>
-              <view class='get'>领取</view>
-              <view class='upBox'>
-                <view class='priceBox columnBetween'>
-                  <view class='bigPrice'>
-                    <view class='symbol'>￥</view>
-                    <view class='price'>{{item.money}}</view>
-                  </view>
-                  <view class='condition'>满{{item.use_money}}元可用</view>
-                </view>
-                <view class='contentBox columnBetweenStart'>
-                  <view class='title'>{{item.name}}
-                  </view>
-                  <view class='normal'>{{item.class}}类优惠券</view>
-                  <view class='normal'>{{item.role}}
-                  </view>
-                </view>
-              </view>
-              <view class='bottomBox'>
-                <view class='text'>有效期：{{item.time[0]}} 至 {{item.time[1]}}</view>
-              </view>
-            </view>
-          </block>
-        </scroll-view>
-      </view>
+    </block>
+    <view class='header borderBox oneLineEnd'>
+        <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
+        <view class='location ellipsis' bindtap='toSelectAddress' data-address="{{address}}">{{globalAddress.detail_addr || shortAddress}}</view>
+        <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
+        <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='test'></input>
+        <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
     </view>
-  </block>
-  <view class='header borderBox oneLineEnd'>
-    <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
-    <view class='location ellipsis' bindtap='toSelectAddress' data-address="{{address}}">{{shortAddress}}</view>
-    <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
-    <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='test'></input>
-    <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
-  </view>
-  <view class='scrollShopList'>
+    <view class='scrollShopList'>
 
-    <view class='mainMenu'>
-      <scroll-view class="scroll_a" scroll-y="true" style='white-space:nowrap'>
-        <block wx:for="{{classA}}" wx:key="">
-          <view class="item {{classShowA == index ? 'item_act' : ''}}" bindtap='chooseClass' data-id="{{item.id}}" data-index="{{index}}" data-pro_id="{{item.id}}" data-pro_type="{{item.type}}" data-type="1">
-            <view class='text'>
-              {{item.name}}
+        <view class='mainMenu'>
+            <scroll-view class="scroll_a" scroll-y="true" style='white-space:nowrap'>
+                <block wx:for="{{classA}}" wx:key="">
+                    <view class="item {{classShowA == index ? 'item_act' : ''}}" bindtap='chooseClass' data-id="{{item.id}}" data-index="{{index}}" data-pro_id="{{item.id}}" data-pro_type="{{item.type}}" data-type="1">
+                        <view class='text'>
+                            {{item.name}}
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+        </view>
+        <!-- 左侧 mainMenu end -->
+        <view class='rightBox'>
+            <!-- 没有优惠券展示列表 -->
+            <scroll-view class='subMenu' scroll-x style="white-space:nowrap;">
+                <block wx:for="{{classB}}" wx:key="">
+                    <view class="item {{classShowB == index ? 'item_act' : ''}}" bindtap='chooseClass' data-id="{{item.id}}" data-index="{{index}}" data-pro_id="{{item.id}}" data-pro_type="{{item.type}}" data-type="2">
+                        <view class='text'>
+                            {{item.name}}
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+            <!-- subMenu end -->
+            <view class='shoppingList'>
+                <scroll-view class="scroll_b" scroll-y="true" style='white-space:nowrap' bindscrolltolower="scrollBottom">
+                    <block wx:if="{{total > 0}}">
+                        <view class='getYouhuiQuan'>
+                            <image mode="widthFix" src="../../assets/youhuijuan_bg.png"></image>
+                            <view class='youhui_tit'> 优惠券</view>
+                            <view class='count'>( 共{{total}}张 )</view>
+                            <view class='get'>
+                                <view class='text' bindtap='getCoupon'>去领取</view>
+                            </view>
+                        </view>
+                    </block>
+                    <!-- 单个商品开始 -->
+                    <block wx:for="{{productList}}" wx:key="">
+                        <view class='goods_item oneLineBetween' bindtap='toDetail' data-id="{{item.id}}">
+                            <image class='img' src="{{item.thumb_img}}"></image>
+                            <view class='content'>
+                                <view class='title'>
+                                    {{item.name}}
+                                </view>
+                                <view class='introduction'>{{item.desc}}</view>
+                                <view class='price'>¥{{item.price}}</view>
+                                <view class='offerPrice'>¥{{item.plus_price}}
+                                    <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+                                        <view class='youhuiText'>会员{{item.plus}}折</view>
+                                    </image>
+                                </view>
+                                <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
+                            </view>
+                        </view>
+                    </block>
+                    <!-- 单个商品结束 -->
+                </scroll-view>
             </view>
-          </view>
-        </block>
-      </scroll-view>
-    </view>
-    <!-- 左侧 mainMenu end -->
-    <view class='rightBox'>
-      <!-- 没有优惠券展示列表 -->
-      <scroll-view class='subMenu' scroll-x style="white-space:nowrap;">
-        <block wx:for="{{classB}}" wx:key="">
-          <view class="item {{classShowB == index ? 'item_act' : ''}}" bindtap='chooseClass' data-id="{{item.id}}" data-index="{{index}}" data-pro_id="{{item.id}}" data-pro_type="{{item.type}}" data-type="2">
-            <view class='text'>
-              {{item.name}}
-            </view>
-          </view>
-        </block>
-      </scroll-view>
-      <!-- subMenu end -->
-      <view class='shoppingList'>
-        <scroll-view class="scroll_b" scroll-y="true" style='white-space:nowrap' bindscrolltolower="scrollBottom">
-          <block wx:if="{{total > 0}}">
-            <view class='getYouhuiQuan'>
-              <image mode="widthFix" src="../../assets/youhuijuan_bg.png"></image>
-              <view class='youhui_tit'> 优惠券</view>
-              <view class='count'>( 共{{total}}张 )</view>
-              <view class='get'>
-                <view class='text' bindtap='getCoupon'>去领取</view>
-              </view>
-            </view>
-          </block>
-          <!-- 单个商品开始 -->
-          <block wx:for="{{productList}}" wx:key="">
-            <view class='goods_item oneLineBetween' bindtap='toDetail' data-id="{{item.id}}">
-              <image class='img' src="{{item.thumb_img}}"></image>
-              <view class='content'>
-                <view class='title'>
-                  {{item.name}}
-                </view>
-                <view class='introduction'>{{item.desc}}</view>
-                <view class='price'>¥{{item.price}}</view>
-                <view class='offerPrice'>¥{{item.plus_price}}
-                  <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-                    <view class='youhuiText'>会员{{item.plus}}折</view>
-                  </image>
-                </view>
-                <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
-              </view>
-            </view>
-          </block>
-          <!-- 单个商品结束 -->
-        </scroll-view>
-      </view>
+
+        </view>
 
     </view>
-
-  </view>
 </view>

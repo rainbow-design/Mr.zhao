@@ -31,6 +31,14 @@
   width: 100%;
 }
 
+.place {
+  color: #999;
+}
+
+.place_color {
+  color: #999 !important;
+}
+
 .line .labelName {
   width: 112rpx;
   font-size: 28rpx;

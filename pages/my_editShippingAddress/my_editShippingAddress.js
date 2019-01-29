@@ -22,23 +22,23 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var y = this;
-    wx.yue.sub("addAddress", function (data) {
+    wx.yue.sub("addAddress", function(data) {
       Storage.setItem("addAddress", data);
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () { },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     var y = this;
-    wx.yue.sub("editAddress", function (data) {
+    wx.yue.sub("editAddress", function(data) {
       var info = data.item;
       console.log(info);
       y.setData({
@@ -53,11 +53,11 @@ Page({
         y.setData({
           address: newAddressData.address,
           longitude: newAddressData.location.lng, // 经度
-          latitude: newAddressData.location.lat// 纬度
+          latitude: newAddressData.location.lat // 纬度
         })
       }
     })
-    wx.yue.sub("editAddress_selectAddress", function (data) {
+    wx.yue.sub("editAddress_selectAddress", function(data) {
       Storage.setItem("editAddress_selectAddress", data);
     })
 
@@ -109,13 +109,18 @@ Page({
     util.promiseRequest(api.edit_addr, paramObj).then(res => {
       // 清楚数据缓存
       Storage.removeItem("editAddress_selectAddress")
-      var data = res.response_data.lists;
+      var data = res.data.response_data.lists;
       if (data == 1) {
+        // 更新相同的 globalAddress 信息
+        var globalAddress = wx.Storage.getItem("globalAddress");
+        if (nowdata.id == globalAddress.id) {
+          y.updateGlobalAddress(globalAddress, paramObj);
+        }
         wx.showToast({
           title: '重置地址成功...',
           icon: 'none',
           duration: 1000,
-          complete: function () {
+          complete: function() {
             setTimeout(() => {
               app.returnLastPage();
             }, 1000)
@@ -126,7 +131,7 @@ Page({
           title: '重置信息失败...',
           icon: 'none',
           duration: 1000,
-          complete: function () {
+          complete: function() {
             setTimeout(() => {
               app.returnLastPage();
             }, 1000)
@@ -150,7 +155,7 @@ Page({
           title: '删除地址成功...',
           icon: 'none',
           duration: 1000,
-          complete: function () {
+          complete: function() {
             setTimeout(() => {
               app.returnLastPage();
             }, 1000)
@@ -161,7 +166,7 @@ Page({
           title: '删除失败...',
           icon: 'none',
           duration: 1000,
-          complete: function () {
+          complete: function() {
             setTimeout(() => {
               app.returnLastPage();
             }, 1000)
@@ -170,40 +175,59 @@ Page({
       }
     })
   },
+  updateGlobalAddress(oldData, newData) {
+    var typeObj = {
+      '0': '住宅',
+      '1': '公司',
+      '2': '学校'
+    }
+    var paramObj = {
+      id: oldData.id,
+      name: newData.name,
+      phone: newData.phone,
+      address: newData.address,
+      detail_addr: newData.detail_addr,
+      longitude: newData.longitude,
+      latitude: newData.latitude,
+      type: newData.type,
+      type_name: typeObj[newData.type]
+    }
+    Storage.setItem("globalAddress", paramObj)
+  },
 
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

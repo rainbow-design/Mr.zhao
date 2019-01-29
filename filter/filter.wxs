@@ -7,7 +7,18 @@ function splitByS(str) {
   return str.split(' ');
 }
 
+function filterPhoneByStar(str) {
+  return str.slice(0, 3) + '****' + str.slice(-4)
+}
+
+function filterImgUrl(str) {
+  var RootUrl = 'http://admin.bianlidian.test01.qcw100.cn';
+  return str.indexOf('/') === 0 ? RootUrl + str : str;
+}
+
 module.exports = {
   splitByC: splitByC, // my_coupon 有使用
-  splitByS: splitByS
+  splitByS: splitByS,
+  filterPhoneByStar: filterPhoneByStar,
+  filterImgUrl: filterImgUrl
 }

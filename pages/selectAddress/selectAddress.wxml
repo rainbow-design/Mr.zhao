@@ -20,13 +20,11 @@
       </view>
     </block>
 
-
-
   </view>
-  <block wx:if="{{showMyShoppingAddress}}">
+  <block wx:if="{{showMyShoppingAddress && addressData.length > 0}}">
     <view class='myShippingAddress'>
       <view class='title'>我的收货地址</view>
-      <view class="itemAddress columnBetween {{addressData.length > 1 && index != addressData.length-1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}">
+      <view class="itemAddress columnBetween {{addressData.length > 1 && index != addressData.length-1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}" data-info="{{item}}" bindtap="selectGlobalAddress">
         <view class='upBox oneLineStart'>
           <view class='greenBox'>
             <view class='text'>{{item.type_name}}</view>

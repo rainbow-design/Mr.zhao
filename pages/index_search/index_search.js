@@ -21,24 +21,29 @@ Page({
     },
     // 商品列表
     getproduct_list(type) {
-        if (!this.data.proBottom && type == 1) {
-            return;
-        }
         let that = this;
-        let params = {
-            keyword: this.data.searchValue,
-            num: 20,
-            page: this.data.page
-        };
-        util.promiseRequest(api.product_list, params).then((res) => {
-            let data = type == 1 ? that.data.productList.concat(res.data.response_data) : res.data.response_data
-            if (res.data.response_data.length < 20) {
-                that.data.proBottom = false;
-            }
-            that.setData({
-                productList: data
+        if ((!this.data.proBottom && type == 1) || this.data.searchValue == '') {
+            return;
+        } else {
+            util.promiseRequest(api.add_search_history, {
+                keywords: this.data.searchValue
+            }).then((res) => {
+                let params = {
+                    keyword: that.data.searchValue,
+                    num: 8,
+                    page: that.data.page
+                };
+                util.promiseRequest(api.product_list, params).then((res) => {
+                    let data = type == 1 ? that.data.productList.concat(res.data.response_data) : res.data.response_data
+                    if (res.data.response_data.length < 8) {
+                        that.data.proBottom = false;
+                    }
+                    that.setData({
+                        productList: data
+                    })
+                })
             })
-        })
+        }
     },
     getSearchList() {
         let that = this;

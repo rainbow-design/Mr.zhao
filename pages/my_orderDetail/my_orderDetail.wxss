@@ -323,7 +323,7 @@
   float: left;
   position: absolute;
   height: 139rpx;
-  width: 1619rpx;
+  width: 592rpx;
   overflow: hidden;
 }
 

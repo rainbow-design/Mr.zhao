@@ -45,6 +45,7 @@
 
 # today
 - 客服帮助 co
+- 价格 plus 会员
 ## 首页
 - 领取优惠券，弹框 
 - 留言，留言成功 co
@@ -55,7 +56,7 @@
 - 数量标记，缺货状态
 
 ## 购物车
-- 配送时间选择 
+- 配送时间选择 co
 - 商品列表 `shoppingCart_productList` co
 - 支付成功 `shoppingCart_paySuccess` co
 - 订单详情 `shoppingCart_orderDetail`

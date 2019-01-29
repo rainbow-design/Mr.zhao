@@ -1,15 +1,16 @@
 <import src="../../component/mask.wxml" />
 <template is="mask" data="{{maskClass:'ziji'}}"></template>
 <view class='whiteBox borderBox'>
-  <view class="item {{index % 2 === 0 ?'oddBorder':'evenBorder'}}" bindtap='choosePhone' wx:for="{{lifeList}}" wx:key="{{item.id}}"  data-phone="{{item.phone}}">
-    <image src="../../assets/life1.png" mode="widthFix"> </image>
-  </view>
+    <view class="item {{index % 2 === 0 ?'oddBorder':'evenBorder'}}" bindtap='choosePhone' wx:for="{{lifeList}}" wx:key="{{item.id}}" data-phone="{{item.phone}}">
+        <view class="top_a">{{item.name}}</view>
+        <image class="top_b" src="{{item.img}}" mode="widthFix"> </image>
+    </view>
 </view>
 <image class='liuYanImg' src="../../assets/liuyan.png" mode="widthFix" bindtap='toLeaveAMessage'></image>
 <view class='serviceTime nowrap'> 服务时间：9:00-21:00</view>
 <view class='tel nowrap'>{{ defaultPhone || currentPhone}}</view>
-<view class='call center' bindtap='call'>
-  <view class='text nowrap'>
-    点击拨号
-  </view>
+<view class='call center' bindtap='call' wx:if="{{ defaultPhone || currentPhone}}">
+    <view class='text nowrap'>
+        点击拨号
+    </view>
 </view>

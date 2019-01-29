@@ -38,12 +38,19 @@ Page({
   onShow: function () {
     var y = this;
     var addressData = Storage.getItem("addAddress");
+    var addAddress_cache = wx.Storage.getItem("addAddress_cache");
     addressData != "" ? y.setData({
       address: addressData.address,
       longitude: addressData.location.lng,
       latitude: addressData.location.lat
     }) : ''
-    // Storage.removeItem("addAddress")
+
+    addAddress_cache != "" ? y.setData({
+      selectAddress: addAddress_cache.selectAddress || 0,
+      name: addAddress_cache.name || '',
+      phone: addAddress_cache.phone || '',
+      detail_addr: addAddress_cache.detail_addr || '',
+    }) : ''
   },
   selectAddressType(e) {
     var data = e.currentTarget.dataset;
@@ -61,15 +68,41 @@ Page({
     })
   },
   selectYourAddress() {
-    var y = this;
-    var from = true;
+    var y = this,
+      yData = y.data,
+      from = true;
+    // 先缓存用户已填写的原始数据
+
+    var addAddress_cache = {
+      selectAddress: yData.selectAddress,
+      name: yData.name,
+      phone: yData.phone,
+      detail_addr: yData.detail_addr,
+    }
+    wx.Storage.setItem("addAddress_cache", addAddress_cache);
+
     wx.navigateTo({
       url: `../selectAddress/selectAddress?addAddress=${from}`
     })
   },
   saveNewAddress() {
+    // 清空数据缓存
+    wx.Storage.removeItem("addAddress");
+    wx.Storage.removeItem("addAddress_cache");
     var y = this,
       yData = y.data;
+    var name = yData.name, phone = yData.phone;
+    if (util.checkType(name, 'empty')) {
+      util.toast('请输入收货人姓名');
+      return;
+    } else if (!util.checkType(phone, 'phone')) {
+      util.toast('请输入正确的手机号');
+      return;
+    } else if (util.checkType(name, 'empty')) {
+      util.toast('请输入详细楼号门牌');
+      return;
+    }
+
     var paramObj = {
       name: yData.name,
       phone: yData.phone,
@@ -80,16 +113,21 @@ Page({
       type: yData.selectAddress,
       access_token: app.globalData.access_token
     }
-    util.promiseRequest(api.edit_addr, paramObj).then(res => {
-      var data = res.response_data.lists;
-      if (data == 1) {
+    util.promiseRequest(api.edit_addr, paramObj).then((res) => {
+      var data = res.data.response_data.lists;
+      if (data === 1) {
+        y.setData({
+          address: ''
+        })
         wx.showToast({
           title: '添加地址成功...',
           icon: 'none',
           duration: 1000,
           complete: function () {
             setTimeout(() => {
-              app.returnLastPage();
+              wx.navigateTo({
+                url: `../index_search/index_search`
+              })
             }, 1000)
           }
         })
@@ -100,7 +138,9 @@ Page({
           duration: 1000,
           complete: function () {
             setTimeout(() => {
-              app.returnLastPage();
+              wx.navigateTo({
+                url: `../index_search/index_search`
+              })
             }, 1000)
           }
         })

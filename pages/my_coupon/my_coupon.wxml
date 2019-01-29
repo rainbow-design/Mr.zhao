@@ -1,118 +1,124 @@
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <view class="coupon maskContent">
 
-  <view class="swiper-tab">
-    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">未使用
-      <view class="border {{currentTab==0?'show':'hide'}}"></view>
+    <view class="swiper-tab">
+        <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">未使用
+            <view class="border {{currentTab==0?'show':'hide'}}"></view>
+        </view>
+        <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">已使用
+            <view class="border {{currentTab==1?'show':'hide'}}"></view>
+        </view>
+        <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">已失效
+            <view class="border {{currentTab==2?'show':'hide'}}"></view>
+        </view>
     </view>
-    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">已使用
-      <view class="border {{currentTab==1?'show':'hide'}}"></view>
-    </view>
-    <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">已失效
-      <view class="border {{currentTab==2?'show':'hide'}}"></view>
-    </view>
-  </view>
 
-  <swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
-    <swiper-item>
-      <!-- 无数据 -->
-       <block wx:if="{{!couponData || couponData.length == 0}}">
-        <view class='nodata columnBetween'>
-          <image src="../../assets/nodata/youhuiquan.png" mode='widthFix' style='width:430rpx;'></image>
-          <view class='nodata_content'>您还没有优惠券</view>
-        </view>
-      </block>
-      <!-- 无数据 end -->
-      <!-- 未使用 -->
-      <block wx:elif="{{couponData}}">
-        <view class='ticket' wx:for="{{couponData}}" wx:key="{{item}}">
-          <view class='upBox'>
-            <view class='priceBox columnBetween'>
-              <view class='bigPrice'>
-                <view class='symbol'>￥</view>
-                <view class='price'>{{item.money}}</view>
-              </view>
-              <view class='condition nowrap'>满{{item.use_money}}元可用</view>
-            </view>
-            <view class='contentBox columnBetweenStart'>
-              <view class='title'>{{item.name}}
-              </view>
-              <view class='normal'>{{item.class}}</view>
-              <view class='normal'>{{item.role}}
-              </view>
-            </view>
-          </view>
-          <view class='bottomBox'>
-            <view class='text'>有效期：{{filter.splitByC(item.expire)[0]}} 至 {{filter.splitByC(item.expire)[1]}}</view>
-          </view>
-        </view>
-      </block>
-    </swiper-item>
-    <swiper-item>
-      <!-- <view>已使用</view> -->
-      <!-- 无数据 -->
-     <block wx:if="{{!couponData || couponData.length == 0}}">
-        <view class='nodata columnBetween'>
-          <image src="../../assets/nodata/youhuiquan.png" mode='widthFix' style='width:430rpx;'></image>
-          <view class='nodata_content'>您还没有优惠券</view>
-        </view>
-      </block>
-      <!-- 无数据 end -->
-      <view class='ticket used usedIcon' wx:for="{{couponData}}" wx:key="{{item}}">
-        <image style='width:120rpx;' src="../../assets/icon/used.png" mode='widthFix'></image>
-        <view class='upBox'>
-          <view class='priceBox columnBetween'>
-            <view class='bigPrice'>
-              <view class='symbol'>￥</view>
-              <view class='price'>{{item.money}}</view>
-            </view>
-            <view class='condition nowrap'>满{{item.use_money}}元可用</view>
-          </view>
-          <view class='contentBox columnBetweenStart'>
-            <view class='title'>{{item.name}}
-            </view>
-            <view class='normal'>{{item.class}}</view>
-            <view class='normal'>{{item.role}}
-            </view>
-          </view>
-        </view>
-        <view class='bottomBox'>
-          <view class='text'>有效期：{{filter.splitByC(item.expire)[0]}} 至 {{filter.splitByC(item.expire)[1]}}</view>
-        </view>
-      </view>
-    </swiper-item>
-    <swiper-item>
-      <!-- <view>已失效</view> -->
-      <!-- 无数据 -->
-     <block wx:if="{{!couponData || couponData.length == 0}}">
-        <view class='nodata columnBetween'>
-          <image src="../../assets/nodata/youhuiquan.png" mode='widthFix' style='width:430rpx;'></image>
-          <view class='nodata_content'>您还没有优惠券</view>
-        </view>
-      </block>
-      <!-- 无数据 end -->
-      <view class='ticket used expired' wx:for="{{couponData}}" wx:key="{{item}}">
-        <image style='width:120rpx;' src="../../assets/icon/expired.png" mode='widthFix'></image>
-        <view class='upBox'>
-          <view class='priceBox columnBetween'>
-            <view class='bigPrice'>
-              <view class='symbol'>￥</view>
-              <view class='price'>{{item.money}}</view>
-            </view>
-            <view class='condition nowrap'>满{{item.use_money}}元可用</view>
-          </view>
-          <view class='contentBox columnBetweenStart'>
-            <view class='title'>{{item.name}}
-            </view>
-            <view class='normal'>{{item.class}}</view>
-            <view class='normal'>{{item.role}}
-            </view>
-          </view>
-        </view>
-        <view class='bottomBox'>
-          <view class='text'>有效期：{{filter.splitByC(item.expire)[0]}} 至 {{filter.splitByC(item.expire)[1]}}</view>
-        </view>
-      </view>
-    </swiper-item>
-  </swiper>
+    <swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
+        <swiper-item>
+            <scroll-view scroll-y style="white-space: nowrap;height:100%;">
+                <!-- 无数据 -->
+                <block wx:if="{{!couponData || couponData.length == 0}}">
+                    <view class='nodata columnBetween'>
+                        <image src="../../assets/nodata/youhuiquan.png" mode='widthFix' style='width:430rpx;'></image>
+                        <view class='nodata_content'>您还没有优惠券</view>
+                    </view>
+                </block>
+                <!-- 无数据 end -->
+                <!-- 未使用 -->
+                <block wx:elif="{{couponData}}">
+                    <view class='ticket' wx:for="{{couponData}}" wx:key="{{item}}">
+                        <view class='upBox'>
+                            <view class='priceBox columnBetween'>
+                                <view class='bigPrice'>
+                                    <view class='symbol'>￥</view>
+                                    <view class='price'>{{item.money}}</view>
+                                </view>
+                                <view class='condition nowrap'>满{{item.use_money}}元可用</view>
+                            </view>
+                            <view class='contentBox columnBetweenStart'>
+                                <view class='title'>{{item.name}}
+                                </view>
+                                <view class='normal'>{{item.class}}</view>
+                                <view class='normal'>{{item.role}}
+                                </view>
+                            </view>
+                        </view>
+                        <view class='bottomBox'>
+                            <view class='text'>有效期：{{filter.splitByS(item.begin_time)[0]}} 至 {{filter.splitByS(item.end_time)[0]}}</view>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item>
+            <scroll-view scroll-y style="white-space: nowrap;height:100%;">
+                <!-- <view>已使用</view> -->
+                <!-- 无数据 -->
+                <block wx:if="{{!couponData || couponData.length == 0}}">
+                    <view class='nodata columnBetween'>
+                        <image src="../../assets/nodata/youhuiquan.png" mode='widthFix' style='width:430rpx;'></image>
+                        <view class='nodata_content'>您还没有优惠券</view>
+                    </view>
+                </block>
+                <!-- 无数据 end -->
+                <view class='ticket used usedIcon' wx:for="{{couponData}}" wx:key="{{item}}">
+                    <image style='width:120rpx;' src="../../assets/icon/used.png" mode='widthFix'></image>
+                    <view class='upBox'>
+                        <view class='priceBox columnBetween'>
+                            <view class='bigPrice'>
+                                <view class='symbol'>￥</view>
+                                <view class='price'>{{item.money}}</view>
+                            </view>
+                            <view class='condition nowrap'>满{{item.use_money}}元可用</view>
+                        </view>
+                        <view class='contentBox columnBetweenStart'>
+                            <view class='title'>{{item.name}}
+                            </view>
+                            <view class='normal'>{{item.class}}</view>
+                            <view class='normal'>{{item.role}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class='bottomBox'>
+                        <view class='text'>有效期：{{filter.splitByS(item.begin_time)[0]}} 至 {{filter.splitByS(item.end_time)[0]}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item>
+            <scroll-view scroll-y style="white-space: nowrap;height:100%;">
+                <!-- <view>已失效</view> -->
+                <!-- 无数据 -->
+                <block wx:if="{{!couponData || couponData.length == 0}}">
+                    <view class='nodata columnBetween'>
+                        <image src="../../assets/nodata/youhuiquan.png" mode='widthFix' style='width:430rpx;'></image>
+                        <view class='nodata_content'>您还没有优惠券</view>
+                    </view>
+                </block>
+                <!-- 无数据 end -->
+                <view class='ticket used expired' wx:for="{{couponData}}" wx:key="{{item}}">
+                    <image style='width:120rpx;' src="../../assets/icon/expired.png" mode='widthFix'></image>
+                    <view class='upBox'>
+                        <view class='priceBox columnBetween'>
+                            <view class='bigPrice'>
+                                <view class='symbol'>￥</view>
+                                <view class='price'>{{item.money}}</view>
+                            </view>
+                            <view class='condition nowrap'>满{{item.use_money}}元可用</view>
+                        </view>
+                        <view class='contentBox columnBetweenStart'>
+                            <view class='title'>{{item.name}}
+                            </view>
+                            <view class='normal'>{{item.class}}</view>
+                            <view class='normal'>{{item.role}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class='bottomBox'>
+                        <view class='text'>有效期：{{filter.splitByS(item.begin_time)[0]}} 至 {{filter.splitByS(item.end_time)[0]}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
 </view>

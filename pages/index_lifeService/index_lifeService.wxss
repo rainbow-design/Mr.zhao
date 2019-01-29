@@ -1,92 +1,104 @@
 .ziji {
-  background: #f0f0f0;
+    background: #f0f0f0;
 }
 
 .whiteBox {
-  position: absolute;
-  top: 18rpx;
-  width: 750rpx;
-  /* height: 481rpx; */
-  background: #fff;
+    position: absolute;
+    top: 18rpx;
+    width: 750rpx;
+    /* height: 481rpx; */
+    background: #fff;
 }
 
 .item {
-  float: left;
-  width: 50%;
-  height: 160rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
+    float: left;
+    width: 50%;
+    height: 160rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }
 
-.item image {
-  width: 294rpx;
+.top_a {
+    font-size: 30rpx;
+    color: #666;
+}
+
+.top_b {
+    width: 110rpx;
+    height: 110rpx;
+    margin-left: 20rpx;
+    border: 1rpx solid #666;
 }
 
 .oddBorder {
-  border-right: 1px solid rgba(240, 240, 240, 1);
-  border-bottom: 1px solid rgba(240, 240, 240, 1);
+    border-right: 1px solid rgba(240, 240, 240, 1);
+    border-bottom: 1px solid rgba(240, 240, 240, 1);
 }
+
 .evenBorder {
-  border-bottom: 1px solid rgba(240, 240, 240, 1);
+    border-bottom: 1px solid rgba(240, 240, 240, 1);
 }
-.whiteBox .item:nth-last-child(2){
- border: none !important;
- border-right: 1px solid rgba(240, 240, 240, 1) !important;
+
+.whiteBox .item:nth-last-child(2) {
+    border: none !important;
+    border-right: 1px solid rgba(240, 240, 240, 1) !important;
 }
-.whiteBox .item:last-child{
- border: none !important;
+
+.whiteBox .item:last-child {
+    border: none !important;
 }
+
 .liuYanImg {
-  position: absolute;
-  left: 615rpx;
-  top: 764rpx;
-  width: 120rpx;
+    position: absolute;
+    left: 615rpx;
+    top: 764rpx;
+    width: 120rpx;
 }
 
 .serviceTime {
-  position: absolute;
-  top: 1005rpx;
-  left: 220rpx;
-  width: 311rpx;
-  height: 30rpx;
-  font-size: 32rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
-  line-height: 32rpx;
+    position: absolute;
+    top: 1005rpx;
+    left: 220rpx;
+    width: 311rpx;
+    height: 30rpx;
+    font-size: 32rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
+    line-height: 32rpx;
 }
 
 .tel {
-  position: absolute;
-  top: 1087rpx;
-  left: 30rpx;
-  width: 276rpx;
-  height: 33rpx;
-  font-size: 42rpx;
-  font-family: SourceHanSansCN-Bold;
-  font-weight: bold;
-  color: rgba(88, 181, 48, 1);
-  line-height: 42rpx;
+    position: absolute;
+    top: 1087rpx;
+    left: 30rpx;
+    width: 276rpx;
+    height: 33rpx;
+    font-size: 42rpx;
+    font-family: SourceHanSansCN-Bold;
+    font-weight: bold;
+    color: rgba(88, 181, 48, 1);
+    line-height: 42rpx;
 }
 
 .call {
-  position: absolute;
-  top: 1066rpx;
-  left: 460rpx;
-  width: 260rpx;
-  height: 80rpx;
-  background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
-  border-radius: 10rpx;
+    position: absolute;
+    top: 1066rpx;
+    left: 460rpx;
+    width: 260rpx;
+    height: 80rpx;
+    background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
+    border-radius: 10rpx;
 }
 
 .call .text {
-  width: 125rpx;
-  height: 30rpx;
-  font-size: 32rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 1);
-  line-height: 30rpx;
+    width: 125rpx;
+    height: 30rpx;
+    font-size: 32rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    line-height: 30rpx;
 }

@@ -29,7 +29,7 @@
       <view class='text'>商品详情</view>
     </view>
     <view class='showDetail'>
-      <view class='detail1 oneLineStart'>
+      <view class='detail1 de_flexStyle'>
         <view class='name'>
           产地 :
         </view>
@@ -37,7 +37,7 @@
           {{productList.origin_place}}
         </view>
       </view>
-      <view class='detail2 oneLineStart'>
+      <view class='detail2 de_flexStyle'>
         <view class='name'>
           规格 :
         </view>
@@ -45,7 +45,7 @@
           {{productList.extends}}
         </view>
       </view>
-      <view class='detail3 oneLineStart'>
+      <view class='detail3 de_flexStyle'>
         <view class='name'>
           保质期:
         </view>
@@ -60,7 +60,7 @@
   </view>
   <view class='cart'>
     <view class='icon'>
-      <view>1</view>
+      <view>{{shoppingCartNum}}</view>
       <image src="../../assets/cart.png"></image>
     </view>
     <view class='gotoCart' bindtap='joinCart'>

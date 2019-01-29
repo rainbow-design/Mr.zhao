@@ -167,20 +167,23 @@
 .detail1 {
     height: 64rpx;
     border-bottom: 1px solid rgba(227, 228, 228, 1);
+    line-height: 64rpx;
 }
 
 .detail2 {
     height: 67rpx;
+    line-height: 67rpx;
     border-bottom: 1px solid rgba(243, 243, 243, 1);
 }
 
 .detail3 {
     height: 80rpx;
+    line-height: 80rpx;
     border-bottom: 1px solid rgba(243, 243, 243, 1);
 }
 
 .detail1, .detail2, .detail3 {
-    padding: 27rpx;
+    padding: 0 27rpx;
 }
 
 /* 购物车 */
@@ -239,4 +242,7 @@
     font-weight: 400;
     color: rgba(255, 255, 255, 1);
     line-height: 95rpx;
+}
+.de_flexStyle {
+  display: flex;
 }
