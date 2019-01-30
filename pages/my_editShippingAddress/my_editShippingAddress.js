@@ -209,7 +209,10 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        // 取消多余的事件订阅
+        // - 编辑时
+        wx.yue.remove("addAddress");
+        wx.yue.remove("editAddress_selectAddress");
     },
 
     /**

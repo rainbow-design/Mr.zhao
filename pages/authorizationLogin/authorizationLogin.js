@@ -147,7 +147,6 @@ Page({
           if (data.access_token) {
             app.globalData.access_token = data.access_token;
             Storage.setItem("token", data.access_token);
-            // wx.yue.pub("hasToken", data.access_token)
             y.delayToIndex();
           }
         })

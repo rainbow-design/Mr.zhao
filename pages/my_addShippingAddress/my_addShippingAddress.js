@@ -153,5 +153,18 @@ Page({
                 })
             }
         })
-    }
+    },
+    /**
+    * 生命周期函数--监听页面卸载
+    */
+    onUnload: function () {
+        // 取消多余的事件订阅
+        // - 添加时
+        wx.yue.remove("addAddress");
+        // 清除缓存的用户输入的数据
+        wx.Storage.removeItem("addAddress_cache");
+        // 清除缓存的位置数据
+        wx.Storage.removeItem("addAddress");
+        
+    },
 })

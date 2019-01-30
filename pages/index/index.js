@@ -209,14 +209,15 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
+        // 取消多余的事件订阅
+        wx.yue.remove("hasToken");
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+       
     },
 
     /**

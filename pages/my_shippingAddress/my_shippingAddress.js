@@ -33,8 +33,9 @@ Page({
   },
   toEdit(e) {
     var data = e.currentTarget.dataset;
+    var action = 'edit';
     wx.navigateTo({
-      url: `../my_editShippingAddress/my_editShippingAddress`
+      url: `../my_editShippingAddress/my_editShippingAddress?action=${action}`
     })
     wx.yue.pub("editAddress", data);
   },
