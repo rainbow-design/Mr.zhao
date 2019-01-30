@@ -153,6 +153,8 @@ App({
             url: `../index_inviteFriend/index_inviteFriend`
         })
     },
+
+    // 获取用户购物车的订单量
     getShoppingCartNum() {
         util.promiseRequest(api.cart_list, {})
             .then(res => {
@@ -164,12 +166,45 @@ App({
                     })
                     wx.Storage.setItem("shoppingCartNum", data.length);
                 } else {
+                    wx.Storage.setItem("shoppingCartNum", 0)
                     wx.removeTabBarBadge({
                         index: 2
                     })
                 }
 
             })
-    }
+    },
+    // 获取用户收货地址的条数
+    getMy_shippingAddressLength() {
+        var y = this;
+        util.promiseRequest(api.addr_list, {
+        })
+            .then(res => {
+                var data = res.data.response_data.lists;
+                console.log(data.length)
+                wx.Storage.setItem("myshippingAddressLength", data.length);
+            })
+    },
+    // 获取用户可以领取的优惠券
+    get_coupons(callback) {
+        util.promiseRequest(api.get_coupons, {}).then((res) => {
+            let data = res.data.response_data.lists;
+            typeof callback === 'function' ? callback(data) : '';
+        })
+    },
+    // 领取优惠券
+    receive_coupons(e, callback) {
+        let that = this;
+        util.promiseRequest(api.receive_coupons, {
+            id: e.currentTarget.dataset.id
+        }).then((res) => {
+            wx.showToast({
+                title: '领取成功',
+                icon: 'none',
+                duration: 2000
+            });
+            typeof callback === 'function' ? callback() : app.get_coupons();
+        })
+    },
 
 })

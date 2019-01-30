@@ -113,6 +113,7 @@
     display: flex;
     width: 750rpx;
     padding: 35rpx 17rpx 44rpx 17rpx;
+    align-content: flex-start!important;
 }
 
 .subMenuItem_img {
@@ -133,7 +134,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 104rpx;
+    width: 110rpx;
     padding: 0 10rpx;
 }
 
@@ -264,15 +265,16 @@
 .youhuiBox {
     position: relative;
     width: 79rpx;
+    height: 29rpx;
 }
 
 .youhuiText {
     position: absolute;
     left: 12rpx;
-    top: 5rpx;
+    top: 0;
     width: 56rpx;
     height: 15rpx;
-    line-height: 15rpx;
+    line-height: 29rpx;
     font-size: 16rpx;
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;

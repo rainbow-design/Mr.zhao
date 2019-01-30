@@ -67,11 +67,11 @@ Page({
             order_no: this.data.order_no,
             content: this.data.text,
             staff_id: this.data.staff_id,
-            staff_star: this.data.Qs_num,
+            staff_star: this.data.Ps_num,
             order_star: this.data.SJ_num,
             order_img: this.data.thumb.join(',')
         };
-        if (this.data.Qs_num == 0 || this.data.SJ_num == 0 || this.data.text.length == 0) {
+        if (this.data.Ps_num == 0 || this.data.SJ_num == 0 || this.data.text.length == 0) {
             wx.showToast({
                 title: '请填写完整',
                 icon: 'none',
@@ -80,7 +80,16 @@ Page({
         } else {
             util.promiseRequest(api.comment, params)
                 .then(res => {
-                    
+                    wx.showToast({
+                        title: '评论成功',
+                        icon: 'none',
+                        duration: 2000
+                    })
+                    setTimeout(function () {
+                        wx.navigateBack({
+                            delta: 1,
+                        })
+                    }, 1000)
                 })
         }
     },
@@ -89,9 +98,10 @@ Page({
      */
     onLoad: function(options) {
         this.setData({
-            order_no: options.num,
-            staff_id: options.id,
+            order_no: options.orderId,
+            staff_id: options.staffId,
         })
+        console.log(options)
     },
 
     /**

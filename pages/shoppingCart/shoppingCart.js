@@ -8,13 +8,15 @@ Page({
         noCartData: false,
         cartList: [],
         totalPrice: 0,
-        isCheckAll: true,
+        isCheckAll: true, // 初始化状态，刚开始就选中所有吗？
         startX: '', // 初始手指接触位置,
         delBtnWidth: 120,
         selectedOrderParam: [],
         globalAddress: {},
         addr_id: '',
-        shoppingCartNum: 0 // 购物车商品数量
+        shoppingCartNum: 0, // 购物车商品数量
+        isPlus: false, // 是否是会员
+        allData:{}
     },
     changeCart(id, num) {
         let params = {
@@ -28,10 +30,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        // wx.setTabBarBadge({
-        //   index: 0,
-        //   text: '1'
-        // })
+
     },
 
     /** 
@@ -55,9 +54,19 @@ Page({
     },
     toSelectAddress() {
         var address = wx.Storage.getItem('address');
-        wx.navigateTo({
-            url: `../selectAddress/selectAddress?address=${address}`
-        })
+        var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
+        if (myshippingAddressLength > 0) {
+            // 有收货地址
+            wx.navigateTo({
+                url: `../selectAddress/selectAddress?address=${address}`
+            })
+        } else {
+            // 去新增收货地址
+            wx.navigateTo({
+                url: `../my_addShippingAddress/my_addShippingAddress`
+            })
+        }
+
     },
 
     // 开始滑动事件
@@ -118,12 +127,7 @@ Page({
         }
     },
     delItem(e) {
-        var index = e.currentTarget.dataset.index;
-        var list = this.data.cartList;
-        list.splice(index, 1);
-        this.setData({
-            cartList: list
-        })
+        
     },
 
     showCartList() {
@@ -136,7 +140,8 @@ Page({
                 var shoppingCartNum = 0;
                 if (data === "" || data.length === 0) {
                     y.setData({
-                        noCartData: true
+                        noCartData: true,
+                        allData: res.data.response_data
                     })
                 } else {
                     shoppingCartNum = data.length;
@@ -151,9 +156,13 @@ Page({
                         text: String(shoppingCartNum)
                     })
                     console.log(data)
+                    // 是否是plus会员
+                    var isPlus = data[0].is_plus === '0' ? false : true;
                     y.setData({
+                        isPlus: isPlus,
                         cartList: data,
                         noCartData: false,
+                        allData: res.data.response_data,
                         shoppingCartNum: shoppingCartNum
                     })
                     if (y.data.isCheckAll) {
@@ -181,15 +190,33 @@ Page({
     getTotalPrice(data) {
         var data = data || this.data.cartList;
         let cost = 0;
-        data.forEach(item => {
-            item.y_isCheck ? cost += item.price * item.num : '';
-        });
+        let isPlus = this.data.isPlus;
+        console.log('是否是 plus 会员' + this.data.isPlus);
+        if (!isPlus) {
+            // 非会员
+            data.forEach(item => {
+                item.y_isCheck ? cost += item.price * item.num : '';
+            });
 
-        cost = util.toFixed(Number(cost), 2);
+            cost = util.toFixed(Number(cost), 2);
 
-        this.setData({
-            totalPrice: cost
-        })
+            this.setData({
+                totalPrice: cost
+            })
+        } else {
+            // plus 会员 价格
+            data.forEach(item => {
+                let dazhe = Number(item.plus) / 10;
+                item.y_isCheck ? cost += item.price * dazhe * item.num : '';
+            });
+
+            cost = util.toFixed(Number(cost), 2);
+
+            this.setData({
+                totalPrice: cost
+            })
+        }
+
 
     },
     checkGoods(e) {
@@ -245,7 +272,10 @@ Page({
         var result = [];
         var cartList = this.data.cartList;
         cartList.forEach(v => {
-            v.y_isCheck ? result.push({ "goods_id": v.goods_id, "num": v.num }) : '';
+            v.y_isCheck ? result.push({
+                "goods_id": v.goods_id,
+                "num": v.num
+            }) : '';
         })
         this.setData({
             selectedOrderParam: result
@@ -326,6 +356,16 @@ Page({
                 })
             })
 
+    },
+    selectAnotherAddress() {
+        var address = wx.Storage.getItem('address');
+        var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
+        if (myshippingAddressLength > 1) {
+            // 有收货地址
+            wx.navigateTo({
+                url: `../selectAddress/selectAddress?address=${address}`
+            })
+        }
     },
     toShop() {
         wx.switchTab({

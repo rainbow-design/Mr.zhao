@@ -9,8 +9,7 @@ Page({
    */
   data: {
     showCallTelMask: false,
-    userInfo: {}
-
+    userInfo: {},
   },
 
   /**

@@ -190,7 +190,7 @@ swiper {
 
 .imgsBox .item {
     width: 160rpx;
-    height: 106rpx;
+    height: 105rpx;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(240, 240, 240, 1);
     border-radius: 10rpx;

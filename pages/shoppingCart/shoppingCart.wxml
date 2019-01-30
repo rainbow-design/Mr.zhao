@@ -9,7 +9,7 @@
   </block>
   <block wx:if="{{!noCartData}}">
     <block wx:if="{{globalAddress.address}}">
-      <view class='address'>
+      <view class='address' bindtap='selectAnotherAddress'>
         <view class='whiteBox'>
           <view class='zhuzhi'>
             <view class='greenBox'>
@@ -98,7 +98,7 @@
           <view class='name'>合计:
             <view class='price'>¥{{totalPrice}}</view>
           </view>
-          <view class='content'>满50元免配送费</view>
+          <view class='content'>满{{allData.devery_info[0].limit}}元免配送费</view>
         </view>
       </view>
       <view class='rightBox' bindtap='toConfirm_Order'>

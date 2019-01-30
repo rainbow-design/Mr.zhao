@@ -1,90 +1,97 @@
 <view class="shoppingCart maskContent">
-  <view class='gap_state '></view>
-  <view class='stateName center'>
-    <image src="../../assets/icon/state.png" mode='widthFix' style='width:69rpx;'> </image>
-    <view class='now_name'>待付款</view>
-  </view>
-  <view class='address'>
-    <view class='whiteBox'>
-      <image class='toRight' src="../../assets/icon/toRightH40.png" style='width:19rpx;' mode='widthFix'></image>
-      <view class='zhuzhi'>
-        <view class='greenBox'>
-          <view class='keyword'>
-            住宅
-          </view>
+    <view class='gap_state '></view>
+    <view class='stateName center'>
+        <image src="../../assets/icon/state.png" mode='widthFix' style='width:69rpx;'> </image>
+        <view class='now_name'>{{orderData.status == 1 ? '待付款' : orderData.status == 2 ? '待配送' : orderData.status == 3 ? '配送中' : orderData.status == 4 ? '已完成' : orderData.status == 5 ? '已取消' : orderData.status == 6 ? '已评论' : ''}}</view>
+    </view>
+    <view class='address'>
+        <view class='whiteBox'>
+            <view class='zhuzhi'>
+                <view class='greenBox'>
+                    <view class='keyword'>
+                        住宅
+                    </view>
+                </view>
+                {{orderData.con_address}}
+            </view>
+            <view class='presonInfo'>
+                {{orderData.user_name}} {{orderData.mobile}}
+            </view>
         </view>
-        北京市 朝阳区 美景东方4号楼324号 楼324号楼322
-      </view>
-      <view class='presonInfo'>
-        李洋 18284923857
-      </view>
     </view>
-  </view>
-  <view class='foods' style='margin-top:20rpx;'>
-    <view class='titleBox oneLineBetween'>
-      <view class='name'>配送时间</view>
-      <view class='toPeisong center'>立即配送
-        <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
-      </view>
+    <view class='foods' style='margin-top:20rpx;'>
+        <view class='titleBox oneLineBetween'>
+            <view class='name'>配送时间</view>
+            <view class='toPeisong center'>
+                {{orderData.delivery_time}}
+            </view>
 
-    </view>
-    <view class='imageBox red'>
+        </view>
+        <view class='imageBox'>
 
-      <scroll-view scroll-x class='foodsImgs' bindtap='toProductList' style="white-space: nowrap;">
-        <image></image>
-        <image></image>
-        <image></image>
-        <image></image>
-        <image></image>
-        <image></image>
-      </scroll-view>
-      <view class='Count center'>共354件
-        <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
-      </view>
-    </view>
-  </view>
-
-  <view class='detail'>
-    <view class='line border_bottom oneLineBetween'>
-      <view class='name'>商品总价</view>
-      <view class='content'>￥101.8</view>
-    </view>
-    <view class='line2 border_bottom oneLineBetween'>
-      <view class='name'>配送费</view>
-      <view class='content'>￥101.8</view>
-    </view>
-    <view class='line2 border_bottom oneLineBetween'>
-      <view class='name'>优惠立减</view>
-      <view class='content content_orange'>￥101.8</view>
+            <scroll-view scroll-x class='foodsImgs' bindtap='toProductList' style="white-space: nowrap;">
+                <image wx:for="{{orderData.thumb_img}}" wx:key="{{item}}" src="{{filter.filterImgUrl(item)}}"></image>
+            </scroll-view>
+            <view class='Count center'>共{{orderData.count}}件
+                <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
+            </view>
+        </view>
     </view>
 
-    <view class='line2 border_bottom oneLineBetween'>
-      <view class='name'>优惠券</view>
-      <view class='content content_orange' bindtap='toCoupon'>1张可用
-        <image mode="widthFix" src="../../assets/icon/toRightH40.png"></image>
-      </view>
-    </view>
-    <view class='line3 border_bottom oneLineBetween' style='height:100rpx;'>
-      <view class='name_normal'>当前有40积分（满50积分可用）</view>
-      <view class='content content_orange oneLineEnd'>- ￥0.56
-        <image style='width:30rpx;margin-left:25rpx;' src="../../assets/icon/right_plus.png" mode='widthFix'></image>
-      </view>
-    </view>
-    <view class='lineLast oneLineEnd'>
-      <view class='heJiName'>付款:
-        <view class='price'>¥91.8</view>
-      </view>
-    </view>
+    <view class='detail'>
+        <view class='line border_bottom oneLineBetween'>
+            <view class='name'>商品总价</view>
+            <view class='content'>￥{{orderData.pay_info.amount}}</view>
+        </view>
+        <view class='line2 border_bottom oneLineBetween'>
+            <view class='name'>配送费</view>
+            <view class='content'>￥{{orderData.pay_info.delivery_fee}}</view>
+        </view>
+        <view class='line2 border_bottom oneLineBetween'>
+            <view class='name'>会员优惠金额</view>
+            <view class='content content_orange'>￥{{orderData.pay_info.sale_price}}</view>
+        </view>
 
-  </view>
-  <view class='gap_state ' style='height:202rpx;'></view>
-  <view class='fixedBottom'>
-    <view class='leftBox'>
-      取消订单
+        <view class='line2 border_bottom oneLineBetween'>
+            <view class='name'>优惠券优惠金额</view>
+            <view class='content content_orange'>￥{{orderData.pay_info.coupons_money || 0}}</view>
+        </view>
+        <view class='line2 border_bottom oneLineBetween'>
+            <view class='name'> 使用积分</view>
+            <view class='content content_orange'>{{orderData.pay_info.use_score}}</view>
+        </view>
+
+        <view class='lineLast oneLineEnd'>
+            <view class='heJiName'>付款:
+                <view class='price'>¥{{orderData.money}}</view>
+            </view>
+        </view>
+
     </view>
-    <view class='rightBox' bindtap='toPay'>
-      <view class='text'>去支付</view>
-      <image class='toRight' mode="widthFix" src="../../assets/icon/toRight.png"></image>
+    <view class='gap_state ' style='height:202rpx;'></view>
+    <view class='fixedBottom' wx:if='{{orderData.status == 1}}'>
+        <view class='leftBox' bindtap='cancel'>取消订单</view>
+        <view class='rightBox'>
+            <view class='text'>去支付</view>
+            <image class='toRight' mode="widthFix" src="../../assets/icon/toRight.png"></image>
+        </view>
     </view>
-  </view>
+    <view class='fixedBottomB' wx:if='{{orderData.status == 3}}'>
+        <view class='rightBoxB' bindtap='confirm'>
+            <view class='textB'>确认收货</view>
+            <image class='toRightB' mode="widthFix" src="../../assets/icon/toRight.png"></image>
+        </view>
+    </view>
+    <view class='fixedBottomB' wx:if='{{orderData.status == 4}}'>
+        <view class='rightBoxB' bindtap='toEvaluation'>
+            <view class='textB'>评论</view>
+            <image class='toRightB' mode="widthFix" src="../../assets/icon/toRight.png"></image>
+        </view>
+    </view>
+    <view class='fixedBottomB' wx:if='{{orderData.status == 5 || orderData.status == 6}}'>
+        <view class='rightBoxB' bindtap='again'>
+            <view class='textB'>再来一单</view>
+            <image class='toRightB' mode="widthFix" src="../../assets/icon/toRight.png"></image>
+        </view>
+    </view>
 </view>

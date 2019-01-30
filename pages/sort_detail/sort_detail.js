@@ -32,7 +32,7 @@ Page({
         })
     },
     joinCart() {
-        
+        var y = this;
         let params = {
             goods_id: this.data.id,
             type: 1,
@@ -46,6 +46,9 @@ Page({
                 icon: 'none',
                 duration: 500,
                 complete: function () {
+                    y.setData({
+                        shoppingCartNum: wx.Storage.getItem("shoppingCartNum")
+                    })
                     setTimeout(() => {
                         wx.switchTab({
                             url: '../shoppingCart/shoppingCart'
@@ -59,6 +62,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        console.log(wx.Storage.getItem("shoppingCartNum"))
         this.setData({
             id: options.id,
         })
@@ -76,7 +80,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        console.log(wx.Storage.getItem("shoppingCartNum"))
     },
 
     /**

@@ -8,7 +8,7 @@
                     <image mode='widthFix' src="../../assets/icon/close.png" style='width:32rpx;' bindtap='closeCoupon'></image>
                 </view>
                 <scroll-view class="scroll_a" scroll-y="true" style='padding-bottom:92rpx;box-sizing:border-box;white-space:nowrap'>
-                    <block wx:for="{{card}}" wx:key="">
+                    <block wx:for="{{card}}" wx:key="{{item}}">
                         <view class='ticket'>
                             <view class='get' bindtap='receive_coupons' data-id="{{item.id}}">领取</view>
                             <view class='upBox'>

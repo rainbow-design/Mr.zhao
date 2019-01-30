@@ -29,21 +29,10 @@
     height: 80rpx;
     background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
     border-radius: 10rpx;
-    color:rgba(255,255,255,1);
-    font-size:30rpx;
-}
-
-.shouQuanBtn2 {
-    top: 281rpx;
-    width: 124rpx;
-    height: 28rpx;
-    font-size: 30rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
     color: rgba(255, 255, 255, 1);
-    line-height: 28rpx;
+    font-size: 30rpx;
     text-align: center;
-    
+    line-height: 80rpx;
 }
 
 .zhaoAvator {

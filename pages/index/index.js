@@ -17,8 +17,8 @@ Page({
         hasYouhuiquan: false, // 首页领取优惠券？
         indicatorDots: false,
         swiperCurrent: 0,
+        card: [],// 优惠券的数量
         bannerList: [], //轮播图
-        RootUrl: api.RootUrl,
         categoryList: [],
         productList: [],
         shortAddress: '',
@@ -80,7 +80,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         this.getLocation();
         this.getCetegoryList();
         this.getProductList();
@@ -106,8 +106,8 @@ Page({
             success(res) {
                 if (res.code) {
                     util.promiseRequest(api.login, {
-                            wxcode: res.code
-                        })
+                        wxcode: res.code
+                    })
                         .then(response => {
                             var data = response.data.response_data;
                             if (data && data.result === true) {
@@ -130,16 +130,30 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
         this.getBannerList();
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
-        wx.yue.sub("hasToken", function() {
+    onShow: function () {
+        var y = this;
+        wx.yue.sub("hasToken", function () {
+            // 获取优惠券
+            app.get_coupons(function (data) {
+                console.log(data);
+                if (data.length > 0) {
+                    y.setData({
+                        hasYouhuiquan: true,
+                        card: data
+                    })
+                }
+            });
+            // 获取购物车订单数
             app.getShoppingCartNum();
+            // 获取用户收货地址条数
+            app.getMy_shippingAddressLength();
         })
         var globalAddress = wx.Storage.getItem("globalAddress");
         if (globalAddress) {
@@ -147,6 +161,24 @@ Page({
                 globalAddress: globalAddress
             })
         }
+    },
+    // 领取优惠券
+    receive_coupons(e) {
+        let that = this;
+        app.receive_coupons(e, function () {
+            app.get_coupons(function (data) {
+                that.setData({
+                    card: data,
+                    total: data.length
+                })
+                if (data.length === 0) {
+                    that.setData({
+                        hasYouhuiquan: false
+                    })
+
+                }
+            });
+        });
     },
     closeYouhuoquan() {
         this.setData({
@@ -160,7 +192,7 @@ Page({
             Storage.setItem("lat", lat)
             Storage.setItem("lng", lng)
             // 位置信息
-            util.getCityInfo(lat, lng, mapKey, function(cityInfo) {
+            util.getCityInfo(lat, lng, mapKey, function (cityInfo) {
                 console.log(cityInfo);
                 var shortAddress = cityInfo.address_component.street_number;
                 Storage.setItem("shortAddress", shortAddress)
@@ -176,40 +208,40 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     },
     getBannerList() {
         var y = this;
-        util.getDataCommon(api.banner, {}, function(res) {
+        util.getDataCommon(api.banner, {}, function (res) {
             y.setData({
                 bannerList: res
             })

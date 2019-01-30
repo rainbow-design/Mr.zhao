@@ -21,10 +21,10 @@
 
     <swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
         <swiper-item>
-            <scroll-view scroll-y style="white-space: nowrap;height:100%;">
+            <scroll-view scroll-y style="white-space: nowrap;height:100%;" bindscrolltolower="updateData">
                 <!----------- 全部--------start -->
                 <view class='allOrder'>
-                    <view class='order' wx:for="{{selectTabData}}" wx:key="{{item}}" bindtap='toPay'>
+                    <view class='order' wx:for="{{selectTabData}}" wx:key="{{item}}" data-statename="{{item.status_name}}" data-state="{{item.status}}" data-id="{{item.order_no}}" bindtap='toDetail'>
                         <view class='message oneLineBetween'>
                             <view class='date'>{{item.create_time}}</view>
                             <view class='action'>{{item.status_name}}</view>
@@ -35,7 +35,6 @@
                                     <image src="{{filter.filterImgUrl(item)}}"></image>
                                 </view>
                             </scroll-view>
-
                         </view>
                         <view class='bottomBox oneLineEnd'>
                             <block wx:if="{{item.status ==1}}">
@@ -44,17 +43,15 @@
                                 </view>
                             </block>
                             <block wx:elif="{{item.status ==3}}">
-                                <view class='greenBox' bindtap='toPay'>
+                                <view class='greenBox' catchtap='confirm' data-order="{{item.order_no}}" style='width:139rpx;'>
                                     <view class='text'>确认收货</view>
                                 </view>
                             </block>
                             <block wx:elif="{{item.status ==4}}">
-                                <view class='greenBox' style='width:139rpx;'>
-                                    <view class='text'>再来一单</view>
+                                <view class='greenBox' data-id="{{item.order_no}}" data-staffer="{{item.staffer}}" bindtap='toEvaluation'>
+                                    <view class='text'>去评价</view>
                                 </view>
-                            </block>
-                            <block wx:elif="{{item.status ==5}}">
-                                <view class='greenBox' style='width:139rpx;'>
+                                <view class='greenBox' style='width:139rpx;margin-left:10rpx' data-id="{{item.order_no}}" bindtap='again'>
                                     <view class='text'>再来一单</view>
                                 </view>
                             </block>
@@ -78,10 +75,10 @@
             </scroll-view>
         </swiper-item>
         <swiper-item>
-            <scroll-view scroll-y style="white-space: nowrap;height:100%;">
+            <scroll-view scroll-y style="white-space: nowrap;height:100%;" bindscrolltolower="updateData">
                 <!----------- 待支付--------start -->
                 <view class='allOrder'>
-                    <view class='order' wx:for="{{selectTabData}}" wx:key="{{item}}" bindtap='toPay'>
+                    <view class='order' wx:for="{{selectTabData}}" wx:key="{{item}}" data-statename="{{item.status_name}}" data-state="{{item.status}}" data-id="{{item.order_no}}" bindtap='toDetail'>
                         <view class='message oneLineBetween'>
                             <view class='date'>{{item.create_time}}</view>
                             <view class='action'>{{item.status_name}}</view>
@@ -95,27 +92,9 @@
 
                         </view>
                         <view class='bottomBox oneLineEnd'>
-                            <block wx:if="{{item.status ==1}}">
-                                <view class='greenBox' bindtap='toPay'>
-                                    <view class='text'>去支付</view>
-                                </view>
-                            </block>
-                            <block wx:elif="{{item.status ==3}}">
-                                <view class='greenBox' bindtap='toPay'>
-                                    <view class='text'>确认收货</view>
-                                </view>
-                            </block>
-                            <block wx:elif="{{item.status ==4}}">
-                                <view class='greenBox' style='width:139rpx;'>
-                                    <view class='text'>再来一单</view>
-                                </view>
-                            </block>
-                            <block wx:elif="{{item.status ==5}}">
-                                <view class='greenBox' style='width:139rpx;'>
-                                    <view class='text'>再来一单</view>
-                                </view>
-                            </block>
-
+                            <view class='greenBox' bindtap='toPay'>
+                                <view class='text'>去支付</view>
+                            </view>
                             <view class='heijiBox'>
                                 <view class='name'>合计：</view>
                                 <view class='price'>¥{{item.money}}</view>
@@ -135,29 +114,64 @@
             </scroll-view>
         </swiper-item>
         <swiper-item>
-            <scroll-view scroll-y style="white-space: nowrap;height:100%;">
-                <!----------- 配送中--------start -->
+            <scroll-view scroll-y style="white-space: nowrap;height:100%;" bindscrolltolower="updateData">
+                <!----------- 待配送--------start -->
                 <view class='allOrder'>
-                    <view class='order' wx:for="{{selectTabData}}" wx:key="{{item}}">
+                    <view class='order' wx:for="{{selectTabData}}" wx:key="{{item}}" data-statename="{{item.status_name}}" data-state="{{item.status}}" data-id="{{item.order_no}}" bindtap='toDetail'>
                         <view class='message oneLineBetween'>
-                            <view class='date'>2018-12-18 16:35:38</view>
-                            <view class='action'>配送中</view>
+                            <view class='date'>{{item.create_time}}</view>
+                            <view class='action'>{{item.status_name}}</view>
                         </view>
                         <view class='imgsBox oneLineStart'>
-                            <view class='item center'>
-                                <image></image>
-                            </view>
-                            <view class='item center'>
-                                <image></image>
-                            </view>
+                            <scroll-view scroll-x class='foodsImgs oneLineStart' style="white-space: nowrap;">
+                                <view class='item center' wx:for="{{item.thumb_img}}" wx:key="{{item}}">
+                                    <image src="{{filter.filterImgUrl(item)}}"></image>
+                                </view>
+                            </scroll-view>
                         </view>
                         <view class='bottomBox oneLineEnd'>
-                            <view class='greenBox' bindtap='toEvaluation'>
-                                <view class='text'>去评价</view>
+
+                            <view class='heijiBox'>
+                                <view class='name'>合计：</view>
+                                <view class='price'>¥{{item.money}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <!----------- 待配送--------end -->
+                <!-- 无数据项 start -->
+                <block wx:if="{{selectTabData.length === 0}}">
+                    <view class='nodata columnBetween'>
+                        <image src="../../assets/nodata/order.png" mode="widthFix" style='width:430rpx;'></image>
+                        <view class='nodata_content'>您还没有相关订单</view>
+                    </view>
+                </block>
+                <!-- 无数据项 end -->
+            </scroll-view>
+        </swiper-item>
+        <swiper-item>
+            <scroll-view scroll-y style="white-space: nowrap;height:100%;" bindscrolltolower="updateData">
+                <!----------- 配送中--------start -->
+                <view class='allOrder'>
+                    <view class='order' wx:for="{{selectTabData}}" wx:key="{{item}}" data-statename="{{item.status_name}}" data-state="{{item.status}}" data-id="{{item.order_no}}" bindtap='toDetail'>
+                        <view class='message oneLineBetween'>
+                            <view class='date'>{{item.create_time}}</view>
+                            <view class='action'>{{item.status_name}}</view>
+                        </view>
+                        <view class='imgsBox oneLineStart'>
+                            <scroll-view scroll-x class='foodsImgs oneLineStart' style="white-space: nowrap;">
+                                <view class='item center' wx:for="{{item.thumb_img}}" wx:key="{{item}}">
+                                    <image src="{{filter.filterImgUrl(item)}}"></image>
+                                </view>
+                            </scroll-view>
+                        </view>
+                        <view class='bottomBox oneLineEnd'>
+                            <view class='greenBox' catchtap='confirm' data-order="{{item.order_no}}" style='width:139rpx;'>
+                                <view class='text'>确认收货</view>
                             </view>
                             <view class='heijiBox'>
                                 <view class='name'>合计：</view>
-                                <view class='price'>¥10.00</view>
+                                <view class='price'>¥{{item.money}}</view>
                             </view>
                         </view>
                     </view>
@@ -174,26 +188,31 @@
             </scroll-view>
         </swiper-item>
         <swiper-item>
-            <scroll-view scroll-y style="white-space: nowrap;height:100%;">
+            <scroll-view scroll-y style="white-space: nowrap;height:100%;" bindscrolltolower="updateData">
                 <!----------- 已完成--------start -->
                 <view class='allOrder'>
-                    <view class='order' wx:for="{{selectTabData}}" wx:key="{{item}}">
+                    <view class='order' wx:for="{{selectTabData}}" wx:key="{{item}}" data-statename="{{item.status_name}}" data-state="{{item.status}}" data-id="{{item.order_no}}" bindtap='toDetail'>
                         <view class='message oneLineBetween'>
-                            <view class='date'>2018-12-18 16:35:38</view>
-                            <view class='action'>已完成</view>
+                            <view class='date'>{{item.create_time}}</view>
+                            <view class='action'>{{item.status_name}}</view>
                         </view>
                         <view class='imgsBox oneLineStart'>
-                            <view class='item center'>
-                                <image></image>
-                            </view>
-                            <view class='item center'>
-                                <image></image>
-                            </view>
+                            <scroll-view scroll-x class='foodsImgs oneLineStart' style="white-space: nowrap;">
+                                <view class='item center' wx:for="{{item.thumb_img}}" wx:key="{{item}}">
+                                    <image src="{{filter.filterImgUrl(item)}}"></image>
+                                </view>
+                            </scroll-view>
                         </view>
                         <view class='bottomBox oneLineEnd'>
+                            <view class='greenBox' data-id="{{item.order_no}}" data-staffer="{{item.staffer}}" bindtap='toEvaluation'>
+                                <view class='text'>去评价</view>
+                            </view>
+                            <view class='greenBox' style='width:139rpx;margin-left:10rpx' data-id="{{item.order_no}}" bindtap='again'>
+                                <view class='text'>再来一单</view>
+                            </view>
                             <view class='heijiBox'>
                                 <view class='name'>合计：</view>
-                                <view class='price'>¥10.00</view>
+                                <view class='price'>¥{{item.money}}</view>
                             </view>
                         </view>
                     </view>

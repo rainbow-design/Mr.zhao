@@ -28,10 +28,10 @@
 
     </view>
     <view class='imageBox'>
-      <scroll-view scroll-x class='foodsImgs' bindtap='toProductList' style="white-space: nowrap;">
+      <scroll-view scroll-x class='foodsImgs' style="white-space: nowrap;">
         <image wx:for="{{goodsInfo}}" wx:key="{{item}}" src="{{filter.filterImgUrl(item.thumb_img)}}"></image>
       </scroll-view>
-      <view class='Count'>共{{count}}件
+      <view class='Count'  bindtap='toProductList'>共{{count}}件
         <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
       </view>
     </view>

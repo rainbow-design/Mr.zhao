@@ -76,19 +76,19 @@
 .contentBox .youhuiBox {
     position: relative;
     width: 79rpx;
-    text-align: center;
+    height: 29rpx;
 }
 
 .youhuiText {
     position: absolute;
     left: 12rpx;
-    top: 5rpx;
+    top: 0;
     height: 15rpx;
     font-size: 16rpx;
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;
     color: rgba(88, 181, 48, 1);
-    line-height: 15rpx;
+    line-height: 29rpx;
 }
 
 .bottomText {

@@ -1,72 +1,74 @@
 <import src="../../component/wxParse/wxParse.wxml" />
 <view class="goodsDetail">
-  <view class='imgText'>
-    <swiper indicator-dots="true" circular="true" indicator-color="#F4F7FB" autoplay="true" indicator-active-color="#4C9C29" class="foodsImg">
-      <block wx:key="" wx:for="{{productList.head_img}}">
-        <swiper-item class="swiper_item">
-          <image class="swiper_item_img" src="{{item}}"></image>
-        </swiper-item>
-      </block>
-    </swiper>
-    <view class='sellCount'>已售{{productList.sale_num}}份</view>
-    <view class='contentBox flexStyle'>
-      <view class='title line-clamp'>
-        {{productList.name}}
-      </view>
-      <view class='introduction line-clamp'> {{productList.desc}} </view>
-      <view class='price nowrap'>¥{{productList.price}}</view>
-      <view class='offerPrice nowrap'>¥{{productList.plus_price}}
-        <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-          <view class='youhuiText'>会员{{productList.plus}}折</view>
-        </image>
-      </view>
-      <view class='bottomText'>{{productList.is_stock}}{{productList.send_desc}}</view>
-    </view>
-  </view>
-  <view class='gap' style='height:21rpx;'></view>
-  <view class='bottomDetail'>
-    <view class='title'>
-      <view class='text'>商品详情</view>
-    </view>
-    <view class='showDetail'>
-      <view class='detail1 de_flexStyle'>
-        <view class='name'>
-          产地 :
+    <view class='imgText'>
+        <swiper indicator-dots="true" circular="true" indicator-color="#F4F7FB" autoplay="true" indicator-active-color="#4C9C29" class="foodsImg">
+            <block wx:key="" wx:for="{{productList.head_img}}">
+                <swiper-item class="swiper_item">
+                    <image class="swiper_item_img" src="{{item}}"></image>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class='sellCount'>已售{{productList.sale_num}}份</view>
+        <view class='contentBox flexStyle'>
+            <view class='title line-clamp'>
+                {{productList.name}}
+            </view>
+            <view class='introduction line-clamp'> {{productList.desc}} </view>
+            <view class='price nowrap'>¥{{productList.price}}</view>
+            <view class='offerPrice nowrap'>¥{{productList.plus_price}}
+                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+                    <view class='youhuiText'>会员{{productList.plus}}折</view>
+                </image>
+            </view>
+            <view class='bottomText'>{{productList.is_stock}}{{productList.send_desc}}</view>
         </view>
-        <view class='data'>
-          {{productList.origin_place}}
-        </view>
-      </view>
-      <view class='detail2 de_flexStyle'>
-        <view class='name'>
-          规格 :
-        </view>
-        <view class='data'>
-          {{productList.extends}}
-        </view>
-      </view>
-      <view class='detail3 de_flexStyle'>
-        <view class='name'>
-          保质期:
-        </view>
-        <view class='data'>
-          {{productList.shelf_life}}
-        </view>
-      </view>
     </view>
-    <view class='render'>
-      <template class="textarea" is="wxParse" data="{{wxParseData:detailTextt.nodes}}" />
+    <view class='gap' style='height:21rpx;'></view>
+    <view class='bottomDetail'>
+        <view class='title'>
+            <view class='text'>商品详情</view>
+        </view>
+        <view class='showDetail'>
+            <view class='detail1 de_flexStyle'>
+                <view class='name'>
+                    产地 :
+                </view>
+                <view class='data'>
+                    {{productList.origin_place}}
+                </view>
+            </view>
+            <view class='detail2 de_flexStyle'>
+                <view class='name'>
+                    规格 :
+                </view>
+                <view class='data'>
+                    {{productList.extends}}
+                </view>
+            </view>
+            <view class='detail3 de_flexStyle'>
+                <view class='name'>
+                    保质期:
+                </view>
+                <view class='data'>
+                    {{productList.shelf_life}}
+                </view>
+            </view>
+        </view>
+        <view class='render'>
+            <template class="textarea" is="wxParse" data="{{wxParseData:detailTextt.nodes}}" />
+        </view>
     </view>
-  </view>
-  <view class='cart'>
-    <view class='icon'>
-      <view>{{shoppingCartNum}}</view>
-      <image src="../../assets/cart.png"></image>
+    <view class='cart'>
+        <view class='icon'>
+            <block wx:if="{{(shoppingCartNum - 0) > 0}}">
+                <view>{{shoppingCartNum}}</view>
+            </block>
+            <image src="../../assets/cart.png"></image>
+        </view>
+        <view class='gotoCart' bindtap='joinCart'>
+            <view class='text'>
+                加入购物车
+            </view>
+        </view>
     </view>
-    <view class='gotoCart' bindtap='joinCart'>
-      <view class='text'>
-        加入购物车
-      </view>
-    </view>
-  </view>
 </view>

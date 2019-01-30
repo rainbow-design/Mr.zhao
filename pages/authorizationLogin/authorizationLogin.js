@@ -41,6 +41,7 @@ Page({
           })
             .then(response => {
               var data = response.data.response_data;
+              console.log(data)
               if (data && data.result === true) {
                 //已登录 true
                 // 直接存储数据

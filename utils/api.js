@@ -27,6 +27,8 @@ var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
     order_detail = RootUrl + "rest/2.0/category/order/order_detail", // 订单详情
     can_use_coupons = RootUrl + "rest/2.0/category/order/can_use_coupons", // 可使用的优惠券列表
     comment = RootUrl + "rest/2.0/category/order/comment", // 可使用的优惠券列表
+    confirm_goods = RootUrl + "rest/2.0/category/order/confirm_goods", // 可使用的优惠券列表
+    once_again_order = RootUrl + "rest/2.0/category/order/once_again_order", // 可使用的优惠券列表
 
     //个人中心
     basicInfo = RootUrl + "rest/2.0/user/user/basic_info", // 用户基本资料
@@ -79,6 +81,8 @@ module.exports = {
     order_detail,
     can_use_coupons,
     comment,
+    confirm_goods,
+    once_again_order,
     // 我的
     basicInfo,
     add_user_info,

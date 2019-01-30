@@ -38,7 +38,7 @@
 
 .deleteBtn {
     position: absolute;
-    top: 0;
+    top: -2rpx;
     right: -120rpx;
     height: 203rpx;
     /* width: 120rpx; */
@@ -246,15 +246,16 @@
 .youhuiBox {
     position: relative;
     width: 79rpx;
+    height: 29rpx;
 }
 
 .youhuiText {
     position: absolute;
     left: 12rpx;
-    top: 5rpx;
+    top: 0;
     width: 56rpx;
     height: 15rpx;
-    line-height: 15rpx;
+    line-height: 29rpx;
     font-size: 16rpx;
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;
