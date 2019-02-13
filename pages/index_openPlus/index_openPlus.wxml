@@ -1,40 +1,40 @@
 <view class="openPlus maskContent">
-  <block wx:if="{{!kaiTong}}">
-    <view class='priceList'>
-      <view class='taocan oneLineBetween'>
-        <view class='item columnBetween {{ defaultIndex === index ? "item_act":"" }}' wx:for="{{initData}}" wx:key="{{item.id}}">
-          <view class='bg'></view>
-          <image class='select' mode='widthFix' src='{{defaultIndex === index ? checked : normal}}' data-index="{{index}}" bindtap='selectTaocan'></image>
-          <view class='date'>{{item.length}}</view>
-          <view class='money'>¥{{item.price}}
-            <view class='gray'>{{item.describe}}</view>
-          </view>
+    <block wx:if="{{!kaiTong}}">
+        <view class='priceList'>
+            <view class='taocan oneLineBetween'>
+                <view class='item columnBetween {{ defaultIndex === index ? "item_act":"" }}' wx:for="{{initData}}" wx:key="{{item.id}}" data-index="{{index}}" bindtap='selectTaocan'>
+                    <view class='bg'></view>
+                    <image class='select' mode='widthFix' src='{{defaultIndex === index ? checked : normal}}'></image>
+                    <view class='date'>{{item.length}}</view>
+                    <view class='money'>¥{{item.price}}
+                        <view class='gray'>{{item.describe}}</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 套餐模块结束 -->
+            <view class='tishi'>
+                需支付:¥{{price}}
+            </view>
+            <view class='webchectLine oneLineBetween'>
+                <view class='leftBox'>
+                    <image style='width:68rpx;' src="../../assets/icon/webchat.png" mode='widthFix'></image>
+                </view>
+                <view class='textBox columnBetweenStart'>
+                    <view class='up'>微信支付</view>
+                    <view class='under'>亿万用户的选择，更快更安全</view>
+                </view>
+                <image class='webchact_right' src="../../assets/icon/right_plus.png" mode='widthFix'></image>
+            </view>
         </view>
-      </view>
-      <!-- 套餐模块结束 -->
-      <view class='tishi'>
-        需支付:¥38
-      </view>
-      <view class='webchectLine oneLineBetween'>
-        <view class='leftBox'>
-          <image style='width:68rpx;' src="../../assets/icon/webchat.png" mode='widthFix'></image>
-        </view>
-        <view class='textBox columnBetweenStart'>
-          <view class='up'>微信支付</view>
-          <view class='under'>亿万用户的选择，更快更安全</view>
-        </view>
-        <image class='webchact_right' src="../../assets/icon/right_plus.png" mode='widthFix'></image>
-      </view>
-    </view>
 
 
-    <view class='payBtn' bindtap='kaiTong'>立即支付</view>
-  </block>
-  <block wx:if="{{kaiTong}}">
-    <view class='bigBox'>
-      <image src="../../assets/icon/kaitong.png" mode='widthFix'></image>
-      <view class='newTiShi'>恭喜开通成功</view>
-      <view class='backToIndex' bindtap='toIndex'>返回首页</view>
-    </view>
-  </block>
+        <view class='payBtn' bindtap='kaiTong'>立即支付</view>
+    </block>
+    <block wx:if="{{kaiTong}}">
+        <view class='bigBox'>
+            <image src="../../assets/icon/kaitong.png" mode='widthFix'></image>
+            <view class='newTiShi'>恭喜开通成功</view>
+            <view class='backToIndex' bindtap='toIndex'>返回首页</view>
+        </view>
+    </block>
 </view>

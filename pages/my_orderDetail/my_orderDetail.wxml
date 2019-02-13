@@ -71,7 +71,7 @@
     <view class='gap_state ' style='height:202rpx;'></view>
     <view class='fixedBottom' wx:if='{{orderData.status == 1}}'>
         <view class='leftBox' bindtap='cancel'>取消订单</view>
-        <view class='rightBox'>
+        <view class='rightBox' bindtap='toPay'>
             <view class='text'>去支付</view>
             <image class='toRight' mode="widthFix" src="../../assets/icon/toRight.png"></image>
         </view>

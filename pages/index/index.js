@@ -16,6 +16,7 @@ Page({
         showSignIn: false,
         hasYouhuiquan: false, // 首页领取优惠券？
         indicatorDots: false,
+        isPlus: false, // 是会员吗
         swiperCurrent: 0,
         card: [],// 优惠券的数量
         bannerList: [], //轮播图
@@ -154,6 +155,13 @@ Page({
             app.getShoppingCartNum();
             // 获取用户收货地址条数
             app.getMy_shippingAddressLength();
+            // 获取会员等级
+            app.isPlus(function (state) {
+                y.setData({
+                    isPlus: state
+                })
+            });
+
         })
         var globalAddress = wx.Storage.getItem("globalAddress");
         if (globalAddress) {
@@ -217,7 +225,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-       
+
     },
 
     /**
@@ -258,10 +266,19 @@ Page({
             url: `../index_lifeService/index_lifeService`
         })
     },
-    toPlus() {
-        wx.navigateTo({
-            url: `../index_plus/index_plus`
-        })
+    toPlus(e) {
+        var data = e.currentTarget.dataset;
+        if (data.state) {
+            // 我是会员
+            wx.navigateTo({
+                url: `../index_openPlus/index_openPlus`
+            })
+        } else {
+            wx.navigateTo({
+                url: `../index_plus/index_plus`
+            })
+        }
+
     },
     toInviteFriend() {
         app.share();

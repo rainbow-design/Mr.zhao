@@ -14,13 +14,17 @@ Page({
         kaiTong: false,
         defaultIndex: 0,
         checked: '../../assets/icon/right_taocan.png',
-        normal: '../../assets/icon/round.png'
+        normal: '../../assets/icon/round.png',
+        isPlus: false,
+        plus_id: '',
+        price: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.getPlusState();
         this.getInitPlusList();
     },
 
@@ -37,7 +41,15 @@ Page({
     onShow: function () {
 
     },
-
+    getPlusState() {
+        var y = this;
+        // 获取会员等级
+        app.isPlus(function (state) {
+            y.setData({
+                isPlus: state
+            })
+        });
+    },
     getInitPlusList() {
         var y = this;
         // setTimeout(() => {
@@ -50,20 +62,58 @@ Page({
                 var data = res.data.response_data.lists;
                 y.setData({
                     initData: data,
+                    plus_id: data[0].id,
+                    price: data[0].price
                 })
             })
     },
     selectTaocan(e) {
         var index = e.currentTarget.dataset.index;
+        var yData = this.data.initData;
         this.setData({
-            defaultIndex: index
+            defaultIndex: index,
+            plus_id: yData[`${index}`].id,
+            price: yData[`${index}`].price
         })
         console.log("当前选中的套餐" + index)
     },
     kaiTong() {
-        this.setData({
-            kaiTong: true
+        var y = this;
+        var plus_type = y.data.isPlus ? 2 : 1;
+        util.promiseRequest(api.pay_plus, {
+            plus_id: y.data.plus_id,
+            plus_type: plus_type
+        }).then(res => {
+            var payParam = res.data.response_data;
+            wx.requestPayment({
+                timeStamp: payParam.timeStamp,
+                nonceStr: payParam.nonceStr,
+                package: payParam.package,
+                signType: payParam.signType,
+                paySign: payParam.paySign,
+                success: function (res) {
+                    console.log('支付成功' + res);
+                    wx.showToast({
+                        title: '支付成功...',
+                        icon: 'none',
+                        duration: 1000,
+                        complete: function () {
+                            setTimeout(() => {
+                                y.setData({
+                                    kaiTong: true
+                                })
+                            }, 1000)
+                        }
+                    })
+
+                },
+                error: function (res) {
+                    console.log('支付失败' + res)
+                }
+            })
+            console.log(res);
         })
+
     },
     toIndex() {
         app.toIndex();

@@ -52,6 +52,33 @@ Page({
             that.getOrder_detail(that.data.orderId);
         })
     },
+    // 去支付
+    toPay() {
+        var orderId = this.data.orderId;
+        util.promiseRequest(api.pay_order, {
+            order_no: orderId
+        }).then(response => {
+            var payParam = response.data.response_data;
+            wx.requestPayment({
+                timeStamp: payParam.timeStamp,
+                nonceStr: payParam.nonceStr,
+                package: payParam.package,
+                signType: payParam.signType,
+                paySign: payParam.paySign,
+                success: function (res) {
+                    console.log('支付成功' + res);
+                    y.setData({
+                        kaiTong: true
+                    })
+                },
+                error: function (res) {
+                    console.log('支付失败' + res)
+                }
+            })
+            console.log(response);
+        })
+
+    },
     // 去评价
     toEvaluation(e) {
         wx.navigateTo({
@@ -61,7 +88,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         this.setData({
             orderId: options.id
         })
@@ -70,14 +97,14 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
         this.getOrder_detail(this.data.orderId);
     },
     getOrder_detail(id) {
@@ -94,35 +121,35 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

@@ -92,7 +92,7 @@
 
                         </view>
                         <view class='bottomBox oneLineEnd'>
-                            <view class='greenBox' bindtap='toPay'>
+                            <view class='greenBox' catchtap='toPay' data-order="{{item.order_no}}" >
                                 <view class='text'>去支付</view>
                             </view>
                             <view class='heijiBox'>

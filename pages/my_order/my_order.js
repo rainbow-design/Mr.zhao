@@ -81,6 +81,35 @@ Page({
         })
         that.getSelectTabData(yData.page, yData.num, tabIndex);
     },
+    // 直接支付
+    toPay(e) {
+        var orderId = e.currentTarget.dataset.order;
+        util.promiseRequest(api.pay_order, {
+            order_no: orderId
+        }).then(response => {
+            var payParam = response.data.response_data;
+            wx.requestPayment({
+                timeStamp: payParam.timeStamp,
+                nonceStr: payParam.nonceStr,
+                package: payParam.package,
+                signType: payParam.signType,
+                paySign: payParam.paySign,
+                success: function (res) {
+                    console.log('支付成功' + res);
+                    y.setData({
+                        kaiTong: true
+                    })
+                },
+                fail: function (res) {
+                    console.log('支付失败' + res);
+                    wx.navigateTo({
+                        url: `../my_orderDetail/my_orderDetail?id=${orderId}&state=1&statename=待付款`
+                    })
+                }
+            })
+            console.log(response);
+        })
+    },
     // 确认收货
     confirm(e) {
         let that = this;

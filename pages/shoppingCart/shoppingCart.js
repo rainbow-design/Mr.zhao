@@ -16,7 +16,7 @@ Page({
         addr_id: '',
         shoppingCartNum: 0, // 购物车商品数量
         isPlus: false, // 是否是会员
-        allData:{}
+        allData: {}
     },
     changeCart(id, num) {
         let params = {
@@ -24,24 +24,24 @@ Page({
             type: 2,
             num: num
         }
-        util.promiseRequest(api.cart_add, params).then((res) => { })
+        util.promiseRequest(api.cart_add, params).then((res) => {})
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
 
     },
 
     /** 
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () { },
+    onReady: function() {},
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
         this.showCartList();
         // 显示全局的地址信息
         var globalAddress = wx.Storage.getItem("globalAddress");
@@ -70,7 +70,7 @@ Page({
     },
 
     // 开始滑动事件
-    touchS: function (e) {
+    touchS: function(e) {
         if (e.touches.length == 1) {
             this.setData({
                 //设置触摸起始点水平方向位置 
@@ -79,7 +79,7 @@ Page({
             // console.log(e.touches[0].clientX)
         }
     },
-    touchM: function (e) {
+    touchM: function(e) {
         console.log("touchM:" + e);
         var that = this
         if (e.touches.length == 1) {
@@ -107,7 +107,7 @@ Page({
             });
         }
     },
-    touchE: function (e) {
+    touchE: function(e) {
         // console.log("touchE" + e);
         var that = this
         if (e.changedTouches.length == 1) {
@@ -127,14 +127,14 @@ Page({
         }
     },
     delItem(e) {
-        
+
     },
 
     showCartList() {
         var y = this;
         util.promiseRequest(api.cart_list, {
-            access_token: app.globalData.access_token
-        })
+                access_token: app.globalData.access_token
+            })
             .then(res => {
                 var data = res.data.response_data.lists;
                 var shoppingCartNum = 0;
@@ -147,7 +147,7 @@ Page({
                     shoppingCartNum = data.length;
                     util.addKey(data, {
                         "y_isCheck": false
-                    }, function (v) {
+                    }, function(v) {
                         v.dazhe = Number(v.plus);
                     })
                     //  更新数量的 Badge
@@ -226,7 +226,7 @@ Page({
         this.setData({
             [`cartList[${index}].y_isCheck`]: !cartList[`${index}`].y_isCheck
         })
-        var checkedLength = function (data) {
+        var checkedLength = function(data) {
             var length = 0;
             data.forEach(v => {
                 v.y_isCheck === true ? length += 1 : '';
@@ -264,8 +264,7 @@ Page({
         })
         // 计算总价
         this.getTotalPrice();
-        // 同步订单参数
-        this.getOrderParam();
+
 
     },
     getOrderParam() {
@@ -315,8 +314,10 @@ Page({
 
     toConfirm_Order() {
         var y = this;
+        // 同步订单参数
+        this.getOrderParam();
         var yData = y.data;
-        var checkedLength = function (data) {
+        var checkedLength = function(data) {
             var length = 0;
             data.forEach(v => {
                 v.y_isCheck === true ? length += 1 : '';

@@ -206,5 +206,14 @@ App({
             typeof callback === 'function' ? callback() : app.get_coupons();
         })
     },
+    // 是会员吗？
+    isPlus(callback) {
+        util.promiseRequest(api.basicInfo, {})
+            .then(res => {
+                var data = res.data.response_data;
+                var state = data.lists[0].is_plus === '普通会员' ? false : true;
+                typeof callback === 'function' ? callback(state) : '';
+            })
+    },
 
 })

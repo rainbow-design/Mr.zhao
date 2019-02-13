@@ -1,118 +1,119 @@
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <view class="my maskContent">
-  <!-- 打电话 mask -->
-  <block wx:if="{{showCallTelMask}}">
-    <view class='callMeMask'>
-      <view class='controlBox columnBetween'>
-        <view class='contactTel' bindtap='toContactUs'>客服热线：
-          <view class='tel'>400-686-2367</view>
+    <!-- 打电话 mask -->
+    <block wx:if="{{showCallTelMask}}">
+        <view class='callMeMask'>
+            <view class='controlBox columnBetween'>
+                <view class='contactTel' bindtap='toContactUs'>客服热线：
+                    <view class='tel'>400-686-2367</view>
+                </view>
+                <view class='cancel' bindtap='cancelToCallTel'>取消</view>
+            </view>
         </view>
-        <view class='cancel' bindtap='cancelToCallTel'>取消</view>
-      </view>
-    </view>
-  </block>
-  <view class='greenBox'>
-    <image class='greenBg' mode="widthFix" src="../../assets/green_bg.png"></image>
-    <image class="avator" mode="widthFix" src="{{userInfo.lists[0].img_url}}"></image>
-    <view class='userInfo oneLineBetween'>
-      <view class='user columnBetween'>
-        <view class='userBox oneLineStart'>
-          <view class='username'>{{userInfo.lists[0].nickname}}</view>
-          <view class='memberGrade'>
-            <!-- 会员分类 =》普通会员，plus会员 -->
-            <view class='text'>{{userInfo.lists[0].is_plus}}</view>
-          </view>
-        </view>
-        <view class='tel'>{{filter.filterPhoneByStar(userInfo.lists[0].mobile)}}</view>
-      </view>
-      <image class='memberInfo' mode='widthFix' src="../../assets/memberInfo.png" data-info="{{userInfo.lists[0]}}" bindtap='toMemberInfo'></image>
-    </view>
-    <view class='sysInfo oneLineBetween'>
-      <!-- 我的积分 -->
-      <view class='item columnBetween' bindtap='toIntegral'>
-        <view class='number'>{{userInfo.score || 0}}
-        </view>
-        <view class='sysName'>积分</view>
-      </view>
-      <view class='sysLine'></view>
-      <!-- 我的优惠券 -->
-      <view class='item columnBetween' bindtap='toCoupon'>
-        <view class='number'>{{userInfo.coupons_num || 0}}
-        </view>
-        <view class='sysName'>优惠券</view>
-      </view>
-      <view class='sysLine'></view>
-      <!-- 我的邀请 -->
-      <view class='item columnBetween' bindtap='toinvite'>
-        <view class='number'>{{userInfo.friend_num || 0}}
-        </view>
-        <view class='sysName'>我的邀请</view>
-      </view>
-    </view>
-  </view>
-  <view class='grade oneLineBetween'>
-    <view class="plusText">plus 会员
-    </view>
-    <view class='line'></view>
-    <block wx:if="{{userInfo.lists[0].is_plus === '普通会员'}}">
-      <view class='propaganda columnBetween'>
-        <view>每月仅需9.9元</view>
-        <view>平均可省60元</view>
-      </view>
-      <image mode='widthFix' src="../../assets/kaitong.png" bindtap='openPlus'></image>
     </block>
-    <block wx:elif="{{userInfo.lists[0].is_plus === 'plus会员'}}">
-      <view class='propaganda columnBetween'>
-        <view>开始时间 {{userInfo.lists[0].begin_time}}</view>
-        <view>结束时间 {{userInfo.lists[0].end_time}}</view>
-      </view>
-    </block>
-  </view>
-  <view class='myOrder'>
-    <view class='title oneLineBetween'>
-      <view class='name'>我的订单</view>
-      <view class='content' bindtap='toOrder'>查看全部订单
-        <image mode='widthFix' src="../../assets/toRightF0.png"> </image>
-      </view>
+    <view class='greenBox'>
+        <image class='greenBg' mode="widthFix" src="../../assets/green_bg.png"></image>
+        <image class="avator" mode="widthFix" src="{{userInfo.lists[0].img_url}}"></image>
+        <view class='userInfo oneLineBetween'>
+            <view class='user columnBetween'>
+                <view class='userBox oneLineStart'>
+                    <view class='username'>{{userInfo.lists[0].nickname}}</view>
+                    <view class='memberGrade'>
+                        <!-- 会员分类 =》普通会员，plus会员 -->
+                        <view class='text'>{{userInfo.lists[0].is_plus}}</view>
+                    </view>
+                </view>
+                <view class='tel'>{{filter.filterPhoneByStar(userInfo.lists[0].mobile)}}</view>
+            </view>
+            <image class='memberInfo' mode='widthFix' src="../../assets/memberInfo.png" data-info="{{userInfo.lists[0]}}" bindtap='toMemberInfo'></image>
+        </view>
+        <view class='sysInfo oneLineBetween'>
+            <!-- 我的积分 -->
+            <view class='item columnBetween' bindtap='toIntegral'>
+                <view class='number'>{{userInfo.score || 0}}
+                </view>
+                <view class='sysName'>积分</view>
+            </view>
+            <view class='sysLine'></view>
+            <!-- 我的优惠券 -->
+            <view class='item columnBetween' bindtap='toCoupon'>
+                <view class='number'>{{userInfo.coupons_num || 0}}
+                </view>
+                <view class='sysName'>优惠券</view>
+            </view>
+            <view class='sysLine'></view>
+            <!-- 我的邀请 -->
+            <view class='item columnBetween' bindtap='toinvite'>
+                <view class='number'>{{userInfo.friend_num || 0}}
+                </view>
+                <view class='sysName'>我的邀请</view>
+            </view>
+        </view>
     </view>
-    <view class='menuBox oneLineBetween'>
-      <view class='menu_item columnBetween' data-tab="1" bindtap='toMyOrderPage'>
-        <image src="../../assets/wallet.png" mode='widthFix'></image>
-        <view class='text'>待支付</view>
-      </view>
-      <view class='menu_item columnBetween' data-tab="2" bindtap='toMyOrderPage'>
-        <image src="../../assets/truck.png" mode='widthFix'></image>
-        <view class='text'>待配送</view>
-      </view>
-      <view class='menu_item columnBetween' data-tab="3" bindtap='toMyOrderPage'>
-        <image src="../../assets/message.png" mode='widthFix'></image>
-        <view class='text'>配送中</view>
-      </view>
-      <view class='menu_item columnBetween' data-tab="4" bindtap='toMyOrderPage'>
-        <image src="../../assets/complete.png" mode='widthFix'></image>
-        <view class='text'>已完成</view>
-      </view>
+    <view class='grade oneLineBetween'>
+        <view class="plusText">plus 会员
+        </view>
+        <view class='line'></view>
+        <block wx:if="{{userInfo.lists[0].is_plus === '普通会员'}}">
+            <view class='propaganda columnBetween'>
+                <view>每月仅需9.9元</view>
+                <view>平均可省60元</view>
+            </view>
+            <image mode='widthFix' src="../../assets/kaitong.png" bindtap='openPlus'></image>
+        </block>
+        <block wx:elif="{{userInfo.lists[0].is_plus === 'plus会员'}}">
+            <view class='propaganda columnBetween'>
+                <view>开始时间 {{userInfo.lists[0].begin_time}}</view>
+                <view>结束时间 {{userInfo.lists[0].end_time}}</view>
+            </view>
+            <view bindtap='goOnPlus' style='font-size:28rpx;margin-right:20rpx;'>会员续费</view>
+        </block>
     </view>
+    <view class='myOrder'>
+        <view class='title oneLineBetween'>
+            <view class='name'>我的订单</view>
+            <view class='content' bindtap='toOrder'>查看全部订单
+                <image mode='widthFix' src="../../assets/toRightF0.png"> </image>
+            </view>
+        </view>
+        <view class='menuBox oneLineBetween'>
+            <view class='menu_item columnBetween' data-tab="1" bindtap='toMyOrderPage'>
+                <image src="../../assets/wallet.png" mode='widthFix'></image>
+                <view class='text'>待支付</view>
+            </view>
+            <view class='menu_item columnBetween' data-tab="2" bindtap='toMyOrderPage'>
+                <image src="../../assets/truck.png" mode='widthFix'></image>
+                <view class='text'>待配送</view>
+            </view>
+            <view class='menu_item columnBetween' data-tab="3" bindtap='toMyOrderPage'>
+                <image src="../../assets/message.png" mode='widthFix'></image>
+                <view class='text'>配送中</view>
+            </view>
+            <view class='menu_item columnBetween' data-tab="4" bindtap='toMyOrderPage'>
+                <image src="../../assets/complete.png" mode='widthFix'></image>
+                <view class='text'>已完成</view>
+            </view>
+        </view>
 
-  </view>
-  <view class='myService'>
-    <view class='title oneLineStart'>
-      <view class='name'>我的服务</view>
     </view>
-    <view class='menuBox oneLineBetween'>
-      <view class='menu_item columnBetween' bindtap='toInviteFriend'>
-        <image src="../../assets/money.png" mode='widthFix' ></image>
-        <view class='text'>邀请得积分</view>
-      </view>
-      <view class='menu_item columnBetween' bindtap='toShippingAddress'>
-        <image src="../../assets/address.png" mode='widthFix'></image>
-        <view class='text'>收货地址</view>
-      </view>
-      <view class='menu_item columnBetween' bindtap='showCallMe'>
-        <image src="../../assets/callMe.png" mode='widthFix'></image>
-        <view class='text'>客服帮助</view>
-      </view>
+    <view class='myService'>
+        <view class='title oneLineStart'>
+            <view class='name'>我的服务</view>
+        </view>
+        <view class='menuBox oneLineBetween'>
+            <view class='menu_item columnBetween' bindtap='toInviteFriend'>
+                <image src="../../assets/money.png" mode='widthFix'></image>
+                <view class='text'>邀请得积分</view>
+            </view>
+            <view class='menu_item columnBetween' bindtap='toShippingAddress'>
+                <image src="../../assets/address.png" mode='widthFix'></image>
+                <view class='text'>收货地址</view>
+            </view>
+            <view class='menu_item columnBetween' bindtap='showCallMe'>
+                <image src="../../assets/callMe.png" mode='widthFix'></image>
+                <view class='text'>客服帮助</view>
+            </view>
+        </view>
     </view>
-  </view>
 
 </view>

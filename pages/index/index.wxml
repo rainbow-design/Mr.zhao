@@ -62,7 +62,7 @@
             <image class='menuItem_img' mode="widthFix" src="../../assets/lifeService.png"></image>
             <view class='menuItem_text'>生活服务</view>
         </view>
-        <view class='menuItem' bindtap='toPlus'>
+        <view class='menuItem' data-state="{{isPlus}}" bindtap='toPlus'>
             <image class='menuItem_img' mode="widthFix" src="../../assets/plus.png"></image>
             <view class='menuItem_text'>plus会员</view>
         </view>

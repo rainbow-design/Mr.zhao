@@ -16,6 +16,7 @@ var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
     add_search_history = RootUrl + "rest/2.0/home/home/add_search_history", // 添加关键字
     sign_in = RootUrl + "rest/2.0/home/home/sign_in", // 签到
     plus_list = RootUrl + "rest/2.0/home/home/plus_list", // plus 列表
+    pay_plus = RootUrl + "rest/2.0/home/home/plus_pay", // 会员支付
 
     //购物车
     cart_list = RootUrl + "rest/2.0/cart/cart/cart_list", // 购物车列表
@@ -29,6 +30,8 @@ var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
     comment = RootUrl + "rest/2.0/category/order/comment", // 可使用的优惠券列表
     confirm_goods = RootUrl + "rest/2.0/category/order/confirm_goods", // 可使用的优惠券列表
     once_again_order = RootUrl + "rest/2.0/category/order/once_again_order", // 可使用的优惠券列表
+    pay_order = RootUrl + "rest/2.0/category/order/order_pay", // 支付订单
+    confirm_order_detail = RootUrl + "rest/2.0/category/order/confirm_order_detail", // 确认订单商品详情
 
     //个人中心
     basicInfo = RootUrl + "rest/2.0/user/user/basic_info", // 用户基本资料
@@ -65,6 +68,7 @@ module.exports = {
     add_search_history,
     sign_in,
     plus_list,
+    pay_plus,
     // 商品分类
     product_cate,
     product_list,
@@ -75,6 +79,7 @@ module.exports = {
     cart_list,
     cart_add,
     confirm_order,
+    pay_order,
     add_order,
     cancel_order,
     order_list,
@@ -83,6 +88,7 @@ module.exports = {
     comment,
     confirm_goods,
     once_again_order,
+    confirm_order_detail,
     // 我的
     basicInfo,
     add_user_info,

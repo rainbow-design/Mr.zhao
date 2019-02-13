@@ -16,6 +16,7 @@ Page({
         result_delivery_time: '', // 最终的配送时间
         delivery_time_id: '',
         orderParam_goods_info: [],
+        goods_ids: '', // 商品id拼接
         original_amount: '', // 原始总价
         amount: '', // 总价
         count: '', // 总数
@@ -35,6 +36,7 @@ Page({
         if (confirmOrderData) {
             var delivery_time_Arr = [];
             var orderParam_goods_info = [];
+            var goods_ids = [];
             confirmOrderData.delivery_time.forEach(v => {
                 delivery_time_Arr.push(v.time);
             })
@@ -44,17 +46,19 @@ Page({
                     "goods_id": v.id,
                     "num": v.num
                 });
+                goods_ids.push(v.id);
                 count += v.num;
             })
 
             var addrInfo = confirmOrderData.addrInfo; // 配送地址信息
             var lists = confirmOrderData.lists; // 其他信息
             var deliver_cost = confirmOrderData.deliver_cost; // 配送费用相关信息
-            var delivery_fee = Number(lists.total_price) > Number(deliver_cost[0].limit) ? 0 : deliver_cost[0].cost;
+            var delivery_fee = Number(lists.total_price) > Number(deliver_cost[0].limit) ? deliver_cost[0].cost : 0; // 精确需要支付的配送费
             var userJifenNum = yData.default_useJifen ? lists.score : 0;
             var result_amount = util.toFixed(Number(lists.total_price) - Number(delivery_fee) - (Number(userJifenNum) / 100), 2); // 计算商品总价
 
             this.setData({
+                goods_ids: goods_ids.join(','),
                 count: count,
                 confirmData: confirmOrderData,
                 addrInfo: addrInfo, // 配送地址信息
@@ -98,9 +102,19 @@ Page({
     },
 
     toProductList() {
-        wx.navigateTo({
-            url: `../shoppingCart_productList/shoppingCart_productList`
+        var y = this;
+        console.log(y.data.goods_ids);
+        util.promiseRequest(api.confirm_order_detail, {
+            goods_ids: y.data.goods_ids
+        }).then(response => {
+            var data = response.data.response_data.lists;
+            wx.Storage.setItem("confirm_order_detail", data)
+            console.log(data)
+            wx.navigateTo({
+                url: `../shoppingCart_productList/shoppingCart_productList`
+            })
         })
+
     },
     toAddOrder() {
         var yData = this.data;
@@ -146,8 +160,30 @@ Page({
         }
 
         util.promiseRequest(api.add_order, paramObj).then(res => {
-          
-            console.log(res);
+            var orderId = res.data.response_data.order_number
+            util.promiseRequest(api.pay_order, {
+                order_no: orderId
+            }).then(response => {
+                var payParam = response.data.response_data;
+                wx.requestPayment({
+                    timeStamp: payParam.timeStamp,
+                    nonceStr: payParam.nonceStr,
+                    package: payParam.package,
+                    signType: payParam.signType,
+                    paySign: payParam.paySign,
+                    success: function (res) {
+                        console.log('支付成功' + res);
+                        app.returnLastPage();
+                    },
+                    fail: function (res) {
+                        console.log('支付失败' + res);
+                        wx.navigateTo({
+                            url: `../my_orderDetail/my_orderDetail?id=${orderId}&state=1&statename=待付款`
+                        })
+                    }
+                })
+                console.log(response);
+            })
         })
 
 
@@ -197,7 +233,7 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-        
+
     },
 
     /**
