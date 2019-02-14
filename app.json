@@ -24,7 +24,6 @@
     "pages/selectAddress/selectAddress",
     "pages/shoppingCart_productList/shoppingCart_productList",
     "pages/shoppingCart_paySuccess/shoppingCart_paySuccess",
-    "pages/shoppingCart_orderDetail/shoppingCart_orderDetail",
     "pages/shoppingCart_coupon/shoppingCart_coupon",
     "pages/index_openPlus/index_openPlus",
     "pages/index_leaveAMessage/index_leaveAMessage",

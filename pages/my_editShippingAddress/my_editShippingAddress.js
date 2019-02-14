@@ -2,7 +2,6 @@
 const app = getApp();
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
-const Storage = require("../../utils/storage.js");
 Page({
 
     /**
@@ -25,13 +24,13 @@ Page({
     onLoad: function (options) {
         var y = this;
         wx.yue.sub("addAddress", function (data) {
-            Storage.setItem("addAddress", data);
+            wx.Storage.setItem("addAddress", data);
         })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () { },
+    onReady: function () {},
 
     /**
      * 生命周期函数--监听页面显示
@@ -48,8 +47,8 @@ Page({
                 longitude: info.longitude, // 经度
                 latitude: info.latitude // 纬度
             })
-            if (Storage.getItem("editAddress_selectAddress") != "") {
-                var newAddressData = Storage.getItem("editAddress_selectAddress");
+            var newAddressData = wx.Storage.getItem("editAddress_selectAddress");
+            if (newAddressData != "") {
                 y.setData({
                     address: newAddressData.address,
                     longitude: newAddressData.location.lng, // 经度
@@ -58,7 +57,7 @@ Page({
             }
         })
         wx.yue.sub("editAddress_selectAddress", function (data) {
-            Storage.setItem("editAddress_selectAddress", data);
+            wx.Storage.setItem("editAddress_selectAddress", data);
         })
 
 
@@ -107,8 +106,8 @@ Page({
             type: type
         }
         util.promiseRequest(api.edit_addr, paramObj).then(res => {
-            // 清楚数据缓存
-            Storage.removeItem("editAddress_selectAddress")
+            // 清除数据缓存
+            wx.Storage.removeItem("editAddress_selectAddress")
             var data = res.data.response_data.lists;
             if (data == 1) {
                 // 更新相同的 globalAddress 信息
@@ -194,7 +193,7 @@ Page({
             type: newData.type,
             type_name: typeObj[newData.type]
         }
-        Storage.setItem("globalAddress", paramObj)
+        wx.Storage.setItem("globalAddress", paramObj)
     },
 
 

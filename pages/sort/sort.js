@@ -1,7 +1,6 @@
 const app = getApp();
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
-const Storage = require("../../utils/storage.js");
 Page({
 
     /**
@@ -17,7 +16,7 @@ Page({
         classShowA: '',
         classShowB: '',
         proType: null,
-        proId: null,
+        proId: 1,
         card: [],
         total: 0,
         proBottom: true
@@ -25,12 +24,49 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) { },
+    onLoad: function (options) {
+        this.get_coupons();
+        let that = this;
+        if (options.id) {
+            let params = {}
+            util.promiseRequest(api.product_cate, params).then((res) => {
+                that.setData({
+                   classA: res.data.response_data,
+                });
+                if (res.data.response_data[0]) {
+                    that.setData({
+                        proType: res.data.response_data[0].type,
+                    })
+                };
+                let aindex = '';
+                res.data.response_data.forEach((item,index)=>{
+                    if(options.id == item.id){
+                        aindex = index
+                    }
+                })
+                let e = {
+                    currentTarget: {
+                        dataset: {
+                            id: options.id,
+                            index: aindex,
+                            pro_id: options.id,
+                            pro_type: options.type,
+                            type: 1
+                        }
+                    }
+                }
+                that.chooseClass(e);
+                that.getproduct_list();
+            })
+        }else{
+            this.getProduct_cate();
+        }
+    },
 
     // 优惠券
     get_coupons() {
         let that = this;
-        app.get_coupons(function (data) {
+        app.get_coupons(function(data) {
             that.setData({
                 card: data,
                 total: data.length
@@ -44,7 +80,7 @@ Page({
     // 领取优惠券
     receive_coupons(e) {
         let that = this;
-        app.receive_coupons(function () {
+        app.receive_coupons(e, function () {
             that.get_coupons();
         });
     },
@@ -146,20 +182,18 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
         this.setData({
-            shortAddress: Storage.getItem("shortAddress"),
-            address: Storage.getItem("address")
+            shortAddress: wx.Storage.getItem("shortAddress"),
+            address: wx.Storage.getItem("address")
         })
-        this.getProduct_cate();
-        this.get_coupons();
         var globalAddress = wx.Storage.getItem("globalAddress");
         if (globalAddress) {
             this.setData({
@@ -171,33 +205,33 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
         app.getShoppingCartNum();
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () { },
+    onReachBottom: function() {},
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     }
 })

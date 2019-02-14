@@ -20,7 +20,7 @@
                     <view class='youhuiText'>会员{{productList.plus}}折</view>
                 </image>
             </view>
-            <view class='bottomText'>{{productList.is_stock}}{{productList.send_desc}}</view>
+            <view class='bottomText'>{{productList.is_stock}},{{productList.send_desc}}</view>
         </view>
     </view>
     <view class='gap' style='height:21rpx;'></view>
@@ -59,16 +59,26 @@
         </view>
     </view>
     <view class='cart'>
-        <view class='icon'>
+        <view class='icon' bindtap='toShopCart'>
             <block wx:if="{{(shoppingCartNum - 0) > 0}}">
                 <view>{{shoppingCartNum}}</view>
             </block>
             <image src="../../assets/cart.png"></image>
         </view>
-        <view class='gotoCart' bindtap='joinCart'>
-            <view class='text'>
-                加入购物车
+        <block wx:if="{{productList.is_stock == '现货'}}">
+            <view class='gotoCart' bindtap='joinCart'>
+                <view class='text'>
+                    加入购物车
+                </view>
             </view>
-        </view>
+        </block>
+        <block wx:if="{{productList.is_stock != '现货'}}">
+            <view class='gotoCart gotoCart_nodata'>
+                <view class='text'>
+                    缺货
+                </view>
+            </view>
+        </block>
+
     </view>
 </view>

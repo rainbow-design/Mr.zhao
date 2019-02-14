@@ -1,5 +1,4 @@
 // pages/my_addShippingAddress/my_addShippingAddress.js
-const Storage = require("../../utils/storage.js");
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
 const app = getApp();
@@ -24,7 +23,7 @@ Page({
     onLoad: function (options) {
         var y = this;
         wx.yue.sub("addAddress", function (data) {
-            Storage.setItem("addAddress", data);
+            wx.Storage.setItem("addAddress", data);
         })
     },
     /**
@@ -37,7 +36,7 @@ Page({
      */
     onShow: function () {
         var y = this;
-        var addressData = Storage.getItem("addAddress");
+        var addressData = wx.Storage.getItem("addAddress");
         var addAddress_cache = wx.Storage.getItem("addAddress_cache");
         addressData != "" ? y.setData({
             address: addressData.address,
@@ -79,11 +78,11 @@ Page({
             phone: yData.phone,
             detail_addr: yData.detail_addr,
         }
-        wx.Storage.setItem("addAddress_cache", addAddress_cache);
-
-        wx.navigateTo({
-            url: `../selectAddress/selectAddress?addAddress=${from}`
-        })
+        wx.Storage.setItem("addAddress_cache", addAddress_cache, function () {
+            wx.redirectTo({
+                url: `../selectAddress/selectAddress?addAddress=${from}`
+            })
+        });
     },
     saveNewAddress() {
 
@@ -129,9 +128,8 @@ Page({
                             // 清空数据缓存
                             wx.Storage.removeItem("addAddress");
                             wx.Storage.removeItem("addAddress_cache");
-                            wx.navigateTo({
-                                url: `../my_shippingAddress/my_shippingAddress`
-                            })
+                            // 返回到正确位置
+                            app.returnLastPage();
                         }, 1000)
                     }
                 })
@@ -145,9 +143,7 @@ Page({
                             // 清空数据缓存
                             wx.Storage.removeItem("addAddress");
                             wx.Storage.removeItem("addAddress_cache");
-                            wx.navigateTo({
-                                url: `../index_search/index_search`
-                            })
+                            console.log("添加失败")
                         }, 1000)
                     }
                 })
@@ -155,16 +151,22 @@ Page({
         })
     },
     /**
-    * 生命周期函数--监听页面卸载
-    */
+  * 生命周期函数--监听页面隐藏
+  */
+    onHide: function () {
+        // 取消多余的事件订阅
+        // - 添加时
+        wx.yue.remove("addAddress");
+        // 清除缓存的位置数据
+        wx.Storage.removeItem("addAddress");
+    },
+
     onUnload: function () {
         // 取消多余的事件订阅
         // - 添加时
         wx.yue.remove("addAddress");
-        // 清除缓存的用户输入的数据
-        wx.Storage.removeItem("addAddress_cache");
         // 清除缓存的位置数据
         wx.Storage.removeItem("addAddress");
-        
     },
+
 })

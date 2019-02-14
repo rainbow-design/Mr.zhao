@@ -23,7 +23,7 @@
     line-height: 40rpx;
 }
 
-.addressList {
+#addressList {
     width: 750rpx;
     box-sizing: border-box;
     padding: 0 30rpx;
@@ -35,7 +35,7 @@
 }
 
 .item {
-    height: 100%;
+    /* height: 100%; */
     width: 100%;
     padding: 29rpx 1rpx 31rpx;
     box-sizing: border-box;
@@ -98,7 +98,7 @@
     line-height: 26rpx;
 }
 
-.addBtn {
+#addBtn {
     position: absolute;
     left: 80rpx;
     top: 1076rpx;
@@ -109,7 +109,13 @@
     line-height: 80rpx;
 }
 
-.addBtn .text {
+.addbtn_addressArriveToBtn {
+    position: relative !important;
+    left: 80rpx !important;
+    top: 200rpx;
+}
+
+#addBtn .text {
     height: 29px;
     font-size: 30rpx;
     font-family: SourceHanSansCN-Regular;
@@ -118,7 +124,7 @@
     text-align: center;
 }
 
-.addBtn .text::before {
+#addBtn .text::before {
     content: '+';
     display: inline-block;
     width: 25rpx;

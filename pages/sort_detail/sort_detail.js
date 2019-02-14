@@ -14,7 +14,7 @@ Page({
         detailText: {
             content: ''
         },
-        shoppingCartNum: wx.Storage.getItem("shoppingCartNum")
+        shoppingCartNum: 0
     },
     // 商品列表
     getproduct_detail() {
@@ -23,12 +23,18 @@ Page({
             id: this.data.id
         };
         util.promiseRequest(api.product_detail, params).then((res) => {
+            var data = res.data.response_data[0];
             that.setData({
-                productList: res.data.response_data[0],
+                productList: data,
                 detailText: {
-                    content: WxParse.wxParse('detailTextt', 'html', res.data.response_data[0].content, that),
+                    content: WxParse.wxParse('detailTextt', 'html', data.content, that),
                 }
             })
+        })
+    },
+    toShopCart() {
+        wx.switchTab({
+            url: '../shoppingCart/shoppingCart'
         })
     },
     joinCart() {
@@ -38,17 +44,25 @@ Page({
             type: 1,
             num: 1
         }
-        // 更新购物车的订单数量
-        app.getShoppingCartNum();
+        // 获取用户购物车的订单量
+        app.getShoppingCartNum((length) => {
+            if (length > 0) {
+                y.setData({
+                    shoppingCartNum: length
+                })
+            } else {
+                y.setData({
+                    shoppingCartNum: 0
+                })
+            }
+        });
+
         util.promiseRequest(api.cart_add, params).then((res) => {
             wx.showToast({
                 title: '加入购物车成功',
                 icon: 'none',
                 duration: 500,
                 complete: function () {
-                    y.setData({
-                        shoppingCartNum: wx.Storage.getItem("shoppingCartNum")
-                    })
                     setTimeout(() => {
                         wx.switchTab({
                             url: '../shoppingCart/shoppingCart'
@@ -62,7 +76,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(wx.Storage.getItem("shoppingCartNum"))
         this.setData({
             id: options.id,
         })
@@ -80,7 +93,20 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        console.log(wx.Storage.getItem("shoppingCartNum"))
+        var y = this;
+        // 获取购物车订单数
+        app.getShoppingCartNum((length) => {
+            if (length > 0) {
+                y.setData({
+                    shoppingCartNum: length
+                })
+            } else {
+                y.setData({
+                    shoppingCartNum: 0
+                })
+            }
+        });
+
     },
 
     /**

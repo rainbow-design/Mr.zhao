@@ -81,8 +81,8 @@
     </view>
     <!-- 子菜单 -->
     <view class='subMenu f-wrap  borderBox oneLineBetween mulitLineBetween'>
-        <block wx:for="{{categoryList}}" wx:key="">
-            <view class='subNemuItem'>
+        <block wx:for="{{categoryList}}" wx:key="{{item.id}}">
+            <view class='subNemuItem' data-id="{{item.id}}" data-type="{{item.type}}" bindtap="toSortPage" data-index="{{index}}">
                 <image class='subMenuItem_img' mode="widthFix" src="{{item.img}}"></image>
                 <view class='subMenuItem_text'>{{item.name}}</view>
             </view>

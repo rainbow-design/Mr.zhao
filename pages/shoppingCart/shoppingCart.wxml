@@ -1,110 +1,119 @@
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <view class="shoppingCart maskContent">
-  <block wx:if="{{noCartData}}">
-    <view class='noData layoutStyle columnBetween'>
-      <image src="../../assets/nodata/cartList.png" mode='widthFix'></image>
-      <view class='tishi'>您还没有添加任何商品</view>
-      <view class='btn' bindtap='toShop'>去逛逛</view>
-    </view>
-  </block>
-  <block wx:if="{{!noCartData}}">
-    <block wx:if="{{globalAddress.address}}">
-      <view class='address' bindtap='selectAnotherAddress'>
-        <view class='whiteBox'>
-          <view class='zhuzhi'>
-            <view class='greenBox'>
-              <view class='keyword'>
-                {{globalAddress.type_name}}
-              </view>
-            </view>
-            {{globalAddress.address}} {{globalAddress.detail_addr}}
-          </view>
-          <view class='presonInfo'>
-            {{globalAddress.name}} {{globalAddress.phone}}
-          </view>
-          <image class='caidai' src="../../assets/icon/huaBian.png"></image>
+    <block wx:if="{{noCartData}}">
+        <view class='noData layoutStyle columnBetween'>
+            <image src="../../assets/nodata/cartList.png" mode='widthFix'></image>
+            <view class='tishi'>您还没有添加任何商品</view>
+            <view class='btn' bindtap='toShop'>去逛逛</view>
         </view>
-      </view>
     </block>
-    <block wx:elif="{{!globalAddress.address}}">
-      <view class='address' style='height:162rpx;'>
-        <view class='whiteBox oneLineStart' style='height:100rpx;'>
-          <view class='zhuzhi' style='height:auto;width:440rpx;'>
-            请选择您的收货地址
-          </view>
-          <view style='font-size:28rpx' bindtap='toSelectAddress'>补全地址</view>
-          <image class='caidai' src="../../assets/icon/huaBian.png"></image>
+    <block wx:if="{{!noCartData}}">
+        <block wx:if="{{globalAddress.address}}">
+            <view class='address' style='height:{{whiteBox_H + 60}}rpx' bindtap='selectAnotherAddress'>
+                <view class='whiteBox' style='height:{{whiteBox_H}}rpx'>
+                    <view class='zhuzhi'>
+                        <view class='greenBox'>
+                            <view class='keyword'>
+                                {{globalAddress.type_name}}
+                            </view>
+                        </view>
+                        {{globalAddress.address}} {{globalAddress.detail_addr}}
+                    </view>
+                    <view class='presonInfo'>
+                        {{globalAddress.name}} {{globalAddress.phone}}
+                    </view>
+                    <block wx:if="{{showRightIcon}}">
+                        <image class='rightIcon' mode='widthFix' src="../../assets/icon/addressRIght.png"></image>
+                    </block>
+                    <image class='caidai' mode='widthFix' src="../../assets/icon/huaBian.png"></image>
+                    <block wx:if="{{!addressCanUse}}">
+                        <view class='tishi'>
+                            您的位置不在店家的配送范围内
+                        </view>
+                    </block>
+                </view>
+
+            </view>
+        </block>
+        <block wx:elif="{{!globalAddress.address}}">
+            <view class='address' style='height:162rpx;'>
+                <view class='whiteBox oneLineStart' style='height:100rpx;'>
+                    <view class='zhuzhi' style='height:auto;width:440rpx;'>
+                        请选择您的收货地址
+                    </view>
+                    <view style='font-size:28rpx' bindtap='toSelectAddress'>补全地址</view>
+                    <image class='caidai' src="../../assets/icon/huaBian.png"></image>
+                </view>
+            </view>
+        </block>
+        <view class='foods'>
+            <view class='name'>
+                <block wx:if="{{isCheckAll}}">
+                    <image class='check' mode="widthFix" src="../../assets/icon/right_plus.png" bindtap='checkAll'></image>
+                </block>
+                <block wx:if="{{!isCheckAll}}">
+                    <image class='check' mode="widthFix" src="../../assets/icon/round.png" bindtap='checkAll'></image>
+                </block>
+                <image class='shopIcon' src="../../assets/icon/shopIcon.png"></image>
+                <view class='text'>兆鲜生门店</view>
+            </view>
+            <view class='orderBox'>
+                <!-- 单个订单数据 -->
+                <view class='order_item' data-id="{{item.goods_id}}" wx:for="{{cartList}}" wx:key="{{item.user_id}}" style="{{item.txtStyle}}" data-index="{{index}}" bindtouchstart="touchS" bindtap='toProductDetail' bindtouchmove="touchM" bindtouchend="touchE">
+                    <view class='leftBox'>
+                        <block wx:if="{{item.y_isCheck}}">
+                            <image class='check' data-index="{{index}}" src="../../assets/icon/right_plus.png" bindtap='checkGoods'></image>
+                        </block>
+                        <block wx:elif="{{!item.y_isCheck}}">
+                            <image class='check' data-index="{{index}}" src="../../assets/icon/round.png" bindtap='checkGoods'></image>
+                        </block>
+                    </view>
+                    <view class='rightBox oneLineBetween'>
+                        <image class='img' src="{{filter.filterImgUrl(item.thumb_img)}}"></image>
+                        <view class='content flexStyle'>
+                            <view class='title line-clamp '>
+                                {{item.name}}
+                            </view>
+                            <view class='introduction line-clamp'> {{item.desc}} </view>
+                            <view class='price nowrap'>¥{{item.price}}</view>
+                            <view class='offerPrice nowrap'>¥{{item.plus*100*item.price/1000}}
+                                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+                                    <view class='youhuiText'>会员{{item.dazhe}}折</view>
+                                </image>
+                            </view>
+                        </view>
+                        <view class='countControl'>
+                            <image class='add' data-index="{{index}}" data-num="{{item.num}}" data-id="{{item.goods_id}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/add.png" bindtap='numAdd'></image>
+                            <view class='number'>{{item.num}}</view>
+                            <image class='minus' data-index="{{index}}" data-id="{{item.goods_id}}" data-num="{{item.num}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/minus.png" bindtap='minusNum'></image>
+                        </view>
+                    </view>
+                    <!-- rightBox end -->
+                    <view class='deleteBtn' data-id="{{item.goods_id}}" data-index="{{index}}" catchtap='delItem' style='width:{{delBtnWidth}}rpx'>删除</view>
+                </view>
+            </view>
+            <!-- 单个订单数据结束 -->
         </view>
-      </view>
+        <view class='fixedBottom'>
+            <view class='leftBox'>
+                <block wx:if="{{isCheckAll}}">
+                    <image class='check' mode="widthFix" src="../../assets/icon/right_plus.png" bindtap='checkAll'></image>
+                </block>
+                <block wx:if="{{!isCheckAll}}">
+                    <image class='check' mode="widthFix" src="../../assets/icon/round.png" bindtap='checkAll'></image>
+                </block>
+                <view class='chooseAll'>全选</view>
+                <view class='heji'>
+                    <view class='name'>合计:
+                        <view class='price'>¥{{totalPrice}}</view>
+                    </view>
+                    <view class='content'>满{{allData.devery_info[0].limit}}元免配送费</view>
+                </view>
+            </view>
+            <view class='rightBox' bindtap='toConfirm_Order'>
+                <view class='text'>去结算</view>
+                <image class='toRight' mode="widthFix" src="../../assets/icon/toRight.png"></image>
+            </view>
+        </view>
     </block>
-    <view class='foods'>
-      <view class='name'>
-        <block wx:if="{{isCheckAll}}">
-          <image class='check' mode="widthFix" src="../../assets/icon/right_plus.png" bindtap='checkAll'></image>
-        </block>
-        <block wx:if="{{!isCheckAll}}">
-          <image class='check' mode="widthFix" src="../../assets/icon/round.png" bindtap='checkAll'></image>
-        </block>
-        <image class='shopIcon' src="../../assets/icon/shopIcon.png"></image>
-        <view class='text'>兆鲜生门店</view>
-      </view>
-      <view class='orderBox'>
-        <!-- 单个订单数据 -->
-        <view class='order_item' wx:for="{{cartList}}" wx:key="{{item.user_id}}" style="{{item.txtStyle}}" data-index="{{index}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE">
-          <view class='leftBox'>
-            <block wx:if="{{item.y_isCheck}}">
-              <image class='check' data-index="{{index}}" src="../../assets/icon/right_plus.png" bindtap='checkGoods'></image>
-            </block>
-            <block wx:elif="{{!item.y_isCheck}}">
-              <image class='check' data-index="{{index}}" src="../../assets/icon/round.png" bindtap='checkGoods'></image>
-            </block>
-          </view>
-          <view class='rightBox oneLineBetween'>
-            <image class='img' src="{{filter.filterImgUrl(item.thumb_img)}}"></image>
-            <view class='content flexStyle'>
-              <view class='title line-clamp '>
-                {{item.name}}
-              </view>
-              <view class='introduction line-clamp'> {{item.desc}} </view>
-              <view class='price nowrap'>¥{{item.price}}</view>
-              <view class='offerPrice nowrap'>¥{{item.plus*100*item.price/1000}}
-                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-                  <view class='youhuiText'>会员{{item.dazhe}}折</view>
-                </image>
-              </view>
-            </view>
-            <view class='countControl'>
-              <image class='add' data-index="{{index}}" data-num="{{item.num}}" data-id="{{item.goods_id}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/add.png" bindtap='numAdd'></image>
-              <view class='number'>{{item.num}}</view>
-              <image class='minus' data-index="{{index}}" data-id="{{item.goods_id}}" data-num="{{item.num}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/minus.png" bindtap='minusNum'></image>
-            </view>
-          </view>
-          <!-- rightBox end -->
-          <view class='deleteBtn' data-index="{{index}}" bindtap='delItem' style='width:{{delBtnWidth}}rpx'>删除</view>
-        </view>
-      </view>
-      <!-- 单个订单数据结束 -->
-    </view>
-    <view class='fixedBottom'>
-      <view class='leftBox'>
-        <block wx:if="{{isCheckAll}}">
-          <image class='check' mode="widthFix" src="../../assets/icon/right_plus.png" bindtap='checkAll'></image>
-        </block>
-        <block wx:if="{{!isCheckAll}}">
-          <image class='check' mode="widthFix" src="../../assets/icon/round.png" bindtap='checkAll'></image>
-        </block>
-        <view class='chooseAll'>全选</view>
-        <view class='heji'>
-          <view class='name'>合计:
-            <view class='price'>¥{{totalPrice}}</view>
-          </view>
-          <view class='content'>满{{allData.devery_info[0].limit}}元免配送费</view>
-        </view>
-      </view>
-      <view class='rightBox' bindtap='toConfirm_Order'>
-        <view class='text'>去结算</view>
-        <image class='toRight' mode="widthFix" src="../../assets/icon/toRight.png"></image>
-      </view>
-    </view>
-  </block>
 </view>

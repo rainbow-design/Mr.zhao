@@ -2,7 +2,15 @@
 const app = getApp();
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
+var QQMapWX = require('../../libs/qqmap-wx-jssdk.min.js');
 const mock = require("../../mock/mock.js");
+// https://juejin.im/post/5c14b253e51d452f8e603896
+import regeneratorRuntime from '../../utils/runtime.js'
+// 实例化API核心类
+var mapKey = '2WZBZ-WLTKR-YNCWP-WFPIR-PEKJE-P2BSS'
+const qqmapsdk = new QQMapWX({
+    key: mapKey // 必填
+});
 Page({
     data: {
         noCartData: false,
@@ -16,7 +24,13 @@ Page({
         addr_id: '',
         shoppingCartNum: 0, // 购物车商品数量
         isPlus: false, // 是否是会员
-        allData: {}
+        allData: {},
+        whiteBox_H: 182, // 地址栏内部白色方块高度
+        shop_lat: '', // 商铺纬度
+        shop_lng: '', // 商铺经度
+        peiSongFanWei: 2000, // 配送范围 2000m
+        addressCanUse: true,
+        showRightIcon: false
     },
     changeCart(id, num) {
         let params = {
@@ -24,38 +38,87 @@ Page({
             type: 2,
             num: num
         }
-        util.promiseRequest(api.cart_add, params).then((res) => {})
+        util.promiseRequest(api.cart_add, params).then((res) => { })
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
 
     },
 
     /** 
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {},
+    onReady: function () { },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
-        this.showCartList();
-        // 显示全局的地址信息
-        var globalAddress = wx.Storage.getItem("globalAddress");
-        if (globalAddress) {
+    onShow: function () {
+
+        this.shopCartInit();
+        // 多个地址显示右箭头
+        var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
+        if (myshippingAddressLength > 1) {
             this.setData({
-                globalAddress: globalAddress,
-                addr_id: globalAddress.id
+                showRightIcon: true
             })
         }
+    },
+    getShopPosTionMsg() {
+
+
+    },
+    shopCartInit() {
+        var y = this;
+        // 拿到商铺位置信息再去渲染购物计算当前的address符合不符合规定
+        var showCartList = function () {
+            // 显示全局的地址信息
+            var globalAddress = wx.Storage.getItem("globalAddress");
+            if (globalAddress) {
+                y.setData({
+                    globalAddress: globalAddress,
+                    addr_id: globalAddress.id
+                })
+                y.calculateDistance(qqmapsdk, globalAddress.latitude, globalAddress.longitude);
+            }
+        }
+        // await 等待获取商铺位置信息
+        async function getShopPosTionMsg() {
+            await util.promiseRequest(api.merchant_addr, {}).then(res => {
+                var data = res.data.response_data.lists[0];
+                y.setData({
+                    shop_lat: data.latitude, // 商铺纬度
+                    shop_lng: data.longitude, // 商铺经度
+                    peiSongFanWei: data.scope, // 配送范围 
+                })
+            })
+        }
+
+
+        async function initData() {
+            y.showCartList();
+            await getShopPosTionMsg();
+            await showCartList();
+        }
+        // 开始执行
+        initData();
+
+    },
+    toProductDetail(e) {
+        var id = e.currentTarget.dataset.id;
+        wx.navigateTo({
+            url: `../sort_detail/sort_detail?id=${id}`
+        })
     },
     toSelectAddress() {
         var address = wx.Storage.getItem('address');
         var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
         if (myshippingAddressLength > 0) {
+            this.setData({
+                showRightIcon: true
+            })
             // 有收货地址
             wx.navigateTo({
                 url: `../selectAddress/selectAddress?address=${address}`
@@ -68,9 +131,29 @@ Page({
         }
 
     },
+    // 计算当前选择的地址与实际地址是否不足2公里
+    calculateDistance(qqmapsdk, lat, lng) {
+        var y = this,
+            yData = y.data;
+        var nowPosition = [{
+            latitude: yData.shop_lat,
+            longitude: yData.shop_lng
+        }]
+        util.calculateDistance(qqmapsdk, lat, lng, nowPosition, (res) => {
+            console.log('地址距离计算');
+            var distance = Number(res[0].distance);
+            if (distance > Number(yData.peiSongFanWei)) {
+                y.setData({
+                    addressCanUse: false,
+                    whiteBox_H: 234
+                })
+            }
+        })
+    },
+
 
     // 开始滑动事件
-    touchS: function(e) {
+    touchS: function (e) {
         if (e.touches.length == 1) {
             this.setData({
                 //设置触摸起始点水平方向位置 
@@ -79,7 +162,7 @@ Page({
             // console.log(e.touches[0].clientX)
         }
     },
-    touchM: function(e) {
+    touchM: function (e) {
         console.log("touchM:" + e);
         var that = this
         if (e.touches.length == 1) {
@@ -107,7 +190,7 @@ Page({
             });
         }
     },
-    touchE: function(e) {
+    touchE: function (e) {
         // console.log("touchE" + e);
         var that = this
         if (e.changedTouches.length == 1) {
@@ -127,14 +210,40 @@ Page({
         }
     },
     delItem(e) {
+        var id = e.currentTarget.dataset.id;
+        var y = this;
+        util.promiseRequest(api.delete_cart, {
+            product_id: id
+        }).then(res => {
+            var data = res.data.response_data;
+            console.log(data);
+            if (data) {
+                // 页面购物列表重置
+                y.shopCartInit();
+                // 获取购物车订单数
+                app.getShoppingCartNum((length) => {
+                    if (length > 0) {
+                        wx.setTabBarBadge({
+                            index: 2,
+                            text: String(length)
+                        })
+                    } else {
+                        wx.removeTabBarBadge({
+                            index: 2
+                        })
+                    }
+                });
 
+            }
+        })
     },
 
     showCartList() {
         var y = this;
+
         util.promiseRequest(api.cart_list, {
-                access_token: app.globalData.access_token
-            })
+            access_token: app.globalData.access_token
+        })
             .then(res => {
                 var data = res.data.response_data.lists;
                 var shoppingCartNum = 0;
@@ -147,7 +256,7 @@ Page({
                     shoppingCartNum = data.length;
                     util.addKey(data, {
                         "y_isCheck": false
-                    }, function(v) {
+                    }, function (v) {
                         v.dazhe = Number(v.plus);
                     })
                     //  更新数量的 Badge
@@ -226,7 +335,7 @@ Page({
         this.setData({
             [`cartList[${index}].y_isCheck`]: !cartList[`${index}`].y_isCheck
         })
-        var checkedLength = function(data) {
+        var checkedLength = function (data) {
             var length = 0;
             data.forEach(v => {
                 v.y_isCheck === true ? length += 1 : '';
@@ -317,7 +426,15 @@ Page({
         // 同步订单参数
         this.getOrderParam();
         var yData = y.data;
-        var checkedLength = function(data) {
+        if (!yData.addressCanUse) {
+            wx.showToast({
+                title: '位置暂不支持配送...',
+                icon: 'none',
+                duration: 1000,
+            })
+            return;
+        }
+        var checkedLength = function (data) {
             var length = 0;
             data.forEach(v => {
                 v.y_isCheck === true ? length += 1 : '';
@@ -361,6 +478,13 @@ Page({
     selectAnotherAddress() {
         var address = wx.Storage.getItem('address');
         var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
+        // 现在选择的地址无法使用
+        if (!this.data.addressCanUse && myshippingAddressLength == 1) {
+            wx.navigateTo({
+                url: `../my_addShippingAddress/my_addShippingAddress`
+            })
+        }
+
         if (myshippingAddressLength > 1) {
             // 有收货地址
             wx.navigateTo({

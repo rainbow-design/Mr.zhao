@@ -2,7 +2,7 @@
     <block wx:if="{{!kaiTong}}">
         <view class='priceList'>
             <view class='taocan oneLineBetween'>
-                <view class='item columnBetween {{ defaultIndex === index ? "item_act":"" }}' wx:for="{{initData}}" wx:key="{{item.id}}" data-index="{{index}}" bindtap='selectTaocan'>
+                <view class='item columnBetween {{ defaultIndex === index ? "item_act":"" }} {{index > 2? "mt20":""}}' wx:for="{{initData}}" wx:key="{{item.id}}" data-index="{{index}}" bindtap='selectTaocan'>
                     <view class='bg'></view>
                     <image class='select' mode='widthFix' src='{{defaultIndex === index ? checked : normal}}'></image>
                     <view class='date'>{{item.length}}</view>

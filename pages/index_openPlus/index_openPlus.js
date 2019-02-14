@@ -75,7 +75,6 @@ Page({
             plus_id: yData[`${index}`].id,
             price: yData[`${index}`].price
         })
-        console.log("当前选中的套餐" + index)
     },
     kaiTong() {
         var y = this;

@@ -1,4 +1,4 @@
-var RootUrl = "http://bianlidian.test01.qcw100.com/";
+var RootUrl = "https://bianlidian.test01.qcw100.com/";
 
 // 登录注册
 var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
@@ -32,6 +32,8 @@ var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
     once_again_order = RootUrl + "rest/2.0/category/order/once_again_order", // 可使用的优惠券列表
     pay_order = RootUrl + "rest/2.0/category/order/order_pay", // 支付订单
     confirm_order_detail = RootUrl + "rest/2.0/category/order/confirm_order_detail", // 确认订单商品详情
+    delete_cart = RootUrl + "rest/2.0/cart/cart/cart_del", // 删除购物车商品
+    merchant_addr = RootUrl + "rest/2.0/cart/cart/merchant_addr", // 获取商户地址信息
 
     //个人中心
     basicInfo = RootUrl + "rest/2.0/user/user/basic_info", // 用户基本资料
@@ -89,6 +91,8 @@ module.exports = {
     confirm_goods,
     once_again_order,
     confirm_order_detail,
+    delete_cart,
+    merchant_addr,
     // 我的
     basicInfo,
     add_user_info,

@@ -44,7 +44,6 @@
         <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
     </view>
     <view class='scrollShopList'>
-
         <view class='mainMenu'>
             <scroll-view class="scroll_a" scroll-y="true" style='white-space:nowrap'>
                 <block wx:for="{{classA}}" wx:key="">

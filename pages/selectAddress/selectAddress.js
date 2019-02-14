@@ -3,9 +3,8 @@ const app = getApp();
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.min.js');
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
-const Storage = require("../../utils/storage.js");
 // 实例化API核心类
-var mapKey = 'GRBBZ-C6A35-IJLI7-QKHAT-NXZ7S-IQBG6'
+var mapKey = '2WZBZ-WLTKR-YNCWP-WFPIR-PEKJE-P2BSS'
 const qqmapsdk = new QQMapWX({
   key: mapKey // 必填
 });
@@ -90,8 +89,8 @@ Page({
       keyword: val,
       showSearchData: true
     })
-    var lat = Storage.getItem("lat"),
-      lng = Storage.getItem("lng");
+    var lat = wx.Storage.getItem("lat"),
+      lng = wx.Storage.getItem("lng");
     let isChinese = util.checkType(val, "hasChinese");
     if (isChinese) {
       this.searchArea(lat, lng, val);
@@ -106,8 +105,8 @@ Page({
     util.getLocation((lat, lng) => {
       console.log(lat + ',' + lng)
       // 更新经纬度
-      Storage.setItem("lat", lat)
-      Storage.setItem("lng", lng)
+      wx.Storage.setItem("lat", lat)
+      wx.Storage.setItem("lng", lng)
       // 位置信息
       util.getCityInfo(lat, lng, mapKey, function (cityInfo) {
         console.log(cityInfo);
@@ -157,7 +156,7 @@ Page({
     var yData = this.data;
     if (yData.formAddAddress) {
       wx.yue.pub("addAddress", data.info);
-      wx.navigateTo({
+        wx.redirectTo({
         url: `../my_addShippingAddress/my_addShippingAddress`
       })
     } else if (yData.formEditAddress) {

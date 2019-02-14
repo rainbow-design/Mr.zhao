@@ -233,7 +233,8 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
+        // 更新购物车的数量提示
+        // app.getShoppingCartNum();
     },
 
     /**
@@ -241,7 +242,7 @@ Page({
      */
     onUnload: function () {
         // 更新购物车的数量提示
-        app.getShoppingCartNum();
+        // app.getShoppingCartNum();
     },
 
     /**

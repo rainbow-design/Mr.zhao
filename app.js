@@ -3,10 +3,11 @@ const util = require("./utils/util.js");
 const api = require("./utils/api.js");
 var app = getApp();
 const Storage = {
-    setItem: function (key, obj) {
+    setItem: function (key, obj, callback) {
         wx.setStorage({
             key: key,
-            data: obj
+            data: obj,
+            success: callback || function(){}
         })
     },
     getItem: function (key) {
@@ -83,10 +84,6 @@ App({
         id: 0
     },
     onLaunch: function (e) {
-        if (e.query.id) {
-            this.data.id = e.query.id;
-        }
-        console.log(this.data.id)
         // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || []
         console.log('wx-----------------------------')
@@ -155,23 +152,11 @@ App({
     },
 
     // 获取用户购物车的订单量
-    getShoppingCartNum() {
+    getShoppingCartNum(callback) {
         util.promiseRequest(api.cart_list, {})
             .then(res => {
                 var data = res.data.response_data.lists;
-                if (data.length > 0) {
-                    wx.setTabBarBadge({
-                        index: 2,
-                        text: String(data.length)
-                    })
-                    wx.Storage.setItem("shoppingCartNum", data.length);
-                } else {
-                    wx.Storage.setItem("shoppingCartNum", 0)
-                    wx.removeTabBarBadge({
-                        index: 2
-                    })
-                }
-
+                typeof callback === 'function' ? callback(data.length) : '';
             })
     },
     // 获取用户收货地址的条数
@@ -181,7 +166,6 @@ App({
         })
             .then(res => {
                 var data = res.data.response_data.lists;
-                console.log(data.length)
                 wx.Storage.setItem("myshippingAddressLength", data.length);
             })
     },
@@ -214,6 +198,6 @@ App({
                 var state = data.lists[0].is_plus === '普通会员' ? false : true;
                 typeof callback === 'function' ? callback(state) : '';
             })
-    },
+    }
 
 })

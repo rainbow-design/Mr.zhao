@@ -60,7 +60,7 @@
 .address {
     width: 750rpx;
     box-sizing: border-box;
-    height: 242rpx;
+    /* height: 294rpx;  由 whiteBox 控制高度*/
     background: #f0f2f5;
     padding: 30rpx;
 }
@@ -70,7 +70,7 @@
     box-sizing: border-box;
     padding: 28rpx 30rpx 38rpx 31rpx;
     width: 690rpx;
-    height: 182rpx;
+    /* height: 182rpx or 234rpx; */
     background: rgba(255, 255, 255, 1);
     border-radius: 25rpx;
 }
@@ -83,6 +83,22 @@
     font-weight: 400;
     color: rgba(26, 26, 26, 1);
     line-height: 38rpx;
+}
+.rightIcon {
+    position: absolute;
+    top: 74rpx;
+    right: 30rpx;
+    width: 19rpx;
+}
+.tishi {
+    position: relative;
+    top: 30rpx;
+    height: 29rpx;
+    font-size: 30rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    line-height: 29rpx;
 }
 
 .greenBox {
