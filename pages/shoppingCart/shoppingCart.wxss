@@ -84,12 +84,14 @@
     color: rgba(26, 26, 26, 1);
     line-height: 38rpx;
 }
+
 .rightIcon {
     position: absolute;
     top: 74rpx;
     right: 30rpx;
     width: 19rpx;
 }
+
 .tishi {
     position: relative;
     top: 30rpx;
@@ -202,6 +204,9 @@
     height: 100%;
     box-sizing: border-box;
     padding: 30rpx 29rpx 30rpx 16rpx;
+}
+
+.rightBox_border {
     border-bottom: 1px solid rgba(224, 224, 224, 1);
 }
 
@@ -373,7 +378,7 @@
     position: absolute;
     left: 183rpx;
     top: 21rpx;
-    width: 268rpx;
+    width: 320rpx;
     height: 55rpx;
 }
 

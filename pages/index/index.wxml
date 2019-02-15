@@ -49,11 +49,16 @@
         </view>
     </block>
     <!-- 首页优惠券弹窗模块 end -->
-    <image class='ad' bindtap='toInviteFriend' mode="widthFix" src="../../assets/invite.png"></image>
+    <block wx:if="{{showInviteAd}}">
+        <image class='ad' bindtap='toInviteFriend' mode="widthFix" src="../../assets/invite.png"></image>
+        <image class='ad_delete'  src="../../assets/icon/delete_Ad.png" catchtap='closeAd'></image>
+    </block>
     <view class='header borderBox oneLineEnd'>
         <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
-        <view class='location ellipsis' bindtap='toSelectAddress' data-address="{{address}}">{{globalAddress.detail_addr || shortAddress}}</view>
-        <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
+        <view class='address_box' data-address="{{address}}" bindtap='toSelectAddress'>
+            <view class='location ellipsis'>{{globalAddress.detail_addr || shortAddress}}</view>
+            <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
+        </view>
         <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='toIndexSearch'></input>
         <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
     </view>
@@ -80,7 +85,7 @@
         <template is="swiper" data="{{bannerList:bannerList,swiperCurrent:swiperCurrent,indicatorDots:indicatorDots,RootUrl:RootUrl}}" />
     </view>
     <!-- 子菜单 -->
-    <view class='subMenu f-wrap  borderBox oneLineBetween mulitLineBetween'>
+    <view class='subMenu f-wrap  borderBox oneLineBetween mulitLineStart'>
         <block wx:for="{{categoryList}}" wx:key="{{item.id}}">
             <view class='subNemuItem' data-id="{{item.id}}" data-type="{{item.type}}" bindtap="toSortPage" data-index="{{index}}">
                 <image class='subMenuItem_img' mode="widthFix" src="{{item.img}}"></image>
@@ -109,32 +114,35 @@
                         <view class='youhuiText'>会员{{item.plus}}折</view>
                     </image>
                 </view>
-                <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
+                <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-id="{{item.id}}" catchtap='addToCart'></image>
             </view>
         </view>
     </view>
 </view>
 <view class='gap' style='height:20rpx;'></view>
-<view class='hotSell'>
-    <view class='commonTitle'>
-        <view class='title'>推荐购买</view>
-        <view class='leftBorder'></view>
-        <view class='rightBorder'></view>
-    </view>
-    <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{productList_b}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
-        <image class='hotSellItem_img' mode='widthFix' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
-        <view class='hotSellItem_content hotContentFlexStyle'>
-            <view class='title line-clamp '>
-                {{item.name}}
+<block wx:if="{{productList_b.length > 0}}">
+    <view class='hotSell'>
+        <view class='commonTitle'>
+            <view class='title'>推荐购买</view>
+            <view class='leftBorder'></view>
+            <view class='rightBorder'></view>
+        </view>
+
+        <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{productList_b}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
+            <image class='hotSellItem_img' mode='widthFix' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
+            <view class='hotSellItem_content hotContentFlexStyle'>
+                <view class='title line-clamp '>
+                    {{item.name}}
+                </view>
+                <view class='introduction line-clamp'>{{item.desc}}</view>
+                <view class='price nowrap'>¥{{item.price}}</view>
+                <view class='offerPrice nowrap'>¥{{item.plus_price}}
+                    <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+                        <view class='youhuiText'>会员{{item.plus}}折</view>
+                    </image>
+                </view>
+                <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-id="{{item.id}}" catchtap='addToCart'></image>
             </view>
-            <view class='introduction line-clamp'>{{item.desc}}</view>
-            <view class='price nowrap'>¥{{item.price}}</view>
-            <view class='offerPrice nowrap'>¥{{item.plus_price}}
-                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-                    <view class='youhuiText'>会员{{item.plus}}折</view>
-                </image>
-            </view>
-            <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
         </view>
     </view>
-</view>
+</block>

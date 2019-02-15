@@ -7,7 +7,7 @@ const Storage = {
         wx.setStorage({
             key: key,
             data: obj,
-            success: callback || function(){}
+            success: callback || function () { }
         })
     },
     getItem: function (key) {
@@ -95,7 +95,8 @@ App({
         wx.yue = Event;
         // 注册 storage
         wx.Storage = Storage;
-
+        // 把腾讯地图的 key 放在这里
+        wx.mapKey = '2WZBZ-WLTKR-YNCWP-WFPIR-PEKJE-P2BSS'
 
         // 登录
         wx.login({
@@ -150,20 +151,44 @@ App({
             url: `../index_inviteFriend/index_inviteFriend`
         })
     },
+    addToCart(e) {
+        var y = this;
+        var data = e.currentTarget.dataset;
+        let params = {
+            goods_id: data.id,
+            type: 1,
+            num: 1
+        }
+        util.promiseRequest(api.cart_add, params).then((res) => {
+            // 更新全局商品数量
+            y.getShoppingCartNum((length) => {
+                if (length > 0) {
+                    wx.setTabBarBadge({
+                        index: 2,
+                        text: String(length)
+                    })
+                } else {
+                    wx.removeTabBarBadge({
+                        index: 2
+                    })
+                }
+            });
+        })
 
-    // 获取用户购物车的订单量
+    },
+
+    // 获取用户购物车的商品数量
     getShoppingCartNum(callback) {
         util.promiseRequest(api.cart_list, {})
             .then(res => {
-                var data = res.data.response_data.lists;
-                typeof callback === 'function' ? callback(data.length) : '';
+                var goodsNum = res.data.response_data.count;
+                typeof callback === 'function' ? callback(goodsNum) : '';
             })
     },
     // 获取用户收货地址的条数
     getMy_shippingAddressLength() {
         var y = this;
-        util.promiseRequest(api.addr_list, {
-        })
+        util.promiseRequest(api.addr_list, {})
             .then(res => {
                 var data = res.data.response_data.lists;
                 wx.Storage.setItem("myshippingAddressLength", data.length);

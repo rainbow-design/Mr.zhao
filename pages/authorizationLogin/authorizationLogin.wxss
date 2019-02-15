@@ -106,11 +106,12 @@
     position: absolute;
     right: 52rpx;
     width: 140rpx;
+    height: 80rpx;
     font-size: 28rpx;
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;
     color: rgba(88, 181, 48, 1);
-    line-height: 52rpx;
+    line-height: 80rpx;
     z-index: 4;
 }
 

@@ -19,7 +19,8 @@ Page({
         proId: 1,
         card: [],
         total: 0,
-        proBottom: true
+        proBottom: true,
+        firstId: ''// 左侧主导航第一个菜单的id
     },
     /**
      * 生命周期函数--监听页面加载
@@ -31,7 +32,7 @@ Page({
             let params = {}
             util.promiseRequest(api.product_cate, params).then((res) => {
                 that.setData({
-                   classA: res.data.response_data,
+                    classA: res.data.response_data,
                 });
                 if (res.data.response_data[0]) {
                     that.setData({
@@ -39,8 +40,8 @@ Page({
                     })
                 };
                 let aindex = '';
-                res.data.response_data.forEach((item,index)=>{
-                    if(options.id == item.id){
+                res.data.response_data.forEach((item, index) => {
+                    if (options.id == item.id) {
                         aindex = index
                     }
                 })
@@ -58,7 +59,7 @@ Page({
                 that.chooseClass(e);
                 that.getproduct_list();
             })
-        }else{
+        } else {
             this.getProduct_cate();
         }
     },
@@ -66,7 +67,7 @@ Page({
     // 优惠券
     get_coupons() {
         let that = this;
-        app.get_coupons(function(data) {
+        app.get_coupons(function (data) {
             that.setData({
                 card: data,
                 total: data.length
@@ -76,7 +77,9 @@ Page({
             }
         })
     },
-
+    addToCart(e) {
+        app.addToCart(e);
+    },
     // 领取优惠券
     receive_coupons(e) {
         let that = this;
@@ -133,6 +136,11 @@ Page({
                 that.setData({
                     [id ? 'proId' : 'proType']: id ? res.data.response_data[0].id : res.data.response_data[0].type,
                 })
+                if (id === undefined) {
+                    that.setData({
+                        firstId: res.data.response_data[0].id
+                    })
+                }
             }
             that.getproduct_list();
         })
@@ -140,6 +148,15 @@ Page({
     // 选择分类
     chooseClass(e) {
         let cur = e.currentTarget.dataset;
+        // 领取优惠券只在第一个分类里展示
+        if (this.data.firstId != cur.id || cur.pro_type != 1) {
+            this.setData({
+                total: 0
+            })
+        }else {
+            this.get_coupons();
+        }
+
         this.setData({
             [cur.type == 1 ? 'classShowA' : 'classShowB']: cur.index,
             proId: cur.pro_id,
@@ -182,14 +199,14 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
         this.setData({
             shortAddress: wx.Storage.getItem("shortAddress"),
             address: wx.Storage.getItem("address")
@@ -205,33 +222,33 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
         app.getShoppingCartNum();
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {},
+    onReachBottom: function () { },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

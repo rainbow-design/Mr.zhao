@@ -41,7 +41,7 @@
                     <view class='zhuzhi' style='height:auto;width:440rpx;'>
                         请选择您的收货地址
                     </view>
-                    <view style='font-size:28rpx' bindtap='toSelectAddress'>补全地址</view>
+                    <view style='font-size:28rpx' catchtap='toSelectAddress'>补全地址</view>
                     <image class='caidai' src="../../assets/icon/huaBian.png"></image>
                 </view>
             </view>
@@ -62,13 +62,13 @@
                 <view class='order_item' data-id="{{item.goods_id}}" wx:for="{{cartList}}" wx:key="{{item.user_id}}" style="{{item.txtStyle}}" data-index="{{index}}" bindtouchstart="touchS" bindtap='toProductDetail' bindtouchmove="touchM" bindtouchend="touchE">
                     <view class='leftBox'>
                         <block wx:if="{{item.y_isCheck}}">
-                            <image class='check' data-index="{{index}}" src="../../assets/icon/right_plus.png" bindtap='checkGoods'></image>
+                            <image class='check' data-index="{{index}}" src="../../assets/icon/right_plus.png" catchtap='checkGoods'></image>
                         </block>
                         <block wx:elif="{{!item.y_isCheck}}">
-                            <image class='check' data-index="{{index}}" src="../../assets/icon/round.png" bindtap='checkGoods'></image>
+                            <image class='check' data-index="{{index}}" src="../../assets/icon/round.png" catchtap='checkGoods'></image>
                         </block>
                     </view>
-                    <view class='rightBox oneLineBetween'>
+                    <view class='rightBox oneLineBetween {{cartList.length - 1==index ?"":"rightBox_border"}}'>
                         <image class='img' src="{{filter.filterImgUrl(item.thumb_img)}}"></image>
                         <view class='content flexStyle'>
                             <view class='title line-clamp '>
@@ -83,9 +83,11 @@
                             </view>
                         </view>
                         <view class='countControl'>
-                            <image class='add' data-index="{{index}}" data-num="{{item.num}}" data-id="{{item.goods_id}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/add.png" bindtap='numAdd'></image>
+
+                            <image class='minus' data-index="{{index}}" data-id="{{item.goods_id}}" data-num="{{item.num}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/minus.png" catchtap='minusNum'></image>
                             <view class='number'>{{item.num}}</view>
-                            <image class='minus' data-index="{{index}}" data-id="{{item.goods_id}}" data-num="{{item.num}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/minus.png" bindtap='minusNum'></image>
+
+                            <image class='add' data-index="{{index}}" data-num="{{item.num}}" data-id="{{item.goods_id}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/add.png" catchtap='numAdd'></image>
                         </view>
                     </view>
                     <!-- rightBox end -->
@@ -107,7 +109,14 @@
                     <view class='name'>合计:
                         <view class='price'>¥{{totalPrice}}</view>
                     </view>
-                    <view class='content'>满{{allData.devery_info[0].limit}}元免配送费</view>
+                    <view class='content'>
+                        <block wx:if="{{cost_temp >allData.devery_info[0].limit }}">
+                            已满{{allData.devery_info[0].limit}}元，免配送费
+                        </block>
+                        <block wx:if="{{cost_temp <allData.devery_info[0].limit}}">
+                            另外需配送费{{allData.devery_info[0].cost}}元，满￥{{allData.devery_info[0].limit}}元免配送费
+                        </block>
+                    </view>
                 </view>
             </view>
             <view class='rightBox' bindtap='toConfirm_Order'>

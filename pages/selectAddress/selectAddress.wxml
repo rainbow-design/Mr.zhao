@@ -12,7 +12,7 @@
           <view class='currentCityName'>定位中...</view>
         </block>
         <block wx:elif="{{loading === false}}">
-          <view class='currentCityName'>{{initAddress || reAddress}}</view>
+          <view class='currentCityName line-clamp' style='width:520rpx;'>{{initAddress || reAddress}}</view>
         </block>
         <view class='refresh' bindtap='reGetLocation'>
           <image src="../../assets/icon/location.png" mode='widthFix'></image>

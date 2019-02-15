@@ -16,6 +16,7 @@ Page({
         noCartData: false,
         cartList: [],
         totalPrice: 0,
+        cost_temp: 0, // 价格 temp，没有 0 
         isCheckAll: true, // 初始化状态，刚开始就选中所有吗？
         startX: '', // 初始手指接触位置,
         delBtnWidth: 120,
@@ -30,7 +31,7 @@ Page({
         shop_lng: '', // 商铺经度
         peiSongFanWei: 2000, // 配送范围 2000m
         addressCanUse: true,
-        showRightIcon: false
+        showRightIcon: false,
     },
     changeCart(id, num) {
         let params = {
@@ -246,14 +247,13 @@ Page({
         })
             .then(res => {
                 var data = res.data.response_data.lists;
-                var shoppingCartNum = 0;
+                var shoppingCartNum = res.data.response_data.count;
                 if (data === "" || data.length === 0) {
                     y.setData({
                         noCartData: true,
                         allData: res.data.response_data
                     })
                 } else {
-                    shoppingCartNum = data.length;
                     util.addKey(data, {
                         "y_isCheck": false
                     }, function (v) {
@@ -298,19 +298,29 @@ Page({
     },
     getTotalPrice(data) {
         var data = data || this.data.cartList;
-        let cost = 0;
+        var temp = 0, cost;
         let isPlus = this.data.isPlus;
         console.log('是否是 plus 会员' + this.data.isPlus);
         if (!isPlus) {
             // 非会员
             data.forEach(item => {
-                item.y_isCheck ? cost += item.price * item.num : '';
+                item.y_isCheck ? temp += item.price * item.num : '';
             });
+            // 减免配送费计算
+            var devery_info = this.data.allData.devery_info[0];
+            // 满额
+            var limit = Number(devery_info.limit);
+            var jian = Number(devery_info.cost);
 
-            cost = util.toFixed(Number(cost), 2);
+            if (temp > limit) {
+                temp -= jian
+            }
+
+            cost = util.toFixed(Number(temp), 2);
 
             this.setData({
-                totalPrice: cost
+                totalPrice: cost,
+                cost_temp: temp
             })
         } else {
             // plus 会员 价格

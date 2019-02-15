@@ -12,7 +12,8 @@ Page({
     data: {
         searchValue: '',
         productList: [],
-        proBottom: true
+        proBottom: true,
+        focus:true
     },
     toDetail(e) {
         wx.navigateTo({

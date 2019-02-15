@@ -3,28 +3,32 @@
 
     <view class='searchContorl borderBox'>
         <view class='inputBox'>
-            <input class='inputText borderBox' bindinput='inputData' value="{{searchValue}}" placeholder='搜索' placeholder-class='place_input'></input>
+            <input class='inputText borderBox' focus="{{focus}}" bindinput='inputData' value="{{searchValue}}" placeholder='搜索' placeholder-class='place_input'></input>
             <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
             <view class='searchText nowrap' bindtap='search'>搜索</view>
         </view>
-
-        <view class='hotSearchText'>历史搜索</view>
-        <view class='keyWords flexStyle f-wrap'>
-            <block wx:for="{{searchListHistory}}" wx:key="">
-                <view class='item' bindtap='chooseKey' data-key="{{item.keywords}}">
-                    <view class='text'>{{item.keywords}}</view>
-                </view>
-            </block>
-        </view>
-        <view class='hotSearchText'>热门搜索</view>
-        <view class='keyWords flexStyle f-wrap'>
-            <block wx:for="{{searchListTop}}" wx:key="">
-                <view class='item' bindtap='chooseKey' data-key="{{item.keywords}}">
-                    <view class='text'>{{item.keywords}}</view>
-                </view>
-            </block>
-        </view>
+        <block wx:if="{{searchListHistory.length > 0}}">
+            <view class='hotSearchText'>历史搜索</view>
+            <view class='keyWords flexStyle f-wrap'>
+                <block wx:for="{{searchListHistory}}" wx:key="">
+                    <view class='item' bindtap='chooseKey' data-key="{{item.keywords}}">
+                        <view class='text'>{{item.keywords}}</view>
+                    </view>
+                </block>
+            </view>
+        </block>
+        <block wx:if="{{searchListTop.length > 0}}">
+            <view class='hotSearchText'>热门搜索</view>
+            <view class='keyWords flexStyle f-wrap'>
+                <block wx:for="{{searchListTop}}" wx:key="">
+                    <view class='item' bindtap='chooseKey' data-key="{{item.keywords}}">
+                        <view class='text'>{{item.keywords}}</view>
+                    </view>
+                </block>
+            </view>
+        </block>
     </view>
+
     <view class='gap' style='height:20rpx;'></view>
     <!-- <view class='tuijian' wx:if="{{productList.length>0}}"> -->
     <view class='tuijian' wx:if="{{productList.length>0}}">

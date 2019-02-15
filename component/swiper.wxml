@@ -1,11 +1,11 @@
 <template name="swiper">
     <swiper current="{{swiperCurrent}}" circular="true" bindchange="swiperChange" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="1000">
-        <swiper-item wx:for="{{bannerList}}" wx:key="{{index}}" bindtap='toHref' data-type="{{item.type}}" data-choice="{{item.choice}}" data-link="{{item.link}}" data-relat_id="{{item.relat_id}}">
+        <swiper-item wx:for="{{bannerList}}" wx:key="{{index}}" bindtap='toHref' data-type="{{item.type}}"  data-link="{{item.link}}" >
             <image src="{{item.img_url}}" class="slide-image" />
         </swiper-item>
     </swiper>
     <view id="boxCell">
-        <block wx:for="{{bannerList.length > 1}}" wx:for-index="index" wx:key="{{item.banner}}">
+        <block wx:for="{{bannerList.length > 1 ? bannerList:[]}}" wx:for-index="index" wx:key="{{item.banner}}">
             <view id="{{index}}" class="dot {{index === swiperCurrent ? 'dot_active':''}}" bindtap="selectCarouselByIndex" />
         </block>
     </view>

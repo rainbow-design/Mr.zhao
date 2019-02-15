@@ -3,9 +3,6 @@
 const app = getApp();
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
-// 实例化API核心类
-var mapKey = 'GRBBZ-C6A35-IJLI7-QKHAT-NXZ7S-IQBG6'
-// pages/my.js
 Page({
 
     /**
@@ -15,6 +12,7 @@ Page({
         showSignIn: false,
         hasYouhuiquan: false, // 首页领取优惠券？
         indicatorDots: false,
+        showInviteAd: true,
         isPlus: false, // 是会员吗
         swiperCurrent: 0,
         card: [], // 优惠券的数量
@@ -60,11 +58,16 @@ Page({
     getProductList() {
         let that = this;
         util.promiseRequest(api.index_products, {}).then((res) => {
+            var lists = res.data.response_data.lists;
+            var productList_b_data = lists.length > 1 ? lists[1].list : [];
             that.setData({
-                productList_a: res.data.response_data.lists[0].list,
-                productList_b: res.data.response_data.lists[1].list
+                productList_a: lists[0].list,
+                productList_b: productList_b_data
             })
         })
+    },
+    addToCart(e) {
+        app.addToCart(e);
     },
     toSortPage(e) {
         var data = e.currentTarget.dataset;
@@ -95,14 +98,8 @@ Page({
             success(res) {
                 // 鉴别是否授权
                 var isShouquan = res.authSetting["scope.userInfo"];
-                if (!isShouquan) {
-                    wx.navigateTo({
-                        url: `../authorizationLogin/authorizationLogin?isShouquan=${isShouquan}`
-                    });
-                } else {
-                    // 已授权直接获取token
-                    y.getTokenMeg();
-                }
+                // 试着直接获取token
+                y.getTokenMeg();
             }
         })
     },
@@ -188,6 +185,23 @@ Page({
                 globalAddress: globalAddress
             })
         }
+        this.setData({
+            shortAddress: wx.Storage.getItem("shortAddress"),
+            address: wx.Storage.getItem("address")
+        })
+    },
+    swiperChange: function(e) {
+        var source = e.detail.source;
+        if (source === "autoplay" || source === "touch") {
+            this.setData({
+                swiperCurrent: e.detail.current
+            })
+        }
+    },
+    selectCarouselByIndex: function(e) {
+        this.setData({
+            swiperCurrent: e.currentTarget.id
+        })
     },
     // 领取优惠券
     receive_coupons(e) {
@@ -219,7 +233,7 @@ Page({
             wx.Storage.setItem("lat", lat)
             wx.Storage.setItem("lng", lng)
             // 位置信息
-            util.getCityInfo(lat, lng, mapKey, function(cityInfo) {
+            util.getCityInfo(lat, lng, wx.mapKey, function(cityInfo) {
                 var shortAddress = cityInfo.address_component.street_number;
                 wx.Storage.setItem("shortAddress", shortAddress)
                 wx.Storage.setItem("address", cityInfo.address)
@@ -257,7 +271,12 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function() {
-
+        // 轮播
+        this.getBannerList();
+        // 二级分类
+        this.getCetegoryList();
+        // 商品列表
+        this.getProductList();
     },
 
     /**
@@ -293,13 +312,18 @@ Page({
             })
         } else {
             wx.navigateTo({
-                url: `../index_plus/index_plus`
+                url: `../authorizationLogin/authorizationLogin`
             })
         }
 
     },
     toInviteFriend() {
         app.share();
+    },
+    closeAd() {
+        this.setData({
+            showInviteAd: false
+        })
     },
     toSelectAddress(e) {
         var data = e.currentTarget.dataset;

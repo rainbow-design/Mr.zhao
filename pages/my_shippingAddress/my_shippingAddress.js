@@ -51,19 +51,22 @@ Page({
                 y.setData({
                     addressData: data
                 }, function () {
-                    var addressList_H, btn_T;
-                    util.getEle('#addressList', function (res) {
-                        addressList_H = res[0].height;
-                        y.setData({
-                            addressList_H: addressList_H
+                    if (data.length > 0) {
+                        var addressList_H, btn_T;
+                        util.getEle('#addressList', function (res) {
+                            addressList_H = res[0].height;
+                            y.setData({
+                                addressList_H: addressList_H
+                            })
                         })
-                    })
-                    util.getEle('#addBtn', function (res) {
-                        btn_T = res[0].top;
-                        y.setData({
-                            btn_T: btn_T
+                        util.getEle('#addBtn', function (res) {
+                            btn_T = res[0].top;
+                            y.setData({
+                                btn_T: btn_T
+                            })
                         })
-                    })
+                    }
+
                 })
             })
     },

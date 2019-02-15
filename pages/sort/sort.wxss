@@ -174,19 +174,18 @@
 }
 
 .location {
-    position: absolute;
-    left: 126rpx;
     width: 138rpx;
     font-size: 28rpx;
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;
     color: rgba(26, 26, 26, 1);
+    line-height: 55rpx;
 }
 
 .location_arrow {
     position: absolute;
-    top: 37rpx;
-    left: 268rpx;
+    right: 0;
+    top: 24rpx;
     width: 20rpx;
 }
 
@@ -233,7 +232,7 @@
     float: left;
     width: 184rpx;
     height: 100%;
-    background: #F5F5F5;
+    background: #f5f5f5;
 }
 
 .rightBox {
@@ -335,7 +334,6 @@
 
 .goods_item .img {
     width: 188rpx;
-    height: 146rpx;
 }
 
 .content {

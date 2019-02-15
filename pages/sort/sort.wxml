@@ -38,8 +38,10 @@
     </block>
     <view class='header borderBox oneLineEnd'>
         <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
-        <view class='location ellipsis' bindtap='toSelectAddress' data-address="{{address}}">{{globalAddress.detail_addr || shortAddress}}</view>
-        <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
+        <view class='address_box' data-address="{{address}}" bindtap='toSelectAddress'>
+            <view class='location ellipsis'>{{globalAddress.detail_addr || shortAddress}}</view>
+            <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
+        </view>
         <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='test'></input>
         <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
     </view>
@@ -81,9 +83,9 @@
                         </view>
                     </block>
                     <!-- 单个商品开始 -->
-                    <block wx:for="{{productList}}" wx:key="">
+                    <block wx:for="{{productList}}" wx:key="{{item.id}}">
                         <view class='goods_item oneLineBetween' bindtap='toDetail' data-id="{{item.id}}">
-                            <image class='img' src="{{item.thumb_img}}"></image>
+                            <image class='img' mode="widthFix" src="{{item.thumb_img}}"></image>
                             <view class='content'>
                                 <view class='title'>
                                     {{item.name}}
@@ -95,7 +97,7 @@
                                         <view class='youhuiText'>会员{{item.plus}}折</view>
                                     </image>
                                 </view>
-                                <image class='shopping' src="../../assets/shopping.png" mode="widthFix"></image>
+                                <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-id="{{item.id}}" catchtap='addToCart'></image>
                             </view>
                         </view>
                     </block>

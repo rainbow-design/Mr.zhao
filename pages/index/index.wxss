@@ -1,6 +1,7 @@
 @import '../../style/shopingListItem.wxss';
 
 .header {
+    position: relative;
     width: 750rpx;
     height: 99rpx;
     padding: 20rpx 30rpx;
@@ -13,19 +14,18 @@
 }
 
 .location {
-    position: absolute;
-    left: 127rpx;
     width: 138rpx;
     font-size: 28rpx;
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;
     color: rgba(26, 26, 26, 1);
+    line-height: 55rpx;
 }
 
 .location_arrow {
     position: absolute;
-    top: 44rpx;
-    left: 286rpx;
+    right: 0;
+    top: 24rpx;
     width: 20rpx;
 }
 
@@ -113,7 +113,7 @@
     display: flex;
     width: 750rpx;
     padding: 35rpx 17rpx 44rpx 17rpx;
-    align-content: flex-start!important;
+    align-content: flex-start !important;
 }
 
 .subMenuItem_img {
@@ -284,10 +284,19 @@
 
 .ad {
     position: fixed;
-    left: 615rpx;
+    right: 25rpx;
     top: 818rpx;
     width: 130rpx;
     z-index: 777;
+}
+
+.ad_delete {
+    position: fixed;
+    right: 30rpx;
+    top: 820rpx;
+    width: 21rpx;
+    height: 21rpx;
+    z-index: 778;
 }
 
 .signIn {
