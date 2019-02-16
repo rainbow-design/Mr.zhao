@@ -8,6 +8,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        newGlobalAddress: false,
         selectAddress: 0,
         name: '',
         phone: '',
@@ -22,6 +23,11 @@ Page({
      */
     onLoad: function (options) {
         var y = this;
+        if (options.globalAddress === "true") {
+            this.setData({
+                newGlobalAddress: true
+            })
+        }
         wx.yue.sub("addAddress", function (data) {
             wx.Storage.setItem("addAddress", data);
         })
@@ -114,6 +120,9 @@ Page({
             var data = res.data.response_data.lists;
 
             if (data === 1) {
+                // 新制造一个全局的地址
+                var makeNewGlobalAd = {};
+                // { "id": "36", "uid": "17", "name": "闫越", "phone": "13333333333", "longitude": "116.3457", "latitude": "40.05709", "address": "北京市海淀区西三旗育新花园(建材城西路南)", "detail_addr": "23", "type": "0", "is_default": "1", "is_show": "0", "type_name": "住宅" }
                 y.setData({
                     address: ''
                 })

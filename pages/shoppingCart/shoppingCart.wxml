@@ -38,10 +38,9 @@
         <block wx:elif="{{!globalAddress.address}}">
             <view class='address' style='height:162rpx;'>
                 <view class='whiteBox oneLineStart' style='height:100rpx;'>
-                    <view class='zhuzhi' style='height:auto;width:440rpx;'>
-                        请选择您的收货地址
+                    <view class='zhuzhi' style='height:auto;width:100%;text-align:center;' catchtap='toSelectAddress'>
+                        {{myshippingAddressLength == '0'?'添加收货地址':'请选择您的收货地址'}}
                     </view>
-                    <view style='font-size:28rpx' catchtap='toSelectAddress'>补全地址</view>
                     <image class='caidai' src="../../assets/icon/huaBian.png"></image>
                 </view>
             </view>

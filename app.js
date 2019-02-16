@@ -136,6 +136,17 @@ App({
             delta: 1
         })
     },
+    isLogin(callback, e) {
+        let token = wx.Storage.getItem("token");
+        if (token === '') {
+            wx.navigateTo({
+                url: `../authorizationLogin/authorizationLogin?isShouquan=false`
+            });
+        } else {
+            // 登录后操作
+            callback.apply(undefined, e);
+        }
+    },
     setHeight(callback) {
         const sysInfo = wx.getSystemInfoSync(); // 设备信息
         const winHeight = sysInfo.windowHeight; // 设备高度
@@ -153,28 +164,29 @@ App({
     },
     addToCart(e) {
         var y = this;
-        var data = e.currentTarget.dataset;
-        let params = {
-            goods_id: data.id,
-            type: 1,
-            num: 1
-        }
-        util.promiseRequest(api.cart_add, params).then((res) => {
-            // 更新全局商品数量
-            y.getShoppingCartNum((length) => {
-                if (length > 0) {
-                    wx.setTabBarBadge({
-                        index: 2,
-                        text: String(length)
-                    })
-                } else {
-                    wx.removeTabBarBadge({
-                        index: 2
-                    })
-                }
-            });
-        })
-
+        this.isLogin(function () {
+            var data = e.currentTarget.dataset;
+            let params = {
+                goods_id: data.id,
+                type: 1,
+                num: 1
+            }
+            util.promiseRequest(api.cart_add, params).then((res) => {
+                // 更新全局商品数量
+                y.getShoppingCartNum((length) => {
+                    if (length > 0) {
+                        wx.setTabBarBadge({
+                            index: 2,
+                            text: String(length)
+                        })
+                    } else {
+                        wx.removeTabBarBadge({
+                            index: 2
+                        })
+                    }
+                });
+            })
+        }, e);
     },
 
     // 获取用户购物车的商品数量

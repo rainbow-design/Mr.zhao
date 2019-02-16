@@ -61,6 +61,9 @@ Page({
         this.shopCartInit();
         // 多个地址显示右箭头
         var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
+        this.setData({
+            myshippingAddressLength: myshippingAddressLength
+        })
         if (myshippingAddressLength > 1) {
             this.setData({
                 showRightIcon: true
@@ -127,7 +130,7 @@ Page({
         } else {
             // 去新增收货地址
             wx.navigateTo({
-                url: `../my_addShippingAddress/my_addShippingAddress`
+                url: `../my_addShippingAddress/my_addShippingAddress?globalAddress=true`
             })
         }
 

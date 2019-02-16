@@ -35,7 +35,9 @@ Page({
     },
     getUserInfo() {
         var y = this;
-        util.promiseRequest(api.basicInfo, { access_token: app.globalData.access_token })
+        util.promiseRequest(api.basicInfo, {
+            access_token: app.globalData.access_token
+        })
             .then(res => {
                 var data = res.data.response_data;
                 y.setData({
@@ -53,40 +55,51 @@ Page({
     },
     // 优惠券
     toCoupon() {
-        wx.navigateTo({
-            url: `../my_coupon/my_coupon`
+        app.isLogin(() => {
+            wx.navigateTo({
+                url: `../my_coupon/my_coupon`
+            })
         })
     },
     // 我的积分
     toIntegral() {
-        wx.navigateTo({
-            url: `../my_integral/my_integral`
+        app.isLogin(() => {
+            wx.navigateTo({
+                url: `../my_integral/my_integral`
+            })
         })
-
     },
     // 我的邀请
     toinvite() {
-        wx.navigateTo({
-            url: `../my_invite/my_invite`
+        app.isLogin(() => {
+            wx.navigateTo({
+                url: `../my_invite/my_invite`
+            })
         })
 
     },
     // 开通会员
     openPlus() {
-        wx.navigateTo({
-            url: `../index_plus/index_plus`
+        app.isLogin(() => {
+            wx.navigateTo({
+                url: `../index_plus/index_plus`
+            })
         })
     },
     //   续费会员
     goOnPlus() {
-        wx.navigateTo({
-            url: `../index_openPlus/index_openPlus`
+        app.isLogin(() => {
+            wx.navigateTo({
+                url: `../index_openPlus/index_openPlus`
+            })
         })
     },
     // 我的订单
     toOrder() {
-        wx.navigateTo({
-            url: `../my_order/my_order`
+        app.isLogin(() => {
+            wx.navigateTo({
+                url: `../my_order/my_order`
+            })
         })
     },
     // 显示客服帮助
@@ -96,12 +109,16 @@ Page({
         })
     },
     toInviteFriend() {
-        app.share();
+        app.isLogin(() => {
+            app.share();
+        })
     },
     // 收货地址
     toShippingAddress() {
-        wx.navigateTo({
-            url: `../my_shippingAddress/my_shippingAddress`
+        app.isLogin(() => {
+            wx.navigateTo({
+                url: `../my_shippingAddress/my_shippingAddress`
+            })
         })
     },
     cancelToCallTel() {
@@ -116,8 +133,10 @@ Page({
     },
     toMyOrderPage(e) {
         let tabNumber = e.currentTarget.dataset.tab;
-        wx.navigateTo({
-            url: `../my_order/my_order?tab=${tabNumber}`
+        app.isLogin(() => {
+            wx.navigateTo({
+                url: `../my_order/my_order?tab=${tabNumber}`
+            })
         })
     },
 
