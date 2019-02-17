@@ -53,8 +53,13 @@ Page({
             var addrInfo = confirmOrderData.addrInfo; // 配送地址信息
             var lists = confirmOrderData.lists; // 其他信息
             var deliver_cost = confirmOrderData.deliver_cost; // 配送费用相关信息
-            var delivery_fee = Number(lists.total_price) > Number(deliver_cost[0].limit) ? deliver_cost[0].cost : 0; // 精确需要支付的配送费
-            var userJifenNum = yData.default_useJifen ? lists.score : 0;
+            var delivery_fee = Number(lists.total_price) > Number(deliver_cost[0].limit) ? 0 : deliver_cost[0].cost; // 精确需要支付的配送费
+            var userJifenNum, jifenShouldOver = yData.jifenShouldOver;
+            if (yData.default_useJifen) {
+                userJifenNum = Number(lists.score) > jifenShouldOver ? Number(lists.score) : 0;
+            } else {
+                userJifenNum = 0;
+            }
             var result_amount = util.toFixed(Number(lists.total_price) - Number(delivery_fee) - (Number(userJifenNum) / 100), 2); // 计算商品总价
 
             this.setData({
@@ -90,7 +95,19 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        // 获取购物车订单数
+        app.getShoppingCartNum((length) => {
+            if (length > 0) {
+                wx.setTabBarBadge({
+                    index: 2,
+                    text: String(length)
+                })
+            } else {
+                wx.removeTabBarBadge({
+                    index: 2
+                })
+            }
+        });
     },
     bindPickerChange(e) {
         console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -234,7 +251,6 @@ Page({
      */
     onHide: function () {
         // 更新购物车的数量提示
-        // app.getShoppingCartNum();
     },
 
     /**
@@ -242,7 +258,6 @@ Page({
      */
     onUnload: function () {
         // 更新购物车的数量提示
-        // app.getShoppingCartNum();
     },
 
     /**

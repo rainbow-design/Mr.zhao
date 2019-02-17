@@ -57,8 +57,22 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        var y = this;
+        async function intPlusState() {
+            await app.isPlus(function (state) {
+                y.setData({
+                    isPlus: state
+                }, function () {
+                    y.shopCartInit();
+                })
+            })
+        }
+        intPlusState();
 
-        this.shopCartInit();
+        wx.Storage.getItem("token") == '' ? this.setData({
+            noCartData: true
+        }) : '';
+
         // 多个地址显示右箭头
         var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
         this.setData({
@@ -125,7 +139,7 @@ Page({
             })
             // 有收货地址
             wx.navigateTo({
-                url: `../selectAddress/selectAddress?address=${address}`
+                url: `../selectAddress/selectAddress?address=${address}&length=${myshippingAddressLength}`
             })
         } else {
             // 去新增收货地址
@@ -272,11 +286,10 @@ Page({
                         index: 2,
                         text: String(shoppingCartNum)
                     })
-                    console.log(data)
-                    // 是否是plus会员
-                    var isPlus = data[0].is_plus === '0' ? false : true;
+                    // TODO:是否是plus会员
+                    // var isPlus = data[0].is_plus === '0' ? false : true;
                     y.setData({
-                        isPlus: isPlus,
+                        // isPlus: isPlus,
                         cartList: data,
                         noCartData: false,
                         allData: res.data.response_data,
@@ -306,9 +319,10 @@ Page({
     },
     getTotalPrice(data) {
         var data = data || this.data.cartList;
-        var temp = 0, cost;
+        var temp = 0,
+            cost = 0;
         let isPlus = this.data.isPlus;
-        console.log('是否是 plus 会员' + this.data.isPlus);
+        console.log('是否是plus会员:' + this.data.isPlus);
         if (!isPlus) {
             // 非会员
             data.forEach(item => {
@@ -334,7 +348,7 @@ Page({
             // plus 会员 价格
             data.forEach(item => {
                 let dazhe = Number(item.plus) / 10;
-                item.y_isCheck ? cost += item.price * dazhe * item.num : '';
+                item.y_isCheck ? cost += Number(item.price) * dazhe * item.num : '';
             });
 
             cost = util.toFixed(Number(cost), 2);
@@ -506,7 +520,7 @@ Page({
         if (myshippingAddressLength > 1) {
             // 有收货地址
             wx.navigateTo({
-                url: `../selectAddress/selectAddress?address=${address}`
+                url: `../selectAddress/selectAddress?address=${address}&length=${myshippingAddressLength}`
             })
         }
     },
@@ -514,5 +528,8 @@ Page({
         wx.switchTab({
             url: '../sort/sort'
         })
+    },
+    onPullDownRefresh: function () {
+        wx.startPullDownRefresh()
     }
 })

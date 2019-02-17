@@ -39,18 +39,25 @@ Page({
             access_token: app.globalData.access_token
         })
             .then(res => {
-                var data = res.data.response_data;
+                var data =
+                    res.data.response_data === undefined ? false : res.data.response_data;
                 y.setData({
                     userInfo: data
                 })
 
+            }).catch((err) => {
+                y.setData({
+                    userInfo: false
+                })
             })
     },
     toMemberInfo(e) {
-        var data = e.currentTarget.dataset.info;
-        wx.yue.pub("userInfo", data);
-        wx.navigateTo({
-            url: `../my_memberInfo/my_memberInfo`
+        app.isLogin(() => {
+            var data = e.currentTarget.dataset.info;
+            wx.yue.pub("userInfo", data);
+            wx.navigateTo({
+                url: `../my_memberInfo/my_memberInfo`
+            })
         })
     },
     // 优惠券
@@ -77,6 +84,11 @@ Page({
             })
         })
 
+    },
+    toAuthorizationLogin() {
+        wx.navigateTo({
+            url: `../authorizationLogin/authorizationLogin?isShouquan=false`
+        });
     },
     // 开通会员
     openPlus() {

@@ -38,37 +38,36 @@ Page({
         })
     },
     joinCart() {
-        var y = this;
-        let params = {
-            goods_id: this.data.id,
-            type: 1,
-            num: 1
-        }
-        // 获取用户购物车的订单量
-        y.setData({
-            shoppingCartNum: y.data.shoppingCartNum + 1
-        })
+        app.isLogin(() => {
+            var y = this;
+            let params = {
+                goods_id: this.data.id,
+                type: 1,
+                num: 1
+            }
+            // 获取用户购物车的订单量
+            y.setData({
+                shoppingCartNum: y.data.shoppingCartNum + 1
+            })
 
 
-        util.promiseRequest(api.cart_add, params).then((res) => {
-            wx.showToast({
-                title: '加入购物车成功',
-                icon: 'none',
-                duration: 500,
-                complete: function() {
-                    // setTimeout(() => {
-                    //     wx.switchTab({
-                    //         url: '../shoppingCart/shoppingCart'
-                    //     })
-                    // }, 500)
-                }
+            util.promiseRequest(api.cart_add, params).then((res) => {
+                wx.showToast({
+                    title: '加入购物车成功',
+                    icon: 'none',
+                    duration: 500,
+                    complete: function () {
+                        setTimeout(() => {
+                        }, 0)
+                    }
+                })
             })
         })
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         this.setData({
             id: options.id,
         })
@@ -78,14 +77,14 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
         var y = this;
         // 获取购物车订单数
         app.getShoppingCartNum((length) => {
@@ -105,35 +104,59 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
-
+    onHide: function () {
+        // 获取购物车订单数
+        app.getShoppingCartNum((length) => {
+            if (length > 0) {
+                wx.setTabBarBadge({
+                    index: 2,
+                    text: String(length)
+                })
+            } else {
+                wx.removeTabBarBadge({
+                    index: 2
+                })
+            }
+        });
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
-
+    onUnload: function () {
+        // 获取购物车订单数
+        app.getShoppingCartNum((length) => {
+            if (length > 0) {
+                wx.setTabBarBadge({
+                    index: 2,
+                    text: String(length)
+                })
+            } else {
+                wx.removeTabBarBadge({
+                    index: 2
+                })
+            }
+        });
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

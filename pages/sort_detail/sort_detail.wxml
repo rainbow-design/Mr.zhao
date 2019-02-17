@@ -16,7 +16,7 @@
             <view class='introduction line-clamp'> {{productList.desc}} </view>
             <view class='price nowrap'>¥{{productList.price}}</view>
             <view class='offerPrice nowrap'>¥{{productList.plus_price}}
-                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+                <image class='youhuiBox' src="../../assets/youhuiBox.png">
                     <view class='youhuiText'>会员{{productList.plus}}折</view>
                 </image>
             </view>

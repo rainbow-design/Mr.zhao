@@ -25,20 +25,23 @@ Page({
     },
     //   签到
     toSignIn() {
-        let that = this;
-        util.promiseRequest(api.sign_in, {}).then((res) => {
-            if (!res.data.error_code) {
-                that.setData({
-                    showSignIn: true
-                })
-            } else {
-                wx.showToast({
-                    title: res.data.error_msg,
-                    icon: 'none',
-                    duration: 2000
-                })
-            }
+        app.isLogin(() => {
+            let that = this;
+            util.promiseRequest(api.sign_in, {}).then((res) => {
+                if (!res.data.error_code) {
+                    that.setData({
+                        showSignIn: true
+                    })
+                } else {
+                    wx.showToast({
+                        title: res.data.error_msg,
+                        icon: 'none',
+                        duration: 2000
+                    })
+                }
+            })
         })
+
     },
     closeB() {
         this.setData({
@@ -82,8 +85,10 @@ Page({
         })
     },
     toIndexSearch() {
-        wx.navigateTo({
-            url: `../index_search/index_search`
+        app.isLogin(() => {
+            wx.navigateTo({
+                url: `../index_search/index_search`
+            })
         })
     },
     /**
@@ -124,9 +129,9 @@ Page({
                                 console.log("app.globalData-----------------------")
                                 console.dir(app.globalData);
                             } else {
-                                wx.navigateTo({
-                                    url: `../authorizationLogin/authorizationLogin?isShouquan=false`
-                                });
+                                // wx.navigateTo({
+                                //     url: `../authorizationLogin/authorizationLogin?isShouquan=false`
+                                // });
                             }
                         })
                 }
@@ -264,19 +269,14 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
+        wx.startPullDownRefresh()
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-        // 轮播
-        this.getBannerList();
-        // 二级分类
-        this.getCetegoryList();
-        // 商品列表
-        this.getProductList();
+
     },
 
     /**
@@ -293,11 +293,7 @@ Page({
             })
         })
     },
-    toShouQuan() {
-        wx.navigateTo({
-            url: '../authorizationLogin/authorizationLogin'
-        });
-    },
+
     toLifeService() {
         wx.navigateTo({
             url: `../index_lifeService/index_lifeService`
@@ -312,7 +308,7 @@ Page({
             })
         } else {
             wx.navigateTo({
-                url: `../authorizationLogin/authorizationLogin`
+                url: `../index_plus/index_plus`
             })
         }
 

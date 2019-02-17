@@ -9,8 +9,7 @@ Page({
      */
     data: {
         maskClassName: "columnCenter",
-        isShouQuan: true,
-        isShouQuan_temp: '',
+        needShouQuan: true,
         isRegister: false,
         phoneNumber: '', // 手机号
         verificationCode: '', // 验证码
@@ -19,10 +18,29 @@ Page({
         throwError: false
     },
     onLoad: function (options) {
-        this.login();
+
+    },
+    onShow() {
+        // 没有授权数据
+        if (!app.globalData.userInfo) {
+            this.setData({
+                needShouQuan: true
+            })
+        } else {
+            // 有授权数据
+            this.setData({
+                needShouQuan: false
+            })
+            this.login();
+        }
+    },
+    // 授权登录
+    bindGetUserInfo: function (e) {
+        app.globalData.userInfo = e.detail.userInfo;
         this.setData({
-            isShouQuan_temp: options.isShouquan
+            needShouQuan: false
         })
+        this.login();
     },
     login() {
         var that = this;
@@ -111,13 +129,7 @@ Page({
             })
 
     },
-    bindGetUserInfo: function (e) {
-        app.globalData.userInfo = e.detail.userInfo;
-        this.setData({
-            isShouQuan: true
-        })
-        this.login();
-    },
+
     shouQuan() {
         var y = this,
             yData = y.data;

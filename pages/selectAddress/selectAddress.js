@@ -20,7 +20,8 @@ Page({
         showMyShoppingAddress: true,
         formAddAddress: false,
         formEditAddress: false,
-        result: []
+        result: [],
+        onlyShowAddress:false // 默认不仅仅展示收货地址
     },
 
     /**
@@ -32,6 +33,12 @@ Page({
             this.setData({
                 formAddAddress: true,
                 showMyShoppingAddress: false
+            })
+        }
+        // 仅仅展示我的收货地址
+        if (Number(options.length) > 0) {
+            this.setData({
+                onlyShowAddress: true
             })
         }
         if (options.editAddress === "true") {
@@ -66,6 +73,14 @@ Page({
      */
     onShow: function () {
 
+    },
+    setWithThisAdress() {
+        var yData = this.data;
+        var address = yData.initAddress || yData.reAddress;
+        var shortAdress = address.split("区")[1]
+        wx.Storage.setItem("address", address);
+        wx.Storage.setItem("shortAddress", shortAdress);
+        app.returnLastPage();
     },
     getMy_shippingAddress() {
         var y = this;

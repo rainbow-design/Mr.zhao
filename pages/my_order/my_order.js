@@ -188,6 +188,9 @@ Page({
         if (hasNewData) {
             this.getSelectTabData(newPage, newNum, type)
         }
+    },
+    onPullDownRefresh: function () {
+        wx.startPullDownRefresh()
     }
 
 })

@@ -24,7 +24,7 @@
 
 .shouQuanBtn, .shouQuanBtn2 {
     position: absolute;
-    top: 529rpx;
+    top: 281rpx;
     width: 590rpx;
     height: 80rpx;
     background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
@@ -34,7 +34,9 @@
     text-align: center;
     line-height: 80rpx;
 }
-
+.shouQuanBtn {
+    top: 529rpx;
+}
 .zhaoAvator {
     position: absolute;
     top: 185rpx;

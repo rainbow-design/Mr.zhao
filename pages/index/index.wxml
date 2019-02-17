@@ -1,152 +1,152 @@
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <import src="../../component/swiper.wxml" />
 <view class='indexPage'>
-  <!-- 首页签到弹窗模块 start -->
-  <block wx:if="{{showSignIn}}">
-    <view class='Mask'>
-      <view class='signIn'>
-        <image src="../../assets/signIn.png" mode='widthFix'></image>
-        <view class='greenText'>恭喜您今日签到成功！</view>
-        <view class='add'>+10积分</view>
-        <view class='greenBtn' bindtap='closeB'>确认</view>
-      </view>
-    </view>
-  </block>
-  <!-- 首页签到弹窗模块 end -->
-  <!-- 首页优惠券弹窗模块 start -->
-  <block wx:if="{{hasYouhuiquan}}">
-    <view class='Mask'>
-      <view class='quan'>
-        <image class='redImg' src="../../assets/icon/index_youhui.png" mode='widthFix'></image>
-        <view class='quan_title'>领取优惠券</view>
-        <view class='ticketBox' style='height:500rpx'>
-          <scroll-view class="scroll_a" scroll-y="true" style='height:500rpx;box-sizing:border-box;white-space:nowrap'>
-            <view class='ticket' wx:for="{{card}}" wx:key="{{item}}">
-              <view class='get' bindtap='receive_coupons' data-id="{{item.id}}">领取</view>
-              <view class='upBox'>
-                <view class='priceBox columnBetween'>
-                  <view class='bigPrice'>
-                    <view class='symbol'>￥</view>
-                    <view class='price'>{{item.money}}</view>
-                  </view>
-                </view>
-                <view class='contentBox columnBetweenStart'>
-                  <view class='title'>{{item.name}}
-                  </view>
-                  <view class='normal'>{{item.class}}类优惠券</view>
-                  <view class='normal'>{{item.role}}
-                  </view>
-                </view>
-              </view>
-              <view class='bottomBox'>
-                <view class='text'>有效期：{{filter.splitByS(item.begin_time)[0]}} 至 {{filter.splitByS(item.end_time)[0]}}</view>
-              </view>
+    <!-- 首页签到弹窗模块 start -->
+    <block wx:if="{{showSignIn}}">
+        <view class='Mask'>
+            <view class='signIn'>
+                <image src="../../assets/signIn.png" mode='widthFix'></image>
+                <view class='greenText'>恭喜您今日签到成功！</view>
+                <view class='add'>+10积分</view>
+                <view class='greenBtn' bindtap='closeB'>确认</view>
             </view>
-          </scroll-view>
         </view>
-      </view>
-      <image class='index_delete' src="../../assets/icon/index_delete.png" mode='widthFix' bindtap='closeYouhuoquan'></image>
-    </view>
-  </block>
-  <!-- 首页优惠券弹窗模块 end -->
-  <block wx:if="{{showInviteAd}}">
-    <image class='ad' bindtap='toInviteFriend' mode="widthFix" src="../../assets/invite.png"></image>
-    <image class='ad_delete' src="../../assets/icon/delete_Ad.png" catchtap='closeAd'></image>
-  </block>
-  <view class='header borderBox oneLineEnd'>
-    <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
-    <view class='address_box' data-address="{{address}}" bindtap='toSelectAddress'>
-      <view class='location ellipsis'>{{globalAddress.detail_addr || shortAddress}}</view>
-      <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
-    </view>
-    <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='toIndexSearch'></input>
-    <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
-  </view>
-  <view class='menu borderBox oneLineBetween'>
-    <view class='menuItem' bindtap='toLifeService'>
-      <image class='menuItem_img' mode="widthFix" src="../../assets/lifeService.png"></image>
-      <view class='menuItem_text'>生活服务</view>
-    </view>
-    <view class='menuItem' data-state="{{isPlus}}" bindtap='toPlus'>
-      <image class='menuItem_img' mode="widthFix" src="../../assets/plus.png"></image>
-      <view class='menuItem_text'>plus会员</view>
-    </view>
-    <view class='menuItem' bindtap='toInviteFriend'>
-      <image class='menuItem_img' mode="widthFix" src="../../assets/star.png"></image>
-      <view class='menuItem_text'>推荐好友</view>
-    </view>
-    <view class='menuItem' bindtap='toSignIn'>
-      <image class='menuItem_img' mode="widthFix" src="../../assets/calendar.png"></image>
-      <view class='menuItem_text'>每日签到</view>
-    </view>
-  </view>
-  <!-- 轮播 -->
-  <view class='Carousel'>
-    <template is="swiper" data="{{bannerList:bannerList,swiperCurrent:swiperCurrent,indicatorDots:indicatorDots,RootUrl:RootUrl}}" />
-  </view>
-  <!-- 子菜单 -->
-  <view class='subMenu f-wrap  borderBox oneLineBetween mulitLineStart'>
-    <block wx:for="{{categoryList}}" wx:key="{{item.id}}">
-      <view class='subNemuItem' data-id="{{item.id}}" data-type="{{item.type}}" bindtap="toSortPage" data-index="{{index}}">
-        <image class='subMenuItem_img' mode="widthFix" src="{{item.img}}"></image>
-        <view class='subMenuItem_text'>{{item.name}}</view>
-      </view>
     </block>
-    <view class="empty_subNemuItem"></view>
-    <view class="empty_subNemuItem"></view>
-    <view class="empty_subNemuItem"></view>
+    <!-- 首页签到弹窗模块 end -->
+    <!-- 首页优惠券弹窗模块 start -->
+    <block wx:if="{{hasYouhuiquan}}">
+        <view class='Mask'>
+            <view class='quan'>
+                <image class='redImg' src="../../assets/icon/index_youhui.png" mode='widthFix'></image>
+                <view class='quan_title'>领取优惠券</view>
+                <view class='ticketBox' style='height:500rpx'>
+                    <scroll-view class="scroll_a" scroll-y="true" style='height:500rpx;box-sizing:border-box;white-space:nowrap'>
+                        <view class='ticket' wx:for="{{card}}" wx:key="{{item}}">
+                            <view class='get' bindtap='receive_coupons' data-id="{{item.id}}">领取</view>
+                            <view class='upBox'>
+                                <view class='priceBox columnBetween'>
+                                    <view class='bigPrice'>
+                                        <view class='symbol'>￥</view>
+                                        <view class='price'>{{item.money}}</view>
+                                    </view>
+                                </view>
+                                <view class='contentBox columnBetweenStart'>
+                                    <view class='title'>{{item.name}}
+                                    </view>
+                                    <view class='normal'>{{item.class}}类优惠券</view>
+                                    <view class='normal'>{{item.role}}
+                                    </view>
+                                </view>
+                            </view>
+                            <view class='bottomBox'>
+                                <view class='text'>有效期：{{filter.splitByS(item.begin_time)[0]}} 至 {{filter.splitByS(item.end_time)[0]}}</view>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+            </view>
+            <image class='index_delete' src="../../assets/icon/index_delete.png" mode='widthFix' bindtap='closeYouhuoquan'></image>
+        </view>
+    </block>
+    <!-- 首页优惠券弹窗模块 end -->
+    <block wx:if="{{showInviteAd}}">
+        <image class='ad' bindtap='toInviteFriend' mode="widthFix" src="../../assets/invite.png"></image>
+        <image class='ad_delete' src="../../assets/icon/delete_Ad.png" catchtap='closeAd'></image>
+    </block>
+    <view class='header borderBox oneLineEnd'>
+        <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
+        <view class='address_box' data-address="{{address}}" bindtap='toSelectAddress'>
+            <view class='location ellipsis'>{{globalAddress.detail_addr || shortAddress}}</view>
+            <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
+        </view>
+        <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='toIndexSearch'></input>
+        <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
+    </view>
+    <view class='menu borderBox oneLineBetween'>
+        <view class='menuItem' bindtap='toLifeService'>
+            <image class='menuItem_img' mode="widthFix" src="../../assets/lifeService.png"></image>
+            <view class='menuItem_text'>生活服务</view>
+        </view>
+        <view class='menuItem' data-state="{{isPlus}}" bindtap='toPlus'>
+            <image class='menuItem_img' mode="widthFix" src="../../assets/plus.png"></image>
+            <view class='menuItem_text'>plus会员</view>
+        </view>
+        <view class='menuItem' bindtap='toInviteFriend'>
+            <image class='menuItem_img' mode="widthFix" src="../../assets/star.png"></image>
+            <view class='menuItem_text'>推荐好友</view>
+        </view>
+        <view class='menuItem' bindtap='toSignIn'>
+            <image class='menuItem_img' mode="widthFix" src="../../assets/calendar.png"></image>
+            <view class='menuItem_text'>每日签到</view>
+        </view>
+    </view>
+    <!-- 轮播 -->
+    <view class='Carousel'>
+        <template is="swiper" data="{{bannerList:bannerList,swiperCurrent:swiperCurrent,indicatorDots:indicatorDots,RootUrl:RootUrl}}" />
+    </view>
+    <!-- 子菜单 -->
+    <view class='subMenu f-wrap  borderBox oneLineBetween mulitLineStart'>
+        <block wx:for="{{categoryList}}" wx:key="{{item.id}}">
+            <view class='subNemuItem' data-id="{{item.id}}" data-type="{{item.type}}" bindtap="toSortPage" data-index="{{index}}">
+                <image class='subMenuItem_img' mode="widthFix" src="{{item.img}}"></image>
+                <view class='subMenuItem_text'>{{item.name}}</view>
+            </view>
+        </block>
+        <view class="empty_subNemuItem"></view>
+        <view class="empty_subNemuItem"></view>
+        <view class="empty_subNemuItem"></view>
 
-  </view>
-  <view class='gap' style='height:20rpx;'></view>
-  <!-- 热卖商品开始 -->
-  <view class='hotSell'>
-    <view class='commonTitle'>
-      <view class='title'>热卖商品</view>
-      <view class='leftBorder'></view>
-      <view class='rightBorder'></view>
     </view>
-    <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{productList_a}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
-      <image class='hotSellItem_img' mode='widthFix' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
-      <view class='hotSellItem_content hotContentFlexStyle'>
-        <view class='title line-clamp '>
-          {{item.name}}
+    <view class='gap' style='height:20rpx;'></view>
+    <!-- 热卖商品开始 -->
+    <view class='hotSell'>
+        <view class='commonTitle'>
+            <view class='title'>热卖商品</view>
+            <view class='leftBorder'></view>
+            <view class='rightBorder'></view>
         </view>
-        <view class='introduction line-clamp'>{{item.desc}}</view>
-        <view class='price nowrap'>¥{{item.price}}</view>
-        <view class='offerPrice nowrap'>¥{{item.plus_price}}
-          <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-            <view class='youhuiText'>会员{{item.plus}}折</view>
-          </image>
+        <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{productList_a}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
+            <image class='hotSellItem_img' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
+            <view class='hotSellItem_content hotContentFlexStyle'>
+                <view class='title line-clamp '>
+                    {{item.name}}
+                </view>
+                <view class='introduction line-clamp'>{{item.desc}}</view>
+                <view class='price nowrap'>¥{{item.price}}</view>
+                <view class='offerPrice nowrap'>¥{{item.plus_price}}
+                    <image class='youhuiBox' src="../../assets/youhuiBox.png">
+                        <view class='youhuiText'>会员{{item.plus}}折</view>
+                    </image>
+                </view>
+                <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-id="{{item.id}}" catchtap='addToCart'></image>
+            </view>
         </view>
-        <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-id="{{item.id}}" catchtap='addToCart'></image>
-      </view>
     </view>
-  </view>
 </view>
 <view class='gap' style='height:20rpx;'></view>
 <block wx:if="{{productList_b.length > 0}}">
-  <view class='hotSell'>
-    <view class='commonTitle'>
-      <view class='title'>推荐购买</view>
-      <view class='leftBorder'></view>
-      <view class='rightBorder'></view>
-    </view>
+    <view class='hotSell'>
+        <view class='commonTitle'>
+            <view class='title'>推荐购买</view>
+            <view class='leftBorder'></view>
+            <view class='rightBorder'></view>
+        </view>
 
-    <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{productList_b}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
-      <image class='hotSellItem_img' mode='widthFix' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
-      <view class='hotSellItem_content hotContentFlexStyle'>
-        <view class='title line-clamp '>
-          {{item.name}}
+        <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{productList_b}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
+            <image class='hotSellItem_img' mode='widthFix' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
+            <view class='hotSellItem_content hotContentFlexStyle'>
+                <view class='title line-clamp '>
+                    {{item.name}}
+                </view>
+                <view class='introduction line-clamp'>{{item.desc}}</view>
+                <view class='price nowrap'>¥{{item.price}}</view>
+                <view class='offerPrice nowrap'>¥{{item.plus_price}}
+                    <image class='youhuiBox' src="../../assets/youhuiBox.png">
+                        <view class='youhuiText'>会员{{item.plus}}折</view>
+                    </image>
+                </view>
+                <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-id="{{item.id}}" catchtap='addToCart'></image>
+            </view>
         </view>
-        <view class='introduction line-clamp'>{{item.desc}}</view>
-        <view class='price nowrap'>¥{{item.price}}</view>
-        <view class='offerPrice nowrap'>¥{{item.plus_price}}
-          <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-            <view class='youhuiText'>会员{{item.plus}}折</view>
-          </image>
-        </view>
-        <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-id="{{item.id}}" catchtap='addToCart'></image>
-      </view>
     </view>
-  </view>
 </block>

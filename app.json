@@ -30,7 +30,7 @@
     "pages/my_orderDetail/my_orderDetail"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "兆鲜生",
     "navigationBarTextStyle": "black"

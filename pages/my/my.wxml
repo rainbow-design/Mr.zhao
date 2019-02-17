@@ -13,15 +13,22 @@
     </block>
     <view class='greenBox'>
         <image class='greenBg' mode="widthFix" src="../../assets/green_bg.png"></image>
-        <image class="avator" mode="widthFix" src="{{userInfo.lists[0].img_url}}"></image>
+        <block wx:if="{{userInfo === false}}">
+            <view class='showQuan' bindtap='toAuthorizationLogin'> 授权登录</view>
+        </block>
+        <block wx:if="{{userInfo != false}}">
+            <image class="avator" mode="widthFix" src="{{userInfo.lists[0].img_url}}"></image>
+        </block>
         <view class='userInfo oneLineBetween'>
             <view class='user columnBetween'>
                 <view class='userBox oneLineStart'>
                     <view class='username'>{{userInfo.lists[0].nickname}}</view>
-                    <view class='memberGrade'>
-                        <!-- 会员分类 =》普通会员，plus会员 -->
-                        <view class='text'>{{userInfo.lists[0].is_plus}}</view>
-                    </view>
+                    <block wx:if="{{userInfo != false}}">
+                        <view class='memberGrade'>
+                            <!-- 会员分类 =》普通会员，plus会员 -->
+                            <view class='text'>{{userInfo.lists[0].is_plus}}</view>
+                        </view>
+                    </block>
                 </view>
                 <view class='tel'>{{filter.filterPhoneByStar(userInfo.lists[0].mobile)}}</view>
             </view>

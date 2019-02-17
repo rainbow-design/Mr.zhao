@@ -1,6 +1,6 @@
 <!--pages/iThink/iThink.wxml-->
 <view style='height:100%'>
-    <block wx:if="{{!isShouQuan === true}}">
+    <block wx:if="{{needShouQuan}}">
         <view class='maskContent columnCenter'>
             <image class='zhaoAvator' src="../../assets/shouQuan.png"></image>
             <view class='showText center'>兆鲜生申请获得以下权限：</view>

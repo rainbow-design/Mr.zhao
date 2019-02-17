@@ -44,7 +44,7 @@
     </view>
     <view class='line2 border_bottom oneLineBetween'>
       <view class='name'>配送费</view>
-      <view class='content'>￥{{deliver_cost[0].cost}}</view>
+      <view class='content'>￥{{delivery_fee}}</view>
     </view>
     <view class='line2 border_bottom oneLineBetween'>
       <view class='name'>优惠立减</view>

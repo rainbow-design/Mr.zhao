@@ -93,7 +93,7 @@
                                 <view class='introduction'>{{item.desc}}</view>
                                 <view class='price'>¥{{item.price}}</view>
                                 <view class='offerPrice'>¥{{item.plus_price}}
-                                    <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+                                    <image class='youhuiBox' src="../../assets/youhuiBox.png">
                                         <view class='youhuiText'>会员{{item.plus}}折</view>
                                     </image>
                                 </view>

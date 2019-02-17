@@ -94,7 +94,8 @@ Page({
 
         var y = this,
             yData = y.data;
-        var name = yData.name, phone = yData.phone;
+        var name = yData.name,
+            phone = yData.phone;
         if (util.checkType(name, 'empty')) {
             util.toast('请输入收货人姓名');
             return;
@@ -119,10 +120,30 @@ Page({
         util.promiseRequest(api.edit_addr, paramObj).then((res) => {
             var data = res.data.response_data.lists;
 
-            if (data === 1) {
+            if (data) {
                 // 新制造一个全局的地址
-                var makeNewGlobalAd = {};
-                // { "id": "36", "uid": "17", "name": "闫越", "phone": "13333333333", "longitude": "116.3457", "latitude": "40.05709", "address": "北京市海淀区西三旗育新花园(建材城西路南)", "detail_addr": "23", "type": "0", "is_default": "1", "is_show": "0", "type_name": "住宅" }
+                var getTypeName = function (num) {
+                    switch (num) {
+                        case 0:
+                            return '住宅';
+                        case 1:
+                            return '公司';
+                        case 2:
+                            return '学校'
+                    }
+                }
+                var makeNewGlobalAd = {
+                    "id": data,
+                    "name": yData.name,
+                    "phone": yData.phone,
+                    "longitude": yData.longitude,
+                    "latitude": yData.latitude,
+                    "address": yData.address,
+                    detail_addr: yData.detail_addr,
+                    "type": yData.selectAddress,
+                    "type_name": getTypeName(yData.selectAddress)
+                };
+                wx.Storage.setItem("globalAddress", makeNewGlobalAd);
                 y.setData({
                     address: ''
                 })
@@ -160,8 +181,8 @@ Page({
         })
     },
     /**
-  * 生命周期函数--监听页面隐藏
-  */
+     * 生命周期函数--监听页面隐藏
+     */
     onHide: function () {
         // 取消多余的事件订阅
         // - 添加时
