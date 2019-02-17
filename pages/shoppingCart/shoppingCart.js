@@ -151,6 +151,11 @@ Page({
                     addressCanUse: false,
                     whiteBox_H: 234
                 })
+            } else {
+                y.setData({
+                    addressCanUse: true,
+                    whiteBox_H: 182
+                })
             }
         })
     },
@@ -315,9 +320,9 @@ Page({
             var limit = Number(devery_info.limit);
             var jian = Number(devery_info.cost);
 
-            if (temp > limit) {
-                temp -= jian
-            }
+            // if (temp > limit) {
+            //     temp -= jian
+            // }
 
             cost = util.toFixed(Number(temp), 2);
 
