@@ -113,7 +113,7 @@ function promiseRequest(url, data = {}) {
             },
             fail: (err) => {
                 reject(err)
-                console.log("failed")
+                console.log("failed，网络出错")
             }
         })
     });
@@ -145,7 +145,7 @@ function printDetail(name, data, callback) {
 
 function getLocation(callback) {
     wx.getLocation({
-        type: 'wgs84',
+        type: 'gcj02',
         success(res) {
             const latitude = res.latitude
             const longitude = res.longitude
@@ -239,11 +239,11 @@ function checkType(str, type) {
             return /^(0\d{2,3}-\d{7,8})(-\d{1,4})?$/.test(str);
         case 'number':
             return /^[0-9]$/.test(str);
-            /**
-             * 校验邮政编码
-             * @param {string} str 字符串
-             * @return {bool}
-             */
+        /**
+         * 校验邮政编码
+         * @param {string} str 字符串
+         * @return {bool}
+         */
         case 'isZipCode':
             return /^(\d){6}$/.test(str);
         case 'isURL':
@@ -276,13 +276,35 @@ function throttle(fn, gapTime = 1500) {
 }
 
 function addKey(arr, obj, callback) {
-    var temp = arr.forEach((v, index, arr) => {
-        typeof callback === 'function' ? callback(v, index) : '';
-        for (var key in obj) {
-            v[key] = obj[key]
+    if (typeof arr === 'object' && !arr.length) {
+        var obj_temp = arr;
+        var arr = [];
+        for (let i in obj_temp) {
+            arr.push(obj_temp[i]);
         }
-    })
+    } else {
+        var temp = arr.forEach((v, index, arr) => {
+            typeof callback === 'function' ? callback(v, index) : '';
+            for (var key in obj) {
+                v[key] = obj[key]
+            }
+        })
+    }
+
 }
+
+function filterObjToArr(obj) {
+    if (typeof obj === 'object' && !obj.length) {
+        var arr = [];
+        for (let i in obj) {
+            arr.push(obj[i]);
+        }
+        return arr;
+    } else {
+        return obj;
+    }
+}
+
 // 获取视图dom元素信息
 function getEle(domStr, callback) {
     const query = wx.createSelectorQuery();
@@ -310,5 +332,6 @@ module.exports = {
     debounce,
     throttle,
     calculateDistance,
-    getEle
+    getEle,
+    filterObjToArr
 }

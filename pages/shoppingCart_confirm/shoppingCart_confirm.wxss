@@ -259,6 +259,12 @@
     font-weight: 400;
     color: rgba(26, 26, 26, 1);
 }
+.selectJF {
+    width: 200rpx !important;
+    height: 60rpx !important;
+    line-height: 60rpx;
+    text-align: right;
+}
 
 .detail .content_orange {
     color: rgba(255, 93, 22, 1);

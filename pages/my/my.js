@@ -10,6 +10,7 @@ Page({
     data: {
         showCallTelMask: false,
         userInfo: {},
+        is_plus: false
     },
 
     /**
@@ -42,7 +43,8 @@ Page({
                 var data =
                     res.data.response_data === undefined ? false : res.data.response_data;
                 y.setData({
-                    userInfo: data
+                    userInfo: data,
+                    is_plus: data.lists[0].is_plus === '普通会员' ? false : true
                 })
 
             }).catch((err) => {
@@ -100,10 +102,18 @@ Page({
     },
     //   续费会员
     goOnPlus() {
+        let is_plus = this.data.is_plus;
         app.isLogin(() => {
-            wx.navigateTo({
-                url: `../index_openPlus/index_openPlus`
-            })
+            if (is_plus) {
+                wx.navigateTo({
+                    url: `../index_openPlus/index_openPlus?xufei=续费plus会员`
+                })
+            } else {
+                // 首次开通会员
+                wx.navigateTo({
+                    url: `../index_plus/index_plus`
+                })
+            }
         })
     },
     // 我的订单

@@ -2,6 +2,8 @@
 const app = getApp();
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
+const regeneratorRuntime = require("../../utils/runtime.js");
+
 Page({
 
     /**
@@ -16,8 +18,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-    },
+    onLoad: function (options) { },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -53,18 +54,20 @@ Page({
                 }, function () {
                     if (data.length > 0) {
                         var addressList_H, btn_T;
-                        util.getEle('#addressList', function (res) {
-                            addressList_H = res[0].height;
-                            y.setData({
-                                addressList_H: addressList_H
+                        setTimeout(() => {
+                            util.getEle('#addressList', function (res) {
+                                addressList_H = res[0].height;
+                                y.setData({
+                                    addressList_H: addressList_H
+                                })
                             })
-                        })
-                        util.getEle('#addBtn', function (res) {
-                            btn_T = res[0].top;
-                            y.setData({
-                                btn_T: btn_T
+                            util.getEle('#addBtn', function (res) {
+                                btn_T = res[0].top;
+                                y.setData({
+                                    btn_T: btn_T
+                                })
                             })
-                        })
+                        }, 0)
                     }
 
                 })
@@ -94,20 +97,22 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+        let that = this;
+        async function clearData() {
+            await that.setData({
+                addressData: []
+            })
+        }
+        wx.showNavigationBarLoading() //在标题栏中显示加载
+        //下拉刷新
+        async function refresh() {
+            await clearData();
+            await that.onShow();
+            // complete
+            wx.hideNavigationBarLoading() //完成停止加载
+            wx.stopPullDownRefresh() //停止下拉刷新
+        }
+        refresh();
     }
+
 })

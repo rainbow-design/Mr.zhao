@@ -96,7 +96,6 @@
   position: absolute;
   left: 29rpx;
   top: 31rpx;
-  width: 144rpx;
   height: 108rpx;
 }
 

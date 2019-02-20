@@ -29,7 +29,6 @@
     width: 110rpx;
     height: 110rpx;
     margin-left: 20rpx;
-    border: 1rpx solid #666;
 }
 
 .oddBorder {

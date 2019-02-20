@@ -13,7 +13,7 @@ Page({
         searchValue: '',
         productList: [],
         proBottom: true,
-        focus:true
+        focus: true
     },
     toDetail(e) {
         wx.navigateTo({
@@ -39,20 +39,47 @@ Page({
                     if (res.data.response_data.length < 8) {
                         that.data.proBottom = false;
                     }
+                    if (data == '' || data.length === 0) {
+                        util.toast("无搜索结果数据...")
+                    }
                     that.setData({
                         productList: data
                     })
+
                 })
+                that.searchListHistory();
             })
         }
     },
-    getSearchList() {
+    searchListHistory() {
         let that = this;
         util.promiseRequest(api.search_list, {}).then((res) => {
+            // 搜索历史控制显示个数
+            var historyData_temp = res.data.response_data.history;
+            var historyData = historyData_temp.length > 8 ? historyData_temp.slice(0, 7) : historyData_temp;
+
             that.setData({
                 searchListTop: res.data.response_data.top,
-                searchListHistory: res.data.response_data.history
+                searchListHistory: historyData
             })
+        })
+    },
+    clearHistory() {
+        let that = this;
+        util.promiseRequest(api.clear_history, {}).then((res) => {
+            if (res.data.response_data.lists == 1) {
+                wx.showToast({
+                    title: '清除历史数据成功...',
+                    icon: 'none',
+                    duration: 1000,
+                    complete: function () {
+                        that.setData({
+                            searchListHistory: []
+                        })
+                    }
+                })
+            }
+
         })
     },
     search() {
@@ -60,6 +87,7 @@ Page({
             page: 1,
             proBottom: true
         });
+
         this.getproduct_list();
     },
     inputData(e) {
@@ -68,56 +96,60 @@ Page({
         })
     },
     chooseKey(e) {
+        var y = this;
+        let key = e.currentTarget.dataset.key;
         this.setData({
-            searchValue: e.currentTarget.dataset.key,
+            searchValue: key,
+            page: 1
         })
+        y.getproduct_list(1);
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
-        this.getSearchList();
+    onLoad: function (options) {
+        this.searchListHistory();
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
         this.setData({
             page: this.data.page + 1
         });
@@ -127,7 +159,7 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     },
     toShouQuan() {

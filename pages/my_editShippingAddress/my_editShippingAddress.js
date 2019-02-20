@@ -152,6 +152,11 @@ Page({
             if (data == 1) {
                 // 更新全局的收货地址条数
                 app.getMy_shippingAddressLength();
+                // 更新相同的 globalAddress 信息
+                var globalAddress = wx.Storage.getItem("globalAddress");
+                if (nowdata.id == globalAddress.id) {
+                    wx.Storage.removeItem("globalAddress")
+                }
                 wx.showToast({
                     title: '删除地址成功...',
                     icon: 'none',

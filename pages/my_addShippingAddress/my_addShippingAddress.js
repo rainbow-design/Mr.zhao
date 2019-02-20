@@ -44,18 +44,22 @@ Page({
         var y = this;
         var addressData = wx.Storage.getItem("addAddress");
         var addAddress_cache = wx.Storage.getItem("addAddress_cache");
-        addressData != "" ? y.setData({
-            address: addressData.address,
-            longitude: addressData.location.lng,
-            latitude: addressData.location.lat
-        }) : ''
+        if (addressData) {
+            var address_temp = addressData.address.split("区")[0] + '区' + addressData.title;
+            addressData != "" ? y.setData({
+                address: address_temp,
+                show_addr: addressData.title,
+                longitude: addressData.location.lng,
+                latitude: addressData.location.lat
+            }) : ''
+        }
 
         addAddress_cache != "" ? y.setData({
             selectAddress: addAddress_cache.selectAddress || 0,
             name: addAddress_cache.name || '',
             phone: addAddress_cache.phone || '',
             detail_addr: addAddress_cache.detail_addr || '',
-        }) : ''
+        }) : '';
     },
     selectAddressType(e) {
         var data = e.currentTarget.dataset;
@@ -65,12 +69,30 @@ Page({
 
     },
     changeInput(e) {
-        var name = e.currentTarget.dataset.name;
-        var thisData = this.data;
-        this.setData({
-            [name]: e.detail.value,
+        let name = e.currentTarget.dataset.name;
+        let value = e.detail.value;
+        const thisData = this.data;
+        if (name === "phone") {
+            //正则过滤
+            value = value.replace(/[\u4E00-\u9FA5`~!@#$%^&*()_+<>?:"{},.\/;'[\]\-\sa-zA-Z]*/g, "");
+            let result = [];
+            for (let i = 0; i < value.length; i++) {
+                if (i == 3 || i == 7) {
+                    result.push(" ", value.charAt(i));
+                } else {
+                    result.push(value.charAt(i));
+                }
+            }
+            this.setData({
+                phone: result.join("")
+            })
+        } else {
+            this.setData({
+                [name]: value
 
-        })
+            })
+        }
+
     },
     selectYourAddress() {
         var y = this,
@@ -91,16 +113,21 @@ Page({
         });
     },
     saveNewAddress() {
-
         var y = this,
             yData = y.data;
         var name = yData.name,
-            phone = yData.phone;
+            phone = yData.phone.replace(/\s+/g, ""),
+            address = yData.address,
+            // 使用这个新全局地址？
+            newGlobalAddress = yData.newGlobalAddress;
         if (util.checkType(name, 'empty')) {
             util.toast('请输入收货人姓名');
             return;
         } else if (!util.checkType(phone, 'phone')) {
             util.toast('请输入正确的手机号');
+            return;
+        } else if (util.checkType(address, 'empty')) {
+            util.toast('请输入收货地址');
             return;
         } else if (util.checkType(name, 'empty')) {
             util.toast('请输入详细楼号门牌');
@@ -109,10 +136,11 @@ Page({
 
         var paramObj = {
             name: yData.name,
-            phone: yData.phone,
+            phone: phone,
             longitude: yData.longitude,
             latitude: yData.latitude,
             address: yData.address,
+            show_addr: yData.show_addr,
             detail_addr: yData.detail_addr,
             type: yData.selectAddress,
             access_token: app.globalData.access_token
@@ -139,11 +167,16 @@ Page({
                     "longitude": yData.longitude,
                     "latitude": yData.latitude,
                     "address": yData.address,
-                    detail_addr: yData.detail_addr,
+                    "show_addr": yData.show_addr,
+                    "detail_addr": yData.detail_addr,
                     "type": yData.selectAddress,
                     "type_name": getTypeName(yData.selectAddress)
                 };
-                wx.Storage.setItem("globalAddress", makeNewGlobalAd);
+                // 是否直接生成新的全局地址信息
+                console.log(wx.Storage.getItem("myshippingAddressLength"))
+                if (newGlobalAddress || wx.Storage.getItem("myshippingAddressLength") == '0') {
+                    wx.Storage.setItem("globalAddress", makeNewGlobalAd);
+                }
                 y.setData({
                     address: ''
                 })

@@ -56,15 +56,15 @@
                 <image class='shopIcon' src="../../assets/icon/shopIcon.png"></image>
                 <view class='text'>兆鲜生门店</view>
             </view>
-            <view class='orderBox'>
+            <view class='orderBox {{cartList.length >= 4 ? "pb_100":""}}'>
                 <!-- 单个订单数据 -->
                 <view class='order_item' data-id="{{item.goods_id}}" wx:for="{{cartList}}" wx:key="{{item.user_id}}" style="{{item.txtStyle}}" data-index="{{index}}" bindtouchstart="touchS" bindtap='toProductDetail' bindtouchmove="touchM" bindtouchend="touchE">
-                    <view class='leftBox'>
+                    <view class='leftBox' catchtap='checkGoods' data-index="{{index}}">
                         <block wx:if="{{item.y_isCheck}}">
-                            <image class='check' data-index="{{index}}" src="../../assets/icon/right_plus.png" catchtap='checkGoods'></image>
+                            <image class='check' src="../../assets/icon/right_plus.png"></image>
                         </block>
                         <block wx:elif="{{!item.y_isCheck}}">
-                            <image class='check' data-index="{{index}}" src="../../assets/icon/round.png" catchtap='checkGoods'></image>
+                            <image class='check' src="../../assets/icon/round.png"></image>
                         </block>
                     </view>
                     <view class='rightBox oneLineBetween {{cartList.length - 1==index ?"":"rightBox_border"}}'>
@@ -109,10 +109,13 @@
                         <view class='price'>¥{{totalPrice}}</view>
                     </view>
                     <view class='content'>
-                        <block wx:if="{{cost_temp >allData.devery_info[0].limit }}">
+                        <block wx:if="{{!hasCheck}}">
+                            满￥{{allData.devery_info[0].limit}}元免配送费
+                        </block>
+                        <block wx:if="{{cost_temp >allData.devery_info[0].limit && hasCheck }}">
                             已满{{allData.devery_info[0].limit}}元，免配送费
                         </block>
-                        <block wx:if="{{cost_temp <allData.devery_info[0].limit}}">
+                        <block wx:if="{{cost_temp < allData.devery_info[0].limit && hasCheck}}">
                             另外需配送费{{allData.devery_info[0].cost}}元，满￥{{allData.devery_info[0].limit}}元免配送费
                         </block>
                     </view>

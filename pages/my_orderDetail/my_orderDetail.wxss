@@ -1,5 +1,35 @@
 /* stateName */
 
+.yOrder {
+    width: 750rpx;
+    height: 268rpx;
+    background: rgba(255, 255, 255, 1);
+    margin: 20rpx 0;
+    padding: 0 29rpx 0 31rpx;
+    box-sizing: border-box;
+}
+
+.yOrder_item {
+    box-sizing: border-box;
+    font-size: 32rpx;
+    height: 91rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
+    line-height: 91rpx;
+}
+
+.yOrder_item2 {
+    box-sizing: border-box;
+    font-size: 28rpx;
+    height: 88rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
+    line-height: 91rpx;
+    border-top: 1px solid rgba(224, 224, 224, 1);
+}
+
 .stateName {
     margin: 0 30rpx 20rpx 30rpx;
     width: 690rpx;
@@ -196,7 +226,7 @@
 .textB {
     font-size: 30rpx;
     color: rgba(255, 255, 255, 1);
-    margin-right: 15rpx; 
+    margin-right: 15rpx;
 }
 
 .toRightB {
@@ -358,8 +388,8 @@
 
 .foodsImgs image {
     margin-top: 5rpx;
-    width: 181rpx;
-    height: 128rpx;
+    width: 150rpx;
+    height: 150rpx;
     border-radius: 10rpx;
     background: pink;
     margin-right: 36rpx;

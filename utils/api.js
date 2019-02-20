@@ -13,10 +13,11 @@ var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
     add_message = RootUrl + "rest/2.0/home/home/add_message", // 生活服务添加留言
     index_products = RootUrl + "rest/2.0/home/home/lable_list", // 首页产品
     search_list = RootUrl + "rest/2.0/home/home/search_list", // 搜索关键字列表
-    add_search_history = RootUrl + "rest/2.0/home/home/add_search_history", // 添加关键字
+    add_search_history = RootUrl + "rest/2.0/home/home/add_search_history", // 搜索关键字
     sign_in = RootUrl + "rest/2.0/home/home/sign_in", // 签到
     plus_list = RootUrl + "rest/2.0/home/home/plus_list", // plus 列表
     pay_plus = RootUrl + "rest/2.0/home/home/plus_pay", // 会员支付
+    clear_history = RootUrl +"rest/2.0/home/home/del_search_history",// 清除历史记录
 
     //购物车
     cart_list = RootUrl + "rest/2.0/cart/cart/cart_list", // 购物车列表
@@ -71,6 +72,7 @@ module.exports = {
     sign_in,
     plus_list,
     pay_plus,
+    clear_history,
     // 商品分类
     product_cate,
     product_list,

@@ -16,6 +16,44 @@ Page({
         },
         shoppingCartNum: 0
     },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function(options) {
+        this.setData({
+            id: options.id,
+        })
+        this.getproduct_detail();
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function() {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function() {
+        var y = this;
+        // 获取购物车订单数
+        if (wx.Storage.getItem("token")) {
+            app.getShoppingCartNum((length) => {
+                if (length > 0) {
+                    y.setData({
+                        shoppingCartNum: length
+                    })
+                } else {
+                    y.setData({
+                        shoppingCartNum: 0
+                    })
+                }
+            });
+        }
+
+    },
     // 商品列表
     getproduct_detail() {
         let that = this;
@@ -45,118 +83,67 @@ Page({
                 type: 1,
                 num: 1
             }
-            // 获取用户购物车的订单量
-            y.setData({
-                shoppingCartNum: y.data.shoppingCartNum + 1
-            })
-
 
             util.promiseRequest(api.cart_add, params).then((res) => {
                 wx.showToast({
                     title: '加入购物车成功',
                     icon: 'none',
-                    duration: 500,
-                    complete: function () {
+                    duration: 300,
+                    complete: function() {
                         setTimeout(() => {
-                        }, 0)
+                            // 获取用户购物车的订单量
+                            y.setData({
+                                shoppingCartNum: y.data.shoppingCartNum + 1
+                            })
+                        }, 300)
                     }
                 })
             })
         })
     },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        this.setData({
-            id: options.id,
-        })
-        this.getproduct_detail();
-    },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-        var y = this;
-        // 获取购物车订单数
-        app.getShoppingCartNum((length) => {
-            if (length > 0) {
-                y.setData({
-                    shoppingCartNum: length
-                })
-            } else {
-                y.setData({
-                    shoppingCartNum: 0
-                })
-            }
-        });
-
-    },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
         // 获取购物车订单数
-        app.getShoppingCartNum((length) => {
-            if (length > 0) {
-                wx.setTabBarBadge({
-                    index: 2,
-                    text: String(length)
-                })
-            } else {
-                wx.removeTabBarBadge({
-                    index: 2
-                })
-            }
-        });
+        if (wx.Storage.getItem("token")) {
+            app.getShoppingCartNum((length) => {
+                if (length > 0) {
+                    wx.setTabBarBadge({
+                        index: 2,
+                        text: String(length)
+                    })
+                } else {
+                    wx.removeTabBarBadge({
+                        index: 2
+                    })
+                }
+            });
+        }
+
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
         // 获取购物车订单数
-        app.getShoppingCartNum((length) => {
-            if (length > 0) {
-                wx.setTabBarBadge({
-                    index: 2,
-                    text: String(length)
-                })
-            } else {
-                wx.removeTabBarBadge({
-                    index: 2
-                })
-            }
-        });
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+        if (wx.Storage.getItem("token")) {
+            app.getShoppingCartNum((length) => {
+                if (length > 0) {
+                    wx.setTabBarBadge({
+                        index: 2,
+                        text: String(length)
+                    })
+                } else {
+                    wx.removeTabBarBadge({
+                        index: 2
+                    })
+                }
+            });
+        }
     }
+
 })

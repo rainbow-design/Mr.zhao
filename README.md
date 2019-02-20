@@ -15,6 +15,7 @@
   + 北京市大兴区新源大街27号院万科天地2号楼101
   + http://www.gpsspg.com/maps.htm
   + 39.7143000000,116.3163900000
+  + 旺小喵宠物会所
 > 2.15
 - [X] 首页banner图 没有点
 - [X] 首页邀请有礼，图片加叉号按钮点击隐藏
@@ -26,14 +27,37 @@
 - [X] 配送费联动价格动态提示
 
 
-> 遗留
+> 2.17
 - [X] 二级分类 flex
-- [X] 首页、购物车 分页、我的订单页需要下拉刷新
 - [X] 购物车选择收货地址，如果没有地址 显示添加收货地址(文字提示) 添加收货地址ID返给我
 - [X] 刚进入小程序时提示授权定位，加入购物车、领取优惠券、查看订单、管理地址、充值会员、点击我的页面授权登录按钮时提示授权登录
 - [X] 商品名称，简介左对齐，会员6折居中对齐
-- [ ] 商品左边划删除效果
+- [X] 商品左边划删除效果
 
+> 2.18
+- [X] 商品详情间距控制
+- [X] 首页、购物车、我的订单页需要下拉刷新
+- [X] 商品详情点击购物车显示加减按钮
+
+> 2.19
+- [X] 优惠金额减
+- [X] 我的订单- 下拉刷新
+- [X] sort 页面
+- [X] 待付款详情 商品
+- 附近的地址 六洲大厦
+
+8914
+评价订单
+- 小程序部分不支持
+````js
+ <block wx:elif="{{Info.score > jifenShouldOver}}">
+                <view class='name'>当前可用{{Info.score}}积分抵现</view>
+                <view class='content selectJF' bindtap='useJifen' data-score="{{Info.score}}">
+                    {{userJifenNum == 0? '':'- ￥' + userJifenNum/100}}
+                    <image mode="widthFix" src="{{default_useJifen ? checked:normal}}" style='width:30rpx;'></image>
+                </view>
+            </block>
+````
 
 
 

@@ -46,4 +46,10 @@
             </view>
         </view>
     </block>
+    <!--  动态调整新增按钮的位置，当收货地址列表数据变多时候 -->
+    <block wx:if="{{onlyShowAddress}}">
+        <view id="addBtn" class='' bindtap='addShippingAddress'>
+            <view class='text'> 新增收货地址</view>
+        </view>
+    </block>
 </view>

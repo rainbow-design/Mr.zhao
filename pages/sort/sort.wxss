@@ -230,7 +230,7 @@
 
 .mainMenu {
     float: left;
-    width: 184rpx;
+    width: 172rpx;
     height: 100%;
     background: #f5f5f5;
 }
@@ -239,7 +239,7 @@
     float: left;
     position: relative;
     height: 100%;
-    width: 566rpx;
+    width: 578rpx;
 }
 
 .mainMenu .item {
@@ -285,7 +285,6 @@
     top: 0;
     left: 0;
     height: 93rpx;
-    border-bottom: 1px solid #e5e5e5;
 }
 
 .subMenu .item {
@@ -305,24 +304,34 @@
     color: rgba(255, 126, 76, 1);
 }
 
+.subMenu_endline {
+    position: absolute;
+    top: 93rpx;
+    right: 0;
+    width: 566rpx;
+    height: 1rpx;
+    background: #e5e5e5;
+    z-index: 100;
+}
+
 /* goods_item */
 
 .scroll_a, .scroll_b {
     height: 100%;
 }
 
-.scroll_b {
-}
-
 .shoppingList {
-    padding-top: 93rpx;
     height: 100%;
     box-sizing: border-box;
 }
 
+.shoppingList_pt {
+    padding-top: 93rpx;
+}
+
 .goods_item {
     height: 248rpx;
-    width: 566rpx;
+    width: 578rpx;
     border-bottom: 1px solid #e5e5e5;
     box-sizing: border-box;
     padding: 44rpx 30rpx 47rpx 7rpx;
@@ -333,7 +342,8 @@
 }
 
 .goods_item .img {
-    width: 188rpx;
+    width: 150rpx;
+    height: 150rpx;
 }
 
 .content {
@@ -393,8 +403,9 @@
 }
 
 .content .youhuiBox {
-    width: 79rpx;
     position: relative;
+    margin-top: -4rpx;
+    width: 79rpx;
     height: 29rpx;
 }
 
@@ -483,4 +494,25 @@
 ::-webkit-scrollbar {
     width: 0;
     height: 0;
+}
+
+/* 购物车加减 */
+
+.countControl {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    right: 0rpx;
+    bottom: 0rpx;
+    height: 38rpx;
+    line-height: 38rpx;
+}
+
+.number {
+    height: 22rpx;
+    font-size: 28rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
+    margin: 0 19rpx;
 }

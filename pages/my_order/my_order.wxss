@@ -189,8 +189,8 @@ swiper {
 }
 
 .imgsBox .item {
-    width: 160rpx;
-    height: 105rpx;
+    width: 150rpx;
+    height: 150rpx;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(240, 240, 240, 1);
     border-radius: 10rpx;
@@ -198,18 +198,21 @@ swiper {
 }
 
 .imgsBox .item image {
-    width: 140rpx;
-    height: 93rpx;
     border-radius: 10rpx;
 }
 
 .foodsImgs {
     width: 630rpx;
     height: 100%;
-    padding: 30rpx 0;
+    padding: 8rpx 0;
     box-sizing: border-box;
 }
 
 .foodsImgs .item {
     float: left;
+}
+
+.foodsImgs image {
+    width: 150rpx;
+    height: 150rpx;
 }

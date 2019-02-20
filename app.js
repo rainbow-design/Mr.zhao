@@ -85,12 +85,14 @@ App({
     },
     onLaunch: function (e) {
         // 展示本地存储能力
-        var logs = wx.getStorageSync('logs') || []
+        var logs = wx.getStorageSync('logs') || [];
         console.log('wx-----------------------------')
         console.log(wx);
 
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs);
+        wx.setStorageSync("closeYouhuoquan", "close");
+
         // 注册发布订阅模式
         wx.yue = Event;
         // 注册 storage
@@ -162,7 +164,7 @@ App({
             url: `../index_inviteFriend/index_inviteFriend`
         })
     },
-    addToCart(e) {
+    addToCart(e, clalback) {
         var y = this;
         this.isLogin(function () {
             var data = e.currentTarget.dataset;
@@ -172,7 +174,9 @@ App({
                 num: 1
             }
             util.promiseRequest(api.cart_add, params).then((res) => {
+                util.toast("添加购物车成功");
                 // 更新全局商品数量
+                typeof callback === 'function' ? callback() : '';
                 y.getShoppingCartNum((length) => {
                     if (length > 0) {
                         wx.setTabBarBadge({
@@ -219,12 +223,20 @@ App({
         util.promiseRequest(api.receive_coupons, {
             id: e.currentTarget.dataset.id
         }).then((res) => {
+            console.log(res)
+            var tishiData = res.data;
+            let tishi;
+            if (tishiData.error_msg) {
+                tishi = tishiData.error_msg;
+            }
             wx.showToast({
-                title: '领取成功',
+                title: tishi || '领取成功',
                 icon: 'none',
                 duration: 2000
             });
             typeof callback === 'function' ? callback() : app.get_coupons();
+        }).catch((error) => {
+            console.log(error)
         })
     },
     // 是会员吗？

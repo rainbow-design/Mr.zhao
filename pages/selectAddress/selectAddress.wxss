@@ -1,189 +1,223 @@
 /* pages/selectAddress/selectAddress.wxss */
 
 .h100 {
-  height: 100rpx !important;
+    height: 100rpx !important;
 }
 
 .searchAndNowAddress {
-  width: 750rpx;
-  height: 226rpx;
-  box-sizing: border-box;
-  padding: 20rpx 30rpx 22rpx;
-  background: rgba(255, 255, 255, 1);
+    width: 750rpx;
+    height: 226rpx;
+    box-sizing: border-box;
+    padding: 20rpx 30rpx 22rpx;
+    background: rgba(255, 255, 255, 1);
 }
 
 .myShippingAddress {
-  margin-top: 20rpx;
-  width: 750rpx;
-  padding: 30rpx;
-  padding-bottom: 0;
-  box-sizing: border-box;
-  background: #fff;
+    margin-top: 20rpx;
+    width: 750rpx;
+    padding: 30rpx;
+    padding-bottom: 0;
+    box-sizing: border-box;
+    background: #fff;
 }
 
 .searchInp {
-  width: 690rpx;
-  height: 60rpx;
-  background: rgba(245, 245, 245, 1);
-  border-radius: 30rpx;
-  padding-left: 80rpx;
-  font-size: 26rpx;
-  box-sizing: border-box;
+    width: 690rpx;
+    height: 60rpx;
+    background: rgba(245, 245, 245, 1);
+    border-radius: 30rpx;
+    padding-left: 80rpx;
+    font-size: 26rpx;
+    box-sizing: border-box;
 }
 
 .place {
-  height: 27rpx;
-  font-size: 26rpx;
-  font-family: MicrosoftYaHei;
-  font-weight: 400;
-  color: rgba(204, 204, 204, 1);
+    height: 27rpx;
+    font-size: 26rpx;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(204, 204, 204, 1);
 }
 
 .searchIcon {
-  position: absolute;
-  left: 60rpx;
-  top: 35rpx;
-  width: 30rpx;
+    position: absolute;
+    left: 60rpx;
+    top: 35rpx;
+    width: 30rpx;
 }
 
 .currentCityName {
-  height: 28rpx;
-  font-size: 28rpx;
-  font-family: MicrosoftYaHei;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
-  line-height: 28rpx;
+    height: 28rpx;
+    font-size: 28rpx;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
+    line-height: 28rpx;
 }
 
 .refreshLocation {
-  width: 100%;
+    width: 100%;
 }
 
 .refresh {
-  display: flex;
-  align-items: center;
-  height: 28rpx;
-  line-height: 28rpx;
-  font-size: 28rpx;
-  font-family: MicrosoftYaHei;
-  font-weight: 400;
-  color: rgba(88, 181, 48, 1);
+    display: flex;
+    align-items: center;
+    height: 28rpx;
+    line-height: 28rpx;
+    font-size: 28rpx;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(88, 181, 48, 1);
 }
 
 .refresh image {
-  width: 28rpx;
-  margin-right: 9rpx;
+    width: 28rpx;
+    margin-right: 9rpx;
 }
 
 .current {
-  height: 26rpx;
-  font-size: 26rpx;
-  font-family: MicrosoftYaHei;
-  font-weight: 400;
-  color: rgba(102, 102, 102, 1);
-  line-height: 26rpx;
+    height: 26rpx;
+    font-size: 26rpx;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 26rpx;
 }
 
 .myShippingAddress .title {
-  height: 32rpx;
-  width: 100%;
-  line-height: 32rpx;
-  font-size: 32rpx;
-  font-family: MicrosoftYaHei;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
+    height: 32rpx;
+    width: 100%;
+    line-height: 32rpx;
+    font-size: 32rpx;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
 }
 
 .itemAddress {
-  width: 100%;
-  height: 100%;
-  padding: 30rpx 0;
-  box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 30rpx 0;
+    box-sizing: border-box;
 }
 
 .itemAddress .upBox {
-  position: relative;
-  /* line-height: 29rpx; */
-  width: 100%;
+    position: relative;
+    /* line-height: 29rpx; */
+    width: 100%;
 }
 
 .underBox {
-  margin-top: 18rpx;
-  width: 100%;
-  height: 23rpx;
-  font-size: 26rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(102, 102, 102, 1);
-  line-height: 23rpx;
+    margin-top: 18rpx;
+    width: 100%;
+    height: 23rpx;
+    font-size: 26rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 23rpx;
 }
 
 .greenBox {
-  position: absolute;
-  top: 5rpx;
-  width: 54rpx;
-  height: 26rpx;
-  background: rgba(240, 255, 234, 1);
-  border: 1px solid rgba(88, 181, 48, 1);
-  border-radius: 13rpx;
-  text-align: center;
-  margin-right: 11rpx;
+    position: absolute;
+    top: 5rpx;
+    width: 54rpx;
+    height: 26rpx;
+    background: rgba(240, 255, 234, 1);
+    border: 1px solid rgba(88, 181, 48, 1);
+    border-radius: 13rpx;
+    text-align: center;
+    margin-right: 11rpx;
 }
 
 .greenBox .text {
-  height: 16rpx;
-  font-size: 16rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(88, 181, 48, 1);
-  line-height: 26rpx;
+    height: 16rpx;
+    font-size: 16rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(88, 181, 48, 1);
+    line-height: 26rpx;
 }
 
 .upBox .address {
-  text-indent: 65rpx;
-  font-size: 30rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
+    text-indent: 65rpx;
+    font-size: 30rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
 }
 
 .borderBottom {
-  border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .result {
-  margin-top: 20rpx;
-  width: 750rpx;
-  padding: 0 30rpx;
-  box-sizing: border-box;
-  background: #fff;
+    margin-top: 20rpx;
+    width: 750rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    background: #fff;
 }
 
 .result .item {
-  box-sizing: border-box;
-  padding: 20rpx 0 30rpx;
-  height: 130rpx;
-  width: 100%;
+    box-sizing: border-box;
+    padding: 20rpx 0 30rpx;
+    height: 130rpx;
+    width: 100%;
 }
 
 .result .item .name {
-  height: 29rpx;
-  font-size: 28rpx;
-  font-family: MicrosoftYaHei;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
-  line-height: 29rpx;
+    height: 29rpx;
+    font-size: 28rpx;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
+    line-height: 29rpx;
 }
 
 .result .item .address {
-  height: 26rpx;
-  font-size: 26rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(153, 153, 153, 1);
-  line-height: 26rpx;
+    height: 26rpx;
+    font-size: 26rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    line-height: 26rpx;
 }
 
 .result_border {
-  border-bottom: 1px solid rgba(224, 224, 224, 1);
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+#addBtn {
+    position: absolute;
+    left: 80rpx;
+    top: 1076rpx;
+    width: 590rpx;
+    height: 80rpx;
+    background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
+    border-radius: 10rpx;
+    line-height: 80rpx;
+}
+
+.addbtn_addressArriveToBtn {
+    position: relative !important;
+    left: 80rpx !important;
+    top: 200rpx;
+}
+
+#addBtn .text {
+    height: 29px;
+    font-size: 30rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+
+#addBtn .text::before {
+    content: '+';
+    display: inline-block;
+    width: 25rpx;
+    height: 25rpx;
+    color: #fff;
 }

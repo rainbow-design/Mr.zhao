@@ -28,12 +28,12 @@
             </view>
             <view class='fixHeight oneLineStart'>
                 <label class='firstBlock'>手机号</label>
-                <input placeholder='请输入您的手机号' type='number' placeholder-class='place' bindinput='inputData' data-name="phone"></input>
+                <input placeholder='请输入您的手机号' type='number'  maxlength="11" placeholder-class='place' bindinput='inputData' data-name="phone"></input>
                 <!-- <view class='verificationCode'>获取验证码</view> -->
             </view>
         </view>
         <view class='textareaBox'>
-            <textarea placeholder-class='textarea_place' placeholder='详细描述' bindinput='inputData' data-name="phone"></textarea>
+            <textarea placeholder-class='textarea_place' placeholder='详细描述' bindinput='inputData' data-name="content"></textarea>
         </view>
         <view class='submit' bindtap='submitMessage'>提交</view>
     </block>

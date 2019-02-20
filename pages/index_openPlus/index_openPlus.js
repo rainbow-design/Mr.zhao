@@ -23,7 +23,12 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
+        if (options.xufei) {
+            wx.setNavigationBarTitle({
+                title: options.xufei //页面标题为路由参数
+            })
+        }
         this.getPlusState();
         this.getInitPlusList();
     },
@@ -31,20 +36,20 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
 
     },
     getPlusState() {
         var y = this;
         // 获取会员等级
-        app.isPlus(function (state) {
+        app.isPlus(function(state) {
             y.setData({
                 isPlus: state
             })
@@ -90,13 +95,13 @@ Page({
                 package: payParam.package,
                 signType: payParam.signType,
                 paySign: payParam.paySign,
-                success: function (res) {
+                success: function(res) {
                     console.log('支付成功' + res);
                     wx.showToast({
                         title: '支付成功...',
                         icon: 'none',
                         duration: 1000,
-                        complete: function () {
+                        complete: function() {
                             setTimeout(() => {
                                 y.setData({
                                     kaiTong: true
@@ -106,7 +111,7 @@ Page({
                     })
 
                 },
-                error: function (res) {
+                error: function(res) {
                     console.log('支付失败' + res)
                 }
             })
@@ -122,35 +127,35 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     }
 })

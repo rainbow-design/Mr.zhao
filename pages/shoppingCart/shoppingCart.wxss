@@ -211,8 +211,8 @@
 }
 
 .rightBox .img {
-    width: 190rpx;
-    height: 139rpx;
+    width: 150rpx;
+    height: 150rpx;
 }
 
 .rightBox .content {
@@ -253,6 +253,7 @@
     font-weight: 400;
     color: rgba(51, 51, 51, 1);
     line-height: 22rpx;
+    margin-bottom: 9rpx;
 }
 
 .rightBox .content .offerPrice {
@@ -266,6 +267,7 @@
 
 .youhuiBox {
     position: relative;
+    margin-top: -4rpx;
     width: 79rpx;
     height: 29rpx;
 }
@@ -393,10 +395,16 @@
 
 .heji .price {
     display: inline;
-    height: 27rpx;
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;
     color: #58b530;
     font-size: 32rpx;
     line-height: 27rpx;
+}
+
+.orderBox {
+    overflow: hidden;
+}
+.pb_100 {
+    padding-bottom: 100rpx;
 }

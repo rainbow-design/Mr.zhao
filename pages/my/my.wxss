@@ -6,12 +6,24 @@
 
 .showQuan {
     position: absolute;
-    left: 90rpx;
+    left: 313rpx;
+    top: 82rpx;
     color: #fff;
     z-index: 1000;
-    height: 64rpx;
-    line-height: 64rpx;
+    height: 30rpx;
     font-size: 32rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    line-height: 30rpx;
+}
+
+.showQuan_login {
+    position: absolute;
+    top: 57rpx;
+    left: 282rpx;
+    z-index: 999;
+    width: 187rpx;
+    height: 80rpx;
 }
 
 .greenBox {
@@ -184,7 +196,7 @@
     left: 30rpx;
     top: 711rpx;
     width: 690rpx;
-    height: 233rpx;
+    height: 241rpx;
     background: rgba(255, 255, 255, 1);
     border-radius: 10rpx;
 }

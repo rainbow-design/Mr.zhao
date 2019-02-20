@@ -48,10 +48,10 @@
                                 </view>
                             </block>
                             <block wx:elif="{{item.status ==4}}">
-                                <view class='greenBox' data-id="{{item.order_no}}" data-staffer="{{item.staffer}}" bindtap='toEvaluation'>
+                                <view class='greenBox' data-id="{{item.order_no}}" data-staffer="{{item.staff_id}}" catchtap='toEvaluation'>
                                     <view class='text'>去评价</view>
                                 </view>
-                                <view class='greenBox' style='width:139rpx;margin-left:10rpx' data-id="{{item.order_no}}" bindtap='again'>
+                                <view class='greenBox' style='width:139rpx;margin-left:10rpx' data-id="{{item.order_no}}" catchtap='again'>
                                     <view class='text'>再来一单</view>
                                 </view>
                             </block>
@@ -204,10 +204,10 @@
                             </scroll-view>
                         </view>
                         <view class='bottomBox oneLineEnd'>
-                            <view class='greenBox' data-id="{{item.order_no}}" data-staffer="{{item.staffer}}" bindtap='toEvaluation'>
+                            <view class='greenBox' data-id="{{item.order_no}}" data-staffer="{{item.staff_id}}" catchtap='toEvaluation'>
                                 <view class='text'>去评价</view>
                             </view>
-                            <view class='greenBox' style='width:139rpx;margin-left:10rpx' data-id="{{item.order_no}}" bindtap='again'>
+                            <view class='greenBox' style='width:139rpx;margin-left:10rpx' data-id="{{item.order_no}}" catchtap='again'>
                                 <view class='text'>再来一单</view>
                             </view>
                             <view class='heijiBox'>

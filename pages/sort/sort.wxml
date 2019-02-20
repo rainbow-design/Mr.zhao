@@ -39,7 +39,7 @@
     <view class='header borderBox oneLineEnd'>
         <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
         <view class='address_box' data-address="{{address}}" bindtap='toSelectAddress'>
-            <view class='location ellipsis'>{{globalAddress.detail_addr || shortAddress}}</view>
+            <view class='location ellipsis'>{{globalAddress.show_addr || shortAddress}}</view>
             <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
         </view>
         <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='test'></input>
@@ -47,6 +47,7 @@
     </view>
     <view class='scrollShopList'>
         <view class='mainMenu'>
+            <!-- 左侧一级菜单------- -->
             <scroll-view class="scroll_a" scroll-y="true" style='white-space:nowrap'>
                 <block wx:for="{{classA}}" wx:key="">
                     <view class="item {{classShowA == index ? 'item_act' : ''}}" bindtap='chooseClass' data-id="{{item.id}}" data-index="{{index}}" data-pro_id="{{item.id}}" data-pro_type="{{item.type}}" data-type="1">
@@ -60,18 +61,26 @@
         <!-- 左侧 mainMenu end -->
         <view class='rightBox'>
             <!-- 没有优惠券展示列表 -->
-            <scroll-view class='subMenu' scroll-x style="white-space:nowrap;">
-                <block wx:for="{{classB}}" wx:key="">
-                    <view class="item {{classShowB == index ? 'item_act' : ''}}" bindtap='chooseClass' data-id="{{item.id}}" data-index="{{index}}" data-pro_id="{{item.id}}" data-pro_type="{{item.type}}" data-type="2">
-                        <view class='text'>
-                            {{item.name}}
+            <block wx:if="{{total == 0}}">
+                <scroll-view class='subMenu' scroll-x style="white-space:nowrap;">
+                    <!-- 右侧二级菜单------------------------- -->
+                    <block wx:for="{{classB}}" wx:key="">
+                        <view class="item {{classShowB == index ? 'item_act' : ''}}" data-showall="{{index == 0?'true':'false'}}" bindtap='chooseClass' data-id="{{item.id}}" data-index="{{index}}" data-pro_id="{{item.id}}" data-pro_type="{{item.type}}" data-type="2">
+                            <view class='text'>
+                                {{item.name}}
+                            </view>
                         </view>
-                    </view>
+                    </block>
+                </scroll-view>
+                <block wx:if="{{classB}}">
+                    <view class='subMenu_endline'></view>
                 </block>
-            </scroll-view>
+            </block>
+
             <!-- subMenu end -->
-            <view class='shoppingList'>
+            <view class='shoppingList {{total > 0 ?"":"shoppingList_pt"}}'>
                 <scroll-view class="scroll_b" scroll-y="true" style='white-space:nowrap' bindscrolltolower="scrollBottom">
+                    <!-- 优惠券模块------------ -->
                     <block wx:if="{{total > 0}}">
                         <view class='getYouhuiQuan'>
                             <image mode="widthFix" src="../../assets/youhuijuan_bg.png"></image>
@@ -82,10 +91,10 @@
                             </view>
                         </view>
                     </block>
-                    <!-- 单个商品开始 -->
+                    <!---------------- 单个商品开始 ------------>
                     <block wx:for="{{productList}}" wx:key="{{item.id}}">
                         <view class='goods_item oneLineBetween' bindtap='toDetail' data-id="{{item.id}}">
-                            <image class='img' mode="widthFix" src="{{item.thumb_img}}"></image>
+                            <image class='img' src="{{item.thumb_img}}"></image>
                             <view class='content'>
                                 <view class='title'>
                                     {{item.name}}
@@ -97,7 +106,17 @@
                                         <view class='youhuiText'>会员{{item.plus}}折</view>
                                     </image>
                                 </view>
-                                <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-id="{{item.id}}" catchtap='addToCart'></image>
+                                <block wx:if="{{!item.showCountControl}}">
+                                    <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-id="{{item.id}}" data-index="{{index}}" catchtap='addToCart'></image>
+                                </block>
+                                <block wx:if="{{item.showCountControl}}">
+                                    <view class='countControl'>
+
+                                        <image class='minus' data-index="{{index}}" data-state="tuijian" data-num="{{item.current_num}}" data-id="{{item.id}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/minus.png" catchtap='minusNum'></image>
+                                        <view class='number'>{{item.current_num}}</view>
+                                        <image class='add' data-index="{{index}}" data-state="tuijian" data-num="{{item.current_num}}" data-id="{{item.id}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/add.png" catchtap='numAdd'></image>
+                                    </view>
+                                </block>
                             </view>
                         </view>
                     </block>

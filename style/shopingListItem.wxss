@@ -1,128 +1,129 @@
 .hotSellItem {
-  height: 219rpx;
-  width: 750rpx;
-  padding: 24rpx 30rpx 20rpx 30rpx;
+    height: 219rpx;
+    width: 750rpx;
+    padding: 24rpx 30rpx 20rpx 30rpx;
 }
 
 .hotSellItem_img {
-  height: 179rpx;
-  width: 230rpx;
-  background: pink;
+    height: 179rpx;
+    width: 230rpx;
+    background: pink;
 }
 
 .commonTitle {
 }
 
 .commonTitle .title {
-  position: absolute;
-  top: 30rpx;
-  left: 306rpx;
-  width: 128rpx;
-  height: 30rpx;
-  font-size: 32rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(88, 181, 48, 1);
-  line-height: 18rpx;
+    position: absolute;
+    top: 30rpx;
+    left: 306rpx;
+    width: 128rpx;
+    height: 30rpx;
+    font-size: 32rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(88, 181, 48, 1);
+    line-height: 18rpx;
 }
 
 .leftBorder, .rightBorder {
-  position: absolute;
-  width: 123rpx;
-  height: 1px;
-  background: rgba(88, 180, 48, 1);
+    position: absolute;
+    width: 123rpx;
+    height: 1px;
+    background: rgba(88, 180, 48, 1);
 }
 
 .leftBorder {
-  left: 163rpx;
-  top: 45rpx;
+    left: 163rpx;
+    top: 45rpx;
 }
 
 .rightBorder {
-  left: 454rpx;
-  top: 45rpx;
+    left: 454rpx;
+    top: 45rpx;
 }
 
 .hotSellItem_content {
-  position: relative;
-  height: 179rpx;
+    position: relative;
+    height: 179rpx;
 }
 
 .hotContentFlexStyle {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .hotSellItem_content .title {
-  width: 440rpx;
-  font-size: 28rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
-  line-height: 42rpx;
+    width: 440rpx;
+    font-size: 28rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
+    line-height: 42rpx;
 }
 
 .hotSellItem_content .introduction {
-  position: absolute;
-  top: 44rpx;
-  width: 424rpx;
-  font-size: 26rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(153, 153, 153, 1);
-  line-height: 42rpx;
+    position: absolute;
+    top: 44rpx;
+    width: 424rpx;
+    font-size: 26rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    line-height: 42rpx;
 }
 
 .hotSellItem_content .price {
-  position: absolute;
-  top: 132rpx;
-  width: 68rpx;
-  height: 22rpx;
-  font-size: 28rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(26, 26, 26, 1);
-  line-height: 22rpx;
+    position: absolute;
+    top: 132rpx;
+    width: 68rpx;
+    height: 22rpx;
+    font-size: 28rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 1);
+    line-height: 22rpx;
 }
 
 .hotSellItem_content .offerPrice {
-  height: 22rpx;
-  font-size: 28rpx;
-  font-family: SourceHanSansCN-Bold;
-  font-weight: bold;
-  color: rgba(88, 181, 48, 1);
-  line-height: 22rpx;
+    height: 22rpx;
+    font-size: 28rpx;
+    font-family: SourceHanSansCN-Bold;
+    font-weight: bold;
+    color: rgba(88, 181, 48, 1);
+    line-height: 22rpx;
 }
 
 .shopping {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 60rpx;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 60rpx;
 }
 
 .bor_Bottom {
-  border-bottom: 1px solid rgba(224, 224, 224, 1);
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
 }
 
 .youhuiBox {
     position: relative;
+    margin-top: -4rpx;
     width: 79rpx;
     height: 29rpx;
 }
 
 .youhuiText {
-  position: absolute;
-  left: 12rpx;
-  top: 0;
-  width: 56rpx;
-  height: 15rpx;
-  line-height: 29rpx;
-  font-size: 16rpx;
-  font-family: SourceHanSansCN-Regular;
-  font-weight: 400;
-  color: rgba(88, 181, 48, 1);
-  z-index: 10;
+    position: absolute;
+    left: 12rpx;
+    top: 0;
+    width: 56rpx;
+    height: 15rpx;
+    line-height: 29rpx;
+    font-size: 16rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(88, 181, 48, 1);
+    z-index: 10;
 }

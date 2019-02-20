@@ -1,4 +1,5 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "收货地址"
+    "usingComponents": {},
+    "navigationBarTitleText": "收货地址",
+    "enablePullDownRefresh": true
 }

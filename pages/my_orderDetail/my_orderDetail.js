@@ -11,7 +11,8 @@ Page({
         orderId: '',
         orderData: {},
         state: '',
-        statename: ''
+        statename: '',
+        goods_ids:''
     },
     // 再来一单
     again() {
@@ -113,10 +114,26 @@ Page({
             order_no: id
         }).then(res => {
             var data = res.data.response_data.lists[0];
+          
             y.setData({
-                orderData: data
+                orderData: data,
+                goods_ids: data.goods_id
             })
         })
+    },
+    toProductList() {
+        var y = this;
+        util.promiseRequest(api.confirm_order_detail, {
+            goods_ids: y.data.goods_ids
+        }).then(response => {
+            var data = response.data.response_data.lists;
+            wx.Storage.setItem("confirm_order_detail", data)
+            console.log(data)
+            wx.navigateTo({
+                url: `../shoppingCart_productList/shoppingCart_productList`
+            })
+        })
+
     },
     /**
      * 生命周期函数--监听页面隐藏

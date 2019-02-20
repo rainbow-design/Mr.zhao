@@ -29,7 +29,9 @@
                                         <view class='symbol'>￥</view>
                                         <view class='price'>{{item.money}}</view>
                                     </view>
+                                    <!-- <view class='condition'>满{{item.use_money}}元可用</view> -->
                                 </view>
+
                                 <view class='contentBox columnBetweenStart'>
                                     <view class='title'>{{item.name}}
                                     </view>
@@ -56,7 +58,7 @@
     <view class='header borderBox oneLineEnd'>
         <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
         <view class='address_box' data-address="{{address}}" bindtap='toSelectAddress'>
-            <view class='location ellipsis'>{{globalAddress.detail_addr || shortAddress}}</view>
+            <view class='location ellipsis'>{{shortAddress || globalAddress.show_addr}}</view>
             <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
         </view>
         <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='toIndexSearch'></input>
@@ -105,7 +107,7 @@
             <view class='leftBorder'></view>
             <view class='rightBorder'></view>
         </view>
-        <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{productList_a}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
+        <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{remaiData}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
             <image class='hotSellItem_img' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
             <view class='hotSellItem_content hotContentFlexStyle'>
                 <view class='title line-clamp '>
@@ -118,13 +120,24 @@
                         <view class='youhuiText'>会员{{item.plus}}折</view>
                     </image>
                 </view>
-                <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-id="{{item.id}}" catchtap='addToCart'></image>
+                <block wx:if="{{!item.showCountControl}}">
+                    <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-state="remai" data-id="{{item.id}}" data-index="{{index}}" catchtap='addToCart'></image>
+                </block>
+                <block wx:if="{{item.showCountControl}}">
+                    <view class='countControl'>
+
+                        <image class='minus' data-index="{{index}}" data-state="remai" data-id="{{item.id}}" data-num="{{item.current_num}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/minus.png" catchtap='minusNum'></image>
+                        <view class='number'>{{item.current_num}}</view>
+
+                        <image class='add' data-index="{{index}}" data-state="remai" data-num="{{item.current_num}}" data-id="{{item.id}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/add.png" catchtap='numAdd'></image>
+                    </view>
+                </block>
             </view>
         </view>
     </view>
 </view>
 <view class='gap' style='height:20rpx;'></view>
-<block wx:if="{{productList_b.length > 0}}">
+<block wx:if="{{tuijianData.length > 0}}">
     <view class='hotSell'>
         <view class='commonTitle'>
             <view class='title'>推荐购买</view>
@@ -132,8 +145,8 @@
             <view class='rightBorder'></view>
         </view>
 
-        <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{productList_b}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
-            <image class='hotSellItem_img' mode='widthFix' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
+        <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{tuijianData}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
+            <image class='hotSellItem_img' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
             <view class='hotSellItem_content hotContentFlexStyle'>
                 <view class='title line-clamp '>
                     {{item.name}}
@@ -145,7 +158,17 @@
                         <view class='youhuiText'>会员{{item.plus}}折</view>
                     </image>
                 </view>
-                <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-id="{{item.id}}" catchtap='addToCart'></image>
+                <block wx:if="{{!item.showCountControl}}">
+                    <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-index="{{index}}" data-id="{{item.id}}" data-num="{{item.num}}" data-state="tuijian" catchtap='addToCart'></image>
+                </block>
+                <block wx:if="{{item.showCountControl}}">
+                    <view class='countControl'>
+
+                        <image class='minus' data-index="{{index}}" data-state="tuijian" data-num="{{item.current_num}}" data-id="{{item.id}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/minus.png" catchtap='minusNum'></image>
+                        <view class='number'>{{item.current_num}}</view>
+                        <image class='add' data-index="{{index}}" data-state="tuijian" data-num="{{item.current_num}}" data-id="{{item.id}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/add.png" catchtap='numAdd'></image>
+                    </view>
+                </block>
             </view>
         </view>
     </view>

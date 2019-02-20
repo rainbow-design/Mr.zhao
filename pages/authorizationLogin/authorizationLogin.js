@@ -79,7 +79,7 @@ Page({
     getVerificationCode() {
         var y = this;
         var yData = this.data;
-        var phoneNumber = yData.phoneNumber;
+        var phoneNumber = yData.phone.replace(/\s+/g, "");
         var isPhoneNumber = util.checkType(phoneNumber, 'phone');
         if (phoneNumber != "" && isPhoneNumber) {
             util.promiseRequest(api.verificationCode, {
@@ -121,12 +121,25 @@ Page({
     bindKeyInput(e) {
         var data = e.currentTarget.dataset,
             value = e.detail.value;
-        data.name === "phone" ?
+        if (data.name === "phone") {
+            //正则过滤
+            value = value.replace(/[\u4E00-\u9FA5`~!@#$%^&*()_+<>?:"{},.\/;'[\]\-\sa-zA-Z]*/g, "");
+            let result = [];
+            for (let i = 0; i < value.length; i++) {
+                if (i == 3 || i == 7) {
+                    result.push(" ", value.charAt(i));
+                } else {
+                    result.push(value.charAt(i));
+                }
+            }
             this.setData({
-                phoneNumber: value
-            }) : this.setData({
+                phone: result.join("")
+            })
+        } else {
+            this.setData({
                 verificationCode: value
             })
+        }
 
     },
 
@@ -136,13 +149,13 @@ Page({
         if (app.globalData.userInfo) {
             var userInfo = app.globalData.userInfo;
             var paramObj = {
-                mobile: yData.phoneNumber,
+                mobile: yData.phone.replace(/\s+/g, ""),
                 code: yData.verificationCode,
                 openid: app.globalData.openid,
                 img_url: userInfo.avatarUrl,
                 sex: userInfo.gender === 2 ? 1 : 0, // 1 =》男性，值为2时是女性，值为0时是未知
                 nickname: userInfo.nickName,
-                invite_id: app.data.id
+                invite_id: app.globalData.inviteId || 0 // 邀请id
             }
             util.promiseRequest(api.register, paramObj)
                 .then(res => {
@@ -169,9 +182,16 @@ Page({
 
     },
     delayToIndex() {
-        setTimeout(() => {
-            app.toIndex();
-        }, 1000)
+        wx.showToast({
+            title: '您已注册成功...',
+            icon: 'none',
+            duration: 1000,
+            complete: function () {
+                setTimeout(() => {
+                    app.toIndex();
+                }, 1000)
+            }
+        })
     },
 
     goLastPage() {

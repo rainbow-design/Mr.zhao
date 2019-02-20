@@ -7,13 +7,13 @@
 		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
-		"minified": true,
+		"minified": false,
 		"newFeature": true,
 		"autoAudits": false,
 		"uglifyFileName": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.6.0",
 	"appid": "wxcfa9a2e2f741d01b",
 	"projectname": "Mr.zhao",
 	"debugOptions": {

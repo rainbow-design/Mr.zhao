@@ -21,7 +21,7 @@ Page({
         formAddAddress: false,
         formEditAddress: false,
         result: [],
-        onlyShowAddress:false // 默认不仅仅展示收货地址
+        onlyShowAddress: false // 默认不仅仅展示收货地址
     },
 
     /**
@@ -72,7 +72,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        this.getMy_shippingAddress();
     },
     setWithThisAdress() {
         var yData = this.data;
@@ -80,6 +80,7 @@ Page({
         var shortAdress = address.split("区")[1]
         wx.Storage.setItem("address", address);
         wx.Storage.setItem("shortAddress", shortAdress);
+        wx.Storage.removeItem("globalAddress");
         app.returnLastPage();
     },
     getMy_shippingAddress() {
@@ -162,7 +163,14 @@ Page({
     selectGlobalAddress(e) {
         var data = e.currentTarget.dataset;
         wx.Storage.setItem("globalAddress", data.info);
+        wx.Storage.removeItem("shortAddress");
+        wx.Storage.removeItem("address");
         app.returnLastPage();
+    },
+    addShippingAddress() {
+        wx.navigateTo({
+            url: `../my_addShippingAddress/my_addShippingAddress`
+        })
     },
     toJump(e) {
         var data = e.currentTarget.dataset;
@@ -180,6 +188,7 @@ Page({
         } else {
             wx.Storage.setItem("address", data.info.address)
             wx.Storage.setItem("shortAddress", data.info.title)
+            wx.Storage.removeItem("globalAddress");
             app.returnLastPage();
         }
 

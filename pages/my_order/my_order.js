@@ -1,6 +1,7 @@
 const app = getApp();
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
+const regeneratorRuntime = require("../../utils/runtime.js");
 Page({
     data: {
         currentTab: 0,
@@ -16,7 +17,10 @@ Page({
         let tabNumber = options.tab ? options.tab : 0;
         this.setData({
             currentTab: tabNumber
+        }, function () {
+            wx.Storage.setItem("tab_loading", options)
         })
+
         // 数据初始化
         this.getSelectTabData(data.page, data.num, tabNumber);
 
@@ -54,6 +58,8 @@ Page({
         var that = this;
         let yData = that.data;
         let tabIndex = e.detail.current;
+        // 保存 tabIndex 下拉
+        wx.Storage.setItem("tab_loading", { "tab": tabIndex })
         that.setData({
             selectTabData: [],
             currentTab: tabIndex,
@@ -62,7 +68,6 @@ Page({
             oldNum: 5
         });
         if (!yData.isUpdate) {
-            console.log('111111111')
             that.getSelectTabData(yData.page, yData.num, tabIndex);
         }
     },
@@ -71,6 +76,8 @@ Page({
         var that = this;
         let yData = that.data;
         let tabIndex = e.currentTarget.dataset.current;
+        // 保存 tabIndex 下拉
+        wx.Storage.setItem("tab_loading", { "tab": tabIndex })
         that.setData({
             isUpdate: true,
             selectTabData: [],
@@ -168,7 +175,6 @@ Page({
             url: `../my_orderDetail/my_orderDetail?id=${data.id}&state=${data.state}&statename=${data.statename}`
         })
     },
-
     updateData: function () {
         console.log("上拉 scroll-view，开始更新数据");
         var yData = this.data;
@@ -189,8 +195,31 @@ Page({
             this.getSelectTabData(newPage, newNum, type)
         }
     },
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
     onPullDownRefresh: function () {
-        wx.startPullDownRefresh()
+        let that = this;
+        async function clearData() {
+            await that.setData({
+                selectTabData: [],
+                page: 1
+            })
+        }
+
+
+        wx.showNavigationBarLoading() //在标题栏中显示加载
+        //下拉刷新
+        async function refresh() {
+            await clearData();
+            await that.onLoad(wx.Storage.getItem("tab_loading"));
+            // complete
+            wx.hideNavigationBarLoading() //完成停止加载
+            wx.stopPullDownRefresh() //停止下拉刷新
+        }
+        refresh();
     }
+
+
 
 })
