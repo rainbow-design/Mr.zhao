@@ -11,7 +11,8 @@ Page({
         couponData: [],
         notUseCoupon: true,
         checked: '../../assets/icon/right_orange.png',
-        normal: '../../assets/icon/round.png'
+        normal: '../../assets/icon/round.png',
+        selectIndex: ''
     },
 
     /**
@@ -33,7 +34,12 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        var selectCoupon = wx.Storage.getItem("selectCoupon");
+        if (selectCoupon) {
+            this.setData({
+                selectIndex: selectCoupon.index
+            })
+        }
     },
     checkAll() {
         var y = this;
@@ -49,6 +55,10 @@ Page({
                     [`couponData[${i}].default_check`]: false
                 })
             })
+            wx.Storage.removeItem("selectCoupon")
+            // 解除事件订阅
+            wx.yue.remove("selectCoupon");
+            app.returnLastPage();
         }
     },
     singleCheck(e) {
@@ -57,15 +67,24 @@ Page({
         var checkstate = data.checkstate;
 
         var index = data.index;
+
         this.setData({
-            [`couponData[${data.index}].default_check`]: !couponData[`${data.index}`].default_check
+            [`couponData[${index}].default_check`]: !couponData[`${data.index}`].default_check
         })
 
         if (checkstate === false) {
+            couponData.forEach((v, i) => {
+                i == index ? v.default_check = true : v.default_check = false;
+            })
+            this.setData({
+                couponData: couponData,
+                notUseCoupon: false
+            })
             var paramObj = {
                 coupons_money: couponData[index].money,
                 coupons_id: couponData[index].id,
-                use_money: couponData[index].use_money
+                use_money: couponData[index].use_money,
+                index: index
             }
             wx.yue.pub('selectCoupon', paramObj)
             console.log('选中')
@@ -79,6 +98,8 @@ Page({
     updateCheckAll() {
         var couponData = this.data.couponData;
         var checkOrNot = couponData.some(v => v.default_check === true)
+
+
 
         checkOrNot ? this.setData({
             notUseCoupon: false
@@ -95,13 +116,23 @@ Page({
         })
             .then(res => {
                 var data = res.data.response_data.lists;
-                console.log(data);
-                util.addKey(data, {}, function (v) {
-                    v.default_check = false;
+                var selectIndex = y.data.selectIndex;
+                util.addKey(data, {}, function (v, i) {
+                    i === selectIndex ?
+                        v.default_check = true : v.default_check = false;
                 })
+                var temp = false;
+                if (selectIndex >= 0) {
+                    temp = false
+                } else if (selectIndex === '') {
+                    temp = true
+                }
+                console.log(temp)
                 y.setData({
-                    couponData: data
+                    couponData: data,
+                    notUseCoupon: temp
                 })
+
             })
     },
 

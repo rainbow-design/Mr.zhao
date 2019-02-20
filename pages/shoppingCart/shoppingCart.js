@@ -548,7 +548,20 @@ Page({
             url: '../sort/sort'
         })
     },
+    onHide: function () {
+        this.setData({
+            hasCheck: false
+        })
+    },
 
+    /**
+     * 生命周期函数--监听页面卸载
+     */
+    onUnload: function () {
+        this.setData({
+            hasCheck: false
+        })
+    },
 
     onPullDownRefresh: function () {
         let that = this;

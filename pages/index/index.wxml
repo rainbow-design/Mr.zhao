@@ -29,7 +29,7 @@
                                         <view class='symbol'>￥</view>
                                         <view class='price'>{{item.money}}</view>
                                     </view>
-                                    <!-- <view class='condition'>满{{item.use_money}}元可用</view> -->
+                                    <view class='condition'>满{{item.use_money}}元可用</view>
                                 </view>
 
                                 <view class='contentBox columnBetweenStart'>

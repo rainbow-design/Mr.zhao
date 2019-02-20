@@ -4,6 +4,18 @@
     position: relative;
 }
 
+.goOnPlus {
+    position: absolute;
+    right: 19rpx;
+}
+
+.goOnPlus_text {
+    font-size: 26rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
+}
+
 .showQuan {
     position: absolute;
     left: 313rpx;

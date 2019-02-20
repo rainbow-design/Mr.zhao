@@ -334,7 +334,7 @@
     width: 578rpx;
     border-bottom: 1px solid #e5e5e5;
     box-sizing: border-box;
-    padding: 44rpx 30rpx 47rpx 7rpx;
+    padding: 44rpx 30rpx 47rpx 24rpx;
 }
 
 .goods_item:last-child {

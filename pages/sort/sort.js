@@ -151,6 +151,9 @@ Page({
                 this.get_coupons();
             }
         }
+        if(cur.index == 0 && cur.type == 1){
+            this.get_coupons();
+        }
 
         // 正选择最左侧的一级分类
 

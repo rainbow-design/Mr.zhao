@@ -112,7 +112,7 @@
                         <block wx:if="{{!hasCheck}}">
                             满￥{{allData.devery_info[0].limit}}元免配送费
                         </block>
-                        <block wx:if="{{cost_temp >allData.devery_info[0].limit && hasCheck }}">
+                        <block wx:if="{{cost_temp >=allData.devery_info[0].limit && hasCheck }}">
                             已满{{allData.devery_info[0].limit}}元，免配送费
                         </block>
                         <block wx:if="{{cost_temp < allData.devery_info[0].limit && hasCheck}}">

@@ -27,7 +27,8 @@ Page({
         normal: '../../assets/icon/checkBox.png',
         userJifenNum: 0,
         userJifenNum_price: '',
-        canPay: true
+        canPay: true,
+        coupons_money: '' // 优惠券优惠金额
     },
 
     /**
@@ -79,7 +80,7 @@ Page({
                 Info: lists, // 其他信息
                 can_use_coupons: confirmOrderData.can_use_coupons, // 可使用优惠券,
                 sale_price: lists.sale_price, // 优惠金额
-                show_sale_price: Number(lists.sale_price) > 0 ? '-' + lists.sale_price : lists.sale_price,
+                show_sale_price: Number(lists.sale_price) > 0 ? '- ￥' + lists.sale_price : lists.sale_price,
                 orderParam_goods_info: orderParam_goods_info,
                 amount: result_amount, // 总价
                 original_amount: result_amount, // 原始总价
@@ -119,6 +120,9 @@ Page({
                     amount: util.toFixed(finalAmount, 2)
                 })
             }
+            this.setData({
+                coupons_money: '- ￥' + util.toFixed(Number(selectCouponData.coupons_money), 2)
+            })
             console.log("使用积分?:" + yData.default_useJifen)
             console.log("积分变化：" + yData.userJifenNum)
             console.log("选择优惠券后的金额变化:" + finalAmount)
@@ -131,7 +135,8 @@ Page({
             }
             var original_amount_temp = yData.original_amount - jifenYouHui;
             this.setData({
-                amount: util.toFixed(original_amount_temp > 0 ? original_amount_temp : 0, 2)
+                amount: util.toFixed(original_amount_temp > 0 ? original_amount_temp : 0, 2),
+                coupons_money: ''
             })
             // 没有选择优惠券的更新
             console.log("原始价格:" + yData.original_amount)
@@ -334,8 +339,6 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-        // 卸载优惠券
-        wx.Storage.removeItem("selectCoupon");
         // 更新购物车的数量提示
         // 获取购物车订单数
         app.getShoppingCartNum((length) => {
@@ -370,8 +373,6 @@ Page({
                 })
             }
         });
-        // 卸载优惠券
-        wx.Storage.removeItem("selectCoupon");
     },
 
     /**

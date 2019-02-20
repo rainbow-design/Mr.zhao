@@ -204,7 +204,7 @@ swiper {
 .foodsImgs {
     width: 630rpx;
     height: 100%;
-    padding: 8rpx 0;
+    padding: 6rpx 0;
     box-sizing: border-box;
 }
 

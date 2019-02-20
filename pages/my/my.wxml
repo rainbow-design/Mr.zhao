@@ -14,7 +14,7 @@
     <view class='greenBox'>
         <image class='greenBg' mode="widthFix" src="../../assets/green_bg.png"></image>
         <block wx:if="{{userInfo === false}}">
-        <image class='showQuan_login' src="../../assets/shouquan_login.png"></image>
+            <image class='showQuan_login' src="../../assets/shouquan_login.png"></image>
             <view class='showQuan' bindtap='toAuthorizationLogin'> 授权登录</view>
         </block>
         <block wx:if="{{userInfo != false}}">
@@ -81,9 +81,9 @@
             <image mode='widthFix' src="../../assets/kaitong.png" bindtap='openPlus'></image>
         </block>
         <block wx:elif="{{userInfo.lists[0].is_plus === 'plus会员'}}">
-            <view class='propaganda oneLineBetween' style='width:450rpx;'>
-                <view>会员有效期 {{userInfo.lists[0].end_time}}</view>
-                <view style='' bindtap='goOnPlus'>会员续费</view>
+            <view class='propaganda oneLineBetween' style='width:502rpx;'>
+                <view class='goOnPlus_text'>  有效期: {{userInfo.lists[0].end_time}}</view>
+                <image class='goOnPlus' src="../../assets/goOnPlus.png" style='width:118rpx;height:58rpx;' bindtap='goOnPlus'></image>
             </view>
         </block>
     </view>

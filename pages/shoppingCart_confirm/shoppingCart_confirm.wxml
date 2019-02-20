@@ -44,17 +44,24 @@
         </view>
         <view class='line2 border_bottom oneLineBetween'>
             <view class='name'>配送费</view>
-            <view class='content'>￥{{delivery_fee}}</view>
+            <block wx:if="{{delivery_fee == 0}}">
+
+                <view class='content content_orange'>免配送费</view>
+            </block>
+            <block wx:elif="{{!delivery_fee == 0}}">
+                <view class='content'>￥ {{delivery_fee}}</view>
+            </block>
         </view>
         <view class='line2 border_bottom oneLineBetween'>
             <view class='name'>会员优惠</view>
-            <view class='content content_orange'>￥{{show_sale_price}}</view>
+            <view class='content content_orange'>{{show_sale_price}}</view>
         </view>
 
         <view class='line2 border_bottom oneLineBetween'>
             <view class='name'>优惠券</view>
             <block wx:if="{{can_use_coupons.count > 0}}">
-                <view class='content content_orange' bindtap='toCoupon' data-ids="{{can_use_coupons.ids}}">{{can_use_coupons.count}}张可用
+                <view class='content content_orange' bindtap='toCoupon' data-ids="{{can_use_coupons.ids}}">
+                    {{coupons_money || can_use_coupons.count + '张可用'}}
                     <image mode="widthFix" src="../../assets/icon/toRightH40.png"></image>
                 </view>
             </block>
@@ -70,9 +77,9 @@
             <!-- 对比有问题 -->
             <block wx:elif="{{Info.score > jifenShouldOver}}">
                 <view class='name'>当前可用{{Info.score}}积分抵现</view>
-                <view class='content content_orange  selectJF' bindtap='useJifen' data-score="{{Info.score}}">
+                <view class='content content_orange  selectJF oneLineEnd' bindtap='useJifen' data-score="{{Info.score}}">
                     {{userJifenNum == 0? '':'- ￥' + userJifenNum/100}}
-                    <image mode="widthFix" src="{{default_useJifen ? checked:normal}}" style='width:30rpx;'></image>
+                    <image mode="widthFix" src="{{default_useJifen ? checked:normal}}" style='width:30rpx;margin-left:10rpx;'></image>
                 </view>
             </block>
         </view>

@@ -1,43 +1,43 @@
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <view class="coupon maskContent">
 
-  <view class="header oneLineBetween">
-    <view class='title'>不使用优惠券</view>
-    <image src="{{notUseCoupon ? checked:normal}}" mode='widthFix' bindtap='checkAll'></image>
-  </view>
-  <view class='ticketBox'>
-    <view class='tishi oneLineStart'>
-      <image src="../../assets/icon/tan.png" mode='widthFix'></image>
-      <view class='intro'>优惠券不可叠加使用</view>
+    <view class="header oneLineBetween">
+        <view class='title'>不使用优惠券</view>
+        <image src="{{notUseCoupon ? checked:normal}}" mode='widthFix' bindtap='checkAll'></image>
     </view>
-    <!-- 可使用 -->
-    <!-- ticket start -->
-    <view class='ticket' wx:for="{{couponData}}" wx:key="{{item}}">
-      <image class='selectIcon_act' mode='widthFix' data-checkstate="{{item.default_check}}"  data-index="{{index}}" src="{{item.default_check ? checked:normal }}" bindtap='singleCheck'></image>
-      <view class='upBox'>
-        <view class='priceBox columnBetween'>
-          <view class='bigPrice'>
-            <view class='symbol'>￥</view>
-            <view class='price'>{{item.money}}</view>
-          </view>
-          <view class='condition'>满{{item.use_money}}元可用</view>
+    <view class='ticketBox'>
+        <view class='tishi oneLineStart'>
+            <image src="../../assets/icon/tan.png" mode='widthFix'></image>
+            <view class='intro'>优惠券不可叠加使用</view>
         </view>
-        <view class='contentBox columnBetweenStart'>
-          <view class='title'>{{item.name}}
-          </view>
-          <view class='normal'>{{item.class}}</view>
-          <view class='normal'>{{item.role}}
-          </view>
+        <!-- 可使用 -->
+        <!-- ticket start -->
+        <view class='ticket' wx:for="{{couponData}}" wx:key="{{item}}" data-checkstate="{{item.default_check}}" data-index="{{index}}" bindtap='singleCheck'>
+            <image class='selectIcon_act' mode='widthFix' src="{{item.default_check ? checked:normal }}"></image>
+            <view class='upBox'>
+                <view class='priceBox columnBetween'>
+                    <view class='bigPrice'>
+                        <view class='symbol'>￥</view>
+                        <view class='price'>{{item.money}}</view>
+                    </view>
+                    <view class='condition'>满{{item.use_money}}元可用</view>
+                </view>
+                <view class='contentBox columnBetweenStart'>
+                    <view class='title'>{{item.name}}
+                    </view>
+                    <view class='normal'>{{item.class}}</view>
+                    <view class='normal'>{{item.role}}
+                    </view>
+                </view>
+            </view>
+            <view class='bottomBox'>
+                <view class='text'>有效期：{{filter.splitByS(item.begin_time)[0]}} 至 {{filter.splitByS(item.end_time)[0]}} </view>
+            </view>
         </view>
-      </view>
-      <view class='bottomBox'>
-        <view class='text'>有效期：{{filter.splitByS(item.begin_time)[0]}} 至 {{filter.splitByS(item.end_time)[0]}} </view>
-      </view>
-    </view>
-    <!-- ticket end -->
-    <!-- 不使用 -->
-    <!-- ticket start -->
-    <!-- <view class='ticket used'>
+        <!-- ticket end -->
+        <!-- 不使用 -->
+        <!-- ticket start -->
+        <!-- <view class='ticket used'>
       <image class='selectIcon_act' mode='widthFix' src="../../assets/icon/round.png"></image>
       <view class='upBox'>
         <view class='priceBox columnBetween'>
@@ -59,12 +59,12 @@
         <view class='text'>有效期：2018-12-18 至 2018-12-30</view>
       </view>
       <!-- 不可使用新的注解 -->
-    <!-- <view class='appendNewLine oneLineStart'>
+        <!-- <view class='appendNewLine oneLineStart'>
         <view class='new_title'>本单不可用:</view>
         <view class='new_content'>非会员不可用个,不满足使用金额</view>
       </view> -->
-    <!-- 注解结束 -->
-    <!-- </view> -->
-    <!-- ticket end -->
-  </view>
+        <!-- 注解结束 -->
+        <!-- </view> -->
+        <!-- ticket end -->
+    </view>
 </view>
