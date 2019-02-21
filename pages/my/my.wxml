@@ -82,7 +82,7 @@
         </block>
         <block wx:elif="{{userInfo.lists[0].is_plus === 'plus会员'}}">
             <view class='propaganda oneLineBetween' style='width:502rpx;'>
-                <view class='goOnPlus_text'>  有效期: {{userInfo.lists[0].end_time}}</view>
+                <view class='goOnPlus_text'> 有效期: {{userInfo.lists[0].end_time}}</view>
                 <image class='goOnPlus' src="../../assets/goOnPlus.png" style='width:118rpx;height:58rpx;' bindtap='goOnPlus'></image>
             </view>
         </block>
@@ -90,7 +90,7 @@
     <view class='myOrder'>
         <view class='title oneLineBetween'>
             <view class='name'>我的订单</view>
-            <view class='content' bindtap='toOrder'>查看全部订单
+            <view class='content' bindtap='toOrder'>全部订单
                 <image mode='widthFix' src="../../assets/toRightF0.png"> </image>
             </view>
         </view>
@@ -98,6 +98,11 @@
             <view class='menu_item columnBetween' data-tab="1" bindtap='toMyOrderPage'>
                 <image src="../../assets/wallet.png" mode='widthFix'></image>
                 <view class='text'>待支付</view>
+                <view class='news_num_box'>
+                    <view class='news_num'>
+                        1
+                    </view>
+                </view>
             </view>
             <view class='menu_item columnBetween' data-tab="2" bindtap='toMyOrderPage'>
                 <image src="../../assets/wait.png" mode='widthFix'></image>

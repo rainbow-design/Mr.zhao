@@ -151,7 +151,7 @@ Page({
                 this.get_coupons();
             }
         }
-        if(cur.index == 0 && cur.type == 1){
+        if (cur.index == 0 && cur.type == 1) {
             this.get_coupons();
         }
 
@@ -267,7 +267,9 @@ Page({
     },
     // 加入购物车
     addToCart(e) {
-        app.addToCart(e);
+        app.isLogin(() => {
+            app.addToCart(e);
+        })
         return;
         // + - 按钮控制取消，不使用
         var y = this;

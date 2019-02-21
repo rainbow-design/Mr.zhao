@@ -1,18 +1,35 @@
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <view class="shoppingCart maskContent">
     <view class='address'>
-        <view class='whiteBox'>
-            <view class='zhuzhi'>
-                <view class='greenBox'>
-                    <view class='keyword'>
-                        {{addrInfo.type}}
+        <view class='whiteBox' bindtap='changeAnotherAdress'>
+            <block wx:if="{{useThisAddress}}">
+                <view class='zhuzhi'>
+                    <view class='greenBox'>
+                        <view class='keyword'>
+                            {{useGlobalFromShoppingCart_confirm.type_name}}
+                        </view>
                     </view>
+                    {{useGlobalFromShoppingCart_confirm.address}} {{useGlobalFromShoppingCart_confirm.detail_addr}}
                 </view>
-                {{addrInfo.address}} {{addrInfo.detail_addr}}
-            </view>
-            <view class='presonInfo'>
-                {{addrInfo.name}} {{addrInfo.phone}}
-            </view>
+                <view class='presonInfo'>
+                    {{useGlobalFromShoppingCart_confirm.name}} {{useGlobalFromShoppingCart_confirm.phone}}
+                </view>
+            </block>
+            <block wx:elif="{{!useThisAddress}}">
+                <view class='zhuzhi'>
+                    <view class='greenBox'>
+                        <view class='keyword'>
+                            {{addrInfo.type}}
+                        </view>
+                    </view>
+                    {{addrInfo.address}} {{addrInfo.detail_addr}}
+                </view>
+                <view class='presonInfo'>
+                    {{addrInfo.name}} {{addrInfo.phone}}
+                </view>
+            </block>
+
+            <image class='rightIcon' mode='widthFix' src="../../assets/icon/addressRIght.png"></image>
             <image class='caidai' src="../../assets/icon/huaBian.png"></image>
         </view>
     </view>
@@ -46,16 +63,13 @@
             <view class='name'>配送费</view>
             <block wx:if="{{delivery_fee == 0}}">
 
-                <view class='content content_orange'>免配送费</view>
+                <view class='content green'>免配送费</view>
             </block>
             <block wx:elif="{{!delivery_fee == 0}}">
                 <view class='content'>￥ {{delivery_fee}}</view>
             </block>
         </view>
-        <view class='line2 border_bottom oneLineBetween'>
-            <view class='name'>会员优惠</view>
-            <view class='content content_orange'>{{show_sale_price}}</view>
-        </view>
+
 
         <view class='line2 border_bottom oneLineBetween'>
             <view class='name'>优惠券</view>
@@ -75,14 +89,20 @@
                 <view class='name_normal'>当前有{{Info.score}}积分（满{{jifenShouldOver}}积分可用）</view>
             </block>
             <!-- 对比有问题 -->
-            <block wx:elif="{{Info.score > jifenShouldOver}}">
-                <view class='name'>当前可用{{Info.score}}积分抵现</view>
+            <block wx:elif="{{Info.score >= jifenShouldOver}}">
+                <view class='name'>可用{{shouldIUse_Jifen}}积分抵现</view>
                 <view class='content content_orange  selectJF oneLineEnd' bindtap='useJifen' data-score="{{Info.score}}">
-                    {{userJifenNum == 0? '':'- ￥' + userJifenNum/100}}
+                    {{userJifenNum == 0? '':'- ￥' + shouldIUse_Jifen/100}}
                     <image mode="widthFix" src="{{default_useJifen ? checked:normal}}" style='width:30rpx;margin-left:10rpx;'></image>
                 </view>
             </block>
         </view>
+        <block wx:if="{{show_sale_price != 0}}">
+            <view class='line2  border_bottom oneLineStart'>
+                <view class='name green'>本单会员价格为您节省</view>
+                <view class='content green'> {{ show_sale_price}}</view>
+            </view>
+        </block>
         <view class='lineLast oneLineEnd'>
             <view class='heJiName'>付款:
                 <view class='price'>¥{{amount}}</view>

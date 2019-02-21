@@ -76,7 +76,7 @@
 }
 
 .zhuzhi {
-    width: 540rpx;
+    width: 580rpx;
     height: 70rpx;
     font-size: 28rpx;
     font-family: SourceHanSansCN-Regular;
@@ -155,7 +155,7 @@
     align-items: center;
     height: 62rpx;
     width: 690rpx;
-    border-bottom: 2px solid rgba(224, 224, 224, 1);
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
 }
 
 .foods .name image {
@@ -168,7 +168,7 @@
 }
 
 .shopIcon {
-    margin-left: 20rpx;
+    margin-left: 50rpx;
     width: 30rpx;
     height: 26rpx;
 }
@@ -254,6 +254,7 @@
     color: rgba(51, 51, 51, 1);
     line-height: 22rpx;
     margin-bottom: 9rpx;
+    margin-top: 21rpx;
 }
 
 .rightBox .content .offerPrice {
@@ -334,7 +335,6 @@
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;
     color: rgba(51, 51, 51, 1);
-    line-height: 96rpx;
 }
 
 .fixedBottom .rightBox {
@@ -405,6 +405,46 @@
 .orderBox {
     overflow: hidden;
 }
+
 .pb_100 {
     padding-bottom: 100rpx;
+}
+
+.checkAll_box {
+    position: absolute;
+    left: 15rpx;
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.checkAll_box2 {
+    width: 118rpx;
+    height: 96rpx;
+    box-sizing: border-box;
+    padding-left: 15rpx;
+    margin-left: -15rpx;
+}
+
+.noKuCun {
+    position: absolute;
+    top: 151rpx;
+    left: 69rpx;
+    width: 150rpx;
+    height: 33rpx;
+    opacity: 0.3;
+    font-size: 22rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    background: #000;
+    text-align: center;
+    color: #fff;
+    line-height: 33rpx;
+}
+
+.noKuCun_wrap {
+    position: absolute;
+    left: 66rpx;
+    width: 150rpx;
+    height: 150rpx;
+    background: rgba(255, 255, 255, 0.3);
 }

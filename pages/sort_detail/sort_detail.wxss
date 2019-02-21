@@ -5,7 +5,7 @@
 
 .foodsImg {
     width: 690rpx;
-    height: 365rpx;
+    height: 690rpx;
 }
 
 .swiper_item {
@@ -15,7 +15,7 @@
 
 .swiper_item_img {
     width: 690rpx;
-    height: 365rpx;
+    height: 690rpx;
 }
 
 .contentBox {
@@ -104,7 +104,7 @@
 .sellCount {
     position: absolute;
     left: 585rpx;
-    top: 553rpx;
+    top: 878rpx;
     height: 24rpx;
     font-size: 24rpx;
     font-family: MicrosoftYaHei;

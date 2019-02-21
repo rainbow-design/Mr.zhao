@@ -46,7 +46,8 @@
 - [X] 待付款详情 商品
 - 附近的地址 六洲大厦
 
-8914
+- [X] 确认订单可以改地址
+- [X] 库存修改
 评价订单
 - 小程序部分不支持
 ````js
@@ -55,8 +56,8 @@
                 <view class='content selectJF' bindtap='useJifen' data-score="{{Info.score}}">
                     {{userJifenNum == 0? '':'- ￥' + userJifenNum/100}}
                     <image mode="widthFix" src="{{default_useJifen ? checked:normal}}" style='width:30rpx;'></image>
-                </view>
-            </block>
+     </view>
+ </block>
 ````
 
 

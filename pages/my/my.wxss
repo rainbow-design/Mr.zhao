@@ -130,11 +130,13 @@
 }
 
 .sysInfo .item {
-    height: 67rpx;
+    padding: 20rpx 0;
+    height: 107rpx;
+    box-sizing: border-box;
 }
 
 .sysInfo .sysLine {
-    width: 2px;
+    width: 1px;
     height: 43rpx;
     background: #fff;
     opacity: 0.5;
@@ -265,6 +267,7 @@
 }
 
 .myOrder .menuBox .menu_item {
+    position: relative;
     height: 100%;
 }
 
@@ -287,7 +290,7 @@
 .grade .line {
     position: absolute;
     left: 157rpx;
-    width: 2px;
+    width: 1px;
     height: 71rpx;
     background: rgba(224, 224, 224, 1);
 }
@@ -355,4 +358,24 @@
     color: rgba(26, 26, 26, 1);
     line-height: 88rpx;
     text-align: center;
+}
+
+.news_num_box {
+    position: absolute;
+    right: 0;
+    top: -10rpx;
+    width: 27rpx;
+    height: 27rpx;
+    background: rgba(255, 255, 255, 1);
+    border: 1rpx solid rgba(47, 202, 131, 1);
+    border-radius: 50%;
+    text-align: center;
+}
+
+.news_num {
+    font-size: 22rpx;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(47, 202, 131, 1);
+    line-height: 27rpx;
 }

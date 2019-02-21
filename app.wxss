@@ -39,10 +39,6 @@
     border: 1px solid red;
 }
 
-.green {
-    border: 1px solid greenn;
-}
-
 .pink {
     border: 1px solid pink;
 }
@@ -61,6 +57,10 @@
 
 page {
     height: 100%;
+}
+
+.green {
+    color: #58b530 !important;
 }
 
 /* 全局使用的灰色块 */

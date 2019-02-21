@@ -94,10 +94,6 @@
                 <view class='subMenuItem_text'>{{item.name}}</view>
             </view>
         </block>
-        <view class="empty_subNemuItem"></view>
-        <view class="empty_subNemuItem"></view>
-        <view class="empty_subNemuItem"></view>
-
     </view>
     <view class='gap' style='height:20rpx;'></view>
     <!-- 热卖商品开始 -->

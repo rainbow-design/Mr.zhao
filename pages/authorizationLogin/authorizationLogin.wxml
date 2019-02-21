@@ -17,7 +17,7 @@
 
                 <view class='b_border fixHeight'>
                     <label class='firstBlock'>手机号</label>
-                    <input placeholder='请输入手机号' maxlength="13" data-name="phone" bindinput="bindKeyInput" value='{{phone}}' placeholder-class='place_shouji'></input>
+                    <input placeholder='请输入手机号' type="tel" maxlength="13" data-name="phone" bindinput="bindKeyInput" value='{{phone}}' placeholder-class='place_shouji'></input>
                 </view>
                 <view class='fixHeight'>
                     <label class='firstBlock'>验证码</label>

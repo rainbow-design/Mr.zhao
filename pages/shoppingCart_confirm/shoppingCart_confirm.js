@@ -28,7 +28,8 @@ Page({
         userJifenNum: 0,
         userJifenNum_price: '',
         canPay: true,
-        coupons_money: '' // 优惠券优惠金额
+        coupons_money: '', // 优惠券优惠金额
+        shouldIUse_Jifen: 0 // 实际使用积分个数
     },
 
     /**
@@ -57,10 +58,10 @@ Page({
             var addrInfo = confirmOrderData.addrInfo; // 配送地址信息
             var lists = confirmOrderData.lists; // 其他信息
             var deliver_cost = confirmOrderData.deliver_cost; // 配送费用相关信息
-            var delivery_fee = Number(lists.total_price) > Number(deliver_cost[0].limit) ? 0 : deliver_cost[0].cost; // 精确需要支付的配送费
+            var delivery_fee = Number(lists.total_price) >= Number(deliver_cost[0].limit) ? 0 : deliver_cost[0].cost; // 精确需要支付的配送费
             var userJifenNum, jifenShouldOver = yData.jifenShouldOver;
             if (yData.default_useJifen) {
-                userJifenNum = Number(lists.score) > jifenShouldOver ? Number(lists.score) : 0;
+                userJifenNum = Number(lists.score) >= jifenShouldOver ? Number(lists.score) : 0;
             } else {
                 userJifenNum = 0;
             }
@@ -80,7 +81,7 @@ Page({
                 Info: lists, // 其他信息
                 can_use_coupons: confirmOrderData.can_use_coupons, // 可使用优惠券,
                 sale_price: lists.sale_price, // 优惠金额
-                show_sale_price: Number(lists.sale_price) > 0 ? '- ￥' + lists.sale_price : lists.sale_price,
+                show_sale_price: Number(lists.sale_price) > 0 ? lists.sale_price + '元' : 0,
                 orderParam_goods_info: orderParam_goods_info,
                 amount: result_amount, // 总价
                 original_amount: result_amount, // 原始总价
@@ -102,18 +103,36 @@ Page({
      */
     onShow: function () {
         var yData = this.data;
+
+        let useGlobalFromShoppingCart_confirm = wx.Storage.getItem("useGlobalFromShoppingCart_confirm");
+        let globalAddress = wx.Storage.getItem('globalAddress');
+        let useThisAddress = useGlobalFromShoppingCart_confirm == true ? true : false;
+        this.setData({
+            useGlobalFromShoppingCart_confirm: globalAddress,
+            useThisAddress: useThisAddress,
+            addr_id: globalAddress.id
+        })
+        console.log(useThisAddress)
         var selectCouponData = wx.Storage.getItem("selectCoupon");
-        console.log(selectCouponData)
+        // console.log(selectCouponData)
         // 最终支付
         var finalAmount = 0;
         // 如果用户有选取的优惠券，改变金额
         // 使用原始价格，防止优惠券变更
+        let shouldIUse = yData.userJifenNum == 0 ? 0 : yData.jifenShouldOver;
 
         if (Number(yData.original_amount) > Number(selectCouponData.use_money)) {
             let jifenYouHui = 0;
             if (yData.default_useJifen && yData.userJifenNum) {
                 jifenYouHui = (Number(yData.Info.score)) / 100;
+                // 如果积分大于实际支付金额
+                if (jifenYouHui > Number(yData.original_amount)) {
+                    shouldIUse = Number(yData.original_amount) * 100;
+                    console.log('此笔订单我应该使用（使用优惠券）' + shouldIUse + '的积分')
+                }
+
             }
+
             finalAmount = Number(yData.original_amount) - Number(selectCouponData.coupons_money) - jifenYouHui;
             if (finalAmount > 0) {
                 this.setData({
@@ -121,7 +140,9 @@ Page({
                 })
             }
             this.setData({
-                coupons_money: '- ￥' + util.toFixed(Number(selectCouponData.coupons_money), 2)
+                coupons_money: '- ￥' + util.toFixed(Number(selectCouponData.coupons_money), 2),
+                shouldIUse_Jifen: Number(shouldIUse) // 实际使用积分
+
             })
             console.log("使用积分?:" + yData.default_useJifen)
             console.log("积分变化：" + yData.userJifenNum)
@@ -132,11 +153,17 @@ Page({
             let jifenYouHui = 0;
             if (yData.default_useJifen && yData.userJifenNum) {
                 jifenYouHui = (Number(yData.Info.score)) / 100;
+                // 如果积分大于实际支付金额
+                if (jifenYouHui > Number(yData.original_amount)) {
+                    shouldIUse = Number(yData.original_amount) * 100;
+                    console.log('此笔订单(没有优惠券)我应该使用' + shouldIUse + '的积分')
+                }
             }
             var original_amount_temp = yData.original_amount - jifenYouHui;
             this.setData({
                 amount: util.toFixed(original_amount_temp > 0 ? original_amount_temp : 0, 2),
-                coupons_money: ''
+                coupons_money: '',
+                shouldIUse_Jifen: Number(shouldIUse) // 实际使用积分
             })
             // 没有选择优惠券的更新
             console.log("原始价格:" + yData.original_amount)
@@ -158,6 +185,7 @@ Page({
         });
 
         console.log("彼时积分：" + this.data.userJifenNum)
+        console.log(this.data.shouldIUse_Jifen)
 
     },
     bindPickerChange(e) {
@@ -202,7 +230,7 @@ Page({
             var pay_info = {
                 amount: yData.total_price, // 商品总价
                 sale_price: yData.sale_price, // 优惠金额
-                use_score: yData.userJifenNum, // 使用积分
+                use_score: yData.shouldIUse_Jifen, // 使用积分
                 delivery_fee: yData.delivery_fee // 配送费
             }
             // 没有优惠券
@@ -239,6 +267,10 @@ Page({
                 util.promiseRequest(api.pay_order, {
                     order_no: orderId
                 }).then(response => {
+                    if (response.data.error_msg) {
+                        util.toast(response.data.error_msg)
+                        return;
+                    }
                     var payParam = response.data.response_data;
                     wx.requestPayment({
                         timeStamp: payParam.timeStamp,
@@ -248,18 +280,11 @@ Page({
                         paySign: payParam.paySign,
                         success: function (res) {
                             console.log('支付成功' + res);
-                            wx.showToast({
-                                title: '您支付订单成功...',
-                                icon: 'none',
-                                duration: 1000,
-                                complete: function () {
-                                    setTimeout(() => {
-                                        wx.redirectTo({
-                                            url: `../shoppingCart_paySuccess/shoppingCart_paySuccess?id=${orderId}`
-                                        })
-                                    }, 1000)
-                                }
-                            })
+                            setTimeout(() => {
+                                wx.redirectTo({
+                                    url: `../shoppingCart_paySuccess/shoppingCart_paySuccess?id=${orderId}`
+                                })
+                            }, 1000)
                             // 获取购物车订单数
 
                         },
@@ -333,7 +358,16 @@ Page({
         }
         console.log('积分：' + this.data.userJifenNum_price)
     },
-
+    changeAnotherAdress() {
+        let y = this;
+        let yData = y.data;
+        let addrInfo = yData.addrInfo; // 配送地址信息
+        let addr_id = addrInfo.id; // 地址id
+        // 收货地址
+        wx.navigateTo({
+            url: `../selectAddress/selectAddress?from=shoppingCart_confirm&addr_id=${addr_id}`
+        })
+    },
 
     /**
      * 生命周期函数--监听页面隐藏

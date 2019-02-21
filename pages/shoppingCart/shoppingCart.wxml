@@ -22,9 +22,9 @@
                     <view class='presonInfo'>
                         {{globalAddress.name}} {{globalAddress.phone}}
                     </view>
-                    <block wx:if="{{showRightIcon}}">
-                        <image class='rightIcon' mode='widthFix' src="../../assets/icon/addressRIght.png"></image>
-                    </block>
+                    <!-- <block wx:if="{{showRightIcon}}"> -->
+                    <image class='rightIcon' mode='widthFix' src="../../assets/icon/addressRIght.png"></image>
+                    <!-- </block> -->
                     <image class='caidai' mode='widthFix' src="../../assets/icon/huaBian.png"></image>
                     <block wx:if="{{!addressCanUse}}">
                         <view class='tishi'>
@@ -48,10 +48,14 @@
         <view class='foods'>
             <view class='name'>
                 <block wx:if="{{isCheckAll}}">
-                    <image class='check' mode="widthFix" src="../../assets/icon/right_plus.png" bindtap='checkAll'></image>
+                    <view class='checkAll_box center' bindtap='checkAll'>
+                        <image class='check' mode="widthFix" src="../../assets/icon/right_plus.png"></image>
+                    </view>
                 </block>
                 <block wx:if="{{!isCheckAll}}">
-                    <image class='check' mode="widthFix" src="../../assets/icon/round.png" bindtap='checkAll'></image>
+                    <view class='checkAll_box center' bindtap='checkAll'>
+                        <image class='check' mode="widthFix" src="../../assets/icon/round.png"></image>
+                    </view>
                 </block>
                 <image class='shopIcon' src="../../assets/icon/shopIcon.png"></image>
                 <view class='text'>兆鲜生门店</view>
@@ -67,8 +71,16 @@
                             <image class='check' src="../../assets/icon/round.png"></image>
                         </block>
                     </view>
-                    <view class='rightBox oneLineBetween {{cartList.length - 1==index ?"":"rightBox_border"}}'>
-                        <image class='img' src="{{filter.filterImgUrl(item.thumb_img)}}"></image>
+                    <view class='rightBox oneLineBetween rightBox_border'>
+
+                        <block wx:if="{{!item.haKuCun}}">
+                            <image class='img' src="{{filter.filterImgUrl(item.thumb_img)}}"></image>
+                            <view class='noKuCun_wrap'></view>
+                            <view class='noKuCun'>库存不足</view>
+                        </block>
+                        <block wx:if="{{item.haKuCun}}">
+                            <image class='img' src="{{filter.filterImgUrl(item.thumb_img)}}"></image>
+                        </block>
                         <view class='content flexStyle'>
                             <view class='title line-clamp '>
                                 {{item.name}}
@@ -98,12 +110,19 @@
         <view class='fixedBottom'>
             <view class='leftBox'>
                 <block wx:if="{{isCheckAll}}">
-                    <image class='check' mode="widthFix" src="../../assets/icon/right_plus.png" bindtap='checkAll'></image>
+                    <view class='checkAll_box2 oneLineBetween' bindtap='checkAll'>
+                        <image class='check' mode="widthFix" src="../../assets/icon/right_plus.png"></image>
+                        <view class='chooseAll'>全选</view>
+                    </view>
+
                 </block>
                 <block wx:if="{{!isCheckAll}}">
-                    <image class='check' mode="widthFix" src="../../assets/icon/round.png" bindtap='checkAll'></image>
+                    <view class='checkAll_box2 oneLineBetween' bindtap='checkAll'>
+                        <image class='check' mode="widthFix" src="../../assets/icon/round.png"></image>
+                        <view class='chooseAll'>全选</view>
+                    </view>
                 </block>
-                <view class='chooseAll'>全选</view>
+
                 <view class='heji'>
                     <view class='name'>合计:
                         <view class='price'>¥{{totalPrice}}</view>

@@ -29,9 +29,13 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
         if (!wx.Storage.address) {
             this.getLocation();
+        }
+        // 邀请好友id
+        if (options && options.id) {
+            app.globalData.inviteId = options.id;
         }
         this.getCetegoryList();
         this.getProductList();
@@ -49,18 +53,18 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
         this.getBannerList();
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
         var y = this;
-        wx.yue.sub("hasToken", function () {
+        wx.yue.sub("hasToken", function() {
             // 获取优惠券
-            app.get_coupons(function (data) {
+            app.get_coupons(function(data) {
                 if (data.length > 0 && wx.Storage.getItem("closeYouhuoquan") === "close") {
                     y.setData({
                         hasYouhuiquan: true,
@@ -85,7 +89,7 @@ Page({
             app.getMy_shippingAddressLength();
             // 获取会员等级
             if (wx.Storage.getItem("token")) {
-                app.isPlus(function (state) {
+                app.isPlus(function(state) {
                     y.setData({
                         isPlus: state
                     })
@@ -136,7 +140,7 @@ Page({
     // 轮播图
     getBannerList() {
         var y = this;
-        util.getDataCommon(api.banner, {}, function (res) {
+        util.getDataCommon(api.banner, {}, function(res) {
             y.setData({
                 bannerList: res
             })
@@ -177,14 +181,16 @@ Page({
     },
     // 加入购物车
     addToCart(e) {
-        app.addToCart(e);
+        app.isLogin(() => {
+            app.addToCart(e);
+        })
         return;
         // + - 按钮控制取消，不使用
         var y = this;
         var data = e.currentTarget.dataset;
         app.isLogin(() => {
 
-            this.getShoppingCartDataLength(data.id, function (thisGoodsLength) {
+            this.getShoppingCartDataLength(data.id, function(thisGoodsLength) {
                 // 商品数量为0不直接显示+-
 
                 // 开始购物车商品数量就加一
@@ -288,8 +294,8 @@ Page({
             success(res) {
                 if (res.code) {
                     util.promiseRequest(api.login, {
-                        wxcode: res.code
-                    })
+                            wxcode: res.code
+                        })
                         .then(response => {
                             var data = response.data.response_data;
                             if (data && data.result === true) {
@@ -313,7 +319,7 @@ Page({
         })
     },
 
-    swiperChange: function (e) {
+    swiperChange: function(e) {
         var source = e.detail.source;
         if (source === "autoplay" || source === "touch") {
             this.setData({
@@ -321,7 +327,7 @@ Page({
             })
         }
     },
-    selectCarouselByIndex: function (e) {
+    selectCarouselByIndex: function(e) {
         this.setData({
             swiperCurrent: e.currentTarget.id
         })
@@ -329,8 +335,8 @@ Page({
     // 领取优惠券
     receive_coupons(e) {
         let that = this;
-        app.receive_coupons(e, function () {
-            app.get_coupons(function (data) {
+        app.receive_coupons(e, function() {
+            app.get_coupons(function(data) {
                 that.setData({
                     card: data,
                     total: data.length
@@ -347,7 +353,7 @@ Page({
     closeYouhuoquan() {
         this.setData({
             hasYouhuiquan: false
-        }, function () {
+        }, function() {
             wx.Storage.setItem("closeYouhuoquan", true)
         })
     },
@@ -358,7 +364,7 @@ Page({
             wx.Storage.setItem("lat", lat)
             wx.Storage.setItem("lng", lng)
             // 位置信息
-            util.getCityInfo(lat, lng, wx.mapKey, function (cityInfo) {
+            util.getCityInfo(lat, lng, wx.mapKey, function(cityInfo) {
                 var shortAddress = cityInfo.address_component.street_number;
                 wx.Storage.setItem("shortAddress", shortAddress)
                 wx.Storage.setItem("address", cityInfo.address)
@@ -410,7 +416,7 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
         // 取消多余的事件订阅
         wx.yue.remove("hasToken");
     },
@@ -418,14 +424,14 @@ Page({
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
         let that = this;
         wx.showNavigationBarLoading() //在标题栏中显示加载
 

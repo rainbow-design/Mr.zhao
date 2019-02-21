@@ -11,13 +11,13 @@ Page({
         oldNum: 5, // 旧时分页数量
         isUpdate: false
     },
-    onLoad: function (options) {
+    onLoad: function(options) {
         var data = this.data;
         // 页面初始化 options为页面跳转所带来的参数
         let tabNumber = options.tab ? options.tab : 0;
         this.setData({
             currentTab: tabNumber
-        }, function () {
+        }, function() {
             wx.Storage.setItem("tab_loading", options)
         })
 
@@ -54,30 +54,36 @@ Page({
         })
     },
     //滑动切换
-    swiperTab: function (e) {
+    swiperTab: function(e) {
         var that = this;
         let yData = that.data;
         let tabIndex = e.detail.current;
         // 保存 tabIndex 下拉
-        wx.Storage.setItem("tab_loading", { "tab": tabIndex })
+        wx.Storage.setItem("tab_loading", {
+            "tab": tabIndex
+        })
         that.setData({
             selectTabData: [],
             currentTab: tabIndex,
             page: 1,
             num: 5,
             oldNum: 5
+        }, function() {
+            if (!yData.isUpdate) {
+                that.getSelectTabData(yData.page, yData.num, tabIndex);
+            }
         });
-        if (!yData.isUpdate) {
-            that.getSelectTabData(yData.page, yData.num, tabIndex);
-        }
+
     },
     //点击切换
-    clickTab: function (e) {
+    clickTab: function(e) {
         var that = this;
         let yData = that.data;
         let tabIndex = e.currentTarget.dataset.current;
         // 保存 tabIndex 下拉
-        wx.Storage.setItem("tab_loading", { "tab": tabIndex })
+        wx.Storage.setItem("tab_loading", {
+            "tab": tabIndex
+        })
         that.setData({
             isUpdate: true,
             selectTabData: [],
@@ -85,8 +91,10 @@ Page({
             page: 1,
             num: 5,
             oldNum: 5
+        }, function() {
+            that.getSelectTabData(yData.page, yData.num, tabIndex);
         })
-        that.getSelectTabData(yData.page, yData.num, tabIndex);
+
     },
     // 直接支付
     toPay(e) {
@@ -101,13 +109,13 @@ Page({
                 package: payParam.package,
                 signType: payParam.signType,
                 paySign: payParam.paySign,
-                success: function (res) {
+                success: function(res) {
                     console.log('支付成功' + res);
                     y.setData({
                         kaiTong: true
                     })
                 },
-                fail: function (res) {
+                fail: function(res) {
                     console.log('支付失败' + res);
                     wx.navigateTo({
                         url: `../my_orderDetail/my_orderDetail?id=${orderId}&state=1&statename=待付款`
@@ -129,7 +137,7 @@ Page({
                     title: '确认收货成功...',
                     icon: 'none',
                     duration: 1000,
-                    complete: function () {
+                    complete: function() {
                         setTimeout(() => {
                             app.returnLastPage();
                         }, 1000)
@@ -140,7 +148,7 @@ Page({
                     title: '确认收货失败...',
                     icon: 'none',
                     duration: 1000,
-                    complete: function () {
+                    complete: function() {
                         setTimeout(() => {
                             app.returnLastPage();
                         }, 1000)
@@ -175,7 +183,7 @@ Page({
             url: `../my_orderDetail/my_orderDetail?id=${data.id}&state=${data.state}&statename=${data.statename}`
         })
     },
-    updateData: function () {
+    updateData: function() {
         console.log("上拉 scroll-view，开始更新数据");
         var yData = this.data;
         let type = yData.currentTab;
@@ -198,7 +206,7 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
         let that = this;
         async function clearData() {
             await that.setData({

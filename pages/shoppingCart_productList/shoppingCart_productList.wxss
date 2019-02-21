@@ -45,6 +45,7 @@
     font-weight: 400;
     color: rgba(26, 26, 26, 1);
     line-height: 27rpx;
+    height: 28rpx;
 }
 
 .contentItem .introduction {

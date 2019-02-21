@@ -188,8 +188,8 @@
 
 .foodsImgs image {
     margin-top: 5rpx;
-    width: 181rpx;
-    height: 128rpx;
+    width: 150rpx;
+    height: 150rpx;
     border-radius: 10rpx;
     background: pink;
     margin-right: 30rpx;
@@ -210,7 +210,7 @@
 .detail {
     margin-top: 20rpx;
     width: 750rpx;
-    height: 542rpx;
+    /* height: 542rpx; */
     background: #fff;
 }
 
@@ -302,4 +302,10 @@
     color: #58b530;
     font-size: 32rpx;
     line-height: 27rpx;
+}
+.rightIcon {
+    position: absolute;
+    top: 74rpx;
+    right: 30rpx;
+    width: 19rpx;
 }

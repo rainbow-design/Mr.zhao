@@ -6,7 +6,7 @@
     </view>
     <view class='line borderBottom oneLineStart'>
       <label class='labelName'>联系电话</label>
-      <input class='input username' data-name="phone" bindinput="changeInput" placeholder='手机号或固话' placeholder-class='place' value="{{nowdata.phone}}" maxlength="11"></input>
+      <input class='input username' type="tel" data-name="phone" bindinput="changeInput" placeholder='手机号或固话' placeholder-class='place' value="{{nowdata.phone}}" maxlength="11"></input>
     </view>
     <view class='line borderBottom oneLineStart'>
       <label class='labelName'>收货地址</label>

@@ -152,7 +152,7 @@ Page({
     toSelectAddress() {
         var address = wx.Storage.getItem('address');
         var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
-        if (myshippingAddressLength >= 0) {
+        if (myshippingAddressLength > 0) {
             this.setData({
                 showRightIcon: true
             })
@@ -289,6 +289,7 @@ Page({
             .then(res => {
                 var data = res.data.response_data.lists;
                 var shoppingCartNum = res.data.response_data.count;
+
                 if (data === "" || data.length === 0) {
                     y.setData({
                         noCartData: true,
@@ -300,15 +301,16 @@ Page({
                     }, function (v) {
                         v.dazhe = Number(v.plus);
                     })
+                    // 库存不足状态标记
+                    data.forEach(v => {
+                        v.haKuCun = Number(v.kucun) >= Number(v.num) ? true : false
+                    })
                     //  更新数量的 Badge
                     wx.setTabBarBadge({
                         index: 2,
                         text: String(shoppingCartNum)
                     })
-                    // TODO:是否是plus会员
-                    // var isPlus = data[0].is_plus === '0' ? false : true;
                     y.setData({
-                        // isPlus: isPlus,
                         cartList: data,
                         noCartData: false,
                         allData: res.data.response_data,
@@ -366,8 +368,13 @@ Page({
         var data = e.currentTarget.dataset;
         var cartList = this.data.cartList;
         var index = data.index;
+        var selectData = cartList[`${index}`];
+
         this.setData({
-            [`cartList[${index}].y_isCheck`]: !cartList[`${index}`].y_isCheck
+            // 库存不足状态标记
+            [`cartList[${index}].y_isCheck`]: !cartList[`${index}`].y_isCheck,
+            [`cartList[${index}].haKuCun`]: Number(selectData.kucun) >= Number(selectData.num) ? true : false
+
         })
         var checkedLength = function (data) {
             var length = 0;
@@ -380,7 +387,6 @@ Page({
 
         var nowSelectedNum = checkedLength(this.data.cartList);
         console.log("当前选中个数:" + nowSelectedNum)
-        console.log("nowSelectedNum" + nowSelectedNum)
         if (nowSelectedNum > 0) {
             this.setData({
                 hasCheck: true
@@ -411,6 +417,7 @@ Page({
         })
         var cartList = this.data.cartList;
         var cartList_temp = util.filterObjToArr(cartList);
+
         cartList_temp.forEach(v => {
             v.y_isCheck = isCheckAll
         })
@@ -444,6 +451,24 @@ Page({
         let index = data.index;
         let num = data.num;
 
+        // 库存数量
+        let kucun = Number(cartList[`${index}`].kucun);
+        let newNum = Number(num) + 1;
+        if (kucun < Number(num)) {
+            util.toast("商品库存不足")
+            this.setData({
+                [`cartList[${index}].haKuCun`]: false
+            })
+            return;
+        }
+        // 此条依然更新数据
+        if (newNum > kucun) {
+            util.toast("商品库存不足")
+            this.setData({
+                [`cartList[${index}].haKuCun`]: false
+            })
+        }
+
         this.setData({
             [`cartList[${index}].num`]: cartList[`${index}`].num + 1,
             [`selectedOrderParam[${index}].num`]: cartList[`${index}`].num + 1
@@ -458,7 +483,20 @@ Page({
             cartList = this.data.cartList;
         let index = data.index,
             num = data.num;
+
         let newNum = cartList[`${index}`].num > 1 ? cartList[`${index}`].num - 1 : 1;
+        // 库存数量
+        let kucun = Number(cartList[`${index}`].kucun);
+        if (newNum > kucun && newNum > 1) {
+            util.toast("商品库存不足")
+        } else {
+            this.setData({
+                [`cartList[${index}].haKuCun`]: true
+            })
+        }
+        if (newNum === 1) {
+            util.toast("左滑删除商品")
+        }
         this.setData({
             [`cartList[${index}].num`]: newNum,
             [`selectedOrderParam[${index}].num`]: newNum
@@ -506,6 +544,17 @@ Page({
             })
             return;
         }
+        // 测试是否有选中没有库存的商品
+        let canSubmit_hasKuCun = true;
+        let cartList = this.data.cartList;
+        cartList.forEach(v => {
+            v.haKuCun == false && v.y_isCheck === true ? canSubmit_hasKuCun = false : ''
+        })
+        if (!canSubmit_hasKuCun) {
+            util.toast("不可选中没有库存的商品")
+            return;
+        }
+
         var goodsInfo = JSON.stringify(yData.selectedOrderParam);
         var paramObj = {
             goods_info: goodsInfo,
@@ -529,10 +578,13 @@ Page({
             wx.navigateTo({
                 url: `../my_shippingAddress/my_shippingAddress`
             })
-        }
-        else if (this.data.addressCanUse && myshippingAddressLength == 1) {
+        } else if (this.data.addressCanUse && myshippingAddressLength == 1) {
+            // 跳转到这儿更好
+            // wx.navigateTo({
+            //     url: `../my_shippingAddress/my_shippingAddress`
+            // })
             wx.navigateTo({
-                url: `../my_shippingAddress/my_shippingAddress`
+                url: `../selectAddress/selectAddress?length=${myshippingAddressLength}`
             })
         }
 

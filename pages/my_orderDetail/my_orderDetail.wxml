@@ -67,12 +67,14 @@
         </view>
         <view class='line2 border_bottom oneLineBetween'>
             <view class='name'>配送费</view>
-            <view class='content'>￥{{orderData.pay_info.delivery_fee}}</view>
+            <block wx:if="{{orderData.pay_info.delivery_fee === 0}}">
+                <view class='content green'>免配送费</view>
+            </block>
+            <block wx:if="{{orderData.pay_info.delivery_fee != 0}}">
+                <view class='content'>￥{{orderData.pay_info.delivery_fee}}</view>
+            </block>
         </view>
-        <view class='line2 border_bottom oneLineBetween'>
-            <view class='name'>会员优惠金额</view>
-            <view class='content content_orange'>￥{{orderData.pay_info.sale_price}}</view>
-        </view>
+
         <block wx:if="{{orderData.pay_info.coupons_money != ''}}">
             <view class='line2 border_bottom oneLineBetween'>
                 <view class='name'>优惠券优惠金额</view>
@@ -82,7 +84,15 @@
         <block wx:if="{{orderData.pay_info.use_score != 0}}">
             <view class='line2 border_bottom oneLineBetween'>
                 <view class='name'> 使用积分</view>
-                <view class='content content_orange'>{{orderData.pay_info.use_score}}</view>
+                <view class='content content_orange'>
+                    {{'- ￥' + orderData.pay_info.use_score /100}}
+                </view>
+            </view>
+        </block>
+        <block wx:if="{{orderData.pay_info.sale_price != 0}}">
+            <view class='line2 border_bottom oneLineStart'>
+                <view class='name green'>本单会员价格为您节省</view>
+                <view class='content green'>{{orderData.pay_info.sale_price}} 元</view>
             </view>
         </block>
 
@@ -107,12 +117,12 @@
             <image class='toRightB' mode="widthFix" src="../../assets/icon/toRight.png"></image>
         </view>
     </view>
-    <view class='fixedBottomB' wx:if='{{orderData.status == 4}}'>
+    <!-- <view class='fixedBottomB' wx:if='{{orderData.status == 4}}'>
         <view class='rightBoxB' bindtap='toEvaluation'>
             <view class='textB'>评论</view>
             <image class='toRightB' mode="widthFix" src="../../assets/icon/toRight.png"></image>
         </view>
-    </view>
+    </view> -->
     <view class='fixedBottomB' wx:if='{{orderData.status == 5 || orderData.status == 6}}'>
         <view class='rightBoxB' bindtap='again'>
             <view class='textB'>再来一单</view>

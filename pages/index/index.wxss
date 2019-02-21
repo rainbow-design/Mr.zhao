@@ -114,7 +114,7 @@
 .Carousel .slide-image {
     display: block;
     width: 690rpx;
-    height: 260rpx;
+    /* height: 260rpx; */
     border-radius: 20px;
 }
 
@@ -145,8 +145,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 110rpx;
+    width: 20%;
     padding: 0 10rpx 29rpx 0;
+    box-sizing: border-box;
 }
 
 .noMargin {
@@ -207,7 +208,10 @@
 }
 
 .hotSellItem_content {
-    position: relative;
+    /* position: relative; */
+    width: 460rpx;
+    position: absolute;
+    left: 230rpx;
     height: 179rpx;
 }
 
@@ -219,7 +223,7 @@
 }
 
 .hotSellItem_content .title {
-    width: 440rpx;
+    width: 420rpx;
     font-size: 28rpx;
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;
@@ -261,7 +265,7 @@
 
 .shopping {
     position: absolute;
-    right: 0;
+    right: -44rpx;
     bottom: 0;
     width: 60rpx;
 }
@@ -462,7 +466,7 @@
 
 .contentBox {
     position: absolute;
-    left: 181rpx;
+    left: 196rpx;
     top: 30rpx;
     width: 260rpx;
     height: 106rpx;
@@ -533,7 +537,7 @@
     color: rgba(255, 93, 22, 1);
     line-height: 26rpx;
     margin-top: 20rpx;
-    margin-right: -14rpx;
+    margin-right: -38rpx;
 }
 
 /* 优惠券结束 */

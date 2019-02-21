@@ -97,18 +97,35 @@ Page({
                 paySign: payParam.paySign,
                 success: function(res) {
                     console.log('支付成功' + res);
-                    wx.showToast({
-                        title: '支付成功...',
-                        icon: 'none',
-                        duration: 1000,
-                        complete: function() {
-                            setTimeout(() => {
-                                y.setData({
-                                    kaiTong: true
-                                })
-                            }, 1000)
-                        }
-                    })
+                    if (!y.data.isPlus) {
+                        wx.showToast({
+                            title: '开通会员成功...',
+                            icon: 'none',
+                            duration: 1000,
+                            complete: function() {
+                                setTimeout(() => {
+                                    y.setData({
+                                        kaiTong: true
+                                    })
+                                }, 1000)
+                            }
+                        })
+                    } else {
+                        wx.showToast({
+                            title: '续费成功...',
+                            icon: 'none',
+                            duration: 1000,
+                            complete: function() {
+                                setTimeout(() => {
+                                    wx.redirectTo({
+                                        url: `../my/my`
+                                    })
+
+                                }, 1000)
+                            }
+                        })
+                    }
+
 
                 },
                 error: function(res) {
