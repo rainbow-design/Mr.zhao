@@ -384,16 +384,17 @@ Page({
         })
     },
     toPlus(e) {
-        var data = e.currentTarget.dataset;
+        let data = e.currentTarget.dataset;
         if (data.state) {
             // 我是会员
             wx.navigateTo({
-                url: `../index_openPlus/index_openPlus`
+                url: `../index_openPlus/index_openPlus?xufei=续费plus会员`
             })
         } else {
             wx.navigateTo({
-                url: `../authorizationLogin/authorizationLogin`
+                url: `../index_plus/index_plus`
             })
+
         }
 
     },

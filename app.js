@@ -3,24 +3,24 @@ const util = require("./utils/util.js");
 const api = require("./utils/api.js");
 var app = getApp();
 const Storage = {
-    setItem: function (key, obj, callback) {
+    setItem: function(key, obj, callback) {
         wx.setStorage({
             key: key,
             data: obj,
-            success: callback || function () { }
+            success: callback || function() {}
         })
     },
-    getItem: function (key) {
+    getItem: function(key) {
         return wx.getStorageSync(key);
     },
-    removeItem: function (key) {
+    removeItem: function(key) {
         wx.removeStorage({
             key: key
         })
     }
 }
 
-var Event = (function () {
+var Event = (function() {
     var clientList = {},
         pub,
         sub,
@@ -28,7 +28,7 @@ var Event = (function () {
 
     var cached = {};
 
-    sub = function (key, fn) {
+    sub = function(key, fn) {
         if (!clientList[key]) {
             clientList[key] = [];
         }
@@ -41,7 +41,7 @@ var Event = (function () {
             // delete cached[key];
         }
     };
-    pub = function () {
+    pub = function() {
         var key = Array.prototype.shift.call(arguments),
             fns = clientList[key];
         if (!fns || fns.length === 0) {
@@ -57,7 +57,7 @@ var Event = (function () {
         }
 
     };
-    remove = function (key, fn) {
+    remove = function(key, fn) {
         var fns = clientList[key];
         if (!fns) {
             return false;
@@ -83,7 +83,7 @@ App({
     data: {
         id: 0
     },
-    onLaunch: function (e) {
+    onLaunch: function(e) {
         // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || [];
         console.log('wx-----------------------------')
@@ -166,7 +166,7 @@ App({
     },
     addToCart(e, clalback) {
         var y = this;
-        this.isLogin(function () {
+        this.isLogin(function() {
             var data = e.currentTarget.dataset;
             let params = {
                 goods_id: data.id,
@@ -202,12 +202,13 @@ App({
             })
     },
     // 获取用户收货地址的条数
-    getMy_shippingAddressLength() {
+    getMy_shippingAddressLength(callback) {
         var y = this;
         util.promiseRequest(api.addr_list, {})
             .then(res => {
                 var data = res.data.response_data.lists;
                 wx.Storage.setItem("myshippingAddressLength", data.length);
+                typeof callback === 'function' ? callback(data.length) : '';
             })
     },
     // 获取用户可以领取的优惠券

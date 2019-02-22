@@ -39,7 +39,12 @@
             <view class='address' style='height:162rpx;'>
                 <view class='whiteBox oneLineStart' style='height:100rpx;'>
                     <view class='zhuzhi' style='height:auto;width:100%;text-align:center;' catchtap='toSelectAddress'>
-                        {{myshippingAddressLength == '0'?'添加收货地址':'请选择您的收货地址'}}
+                        <block wx:if="{{getAddress_loading && myshippingAddressLength != '0'}}">
+                            {{getAddress_loading}}
+                        </block>
+                        <block wx:if="{{myshippingAddressLength == '0'}}">
+                            {{myshippingAddressLength == '0'?'添加收货地址':'请选择您的收货地址'}}
+                        </block>
                     </view>
                     <image class='caidai' src="../../assets/icon/huaBian.png"></image>
                 </view>

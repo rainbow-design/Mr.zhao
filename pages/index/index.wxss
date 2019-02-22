@@ -114,8 +114,8 @@
 .Carousel .slide-image {
     display: block;
     width: 690rpx;
-    /* height: 260rpx; */
-    border-radius: 20px;
+    height: 260rpx;
+    border-radius: 20rpx;
 }
 
 .subMenu {

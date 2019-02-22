@@ -83,57 +83,53 @@ Page({
     },
     kaiTong() {
         var y = this;
-        var plus_type = y.data.isPlus ? 2 : 1;
-        util.promiseRequest(api.pay_plus, {
-            plus_id: y.data.plus_id,
-            plus_type: plus_type
-        }).then(res => {
-            var payParam = res.data.response_data;
-            wx.requestPayment({
-                timeStamp: payParam.timeStamp,
-                nonceStr: payParam.nonceStr,
-                package: payParam.package,
-                signType: payParam.signType,
-                paySign: payParam.paySign,
-                success: function(res) {
-                    console.log('支付成功' + res);
-                    if (!y.data.isPlus) {
-                        wx.showToast({
-                            title: '开通会员成功...',
-                            icon: 'none',
-                            duration: 1000,
-                            complete: function() {
-                                setTimeout(() => {
-                                    y.setData({
-                                        kaiTong: true
-                                    })
-                                }, 1000)
-                            }
-                        })
-                    } else {
-                        wx.showToast({
-                            title: '续费成功...',
-                            icon: 'none',
-                            duration: 1000,
-                            complete: function() {
-                                setTimeout(() => {
-                                    wx.redirectTo({
-                                        url: `../my/my`
-                                    })
+        app.isLogin(() => {
+            var plus_type = y.data.isPlus ? 2 : 1;
+            util.promiseRequest(api.pay_plus, {
+                plus_id: y.data.plus_id,
+                plus_type: plus_type
+            }).then(res => {
+                var payParam = res.data.response_data;
+                wx.requestPayment({
+                    timeStamp: payParam.timeStamp,
+                    nonceStr: payParam.nonceStr,
+                    package: payParam.package,
+                    signType: payParam.signType,
+                    paySign: payParam.paySign,
+                    success: function(res) {
+                        console.log('支付成功' + res);
+                        if (!y.data.isPlus) {
+                            setTimeout(() => {
+                                y.setData({
+                                    kaiTong: true
+                                })
+                            }, 1000)
+                        } else {
+                            wx.showToast({
+                                title: '续费成功...',
+                                icon: 'none',
+                                duration: 1000,
+                                complete: function() {
+                                    setTimeout(() => {
+                                        wx.redirectTo({
+                                            url: `../my/my`
+                                        })
 
-                                }, 1000)
-                            }
-                        })
+                                    }, 1000)
+                                }
+                            })
+                        }
+
+
+                    },
+                    error: function(res) {
+                        console.log('支付失败' + res)
                     }
-
-
-                },
-                error: function(res) {
-                    console.log('支付失败' + res)
-                }
+                })
+                console.log(res);
             })
-            console.log(res);
         })
+
 
     },
     toIndex() {

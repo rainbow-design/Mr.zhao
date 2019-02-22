@@ -39,25 +39,25 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
 
     },
 
     /** 
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () { },
+    onReady: function() {},
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
         var y = this;
         async function intPlusState() {
-            await app.isPlus(function (state) {
+            await app.isPlus(function(state) {
                 y.setData({
                     isPlus: state
-                }, function () {
+                }, function() {
                     y.shopCartInit();
                 })
             })
@@ -86,14 +86,26 @@ Page({
 
         // 多个地址显示右箭头
         var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
-        this.setData({
-            myshippingAddressLength: myshippingAddressLength
-        })
+        if (myshippingAddressLength === 'undefined' || myshippingAddressLength === '') {
+            app.getMy_shippingAddressLength(function(length) {
+                y.setData({
+                    myshippingAddressLength: length
+                })
+            })
+        }else {
+            y.setData({
+                myshippingAddressLength: myshippingAddressLength
+            })
+        }
+
         if (myshippingAddressLength >= 1) {
             this.setData({
                 showRightIcon: true
             })
         }
+        // this.setData({
+        //     getAddress_loading: false
+        // })
     },
     changeCart(id, num) {
         let params = {
@@ -101,12 +113,12 @@ Page({
             type: 2,
             num: num
         }
-        util.promiseRequest(api.cart_add, params).then((res) => { })
+        util.promiseRequest(api.cart_add, params).then((res) => {})
     },
     shopCartInit() {
         var y = this;
         // 拿到商铺位置信息再去渲染购物计算当前的address符合不符合规定
-        var showCartList = function () {
+        var showCartList = function() {
             // 显示全局的地址信息
             var globalAddress = wx.Storage.getItem("globalAddress");
             if (globalAddress) {
@@ -195,7 +207,7 @@ Page({
 
 
     // 开始滑动事件
-    touchS: function (e) {
+    touchS: function(e) {
         if (e.touches.length == 1) {
             this.setData({
                 //设置触摸起始点水平方向位置 
@@ -204,7 +216,7 @@ Page({
             // console.log(e.touches[0].clientX)
         }
     },
-    touchM: function (e) {
+    touchM: function(e) {
         console.log("touchM:" + e);
         var that = this
         if (e.touches.length == 1) {
@@ -232,7 +244,7 @@ Page({
             });
         }
     },
-    touchE: function (e) {
+    touchE: function(e) {
         // console.log("touchE" + e);
         var that = this
         if (e.changedTouches.length == 1) {
@@ -284,8 +296,8 @@ Page({
         var y = this;
 
         util.promiseRequest(api.cart_list, {
-            access_token: app.globalData.access_token
-        })
+                access_token: app.globalData.access_token
+            })
             .then(res => {
                 var data = res.data.response_data.lists;
                 var shoppingCartNum = res.data.response_data.count;
@@ -298,7 +310,7 @@ Page({
                 } else {
                     util.addKey(data, {
                         "y_isCheck": false
-                    }, function (v) {
+                    }, function(v) {
                         v.dazhe = Number(v.plus);
                     })
                     // 库存不足状态标记
@@ -376,7 +388,7 @@ Page({
             [`cartList[${index}].haKuCun`]: Number(selectData.kucun) >= Number(selectData.num) ? true : false
 
         })
-        var checkedLength = function (data) {
+        var checkedLength = function(data) {
             var length = 0;
             data.forEach(v => {
                 v.y_isCheck === true ? length += 1 : '';
@@ -519,7 +531,7 @@ Page({
             })
             return;
         }
-        var checkedLength = function (data) {
+        var checkedLength = function(data) {
             var length = 0;
             data.forEach(v => {
                 v.y_isCheck === true ? length += 1 : '';
@@ -600,7 +612,7 @@ Page({
             url: '../sort/sort'
         })
     },
-    onHide: function () {
+    onHide: function() {
         this.setData({
             hasCheck: false
         })
@@ -609,17 +621,19 @@ Page({
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
         this.setData({
             hasCheck: false
         })
     },
 
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
         let that = this;
         async function clearData() {
             await that.setData({
-                cartList: []
+                cartList: [],
+                globalAddress: '',
+                getAddress_loading: '加载中...'
             })
         }
         wx.showNavigationBarLoading() //在标题栏中显示加载
@@ -627,9 +641,14 @@ Page({
         async function refresh() {
             await clearData();
             await that.onShow();
+
             // complete
             wx.hideNavigationBarLoading() //完成停止加载
-            wx.stopPullDownRefresh() //停止下拉刷新
+            wx.stopPullDownRefresh({
+                complete: function() {
+
+                }
+            }) //停止下拉刷新
         }
         refresh();
     }
