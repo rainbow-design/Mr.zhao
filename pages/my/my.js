@@ -8,16 +8,20 @@ Page({
      * 页面的初始数据
      */
     data: {
+        loading: true,
         showCallTelMask: false,
         userInfo: {},
-        is_plus: false
+        is_plus: false,
+        orderNum: {}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.getUserInfo();
+        if (this.data.loading) {
+            util.openLoading();
+        }
     },
 
 
@@ -33,6 +37,7 @@ Page({
      */
     onShow: function () {
         this.getUserInfo();
+        this.getOrderNum();
     },
     getUserInfo() {
         var y = this;
@@ -52,6 +57,17 @@ Page({
                     userInfo: false
                 })
             })
+    },
+    getOrderNum() {
+        let y = this;
+        util.promiseRequest(api.orderNum, {}).then(res => {
+            var data = res.data.response_data.lists;
+            util.closeLoading();
+            y.setData({
+                orderNum: data,
+                loading: false
+            })
+        })
     },
     toMemberInfo(e) {
         app.isLogin(() => {

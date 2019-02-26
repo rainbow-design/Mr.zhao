@@ -8,6 +8,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        loading: true,
         shortAddress: '加载中...',
         address: '',
         showYouhuiQuan: false,
@@ -31,6 +32,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        if (this.data.loading) {
+            util.openLoading();
+        }
         if (wx.Storage.getItem("token") && !this.data.isRefresh) {
             this.get_coupons();
         }
@@ -242,9 +246,10 @@ Page({
                     current_num: 0
                 })
             }
-
+            util.closeLoading();
             that.setData({
-                productList: data || []
+                productList: data || [],
+                loading: false
             })
         })
     },
@@ -413,7 +418,9 @@ Page({
     onPullDownRefresh: function () {
         let that = this;
         async function clearData() {
+            util.openLoading();
             await that.setData({
+                loading: true,
                 isRefresh: true, // 刷新就不要优惠券了啊
                 total: 0,
                 classA: [],

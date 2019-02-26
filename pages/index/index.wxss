@@ -164,6 +164,7 @@
 .hotSell {
     position: relative;
     padding-top: 80rpx;
+    margin-top: 20rpx;
 }
 
 .hotSellItem {
@@ -561,4 +562,8 @@
     font-weight: 400;
     color: rgba(26, 26, 26, 1);
     margin: 0 19rpx;
+}
+.hotSell .gap {
+    position: absolute;
+    top: -20rpx;
 }

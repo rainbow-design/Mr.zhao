@@ -314,6 +314,19 @@ function getEle(domStr, callback) {
         callback(res)
     })
 }
+
+function openLoading() {
+    wx.showToast({
+        title: '加载中',
+        icon: 'loading',
+        mask: true,
+        duration: 5000
+    })
+}
+
+function closeLoading() {
+    wx.hideToast();
+}
 module.exports = {
     sendRequest: sendRequest,
     promiseRequest: promiseRequest,
@@ -333,5 +346,7 @@ module.exports = {
     throttle,
     calculateDistance,
     getEle,
-    filterObjToArr
+    filterObjToArr,
+    openLoading,
+    closeLoading
 }

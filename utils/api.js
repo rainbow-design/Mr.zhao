@@ -35,6 +35,7 @@ var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
     confirm_order_detail = RootUrl + "rest/2.0/category/order/confirm_order_detail", // 确认订单商品详情
     delete_cart = RootUrl + "rest/2.0/cart/cart/cart_del", // 删除购物车商品
     merchant_addr = RootUrl + "rest/2.0/cart/cart/merchant_addr", // 获取商户地址信息
+    orderNum = RootUrl + "rest/2.0/category/order/order_num", // 订单数量
 
     //个人中心
     basicInfo = RootUrl + "rest/2.0/user/user/basic_info", // 用户基本资料
@@ -95,6 +96,7 @@ module.exports = {
     confirm_order_detail,
     delete_cart,
     merchant_addr,
+    orderNum,
     // 我的
     basicInfo,
     add_user_info,

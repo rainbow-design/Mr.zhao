@@ -1,5 +1,6 @@
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <import src="../../component/swiper.wxml" />
+<block wx:if="{{!loading}}">
 <view class='indexPage'>
     <!-- 首页签到弹窗模块 start -->
     <block wx:if="{{showSignIn}}">
@@ -95,15 +96,16 @@
             </view>
         </block>
     </view>
+    
+    <!-- 所有商品开始 -->
+    <view class='hotSell' wx:for="{{productData}}" wx:key="{{item.id}}">
     <view class='gap' style='height:20rpx;'></view>
-    <!-- 热卖商品开始 -->
-    <view class='hotSell'>
-        <view class='commonTitle'>
-            <view class='title'>热卖商品</view>
+        <view class='commonTitle oneLineCenter'>
+            <view class='title'>{{item.name}}</view>
             <view class='leftBorder'></view>
             <view class='rightBorder'></view>
         </view>
-        <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{remaiData}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
+        <view class='hotSellItem borderBox oneLineBetween bor_Bottom'  wx:for="{{item.list}}" wx:key="{{item.id}}"  data-id="{{item.id}}" bindtap="toProductDetail">
             <image class='hotSellItem_img' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
             <view class='hotSellItem_content hotContentFlexStyle'>
                 <view class='title line-clamp '>
@@ -132,40 +134,4 @@
         </view>
     </view>
 </view>
-<view class='gap' style='height:20rpx;'></view>
-<block wx:if="{{tuijianData.length > 0}}">
-    <view class='hotSell'>
-        <view class='commonTitle'>
-            <view class='title'>推荐购买</view>
-            <view class='leftBorder'></view>
-            <view class='rightBorder'></view>
-        </view>
-
-        <view class='hotSellItem borderBox oneLineBetween bor_Bottom' wx:for="{{tuijianData}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="toProductDetail">
-            <image class='hotSellItem_img' src="{{filter.filterImgUrl(item.thumb_img)}}"> </image>
-            <view class='hotSellItem_content hotContentFlexStyle'>
-                <view class='title line-clamp '>
-                    {{item.name}}
-                </view>
-                <view class='introduction line-clamp'>{{item.desc}}</view>
-                <view class='price nowrap'>¥{{item.price}}</view>
-                <view class='offerPrice nowrap'>¥{{item.plus_price}}
-                    <image class='youhuiBox' src="../../assets/youhuiBox.png">
-                        <view class='youhuiText'>会员{{item.plus}}折</view>
-                    </image>
-                </view>
-                <block wx:if="{{!item.showCountControl}}">
-                    <image class='shopping' src="../../assets/shopping.png" mode="widthFix" data-index="{{index}}" data-id="{{item.id}}" data-num="{{item.num}}" data-state="tuijian" catchtap='addToCart'></image>
-                </block>
-                <block wx:if="{{item.showCountControl}}">
-                    <view class='countControl'>
-
-                        <image class='minus' data-index="{{index}}" data-state="tuijian" data-num="{{item.current_num}}" data-id="{{item.id}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/minus.png" catchtap='minusNum'></image>
-                        <view class='number'>{{item.current_num}}</view>
-                        <image class='add' data-index="{{index}}" data-state="tuijian" data-num="{{item.current_num}}" data-id="{{item.id}}" style='width:38rpx;' mode="widthFix" src="../../assets/icon/add.png" catchtap='numAdd'></image>
-                    </view>
-                </block>
-            </view>
-        </view>
-    </view>
 </block>

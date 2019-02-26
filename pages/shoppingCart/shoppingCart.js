@@ -13,8 +13,9 @@ const qqmapsdk = new QQMapWX({
 });
 Page({
     data: {
+        loading: true,
         noCartData: false,
-        cartList: [],
+        cartList: false,
         totalPrice: 0,
         cost_temp: 0, // 价格 temp，没有 0 
         isCheckAll: false, // 初始化状态，刚开始就选中所有吗？
@@ -39,25 +40,27 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
-
+    onLoad: function (options) {
+        if (this.data.loading) {
+            util.openLoading();
+        }
     },
 
     /** 
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {},
+    onReady: function () { },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
         var y = this;
         async function intPlusState() {
-            await app.isPlus(function(state) {
+            await app.isPlus(function (state) {
                 y.setData({
                     isPlus: state
-                }, function() {
+                }, function () {
                     y.shopCartInit();
                 })
             })
@@ -87,12 +90,12 @@ Page({
         // 多个地址显示右箭头
         var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
         if (myshippingAddressLength === 'undefined' || myshippingAddressLength === '') {
-            app.getMy_shippingAddressLength(function(length) {
+            app.getMy_shippingAddressLength(function (length) {
                 y.setData({
                     myshippingAddressLength: length
                 })
             })
-        }else {
+        } else {
             y.setData({
                 myshippingAddressLength: myshippingAddressLength
             })
@@ -103,9 +106,6 @@ Page({
                 showRightIcon: true
             })
         }
-        // this.setData({
-        //     getAddress_loading: false
-        // })
     },
     changeCart(id, num) {
         let params = {
@@ -113,12 +113,13 @@ Page({
             type: 2,
             num: num
         }
-        util.promiseRequest(api.cart_add, params).then((res) => {})
+        util.promiseRequest(api.cart_add, params).then((res) => { })
+
     },
     shopCartInit() {
         var y = this;
         // 拿到商铺位置信息再去渲染购物计算当前的address符合不符合规定
-        var showCartList = function() {
+        var showCartList = function () {
             // 显示全局的地址信息
             var globalAddress = wx.Storage.getItem("globalAddress");
             if (globalAddress) {
@@ -150,6 +151,10 @@ Page({
             y.showCartList();
             await getShopPosTionMsg();
             await showCartList();
+            util.closeLoading();
+            y.setData({
+                loading: false
+            })
         }
         // 开始执行
         initData();
@@ -207,7 +212,7 @@ Page({
 
 
     // 开始滑动事件
-    touchS: function(e) {
+    touchS: function (e) {
         if (e.touches.length == 1) {
             this.setData({
                 //设置触摸起始点水平方向位置 
@@ -216,7 +221,7 @@ Page({
             // console.log(e.touches[0].clientX)
         }
     },
-    touchM: function(e) {
+    touchM: function (e) {
         console.log("touchM:" + e);
         var that = this
         if (e.touches.length == 1) {
@@ -244,7 +249,7 @@ Page({
             });
         }
     },
-    touchE: function(e) {
+    touchE: function (e) {
         // console.log("touchE" + e);
         var that = this
         if (e.changedTouches.length == 1) {
@@ -296,8 +301,8 @@ Page({
         var y = this;
 
         util.promiseRequest(api.cart_list, {
-                access_token: app.globalData.access_token
-            })
+            access_token: app.globalData.access_token
+        })
             .then(res => {
                 var data = res.data.response_data.lists;
                 var shoppingCartNum = res.data.response_data.count;
@@ -310,7 +315,7 @@ Page({
                 } else {
                     util.addKey(data, {
                         "y_isCheck": false
-                    }, function(v) {
+                    }, function (v) {
                         v.dazhe = Number(v.plus);
                     })
                     // 库存不足状态标记
@@ -388,7 +393,7 @@ Page({
             [`cartList[${index}].haKuCun`]: Number(selectData.kucun) >= Number(selectData.num) ? true : false
 
         })
-        var checkedLength = function(data) {
+        var checkedLength = function (data) {
             var length = 0;
             data.forEach(v => {
                 v.y_isCheck === true ? length += 1 : '';
@@ -531,7 +536,7 @@ Page({
             })
             return;
         }
-        var checkedLength = function(data) {
+        var checkedLength = function (data) {
             var length = 0;
             data.forEach(v => {
                 v.y_isCheck === true ? length += 1 : '';
@@ -612,7 +617,7 @@ Page({
             url: '../sort/sort'
         })
     },
-    onHide: function() {
+    onHide: function () {
         this.setData({
             hasCheck: false
         })
@@ -621,33 +626,91 @@ Page({
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
         this.setData({
             hasCheck: false
         })
     },
 
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
         let that = this;
+        let y = this;
         async function clearData() {
+            util.openLoading();
             await that.setData({
+                loading: true,
                 cartList: [],
                 globalAddress: '',
                 getAddress_loading: '加载中...'
             })
         }
+        async function showData() {
+            async function intPlusState() {
+                await app.isPlus(function (state) {
+                    y.setData({
+                        isPlus: state
+                    }, function () {
+                        y.shopCartInit();
+                    })
+                })
+                // 获取购物车订单数
+                app.getShoppingCartNum((length) => {
+                    if (length > 0) {
+                        wx.setTabBarBadge({
+                            index: 2,
+                            text: String(length)
+                        })
+                    } else {
+                        wx.removeTabBarBadge({
+                            index: 2
+                        })
+                    }
+                });
+
+            }
+            if (wx.Storage.getItem("token")) {
+                intPlusState();
+            }
+
+            wx.Storage.getItem("token") == '' ? this.setData({
+                noCartData: true
+            }) : '';
+
+            // 多个地址显示右箭头
+            var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
+            if (myshippingAddressLength === 'undefined' || myshippingAddressLength === '') {
+                app.getMy_shippingAddressLength(function (length) {
+                    y.setData({
+                        myshippingAddressLength: length
+                    })
+                })
+            } else {
+                y.setData({
+                    myshippingAddressLength: myshippingAddressLength
+                })
+            }
+
+            if (myshippingAddressLength >= 1) {
+                y.setData({
+                    showRightIcon: true
+                })
+            }
+            y.setData({
+                loading: false
+            })
+            util.closeLoading();
+        }
         wx.showNavigationBarLoading() //在标题栏中显示加载
         //下拉刷新
         async function refresh() {
             await clearData();
-            await that.onShow();
+            await showData();
 
             // complete
+
             wx.hideNavigationBarLoading() //完成停止加载
             wx.stopPullDownRefresh({
-                complete: function() {
-
-                }
+                complete: function () { }
             }) //停止下拉刷新
         }
         refresh();

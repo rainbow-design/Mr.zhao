@@ -1,41 +1,43 @@
-<view class="integral maskContent">
-  <block wx:if="{{integralData}}">
-    <view class='integralBox'>
-      <view class='numberBox'>
-        <view class='number'>{{totalScore}}</view>
-        <view class='intro'>当前积分</view>
-      </view>
-    </view>
-    <view class='listBox'>
-      <view class='title'>
-        <view class='line'></view>
-        <view class='text'>积分记录</view>
-      </view>
-      <view class='row oneLineBetween' wx:for="{{integralData}}" wx:key="{{item.id}}">
-        <view class='leftBox leftBox_flex'>
-          <view class='name'>{{item.source}}
-          </view>
-          <view class='date'>{{item.shortDate}}</view>
-        </view>
-        <view class="rightBox {{item.type === '+' ? 'add' :'jian'}}">{{item.type + item.score}}</view>
-      </view>
+<block wx:if="{{!loading}}">
+    <view class="integral maskContent">
+        <block wx:if="{{integralData}}">
+            <view class='integralBox'>
+                <view class='numberBox'>
+                    <view class='number'>{{totalScore}}</view>
+                    <view class='intro'>当前积分</view>
+                </view>
+            </view>
+            <view class='listBox'>
+                <view class='title'>
+                    <view class='line'></view>
+                    <view class='text'>积分记录</view>
+                </view>
+                <view class='row oneLineBetween' wx:for="{{integralData}}" wx:key="{{item.id}}">
+                    <view class='leftBox leftBox_flex'>
+                        <view class='name'>{{item.source}}
+                        </view>
+                        <view class='date'>{{item.shortDate}}</view>
+                    </view>
+                    <view class="rightBox {{item.type === '+' ? 'add' :'jian'}}">{{item.type + item.score}}</view>
+                </view>
 
 
+            </view>
+        </block>
+        <block wx:if="{{integralData.length === 0}}">
+            <view class='integralBox'>
+                <view class='numberBox'>
+                    <view class='number'>0</view>
+                    <view class='intro'>当前积分</view>
+                </view>
+            </view>
+            <view class='listBox nodata columnBetween' style='height:812rpx;'>
+                <view class='title'>
+                    <view class='text'>积分记录</view>
+                </view>
+                <image src="../../assets/nodata/jifen.png" mode='widthFix' style='width:350rpx;'></image>
+                <view class='content'>您还没有积分记录</view>
+            </view>
+        </block>
     </view>
-  </block>
-  <block wx:if="{{integralData.length === 0}}">
-    <view class='integralBox'>
-      <view class='numberBox'>
-        <view class='number'>0</view>
-        <view class='intro'>当前积分</view>
-      </view>
-    </view>
-    <view class='listBox nodata columnBetween' style='height:812rpx;' >
-      <view class='title'>
-        <view class='text'>积分记录</view>
-      </view>
-      <image src="../../assets/nodata/jifen.png" mode='widthFix' style='width:350rpx;'></image>
-      <view class='content'>您还没有积分记录</view>
-    </view>
-  </block>
-</view>
+</block>
