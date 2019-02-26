@@ -124,6 +124,7 @@ Page({
         if (Number(yData.original_amount) > Number(selectCouponData.use_money)) {
             let jifenYouHui = 0;
             if (yData.default_useJifen && yData.userJifenNum) {
+                // FIXME: 当一个积分不是一分钱呢？
                 jifenYouHui = (Number(yData.Info.score)) / 100;
                 // 如果积分大于实际支付金额
                 if (jifenYouHui > Number(yData.original_amount)) {
