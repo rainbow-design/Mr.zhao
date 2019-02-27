@@ -1,7 +1,7 @@
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <view class="shoppingCart maskContent">
     <view class='address'>
-        <view class='whiteBox' bindtap='changeAnotherAdress'>
+        <view class='whiteBox' catchtap='changeAnotherAdress'>
             <block wx:if="{{useThisAddress}}">
                 <view class='zhuzhi'>
                     <view class='greenBox'>
@@ -29,7 +29,7 @@
                 </view>
             </block>
 
-            <image class='rightIcon' mode='widthFix' src="../../assets/icon/addressRIght.png"></image>
+            <image class='rightIcon' src="../../assets/icon/addressRight.png"></image>
             <image class='caidai' src="../../assets/icon/huaBian.png"></image>
         </view>
     </view>
@@ -38,7 +38,7 @@
             <view class='name'>配送时间</view>
             <picker bindchange="bindPickerChange" value="{{index}}" range="{{delivery_time_Arr}}">
                 <view class='toPeisong center'>{{ result_delivery_time || '立即配送'}}
-                    <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
+                    <image class='peiSong' src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
                 </view>
             </picker>
 
@@ -48,8 +48,8 @@
             <scroll-view scroll-x class='foodsImgs' style="white-space: nowrap;">
                 <image wx:for="{{goodsInfo}}" wx:key="{{item}}" src="{{filter.filterImgUrl(item.thumb_img)}}"></image>
             </scroll-view>
-            <view class='Count' bindtap='toProductList'>共{{count}}件
-                <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
+            <view class='Count' catchtap='toProductList'>共{{count}}件
+                <image class='toRight_green' src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
             </view>
         </view>
     </view>

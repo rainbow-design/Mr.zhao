@@ -3,7 +3,7 @@
 
         <view class="searchAndNowAddress columnBetweenStart {{keyword ? 'h100':''}} {{dontShowNowLocation ? 'searchInp_H':''}}">
             <view>
-                <input class='searchInp' placeholder='请输入您的地址' bindinput='searchInp' placeholder-class='place'></input>
+                <input class='searchInp' focus="{{focus}}" placeholder='请输入您的地址' bindinput='searchInp' placeholder-class='place'></input>
                 <image class='searchIcon' src="../../assets/search.png" mode='widthFix'></image>
             </view>
 

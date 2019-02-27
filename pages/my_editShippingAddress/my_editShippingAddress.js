@@ -16,7 +16,8 @@ Page({
         detail_addr: '', // 详细
         show_addr: '',
         longitude: '', // 经度
-        latitude: '' // 纬度
+        latitude: '', // 纬度
+        editAddress_selectAddress: ''
     },
 
     /**
@@ -48,18 +49,25 @@ Page({
                 longitude: info.longitude, // 经度
                 latitude: info.latitude // 纬度
             })
-            var newAddressData = wx.Storage.getItem("editAddress_selectAddress");
-            if (newAddressData != "") {
-                y.setData({
-                    address: newAddressData.address,
-                    longitude: newAddressData.location.lng, // 经度
-                    latitude: newAddressData.location.lat // 纬度
-                })
-            }
+
+
         })
         wx.yue.sub("editAddress_selectAddress", function(data) {
-            wx.Storage.setItem("editAddress_selectAddress", data);
+            y.setData({
+                editAddress_selectAddress: data
+            })
         })
+        var newAddressData = this.data.editAddress_selectAddress;
+        if (newAddressData != "") {
+            var address_temp = newAddressData.address.split("区")[0] + '区' + newAddressData.title;
+            y.setData({
+                address: address_temp,
+                show_addr: newAddressData.title,
+                longitude: newAddressData.location.lng, // 经度
+                latitude: newAddressData.location.lat // 纬度
+            })
+        }
+
 
 
         // console.log(this.data.nowdata)
@@ -208,7 +216,8 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function() {
-
+        wx.yue.remove("addAddress");
+        wx.yue.remove("editAddress_selectAddress");
     },
 
     /**

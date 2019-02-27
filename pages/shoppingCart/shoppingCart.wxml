@@ -24,7 +24,7 @@
                         <view class='presonInfo'>
                             {{globalAddress.name}} {{globalAddress.phone}}
                         </view>
-                        <image class='rightIcon' mode='widthFix' src="../../assets/icon/addressRIght.png"></image>
+                        <image class='rightIcon' src="../../assets/icon/addressRight.png"></image>
                         <image class='caidai' mode='widthFix' src="../../assets/icon/huaBian.png"></image>
                         <block wx:if="{{!addressCanUse}}">
                             <view class='tishi'>

@@ -33,7 +33,8 @@ Page({
         shop_lng: '', // 商铺经度
         peiSongFanWei: 2000, // 配送范围 2000m
         addressCanUse: true,
-        initShowTishi: true
+        initShowTishi: true,
+        action:'' // 此刻正在执行的动作
     },
 
     /**
@@ -316,10 +317,11 @@ Page({
         }
     },
     delItem(e) {
-        this.setData({
-            loading: true
-        })
-        util.openLoading();
+        // 加载重去掉...
+        // this.setData({
+        //     loading: true
+        // })
+        // util.openLoading();
         var id = e.currentTarget.dataset.id;
         var y = this;
         util.promiseRequest(api.delete_cart, {

@@ -13,6 +13,7 @@ Page({
      */
     data: {
         dontShowNowLocation: false,
+        focus: false,
         initAddress: '',
         loading: false,
         addressData: [],
@@ -31,7 +32,11 @@ Page({
     onLoad: function (options) {
         if (options.addAddress === "true") {
             console.log("获取地址传回去")
+            wx.setNavigationBarTitle({
+                title: '搜索地址' //页面标题为路由参数
+            })
             this.setData({
+                focus: true,
                 dontShowNowLocation: true,
                 formAddAddress: true,
                 showMyShoppingAddress: false
@@ -54,8 +59,13 @@ Page({
         }
         if (options.editAddress === "true") {
             console.log("获取地址传回去")
+            wx.setNavigationBarTitle({
+                title: '搜索地址' //页面标题为路由参数
+            })
             this.setData({
+                focus: true,
                 formEditAddress: true,
+                dontShowNowLocation: true,
                 showMyShoppingAddress: false
             })
         }
@@ -193,14 +203,16 @@ Page({
         var yData = this.data;
         if (yData.formAddAddress) {
             wx.yue.pub("addAddress", data.info);
-            wx.redirectTo({
-                url: `../my_addShippingAddress/my_addShippingAddress`
-            })
+            app.returnLastPage();
+            // wx.redirectTo({
+            //     url: `../my_addShippingAddress/my_addShippingAddress`
+            // })
         } else if (yData.formEditAddress) {
             wx.yue.pub("editAddress_selectAddress", data.info);
-            wx.navigateTo({
-                url: `../my_editShippingAddress/my_editShippingAddress`
-            })
+            app.returnLastPage();
+            // wx.redirectTo({
+            //     url: `../my_editShippingAddress/my_editShippingAddress`
+            // })
         } else {
             wx.Storage.setItem("address", data.info.address)
             wx.Storage.setItem("shortAddress", data.info.title)

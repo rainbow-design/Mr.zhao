@@ -25,7 +25,7 @@
                 <view class='user columnBetween'>
                     <block wx:if="{{userInfo != false}}">
                         <view class='userBox oneLineStart'>
-                            <view class='username'>{{userInfo.lists[0].nickname}}</view>
+                            <view class='username line-clamp'>{{userInfo.lists[0].nickname}}</view>
                             <block wx:if="{{userInfo != false}}">
                                 <view class='memberGrade'>
                                     <!-- 会员分类 =》普通会员，plus会员 -->
@@ -132,13 +132,13 @@
                 <view class='menu_item columnBetween' data-tab="4" bindtap='toMyOrderPage'>
                     <image src="../../assets/complete.png" mode='widthFix'></image>
                     <view class='text'>已完成</view>
-                    <block wx:if="{{orderNum.company > 0}}">
+                    <!-- <block wx:if="{{orderNum.company > 0}}">
                         <view class='news_num_box'>
                             <view class='news_num'>
                                 {{orderNum.company}}
                             </view>
                         </view>
-                    </block>
+                    </block> -->
                 </view>
             </view>
 

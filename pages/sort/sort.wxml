@@ -40,7 +40,7 @@
         <view class='header borderBox oneLineEnd'>
             <image class='avator' mode="widthFix" src="../../assets/logo.png"></image>
             <view class='address_box' data-address="{{address}}" bindtap='toSelectAddress'>
-                <view class='location ellipsis'>{{globalAddress.show_addr || shortAddress}}</view>
+                <view class='location ellipsis'>{{shortAddress || globalAddress.show_addr}}</view>
                 <image class='location_arrow' src="../../assets/toBottom.png" mode="widthFix"></image>
             </view>
             <input class='inputText borderBox' disabled placeholder='搜索' placeholder-class='place_input' bindtap='test'></input>

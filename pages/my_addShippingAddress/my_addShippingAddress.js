@@ -111,7 +111,7 @@ Page({
             detail_addr: yData.detail_addr,
         }
         wx.Storage.setItem("addAddress_cache", addAddress_cache, function () {
-            wx.redirectTo({
+            wx.navigateTo({
                 url: `../selectAddress/selectAddress?addAddress=${from}`
             })
         });

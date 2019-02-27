@@ -42,7 +42,7 @@ Page({
     toEdit(e) {
         var data = e.currentTarget.dataset;
         var action = 'edit';
-        wx.redirectTo({
+        wx.navigateTo({
             url: `../my_editShippingAddress/my_editShippingAddress?action=${action}`
         })
         wx.yue.pub("editAddress", data);

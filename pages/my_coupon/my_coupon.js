@@ -2,6 +2,8 @@
 const app = getApp();
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
+// 开关控制，避免点击tab触发 swiper 的移动事件两次执行
+let isClick = false;
 Page({
 
     /**
@@ -53,19 +55,24 @@ Page({
                     couponData: data,
                     loading: false
                 })
+                isClick = false;
             })
     },
     //滑动切换
     swiperTab: function (e) {
-        var that = this;
-        util.openLoading();
-        that.setData({
-            currentTab: e.detail.current
-        });
-        that.getMy_coupon(e.detail.current);
+        if (!isClick) {
+            var that = this;
+            util.openLoading();
+            that.setData({
+                currentTab: e.detail.current
+            });
+            that.getMy_coupon(e.detail.current);
+        }
+
     },
     //点击切换
     clickTab: function (e) {
+        isClick = true;
         var that = this;
         let index = e.target.dataset.current;
         util.openLoading();

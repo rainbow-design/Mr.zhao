@@ -10,10 +10,35 @@ Page({
      * 页面的初始数据
      */
     data: {
+        loading: true,
         searchValue: '',
         productList: [],
         proBottom: true,
         focus: true
+    },
+    /**
+ * 生命周期函数--监听页面加载
+ */
+    onLoad: function (options) {
+        let token = wx.Storage.getItem("token");
+        if (this.data.loading && token != '') {
+            util.openLoading();
+            this.searchListHistory();
+        }
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
+
     },
     toDetail(e) {
         wx.navigateTo({
@@ -60,7 +85,10 @@ Page({
 
             that.setData({
                 searchListTop: res.data.response_data.top,
-                searchListHistory: historyData
+                searchListHistory: historyData,
+                loading: false
+            }, function () {
+                util.closeLoading();
             })
         })
     },
@@ -104,26 +132,7 @@ Page({
         })
         y.getproduct_list(1);
     },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        this.searchListHistory();
-    },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
 
     /**
      * 生命周期函数--监听页面隐藏

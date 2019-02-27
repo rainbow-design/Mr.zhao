@@ -151,18 +151,21 @@ App({
     isLogin(callback, e) {
         let token = wx.Storage.getItem("token");
         if (token === '') {
-            wx.showToast({
-                title: '请您先授权登录...',
-                icon: 'none',
-                duration: 1000,
-                complete: function() {
-                    setTimeout(() => {
-                        wx.navigateTo({
-                            url: `../authorizationLogin/authorizationLogin?isShouquan=false`
-                        });
-                    }, 1000)
-                }
-            })
+            wx.navigateTo({
+                url: `../authorizationLogin/authorizationLogin?isShouquan=false`
+            });
+            // wx.showToast({
+            //     title: '请您先授权登录...',
+            //     icon: 'none',
+            //     duration: 1000,
+            //     complete: function() {
+            //         setTimeout(() => {
+            //             wx.navigateTo({
+            //                 url: `../authorizationLogin/authorizationLogin?isShouquan=false`
+            //             });
+            //         }, 1000)
+            //     }
+            // })
 
         } else {
             // 登录后操作

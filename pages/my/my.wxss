@@ -87,6 +87,7 @@
     color: rgba(255, 255, 255, 1);
     line-height: 32rpx;
     margin-right: 30rpx;
+    max-width: 196rpx;
 }
 
 .tel {

@@ -90,6 +90,8 @@
     top: 74rpx;
     right: 30rpx;
     width: 19rpx;
+    height: 34rpx;
+    z-index: 1000;
 }
 
 .tishi {

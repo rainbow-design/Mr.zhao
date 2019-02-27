@@ -141,6 +141,11 @@
     line-height: 27rpx;
 }
 
+.toRight_green {
+    width: 7rpx;
+    height: 13rpx;
+}
+
 /* foods */
 
 .foods {
@@ -171,10 +176,6 @@
     color: rgba(26, 26, 26, 1);
 }
 
-.toPeisong image {
-    width: 7rpx;
-}
-
 .imageBox {
     display: flex;
     justify-content: space-between;
@@ -200,11 +201,13 @@
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;
     color: rgba(88, 181, 48, 1);
-    line-height: 19rpx;
+    line-height: 50rpx;
+    height: 50rpx;
 }
 
-.Count image {
-    width: 7rpx;
+.peiSong {
+    width: 11rpx;
+    height: 20rpx;
 }
 
 .detail {
@@ -259,6 +262,7 @@
     font-weight: 400;
     color: rgba(26, 26, 26, 1);
 }
+
 .selectJF {
     width: 200rpx !important;
     height: 60rpx !important;
@@ -303,9 +307,11 @@
     font-size: 32rpx;
     line-height: 27rpx;
 }
+
 .rightIcon {
     position: absolute;
     top: 74rpx;
     right: 30rpx;
     width: 19rpx;
+    height: 34rpx;
 }
