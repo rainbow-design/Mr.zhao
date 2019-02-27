@@ -1,32 +1,36 @@
 <view class="selectAddress maskContent">
     <block wx:if="{{!onlyShowAddress}}">
-        <view class="searchAndNowAddress columnBetweenStart {{keyword ? 'h100':''}}">
+
+        <view class="searchAndNowAddress columnBetweenStart {{keyword ? 'h100':''}} {{dontShowNowLocation ? 'searchInp_H':''}}">
             <view>
                 <input class='searchInp' placeholder='请输入您的地址' bindinput='searchInp' placeholder-class='place'></input>
                 <image class='searchIcon' src="../../assets/search.png" mode='widthFix'></image>
             </view>
 
             <block wx:if="{{!keyword}}">
-                <view class='current'>当前定位</view>
-                <view class='refreshLocation oneLineBetween'>
-                    <block wx:if="{{loading}}">
-                        <view class='currentCityName'>定位中...</view>
-                    </block>
-                    <block wx:elif="{{loading === false}}">
-                        <view class='currentCityName line-clamp' style='width:520rpx;' bindtap='setWithThisAdress'>{{initAddress || reAddress}}</view>
-                    </block>
-                    <view class='refresh' bindtap='reGetLocation'>
-                        <image src="../../assets/icon/location.png" mode='widthFix'></image>
-                        刷新定位</view>
-                </view>
+                <block wx:if="{{!dontShowNowLocation}}">
+                    <view class='nowLocation columnBetweenStart'>
+                        <view class='current'>当前定位</view>
+                        <view class='refreshLocation oneLineBetween'>
+                            <block wx:if="{{loading}}">
+                                <view class='currentCityName'>定位中...</view>
+                            </block>
+                            <block wx:elif="{{loading === false}}">
+                                <view class='currentCityName line-clamp' style='width:520rpx;' bindtap='setWithThisAdress'>{{initAddress || reAddress}}</view>
+                            </block>
+                            <view class='refresh' bindtap='reGetLocation'>
+                                <image src="../../assets/icon/location.png" mode='widthFix'></image>
+                                刷新定位</view>
+                        </view>
+                    </view>
+                </block>
             </block>
-
         </view>
     </block>
     <block wx:if="{{showMyShoppingAddress && addressData.length > 0}}">
         <view class='myShippingAddress'>
             <view class='title'>我的收货地址</view>
-            <view class="itemAddress columnBetween {{addressData.length > 1 && index != addressData.length-1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}" data-id="{{item.id}}"  data-info="{{item}}" bindtap="selectGlobalAddress">
+            <view class="itemAddress columnBetween {{addressData.length > 1 && index != addressData.length-1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-info="{{item}}" bindtap="selectGlobalAddress">
                 <view class='upBox oneLineStart'>
                     <view class='greenBox'>
                         <view class='text'>{{item.type_name}}</view>

@@ -34,11 +34,10 @@ var Event = (function() {
         }
         // 使用缓存执行的订阅不用多次调用执行
         cached[key + 'time'] == undefined ? clientList[key].push(fn) : '';
-        if (cached[key] instanceof Array) {
+        if (cached[key] instanceof Array && cached[key].length > 0) {
             //说明有缓存的 可以执行
             fn.apply(null, cached[key]);
             cached[key + 'time'] = 1;
-            // delete cached[key];
         }
     };
     pub = function() {
@@ -59,16 +58,27 @@ var Event = (function() {
     };
     remove = function(key, fn) {
         var fns = clientList[key];
-        if (!fns) {
+        // 缓存订阅一并删除
+        var cachedFn = cached[key];
+        if (!fns && !cachedFn) {
             return false;
         }
         if (!fn) {
             fns && (fns.length = 0);
+            cachedFn && (cachedFn.length = 0);
         } else {
-            for (var l = fns.length - 1; l >= 0; l--) {
-                var _fn = fns[l];
+            if (cachedFn) {
+                for (var m = cachedFn.length - 1; m >= 0; m--) {
+                    var _fn_temp = cachedFn[m];
+                    if (_fn_temp === fn) {
+                        cachedFn.splice(m, 1);
+                    }
+                }
+            }
+            for (var n = fns.length - 1; n >= 0; n--) {
+                var _fn = fns[n];
                 if (_fn === fn) {
-                    fns.splice(l, 1);
+                    fns.splice(n, 1);
                 }
             }
         }
@@ -141,9 +151,19 @@ App({
     isLogin(callback, e) {
         let token = wx.Storage.getItem("token");
         if (token === '') {
-            wx.navigateTo({
-                url: `../authorizationLogin/authorizationLogin?isShouquan=false`
-            });
+            wx.showToast({
+                title: '请您先授权登录...',
+                icon: 'none',
+                duration: 1000,
+                complete: function() {
+                    setTimeout(() => {
+                        wx.navigateTo({
+                            url: `../authorizationLogin/authorizationLogin?isShouquan=false`
+                        });
+                    }, 1000)
+                }
+            })
+
         } else {
             // 登录后操作
             callback.apply(undefined, e);
@@ -209,6 +229,12 @@ App({
                 var data = res.data.response_data.lists;
                 wx.Storage.setItem("myshippingAddressLength", data.length);
                 typeof callback === 'function' ? callback(data.length) : '';
+                // 防止再次加载全局地址空白影响提示显示
+                if (data.length === 1) {
+                    wx.Storage.setItem("globalAddress", data[0]);
+                }
+            }).catch((err) => {
+                callback('false')
             })
     },
     // 获取用户可以领取的优惠券

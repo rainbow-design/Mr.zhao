@@ -33,7 +33,6 @@ Page({
         shop_lng: '', // 商铺经度
         peiSongFanWei: 2000, // 配送范围 2000m
         addressCanUse: true,
-        showRightIcon: false,
         initShowTishi: true
     },
 
@@ -56,6 +55,52 @@ Page({
      */
     onShow: function () {
         var y = this;
+        util.openLoading();
+        this.setData({
+            loading: true
+        })
+
+
+        var shopCartInit = function () {
+            var y = this;
+            // 拿到商铺位置信息再去渲染购物计算当前的address符合不符合规定
+            var showCartList = function () {
+                // 显示全局的地址信息
+                var globalAddress = wx.Storage.getItem("globalAddress");
+                if (globalAddress) {
+                    y.setData({
+                        globalAddress: globalAddress,
+                        addr_id: globalAddress.id
+                    })
+                    y.calculateDistance(qqmapsdk, globalAddress.latitude, globalAddress.longitude);
+                } else {
+                    y.setData({
+                        globalAddress: {}
+                    })
+                }
+            }
+            // await 等待获取商铺位置信息
+            async function getShopPosTionMsg() {
+                await util.promiseRequest(api.merchant_addr, {}).then(res => {
+                    var data = res.data.response_data.lists[0];
+                    y.setData({
+                        shop_lat: data.latitude, // 商铺纬度
+                        shop_lng: data.longitude, // 商铺经度
+                        peiSongFanWei: data.scope, // 配送范围 
+                    })
+                })
+            }
+
+
+            async function initData() {
+                y.showCartList();
+                await getShopPosTionMsg();
+                await showCartList();
+            }
+            // 开始执行
+            initData();
+
+        }
         async function intPlusState() {
             await app.isPlus(function (state) {
                 y.setData({
@@ -91,9 +136,19 @@ Page({
         var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
         if (myshippingAddressLength === 'undefined' || myshippingAddressLength === '') {
             app.getMy_shippingAddressLength(function (length) {
-                y.setData({
-                    myshippingAddressLength: length
-                })
+                if (length === 'false') {
+                    // 此刻是未登录的用户进来,给显示一个空的购物车
+                    util.closeLoading();
+                    y.setData({
+                        loading: false,
+                        noCartData: true
+                    })
+                } else {
+                    y.setData({
+                        myshippingAddressLength: length
+                    })
+                }
+
             })
         } else {
             y.setData({
@@ -101,11 +156,6 @@ Page({
             })
         }
 
-        if (myshippingAddressLength >= 1) {
-            this.setData({
-                showRightIcon: true
-            })
-        }
     },
     changeCart(id, num) {
         let params = {
@@ -170,9 +220,6 @@ Page({
         var address = wx.Storage.getItem('address');
         var myshippingAddressLength = wx.Storage.getItem('myshippingAddressLength');
         if (myshippingAddressLength > 0) {
-            this.setData({
-                showRightIcon: true
-            })
             // 有收货地址
             wx.navigateTo({
                 url: `../selectAddress/selectAddress?address=${address}&length=${myshippingAddressLength}`
@@ -269,13 +316,16 @@ Page({
         }
     },
     delItem(e) {
+        this.setData({
+            loading: true
+        })
+        util.openLoading();
         var id = e.currentTarget.dataset.id;
         var y = this;
         util.promiseRequest(api.delete_cart, {
             product_id: id
         }).then(res => {
             var data = res.data.response_data;
-            console.log(data);
             if (data) {
                 // 页面购物列表重置
                 y.shopCartInit();
@@ -638,10 +688,10 @@ Page({
         async function clearData() {
             util.openLoading();
             await that.setData({
-                loading: true,
+                // loading: true,
                 cartList: [],
                 globalAddress: '',
-                getAddress_loading: '加载中...'
+                myshippingAddressLength: false
             })
         }
         async function showData() {
@@ -689,16 +739,6 @@ Page({
                     myshippingAddressLength: myshippingAddressLength
                 })
             }
-
-            if (myshippingAddressLength >= 1) {
-                y.setData({
-                    showRightIcon: true
-                })
-            }
-            y.setData({
-                loading: false
-            })
-            util.closeLoading();
         }
         wx.showNavigationBarLoading() //在标题栏中显示加载
         //下拉刷新

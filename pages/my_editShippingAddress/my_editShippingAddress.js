@@ -14,6 +14,7 @@ Page({
         phone: '',
         address: '', // 收货地址
         detail_addr: '', // 详细
+        show_addr: '',
         longitude: '', // 经度
         latitude: '' // 纬度
     },
@@ -21,27 +22,27 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
         var y = this;
-        wx.yue.sub("addAddress", function (data) {
+        wx.yue.sub("addAddress", function(data) {
             wx.Storage.setItem("addAddress", data);
         })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {},
+    onReady: function() {},
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
         var y = this;
-        wx.yue.sub("editAddress", function (data) {
+        wx.yue.sub("editAddress", function(data) {
             var info = data.item;
-            console.log(info);
             y.setData({
                 address: info.address,
+                show_addr: info.show_addr,
                 nowdata: info,
                 addressType: Number(info.type),
                 longitude: info.longitude, // 经度
@@ -56,7 +57,7 @@ Page({
                 })
             }
         })
-        wx.yue.sub("editAddress_selectAddress", function (data) {
+        wx.yue.sub("editAddress_selectAddress", function(data) {
             wx.Storage.setItem("editAddress_selectAddress", data);
         })
 
@@ -100,6 +101,7 @@ Page({
             phone: yData.phone || nowdata.phone,
             address: yData.address || nowdata.address,
             detail_addr: yData.detail_addr || nowdata.detail_addr,
+            show_addr: yData.show_addr,
             longitude: yData.longitude,
             latitude: yData.latitude,
             access_token: app.globalData.access_token,
@@ -119,7 +121,7 @@ Page({
                     title: '重置地址成功...',
                     icon: 'none',
                     duration: 1000,
-                    complete: function () {
+                    complete: function() {
                         setTimeout(() => {
                             app.returnLastPage();
                         }, 1000)
@@ -130,7 +132,7 @@ Page({
                     title: '重置信息失败...',
                     icon: 'none',
                     duration: 1000,
-                    complete: function () {
+                    complete: function() {
                         setTimeout(() => {
                             app.returnLastPage();
                         }, 1000)
@@ -161,7 +163,7 @@ Page({
                     title: '删除地址成功...',
                     icon: 'none',
                     duration: 1000,
-                    complete: function () {
+                    complete: function() {
                         setTimeout(() => {
                             app.returnLastPage();
                         }, 1000)
@@ -172,7 +174,7 @@ Page({
                     title: '删除失败...',
                     icon: 'none',
                     duration: 1000,
-                    complete: function () {
+                    complete: function() {
                         setTimeout(() => {
                             app.returnLastPage();
                         }, 1000)
@@ -205,14 +207,14 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
         // 取消多余的事件订阅
         // - 编辑时
         wx.yue.remove("addAddress");
@@ -222,21 +224,21 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     }
 })

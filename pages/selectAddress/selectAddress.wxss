@@ -1,5 +1,7 @@
 /* pages/selectAddress/selectAddress.wxss */
-
+.nowLocation {
+    height: 95rpx;
+}
 .h100 {
     height: 100rpx !important;
 }
@@ -10,6 +12,9 @@
     box-sizing: border-box;
     padding: 20rpx 30rpx 22rpx;
     background: rgba(255, 255, 255, 1);
+}
+.searchInp_H {
+    height: 100rpx;
 }
 
 .myShippingAddress {
@@ -56,7 +61,7 @@
 }
 
 .refreshLocation {
-    width: 100%;
+    width: 690rpx;
 }
 
 .refresh {

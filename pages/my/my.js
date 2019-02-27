@@ -19,8 +19,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        if (this.data.loading) {
+        let token = wx.Storage.getItem("token");
+        if (this.data.loading && token != '') {
             util.openLoading();
+        } else {
+            this.getUserInfo_noLogin();
         }
     },
 
@@ -36,8 +39,12 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.getUserInfo();
-        this.getOrderNum();
+        let y = this;
+        let token = wx.Storage.getItem("token");
+        if (token != '') {
+            y.getUserInfo();
+            y.getOrderNum();
+        }
     },
     getUserInfo() {
         var y = this;
@@ -55,6 +62,26 @@ Page({
             }).catch((err) => {
                 y.setData({
                     userInfo: false
+                })
+            })
+    },
+    getUserInfo_noLogin() {
+        var y = this;
+        util.promiseRequest(api.basicInfo, {
+            access_token: app.globalData.access_token
+        })
+            .then(res => {
+                var data =
+                    res.data.response_data === undefined ? false : res.data.response_data;
+                y.setData({
+                    userInfo: data,
+                    is_plus: data.lists[0].is_plus === '普通会员' ? false : true
+                })
+
+            }).catch((err) => {
+                y.setData({
+                    userInfo: false,
+                    loading:false
                 })
             })
     },

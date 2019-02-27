@@ -10,6 +10,7 @@ Page({
     data: {
         newGlobalAddress: false,
         selectAddress: 0,
+        addAddress: false, // 新添加的收货地址
         name: '',
         phone: '',
         address: '',
@@ -29,6 +30,9 @@ Page({
             })
         }
         wx.yue.sub("addAddress", function (data) {
+            y.setData({
+                addAddress: data
+            })
             wx.Storage.setItem("addAddress", data);
         })
     },
@@ -42,7 +46,7 @@ Page({
      */
     onShow: function () {
         var y = this;
-        var addressData = wx.Storage.getItem("addAddress");
+        var addressData = y.data.addAddress || wx.Storage.getItem("addAddress");
         var addAddress_cache = wx.Storage.getItem("addAddress_cache");
         if (addressData) {
             var address_temp = addressData.address.split("区")[0] + '区' + addressData.title;
@@ -219,7 +223,12 @@ Page({
     onHide: function () {
         // 取消多余的事件订阅
         // - 添加时
-        wx.yue.remove("addAddress");
+        wx.yue.remove("addAddress", function (data) {
+            y.setData({
+                addAddress: data
+            })
+            wx.Storage.setItem("addAddress", data);
+        });
         // 清除缓存的位置数据
         wx.Storage.removeItem("addAddress");
     },

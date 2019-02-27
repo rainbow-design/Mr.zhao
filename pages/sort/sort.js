@@ -431,9 +431,9 @@ Page({
         // proType
         async function chooseClass(e) {
             wx.Storage.setItem("sort_chooseClass", e)
-            let cur = e.currentTarget.dataset;
+            let cur = e && e.currentTarget.dataset;
             // 领取优惠券只在第一个分类里展示
-            if (that.data.firstId != cur.id || cur.pro_type != 1) {
+            if (cur && that.data.firstId != cur.id || cur.pro_type != 1) {
                 that.setData({
                     total: 0
                 })
