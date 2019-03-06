@@ -93,7 +93,8 @@
                                     </view>
                                     <view class='introduction line-clamp'> {{item.desc}} </view>
                                     <view class='price nowrap'>¥{{item.price}}</view>
-                                    <view class='offerPrice nowrap'>¥{{item.plus*100*item.price/1000}}
+
+                                    <view class='offerPrice nowrap'>¥{{filter.filterPrice(item.plus*100*item.price/1000)}}
                                         <image class='youhuiBox' src="../../assets/youhuiBox.png">
                                             <view class='youhuiText'>会员{{item.dazhe}}折</view>
                                         </image>

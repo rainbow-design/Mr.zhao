@@ -3,6 +3,7 @@
 function splitByC(str) {
     return str.split(',');
 }
+
 function splitByS(str) {
     return str.split(' ');
 }
@@ -16,7 +17,7 @@ function filterImgUrl(str) {
     return str.indexOf('/') === 0 ? RootUrl + str : str;
 }
 
-function filterOrderTitleName(status){
+function filterOrderTitleName(status) {
     switch (status) {
         case '1':
             return '待支付'
@@ -42,11 +43,20 @@ function filterOrderDetailStateName(state) {
     }
 }
 
+function filterPrice(str) {
+    // 四舍五入 格式化数字
+    // toFix(8440.55,1) => 8440.6
+    var times = Math.pow(10, 2);
+    var roundNum = Math.round(str * times) / times;
+    return roundNum.toFixed(2);
+}
+
 module.exports = {
     splitByC: splitByC, // my_coupon 有使用
     splitByS: splitByS,
     filterPhoneByStar: filterPhoneByStar,
     filterImgUrl: filterImgUrl,
-    filterOrderTitleName:filterOrderTitleName,
-    filterOrderDetailStateName: filterOrderDetailStateName
+    filterOrderTitleName: filterOrderTitleName,
+    filterOrderDetailStateName: filterOrderDetailStateName,
+    filterPrice: filterPrice
 }

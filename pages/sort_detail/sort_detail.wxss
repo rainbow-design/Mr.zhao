@@ -117,6 +117,7 @@
 
 .bottomDetail {
     width: 750rpx;
+    padding-bottom: 95rpx;
 }
 
 .bottomDetail .title {
