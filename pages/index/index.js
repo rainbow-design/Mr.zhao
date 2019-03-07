@@ -146,6 +146,8 @@ Page({
     getBannerList() {
         var y = this;
         util.getDataCommon(api.banner, {}, function (res) {
+            // type = 2，根据 goods_id 展示商品详情
+            // type = 3, 展示富文本的活动详情页面
             y.setData({
                 bannerList: res
             })
@@ -332,6 +334,21 @@ Page({
             swiperCurrent: e.currentTarget.id
         })
     },
+    toHref(e) {
+        const data = e.currentTarget.dataset;
+        // type = 2，根据 goods_id 展示商品详情
+        // type = 3, 展示富文本的活动详情页面
+        if (data.type === '2') {
+            wx.navigateTo({
+                url: `../sort_detail/sort_detail?id=${data.id}`
+            })
+        } else if (data.type === '3') {
+            wx.yue.pub("renderData", data.content)
+            wx.navigateTo({
+                url: `../activity_detail/activity_detail`
+            })
+        }
+    },
     // 领取优惠券
     receive_coupons(e) {
         let that = this;
@@ -439,7 +456,7 @@ Page({
         async function clearData() {
             util.openLoading();
             await that.setData({
-                loading:true,
+                loading: true,
                 categoryList: [],
                 bannerList: [],
                 remaiData: [],
@@ -485,7 +502,7 @@ Page({
             await getCetegoryList();
             await getBannerList();
             await getProductList();
-           
+
 
             // complete
             wx.hideNavigationBarLoading() //完成停止加载

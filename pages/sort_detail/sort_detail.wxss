@@ -76,7 +76,7 @@
 .contentBox .youhuiBox {
     position: relative;
     margin-top: -4rpx;
-    width: 79rpx;
+    width: 90rpx;
     height: 29rpx;
 }
 

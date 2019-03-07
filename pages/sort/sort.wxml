@@ -80,7 +80,8 @@
 
                 <!-- subMenu end -->
                 <view class='shoppingList {{total > 0 ?"":"shoppingList_pt"}}'>
-                    <scroll-view class="scroll_b" scroll-y="true" style='white-space:nowrap' bindscrolltolower="scrollBottom">
+                     <scroll-view class="scroll_b" scroll-y="true" style='white-space:nowrap' bindscrolltolower="scrollBottom">
+                    <!-- <scroll-view class="scroll_b" scroll-y="true" style='white-space:nowrap' bindscrolltolower="scrollBottom"> -->
                         <!-- 优惠券模块------------ -->
                         <block wx:if="{{total > 0}}">
                             <view class='getYouhuiQuan'>

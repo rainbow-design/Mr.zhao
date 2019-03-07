@@ -1,4 +1,4 @@
-// 不支持es6，Date
+// 不支持es6，Date,Number
 
 function splitByC(str) {
     return str.split(',');

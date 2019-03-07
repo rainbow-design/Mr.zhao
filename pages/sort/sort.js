@@ -25,6 +25,7 @@ Page({
         card: [],
         total: 0,
         proBottom: true,
+        isArrivedBottom: false,
         firstId: '', // 左侧主导航第一个菜单的id
         isRefresh: false // 在刷新页面
     },
@@ -97,12 +98,16 @@ Page({
         }
     },
 
-
+    // TODO: IOS 设备 全部分类下拉刷新
     scrollBottom() {
-        this.setData({
-            page: this.data.page + 1
-        });
-        this.getproduct_list(1);
+        let isArrivedBottom = this.data.isArrivedBottom;
+        if (!isArrivedBottom) {
+            this.setData({
+                page: this.data.page + 1
+            });
+            this.getproduct_list(1);
+        }
+
     },
     toSelectAddress(e) {
         var data = e.currentTarget.dataset;
@@ -213,6 +218,7 @@ Page({
         let fid_showAll = that.data.fid_showAll;
         let isRefresh = that.data.isRefresh;
         let params;
+        let isArrivedBottom_state;
         // console.log("一级分类id:" + this.data.fid_showAll)
 
         if (fid_showAll) {
@@ -238,6 +244,8 @@ Page({
             let data = type == 1 ? that.data.productList.concat(res.data.response_data) : res.data.response_data
             if (data != undefined && res.data.response_data.length < 20) {
                 that.data.proBottom = false;
+                isArrivedBottom_state = true;
+                console.log("到底了孩子，不准加载了....")
             }
             // 自定义购物车逻辑属性
             if (data && data.length > 0) {
@@ -249,7 +257,8 @@ Page({
             util.closeLoading();
             that.setData({
                 productList: data || [],
-                loading: false
+                loading: false,
+                isArrivedBottom: isArrivedBottom_state ? true : false
             })
         })
     },

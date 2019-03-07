@@ -1,6 +1,6 @@
 <template name="swiper">
     <swiper current="{{swiperCurrent}}" circular="true" bindchange="swiperChange" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="1000">
-        <swiper-item wx:for="{{bannerList}}" wx:key="{{index}}" bindtap='toHref' data-type="{{item.type}}"  data-link="{{item.link}}" >
+        <swiper-item wx:for="{{bannerList}}"  bindtap="toHref" wx:key="{{index}}" bindtap='toHref' data-type="{{item.type}}" data-id="{{item.goods_id}}" data-content="{{item.content}}"  data-link="{{item.link}}" >
             <image src="{{item.img_url}}" class="slide-image" />
         </swiper-item>
     </swiper>

@@ -221,24 +221,15 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-        // 取消多余的事件订阅
-        // - 添加时
-        wx.yue.remove("addAddress", function (data) {
-            y.setData({
-                addAddress: data
-            })
-            wx.Storage.setItem("addAddress", data);
-        });
         // 清除缓存的位置数据
         wx.Storage.removeItem("addAddress");
     },
 
     onUnload: function () {
         // 取消多余的事件订阅
-        // - 添加时
         wx.yue.remove("addAddress");
         // 清除缓存的位置数据
         wx.Storage.removeItem("addAddress");
-    },
+    }
 
 })
