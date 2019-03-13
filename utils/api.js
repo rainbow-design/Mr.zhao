@@ -4,7 +4,7 @@ var RootUrl = "https://bianlidian.test01.qcw100.com/";
 var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
     register = RootUrl + "rest/2.0/user/user/register", // 注册
     verificationCode = RootUrl + "rest/2.0/user/user/send_sms", // 短信验证码
-    upload_image = RootUrl + "rest/2.0/neutral/neutral/upload_image", // 短信验证码
+    upload_image = RootUrl + "rest/2.0/neutral/neutral/upload_image", // 上传图片
 
     // 首页
     banner = RootUrl + "rest/2.0/home/home/banner_list", // banner
@@ -17,7 +17,7 @@ var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
     sign_in = RootUrl + "rest/2.0/home/home/sign_in", // 签到
     plus_list = RootUrl + "rest/2.0/home/home/plus_list", // plus 列表
     pay_plus = RootUrl + "rest/2.0/home/home/plus_pay", // 会员支付
-    clear_history = RootUrl +"rest/2.0/home/home/del_search_history",// 清除历史记录
+    clear_history = RootUrl + "rest/2.0/home/home/del_search_history",// 清除历史记录
 
     //购物车
     cart_list = RootUrl + "rest/2.0/cart/cart/cart_list", // 购物车列表

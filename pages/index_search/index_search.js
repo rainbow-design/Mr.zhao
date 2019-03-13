@@ -17,8 +17,8 @@ Page({
         focus: true
     },
     /**
- * 生命周期函数--监听页面加载
- */
+     * 生命周期函数--监听页面加载
+     */
     onLoad: function (options) {
         let token = wx.Storage.getItem("token");
         if (this.data.loading && token != '') {
@@ -132,20 +132,48 @@ Page({
         })
         y.getproduct_list(1);
     },
+    addToCart(e) {
+        app.isLogin(() => {
+            app.addToCart(e);
+        })
+    },
 
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
+        // 更新购物车数量
+        app.getShoppingCartNum((length) => {
+            if (length > 0) {
+                wx.setTabBarBadge({
+                    index: 2,
+                    text: String(length)
+                })
+            } else {
+                wx.removeTabBarBadge({
+                    index: 2
+                })
+            }
+        });
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        app.getShoppingCartNum((length) => {
+            if (length > 0) {
+                wx.setTabBarBadge({
+                    index: 2,
+                    text: String(length)
+                })
+            } else {
+                wx.removeTabBarBadge({
+                    index: 2
+                })
+            }
+        });
     },
 
     /**
