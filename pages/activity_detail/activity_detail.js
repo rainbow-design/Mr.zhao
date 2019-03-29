@@ -9,17 +9,17 @@ Page({
      */
     data: {
         id: '',
-        content:''
+        content: ''
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         let that = this;
         wx.setNavigationBarTitle({
             title: '活动详情'
         })
-        wx.yue.sub("renderData", function(data){
+        wx.yue.sub("renderData", function (data) {
             that.setData({
                 content: WxParse.wxParse('content', 'html', data, that),
             })
@@ -30,6 +30,6 @@ Page({
         // 取消多余的事件订阅
         wx.yue.remove("renderData");
     }
-   
+
 
 })
