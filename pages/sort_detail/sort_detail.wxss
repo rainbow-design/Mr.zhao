@@ -158,7 +158,7 @@
 
 .render {
     /* padding: 26rpx 30rpx 30rpx; */
-    padding: 26rpx 0 30rpx;
+    padding: 26rpx 20rpx 30rpx;
 }
 
 .renderImg {
