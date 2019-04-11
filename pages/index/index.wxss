@@ -105,18 +105,6 @@
     border-radius: 20px;
 }
 
-.Carousel Swiper {
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-}
-
-.Carousel .slide-image {
-    display: block;
-    width: 690rpx;
-    height: 260rpx;
-    border-radius: 20rpx;
-}
 
 .subMenu {
     position: relative;
@@ -170,7 +158,7 @@
 .hotSellItem {
     height: 219rpx;
     width: 750rpx;
-    padding: 24rpx 30rpx 20rpx 30rpx;
+    padding: 24rpx 30rpx 20rpx 24rpx;
 }
 
 .hotSellItem_img {

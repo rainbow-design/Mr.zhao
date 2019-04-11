@@ -13,7 +13,6 @@ Page({
         loading: true,
         showSignIn: false,
         hasYouhuiquan: false, // 首页领取优惠券？
-        indicatorDots: false,
         showInviteAd: true,
         isPlus: false, // 是会员吗
         swiperCurrent: 0,
@@ -329,26 +328,7 @@ Page({
             })
         }
     },
-    selectCarouselByIndex: function (e) {
-        this.setData({
-            swiperCurrent: e.currentTarget.id
-        })
-    },
-    toHref(e) {
-        const data = e.currentTarget.dataset;
-        // type = 2，根据 goods_id 展示商品详情
-        // type = 3, 展示富文本的活动详情页面
-        if (data.type === '2') {
-            wx.navigateTo({
-                url: `../sort_detail/sort_detail?id=${data.id}`
-            })
-        } else if (data.type === '3') {
-            wx.yue.pub("renderData", data.content)
-            wx.navigateTo({
-                url: `../activity_detail/activity_detail`
-            })
-        }
-    },
+
     // 领取优惠券
     receive_coupons(e) {
         let that = this;

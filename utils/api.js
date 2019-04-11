@@ -46,6 +46,7 @@ var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
     addr_list = RootUrl + "rest/2.0/user/personal/addr_list", // 我的收货地址
     edit_addr = RootUrl + "rest/2.0/user/personal/edit_addr", // 添加编辑收货地址
     remove_addr = RootUrl + "rest/2.0/user/personal/remove_addr", // 移除收货地址
+    kf_telephone = RootUrl + "rest/2.0/user/personal/kf_telephone", // 客服电话
 
     // 商品分类/商品列表
     product_cate = RootUrl + "rest/2.0/category/category/category_list", // 一级、二级分类
@@ -106,5 +107,6 @@ module.exports = {
     addr_list,
     edit_addr,
     remove_addr,
-    cart_add
+    cart_add,
+    kf_telephone
 }

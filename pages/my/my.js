@@ -12,7 +12,8 @@ Page({
         showCallTelMask: false,
         userInfo: {},
         is_plus: false,
-        orderNum: {}
+        orderNum: {},
+        kf_telephone:null
     },
 
     /**
@@ -44,6 +45,7 @@ Page({
         if (token != '') {
             y.getUserInfo();
             y.getOrderNum();
+            y.getKf_telephone();
         }
     },
     getUserInfo() {
@@ -92,6 +94,18 @@ Page({
             util.closeLoading();
             y.setData({
                 orderNum: data,
+                loading: false
+            })
+        })
+    },
+    // 客服电话
+    getKf_telephone(){
+        let y = this;
+        util.promiseRequest(api.kf_telephone, {}).then(res => {
+            var data = res.data.response_data;
+            util.closeLoading();
+            y.setData({
+                kf_telephone: data.tel,
                 loading: false
             })
         })

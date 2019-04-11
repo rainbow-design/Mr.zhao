@@ -1,0 +1,14 @@
+<view class='Carousel_wrap'>
+<!-- 图片区 -->
+    <swiper current="{{swiperCurrentIndex}}" circular="true" bindchange="swiperChange" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="1000" style="height:{{swiperHeight}}">
+        <swiper-item wx:for="{{bannerList}}" bindtap="toHref" wx:key="{{index}}" bindtap='toHref' data-type="{{item.type}}" data-id="{{item.goods_id}}" data-content="{{item.content}}" data-link="{{item.link}}">
+            <image src="{{item.img_url}}" class="slide-image" />
+        </swiper-item>
+    </swiper>
+    <!-- 关联按钮 -->
+    <view class="boxCell" style="top:{{dotTop}}">
+        <block wx:for="{{bannerList.length > 1 ? bannerList:[]}}" wx:for-index="index" wx:key="{{item.banner}}">
+            <view id="{{index}}" class="dot {{index === swiperCurrentIndex ? 'dot_active':''}}" style="width:{{dotWidthAndHeight}},height:{{dotWidthAndHeight}}" bindtap="selectCarouselByIndex" />
+        </block>
+    </view>
+</view>

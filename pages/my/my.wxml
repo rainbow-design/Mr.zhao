@@ -6,7 +6,7 @@
             <view class='callMeMask'>
                 <view class='controlBox columnBetween'>
                     <view class='contactTel' bindtap='toContactUs'>客服热线：
-                        <view class='tel'>400-686-2367</view>
+                        <view class='tel'>{{kf_telephone}}</view>
                     </view>
                     <view class='cancel' bindtap='cancelToCallTel'>取消</view>
                 </view>

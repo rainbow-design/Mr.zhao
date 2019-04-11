@@ -20,7 +20,7 @@
                     <view class='youhuiText'>会员{{productList.plus}}折</view>
                 </image>
             </view>
-            <view class='bottomText'>{{productList.is_stock}},{{productList.send_desc}}</view>
+            <view class='bottomText'>{{productList.send_desc}}</view>
         </view>
     </view>
     <view class='gap' style='height:21rpx;'></view>

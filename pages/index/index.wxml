@@ -1,5 +1,4 @@
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
-<import src="../../component/swiper.wxml" />
 <block wx:if="{{!loading}}">
 <view class='indexPage'>
     <!-- 首页签到弹窗模块 start -->
@@ -85,7 +84,7 @@
     </view>
     <!-- 轮播 -->
     <view class='Carousel'>
-        <template is="swiper" data="{{bannerList:bannerList,swiperCurrent:swiperCurrent,indicatorDots:indicatorDots,RootUrl:RootUrl}}" />
+    <Carousel swiperHeight="260rpx" bannerList="{{bannerList}}" dotWidthAndHeight="12rpx" dotTop="-20rpx" ></Carousel>
     </view>
     <!-- 子菜单 -->
     <view class='subMenu f-wrap  borderBox oneLineBetween mulitLineStart'>
