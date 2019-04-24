@@ -17,7 +17,7 @@
     <block wx:if="{{hasYouhuiquan}}">
         <view class='Mask'>
             <view class='quan'>
-                <image class='redImg' src="../../assets/icon/index_youhui.png" mode='widthFix'></image>
+                <image class='redImg' src="../../assets/icon/index_youhui.png"></image>
                 <view class='quan_title'>领取优惠券</view>
                 <view class='ticketBox' style='height:500rpx'>
                     <scroll-view class="scroll_a" scroll-y="true" style='height:500rpx;box-sizing:border-box;white-space:nowrap'>
@@ -47,7 +47,7 @@
                     </scroll-view>
                 </view>
             </view>
-            <image class='index_delete' src="../../assets/icon/index_delete.png" mode='widthFix' bindtap='closeYouhuoquan'></image>
+            <image class='index_delete' src="../../assets/icon/index_delete.png" bindtap='closeYouhuoquan'></image>
         </view>
     </block>
     <!-- 首页优惠券弹窗模块 end -->

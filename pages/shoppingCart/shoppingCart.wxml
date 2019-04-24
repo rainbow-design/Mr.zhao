@@ -102,10 +102,10 @@
                                 </view>
                                 <view class='countControl'>
 
-                                    <image class='minus' data-index="{{index}}" data-id="{{item.goods_id}}" data-num="{{item.num}}" style='width:38rpx;height:38rpx;' src="../../assets/icon/minus.png" catchtap='minusNum'></image>
+                                    <image class='minus' data-index="{{index}}" data-id="{{item.goods_id}}" data-num="{{item.num}}" style='width:38rpx;height:38rpx;max-height:38rpx' src="../../assets/icon/minus.png" catchtap='minusNum'></image>
                                     <view class='number'>{{item.num}}</view>
 
-                                    <image class='add' data-index="{{index}}" data-num="{{item.num}}" data-id="{{item.goods_id}}" style='width:38rpx;height:38rpx;' src="../../assets/icon/add.png" catchtap='numAdd'></image>
+                                    <image class='add' data-index="{{index}}" data-num="{{item.num}}" data-id="{{item.goods_id}}" style='width:38rpx;height:38rpx;max-height:38rpx' src="../../assets/icon/add.png" catchtap='numAdd'></image>
                                 </view>
                             </view>
                             <!-- rightBox end -->

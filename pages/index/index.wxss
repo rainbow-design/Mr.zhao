@@ -85,6 +85,7 @@
 .menuItem_img {
     width: 48rpx;
     height: 50rpx;
+    max-height: 50rpx;
 }
 
 .menuItem_text {
@@ -117,6 +118,7 @@
 .subMenuItem_img {
     width: 84rpx;
     height: 88rpx;
+    max-height: 88rpx;
     padding-bottom: 16rpx;
 }
 
@@ -164,6 +166,7 @@
 .hotSellItem_img {
     height: 180rpx;
     width: 180rpx;
+    max-height: 180rpx;
 }
 
 .commonTitle .title {
@@ -256,6 +259,7 @@
     position: absolute;
     right: -44rpx;
     bottom: 0;
+    max-height: 60rpx;
     width: 60rpx;
 }
 
@@ -289,6 +293,7 @@
     right: 25rpx;
     top: 818rpx;
     width: 130rpx;
+    max-height: 134rpx;
     z-index: 777;
 }
 
@@ -367,6 +372,8 @@
     left: 333rpx;
     top: 883rpx;
     width: 81rpx;
+    height: 80rpx;
+    max-height: 80rpx;
 }
 
 .quan {
@@ -386,6 +393,7 @@
     position: absolute;
     top: 0;
     width: 634rpx;
+    height: 194rpx;
 }
 
 .quan .quan_title {

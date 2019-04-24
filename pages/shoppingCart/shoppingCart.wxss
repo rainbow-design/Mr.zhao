@@ -215,6 +215,7 @@
 .rightBox .img {
     width: 150rpx;
     height: 150rpx;
+    max-height: 150rpx;
 }
 
 .rightBox .content {

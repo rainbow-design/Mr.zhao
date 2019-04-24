@@ -14,7 +14,7 @@
       <view class='sex oneLineStart'>
         <block wx:if="{{initData.sex_name === '男'}}">
           <view class="man {{initData.sex_name === '男'?'green_act' :''}}" data-sex="男" bindtap='selectSex'>
-            <image mode='widthFix' src="../../assets/icon/checkBox_act.png"></image>
+            <image  style='max-height:30rpx' mode='widthFix' src="../../assets/icon/checkBox_act.png"></image>
 
             <view class='text'>男</view>
           </view>
@@ -22,7 +22,7 @@
         </block>
         <block wx:elif="{{initData.sex_name != '男'}}">
           <view class="man" data-sex="男" bindtap='selectSex'>
-            <image mode='widthFix' src="../../assets/icon/checkBox.png"></image>
+            <image style='max-height:30rpx' mode='widthFix' src="../../assets/icon/checkBox.png"></image>
 
             <view class='text'>男</view>
           </view>
@@ -30,14 +30,14 @@
         <!-- 女 -->
         <block wx:if="{{initData.sex_name === '女'}}">
           <view class="women green_act" data-sex="女" bindtap='selectSex'>
-            <image mode='widthFix' src="../../assets/icon/checkBox_act.png"></image>
+            <image  style='max-height:30rpx' mode='widthFix' src="../../assets/icon/checkBox_act.png"></image>
             <view class='text'>女</view>
           </view>
 
         </block>
         <block wx:elif="{{initData.sex_name != '女'}}">
           <view class="man" data-sex="女" bindtap='selectSex'>
-            <image mode='widthFix' src="../../assets/icon/checkBox.png"></image>
+            <image  style='max-height:30rpx' mode='widthFix' src="../../assets/icon/checkBox.png"></image>
 
             <view class='text'>女</view>
           </view>

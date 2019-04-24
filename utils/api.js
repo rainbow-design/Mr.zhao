@@ -1,4 +1,5 @@
-var RootUrl = "https://bianlidian.test01.qcw100.com/";
+var RootUrl_dev = "https://bianlidian.test01.qcw100.com/" ; // dev
+var RootUrl = "https://zxssxcs.cn/";
 
 // 登录注册
 var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录

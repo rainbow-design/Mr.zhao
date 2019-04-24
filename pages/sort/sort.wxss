@@ -171,6 +171,8 @@
     position: absolute;
     left: 30rpx;
     width: 78rpx;
+    height: 55rpx;
+    max-height: 55rpx;
 }
 
 .location {
@@ -344,6 +346,7 @@
 .goods_item .img {
     width: 150rpx;
     height: 150rpx;
+    max-height: 150rpx;
 }
 
 .content {
@@ -414,6 +417,7 @@
     right: 0;
     bottom: 0;
     width: 60rpx;
+    max-height: 60rpx;
     background: rgba(240, 255, 234, 1);
     border-radius: 50%;
 }
@@ -445,6 +449,7 @@
 .getYouhuiQuan image {
     margin-left: 24rpx;
     width: 508rpx;
+    height: 138rpx;
 }
 
 .get {

@@ -13,7 +13,7 @@
             </view>
         </block>
         <view class='greenBox'>
-            <image class='greenBg' mode="widthFix" src="../../assets/green_bg.png"></image>
+            <image class='greenBg' src="../../assets/green_bg.png"></image>
             <block wx:if="{{userInfo === false}}">
                 <image class='showQuan_login' src="../../assets/shouquan_login.png"></image>
                 <view class='showQuan' bindtap='toAuthorizationLogin'> 授权登录</view>
@@ -37,7 +37,7 @@
                     <view class='tel'>{{filter.filterPhoneByStar(userInfo.lists[0].mobile)}}</view>
                 </view>
                 <block wx:if="{{userInfo != false}}">
-                    <image class='memberInfo' mode='widthFix' src="../../assets/memberInfo.png" data-info="{{userInfo.lists[0]}}" bindtap='toMemberInfo'></image>
+                    <image class='memberInfo' src="../../assets/memberInfo.png" data-info="{{userInfo.lists[0]}}" bindtap='toMemberInfo'></image>
                 </block>
             </view>
             <view class='sysInfo oneLineBetween'>

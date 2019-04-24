@@ -1,6 +1,6 @@
 <template name="shoppingListItem">
     <view class='hotSellItem borderBox oneLineBetween bor_Bottom'>
-     <image  style='width:150rpx' src="{{item.thumb_img}}" mode="widthFix"> </image>
+     <image  style='width:150rpx;max-height:150rpx;' src="{{item.thumb_img}}" mode="widthFix"> </image>
         <view class='hotSellItem_content hotContentFlexStyle'>
             <view class='title line-clamp '>
                 {{item.name}}

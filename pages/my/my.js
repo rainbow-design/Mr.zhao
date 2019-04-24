@@ -206,8 +206,9 @@ Page({
         })
     },
     toContactUs() {
+        let y = this;
         wx.makePhoneCall({
-            phoneNumber: '400-686-2367'
+            phoneNumber: y.data.kf_telephone
         })
     },
     toMyOrderPage(e) {

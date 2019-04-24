@@ -59,6 +59,8 @@
     position: absolute;
     top: 0;
     width: 750rpx;
+    height: 340rpx;
+    max-height: 340rpx;
 }
 
 .user {
@@ -102,6 +104,7 @@
 
 .memberInfo {
     width: 157rpx;
+    height: 48rpx;
 }
 
 .memberGrade {
