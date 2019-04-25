@@ -264,7 +264,7 @@ Page({
     },
 
     // 优惠券
-    get_coupons() {
+    get_coupons: util.debounce(function (e) {
         let that = this;
         if (wx.Storage.getItem("token")) {
             app.get_coupons(function (data) {
@@ -277,8 +277,7 @@ Page({
                 }
             })
         }
-
-    },
+    }, 1000, true),
     // 加入购物车
     addToCart(e) {
         app.isLogin(() => {

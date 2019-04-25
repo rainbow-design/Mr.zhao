@@ -19,6 +19,10 @@
     width:100% !important;
 }
 
+/* 文字换行 */
+.textWrap {
+    white-space: pre-wrap;
+}
 
 /* 无数据块 */
 

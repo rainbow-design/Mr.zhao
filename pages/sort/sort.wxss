@@ -34,7 +34,7 @@
     position: relative;
     margin: 20rpx 30rpx;
     width: 690rpx;
-    height: 234rpx;
+    /* height: 234rpx; */
     background: rgba(255, 255, 255, 1);
     border-radius: 10rpx;
     overflow: hidden;
@@ -54,10 +54,15 @@
     color: rgba(255, 255, 255, 1);
     line-height: 45rpx;
     text-align: center;
+    z-index: 1000;
 }
 
 .upBox {
-    height: 171rpx;
+    position: relative;
+    display: flex;
+    justify-content:  flex-start;
+    align-items: center;
+    /* height: 171rpx; */
     width: 100%;
     box-sizing: border-box;
     padding: 30rpx 0 32rpx 29rpx;
@@ -83,11 +88,8 @@
 /* 优惠券主要结构 */
 
 .contentBox {
-    position: absolute;
-    left: 240rpx;
-    top: 30rpx;
+    margin-left: 50rpx;
     width: 260rpx;
-    height: 106rpx;
 }
 
 .contentBox .title {
@@ -99,15 +101,22 @@
     line-height: 28rpx;
 }
 
+
+
 .contentBox .normal {
-    height: 25rpx;
     font-size: 26rpx;
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;
     color: rgba(153, 153, 153, 1);
     line-height: 25rpx;
 }
-
+.contentBox .normal.voucher {
+    width: 300rpx;
+    margin: 15rpx 0 14rpx;
+    word-break: break-all;
+    white-space: pre-wrap;
+    line-height: normal;
+}
 .contentBox .view {
     text-align: left;
 }
@@ -115,10 +124,8 @@
 /* priceBox */
 
 .priceBox {
-    position: absolute;
-    left: 29rpx;
-    top: 31rpx;
-    width: 144rpx;
+    /* left: 29rpx; */
+    /* width: 144rpx; */
     height: 108rpx;
 }
 

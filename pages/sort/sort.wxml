@@ -6,14 +6,14 @@
                 <view class='bottomCoupon'>
                     <view class='title1'>
                         优惠券
-                        <image mode='widthFix' src="../../assets/icon/close.png" style='width:32rpx;' bindtap='closeCoupon'></image>
+                        <image  src="../../assets/icon/close.png" style='width:32rpx;height:32rpx' bindtap='closeCoupon'></image>
                     </view>
                     <scroll-view class="scroll_a" scroll-y="true" style='padding-bottom:92rpx;box-sizing:border-box;white-space:nowrap'>
                         <block wx:for="{{card}}" wx:key="{{item}}">
                             <view class='ticket'>
                                 <view class='get' bindtap='receive_coupons' data-id="{{item.id}}">领取</view>
                                 <view class='upBox'>
-                                    <view class='priceBox columnBetween'>
+                                    <view class='priceBox columnBetweenStart'>
                                         <view class='bigPrice'>
                                             <view class='symbol'>￥</view>
                                             <view class='price'>{{item.money}}</view>
@@ -23,7 +23,7 @@
                                     <view class='contentBox columnBetweenStart'>
                                         <view class='title'>{{item.name}}
                                         </view>
-                                        <view class='normal'>{{item.class}}类优惠券</view>
+                                        <view class='normal voucher'>{{item.class}}类优惠券、可用</view>
                                         <view class='normal'>{{item.role}}
                                         </view>
                                     </view>
@@ -33,6 +33,29 @@
                                 </view>
                             </view>
                         </block>
+                        <!-- 测试 优惠券多行修改 -->
+                        <!-- <view class='ticket'>
+                                <view class='get' bindtap='receive_coupons' data-id="{{item.id}}">领取</view>
+                                <view class='upBox'>
+                                    <view class='priceBox columnBetweenStart'>
+                                        <view class='bigPrice'>
+                                            <view class='symbol'>￥</view>
+                                            <view class='price'>10</view>
+                                        </view>
+                                        <view class='condition'>满10元可用</view>
+                                    </view>
+                                    <view class='contentBox columnBetweenStart'>
+                                        <view class='title'>自测
+                                        </view>
+                                        <view class='normal voucher'>好多好好多好多类优惠券,可用好多、可用</view>
+                                        <view class='normal'>就是好哦
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class='bottomBox'>
+                                    <view class='text'>有效期：2015 至 2018</view>
+                                </view>
+                            </view> -->
                     </scroll-view>
                 </view>
             </view>
@@ -80,8 +103,8 @@
 
                 <!-- subMenu end -->
                 <view class='shoppingList {{total > 0 ?"":"shoppingList_pt"}}'>
-                     <scroll-view class="scroll_b" scroll-y="true" style='white-space:nowrap' bindscrolltolower="scrollBottom">
-                    <!-- <scroll-view class="scroll_b" scroll-y="true" style='white-space:nowrap' bindscrolltolower="scrollBottom"> -->
+                    <scroll-view class="scroll_b" scroll-y="true" style='white-space:nowrap' bindscrolltolower="scrollBottom">
+                        <!-- <scroll-view class="scroll_b" scroll-y="true" style='white-space:nowrap' bindscrolltolower="scrollBottom"> -->
                         <!-- 优惠券模块------------ -->
                         <block wx:if="{{total > 0}}">
                             <view class='getYouhuiQuan'>

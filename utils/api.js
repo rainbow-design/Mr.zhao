@@ -1,5 +1,5 @@
-var RootUrl_dev = "https://bianlidian.test01.qcw100.com/" ; // dev
-var RootUrl = "https://zxssxcs.cn/";
+// var RootUrl = "https://bianlidian.test01.qcw100.com/" ; // dev
+var RootUrl = "https://zxssxcs.cn/"; // production
 
 // 登录注册
 var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
@@ -18,7 +18,7 @@ var login = RootUrl + "rest/2.0/user/user/wx_login", // 登录
     sign_in = RootUrl + "rest/2.0/home/home/sign_in", // 签到
     plus_list = RootUrl + "rest/2.0/home/home/plus_list", // plus 列表
     pay_plus = RootUrl + "rest/2.0/home/home/plus_pay", // 会员支付
-    clear_history = RootUrl + "rest/2.0/home/home/del_search_history",// 清除历史记录
+    clear_history = RootUrl + "rest/2.0/home/home/del_search_history", // 清除历史记录
 
     //购物车
     cart_list = RootUrl + "rest/2.0/cart/cart/cart_list", // 购物车列表

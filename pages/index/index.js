@@ -13,7 +13,7 @@ Page({
         loading: true,
         showSignIn: false,
         hasYouhuiquan: false, // 首页领取优惠券？
-        showInviteAd: true,
+        showInviteAd: false,
         isPlus: false, // 是会员吗
         swiperCurrent: 0,
         card: [], // 优惠券的数量
@@ -330,8 +330,8 @@ Page({
     },
 
     // 领取优惠券
-    receive_coupons(e) {
-        let that = this;
+    receive_coupons: util.debounce(function (e) {
+        var that = this;
         app.receive_coupons(e, function () {
             app.get_coupons(function (data) {
                 that.setData({
@@ -345,8 +345,9 @@ Page({
 
                 }
             });
-        });
-    },
+        })
+    }, 1000, true),
+
     closeYouhuoquan() {
         this.setData({
             hasYouhuiquan: false
