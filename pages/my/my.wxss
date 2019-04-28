@@ -16,6 +16,11 @@
     color: rgba(0, 0, 0, 1);
 }
 
+.plusBg {
+    width: 176rpx;
+    height: 56rpx;
+}
+
 .showQuan {
     position: absolute;
     left: 313rpx;

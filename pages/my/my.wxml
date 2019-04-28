@@ -72,14 +72,14 @@
                     <view>每月仅需9.9元</view>
                     <view>平均可省60元</view>
                 </view>
-                <image mode='widthFix' src="../../assets/kaitong.png" bindtap='openPlus'></image>
+                <image class='plusBg' src="../../assets/kaitong.png" bindtap='openPlus'></image>
             </block>
             <block wx:if="{{userInfo === false}}">
                 <view class='propaganda columnBetween'>
                     <view>每月仅需9.9元</view>
                     <view>平均可省60元</view>
                 </view>
-                <image mode='widthFix' src="../../assets/kaitong.png" bindtap='openPlus'></image>
+                <image class='plusBg' src="../../assets/kaitong.png" bindtap='openPlus'></image>
             </block>
             <block wx:elif="{{userInfo.lists[0].is_plus === 'plus会员'}}">
                 <view class='propaganda oneLineBetween' style='width:502rpx;'>

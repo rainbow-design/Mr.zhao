@@ -35,7 +35,7 @@
                                     <view class='contentBox columnBetweenStart'>
                                         <view class='title'>{{item.name}}
                                         </view>
-                                        <view class='normal voucher'>{{item.class}}类优惠券</view>
+                                        <view class='normal voucher'>限{{filter.splitByCAndConcatByS(item.class)}}类可用</view>
                                         <view class='normal'>{{item.role}}
                                         </view>
                                     </view>

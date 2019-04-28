@@ -1,6 +1,6 @@
 // comments/list/list.js
 const app = getApp();
-import API from "../../api/index";
+// import API from "../../api/index";
 import util from "../../utils/util";
 Component({
     /**

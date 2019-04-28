@@ -10,7 +10,7 @@
         </swiper>
         <view class='sellCount'>已售{{productList.sale_num}}份</view>
         <view class='contentBox flexStyle'>
-            <view class='title line-clamp'>
+            <view class='title'>
                 {{productList.name}}
             </view>
             <view class='introduction line-clamp'> {{productList.desc}} </view>

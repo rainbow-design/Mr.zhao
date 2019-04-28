@@ -3,6 +3,9 @@
 function splitByC(str) {
     return str.split(',');
 }
+function splitByCAndConcatByS(str){
+    return str.split(',').join(' ')
+}
 
 function splitByS(str) {
     return str.split(' ');
@@ -13,7 +16,7 @@ function filterPhoneByStar(str) {
 }
 
 function filterImgUrl(str) {
-    var RootUrl = 'http://admin.bianlidian.test01.qcw100.cn';
+    var RootUrl = 'http://admin.zxssxcs.cn';
     return str.indexOf('/') === 0 ? RootUrl + str : str;
 }
 
@@ -58,5 +61,6 @@ module.exports = {
     filterImgUrl: filterImgUrl,
     filterOrderTitleName: filterOrderTitleName,
     filterOrderDetailStateName: filterOrderDetailStateName,
-    filterPrice: filterPrice
+    filterPrice: filterPrice,
+    splitByCAndConcatByS: splitByCAndConcatByS
 }
