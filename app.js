@@ -3,24 +3,46 @@ const util = require("./utils/util.js");
 const api = require("./utils/api.js");
 var app = getApp();
 const Storage = {
-    setItem: function(key, obj, callback) {
-        wx.setStorage({
-            key: key,
-            data: obj,
-            success: callback || function() {}
-        })
+    //  第一个 key 参数可以省略，直接传递 obj 对象，支持 callback
+    setItem: function (key, obj, callback) {
+        const getType = function (a) {
+            var typeArray = Object.prototype.toString.call(a).split(" ");
+            return typeArray[1].slice(0, -1);
+        }
+        var firstParamType = getType(arguments[0]);
+        if (firstParamType === 'Object') {
+            var keyArrayLength = Object.keys(arguments[0]).length
+            var index = 0;
+            for (var keyName in arguments[0]) {
+                index++;
+                wx.setStorage({
+                    key: keyName,
+                    data: arguments[0][keyName],
+                    success: index == keyArrayLength ? arguments[1] : function () { }
+                })
+            }
+        }
+        if (firstParamType === 'String') {
+            wx.setStorage({
+                key: key,
+                data: obj,
+                success: callback || function () { }
+            })
+        }
+
     },
-    getItem: function(key) {
+    getItem: function (key) {
         return wx.getStorageSync(key);
     },
-    removeItem: function(key) {
+    removeItem: function (key) {
         wx.removeStorage({
             key: key
         })
     }
 }
 
-var Event = (function() {
+
+var Event = (function () {
     var clientList = {},
         pub,
         sub,
@@ -28,7 +50,7 @@ var Event = (function() {
 
     var cached = {};
 
-    sub = function(key, fn) {
+    sub = function (key, fn) {
         if (!clientList[key]) {
             clientList[key] = [];
         }
@@ -40,7 +62,7 @@ var Event = (function() {
             cached[key + 'time'] = 1;
         }
     };
-    pub = function() {
+    pub = function () {
         var key = Array.prototype.shift.call(arguments),
             fns = clientList[key];
         if (!fns || fns.length === 0) {
@@ -56,7 +78,7 @@ var Event = (function() {
         }
 
     };
-    remove = function(key, fn) {
+    remove = function (key, fn) {
         var fns = clientList[key];
         // 缓存订阅一并删除
         var cachedFn = cached[key];
@@ -93,7 +115,7 @@ App({
     data: {
         id: 0
     },
-    onLaunch: function(e) {
+    onLaunch: function (e) {
         // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || [];
         console.log('wx-----------------------------')
@@ -189,7 +211,7 @@ App({
     },
     addToCart(e, clalback) {
         var y = this;
-        this.isLogin(function() {
+        this.isLogin(function () {
             var data = e.currentTarget.dataset;
             let params = {
                 goods_id: data.id,
