@@ -1,52 +1,50 @@
 <import src="../../component/shoppingListItem.wxml" />
 <block wx:if="{{!loading}}">
-    <view>
-        <view class='searchContorl borderBox'>
-            <view class='inputBox'>
-                <input class='inputText borderBox' focus="{{focus}}" bindinput='inputData' value="{{searchValue}}" placeholder='搜索' placeholder-class='place_input'></input>
-                <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
-                <view class='searchText nowrap' bindtap='search'>搜索</view>
-            </view>
-            <block wx:if="{{searchListHistory.length > 0}}">
-                <view class='searchBox'>
-                    <view class='hotSearchBox oneLineBetween'>
-                        <view class='hotSearchText'>历史搜索</view>
-                        <image src='../../assets/icon/delete.png' mode='widthFix' style='width:29rpx;' bindtap='clearHistory'></image>
-                    </view>
-                    <view class='keyWords flexStyle f-wrap'>
-                        <block wx:for="{{searchListHistory}}" wx:key="">
-                            <view class='item' bindtap='chooseKey' data-key="{{item.keywords}}">
-                                <view class='text'>{{item.keywords}}</view>
-                            </view>
-                        </block>
-                    </view>
-                </view>
-                <view class='gap' style='height:20rpx;width:750rpx;position:relative;right:30rpx;'></view>
+  <view>
+    <view class='searchContorl borderBox'>
+      <view class='inputBox'>
+        <input class='inputText borderBox' focus="{{focus}}" bindinput='inputData' value="{{searchValue}}" placeholder='搜索' placeholder-class='place_input'></input>
+        <image class='input_searchIcon' src="../../assets/search.png" mode="widthFix"></image>
+        <view class='searchText nowrap' bindtap='search'>搜索</view>
+      </view>
+      <block wx:if="{{searchListHistory.length > 0}}">
+        <view class='searchBox'>
+          <view class='hotSearchBox oneLineBetween'>
+            <view class='hotSearchText'>历史搜索</view>
+            <image src='../../assets/icon/delete.png' mode='widthFix' style='width:29rpx;' bindtap='clearHistory'></image>
+          </view>
+          <view class='keyWords flexStyle f-wrap'>
+            <block wx:for="{{searchListHistory}}" wx:key="">
+              <view class='item' bindtap='chooseKey' data-key="{{item.keywords}}">
+                <view class='text'>{{item.keywords}}</view>
+              </view>
             </block>
-            <block wx:if="{{searchListTop.length > 0}}">
-                <view class='searchBox' style='padding-top:31rpx;padding-bottom:0;'>
-                    <view class='hotSearchText'>热门搜索</view>
-                    <view class='keyWords flexStyle f-wrap'>
-                        <block wx:for="{{searchListTop}}" wx:key="">
-                            <view class='item' bindtap='chooseKey' data-key="{{item.keywords}}">
-                                <view class='text'>{{item.keywords}}</view>
-                            </view>
-                        </block>
-                    </view>
-                </view>
-
-            </block>
+          </view>
         </view>
-
-        <view class='gap' style='height:20rpx;'></view>
-        <!-- <view class='tuijian' wx:if="{{productList.length>0}}"> -->
-        <view class='tuijian' wx:if="{{productList.length>0}}">
-            <!-- <view class='tuijianText'>推荐商品</view> -->
-            <block wx:for="{{productList}}" wx:key="">
-                <view bindtap="toDetail" data-id="{{item.id}}">
-                    <template is="shoppingListItem" data="{{title: '授权登录',color:'black',maskClass:maskClassName,item:item}}" />
-                </view>
+        <view class='gap' style='height:20rpx;width:750rpx;position:relative;right:30rpx;'></view>
+      </block>
+      <block wx:if="{{searchListTop.length > 0}}">
+        <view class='searchBox' style='padding-top:31rpx;padding-bottom:0;'>
+          <view class='hotSearchText'>热门搜索</view>
+          <view class='keyWords flexStyle f-wrap'>
+            <block wx:for="{{searchListTop}}" wx:key="">
+              <view class='item' bindtap='chooseKey' data-key="{{item.keywords}}">
+                <view class='text'>{{item.keywords}}</view>
+              </view>
             </block>
+          </view>
         </view>
+      </block>
     </view>
+    <view class='gap' style='height:20rpx;'></view>
+    <!-- <view class='tuijian' wx:if="{{productList.length>0}}"> -->
+    <view class='tuijian' wx:if="{{productList.length>0}}">
+      <!-- <view class='tuijianText'>推荐商品</view> -->
+      <block wx:for="{{productList}}" wx:key="">
+        <view bindtap="toDetail" data-id="{{item.id}}">
+          <template is="shoppingListItem" data="{{title: '授权登录',color:'black',maskClass:maskClassName,item:item}}" />
+        </view>
+      </block>
+    </view>
+  </view>
 </block>

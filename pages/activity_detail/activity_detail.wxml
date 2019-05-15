@@ -1,6 +1,6 @@
 <import src="../../component/wxParse/wxParse.wxml" />
 <view class="goodsDetail">
-    <view class='render'>
-        <template class="textarea" is="wxParse" data="{{wxParseData:content.nodes}}" />
-    </view>
+  <view class='render'>
+    <template class="textarea" is="wxParse" data="{{wxParseData:content.nodes}}" />
+  </view>
 </view>

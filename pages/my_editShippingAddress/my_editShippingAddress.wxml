@@ -10,7 +10,9 @@
     </view>
     <view class='line borderBottom oneLineStart'>
       <label class='labelName'>收货地址</label>
-      <view class='input username line-clamp' style='height:28rpx;' bindtap='selectYourAddress'>{{address || '请选择您的收货地址'}}</view>
+      <view class='input username line-clamp' style='height:28rpx;' bindtap='selectYourAddress'>
+        {{address || '请选择您的收货地址'}}
+      </view>
     </view>
     <view class='line borderBottom oneLineStart'>
       <label class='labelName'>楼号门牌</label>
@@ -28,11 +30,9 @@
         <view class="Box {{addressType === 2  ?'green_act':''}}" data-num="2" bindtap='selectAddressType'>
           <view class='text'>学校</view>
         </view>
-
       </view>
     </view>
   </view>
   <view class='submitBtn' bindtap='saveAddressToSubmit'>保存地址</view>
   <view class='deleteBtn' bindtap='deleteAddress'>删除地址</view>
-
 </view>

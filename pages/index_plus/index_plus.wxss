@@ -39,7 +39,11 @@
   left: 80rpx;
   width: 590rpx;
   height: 80rpx;
-  background: linear-gradient(0deg, rgba(233, 172, 122, 1), rgba(244, 197, 142, 1));
+  background: linear-gradient(
+    0deg,
+    rgba(233, 172, 122, 1),
+    rgba(244, 197, 142, 1)
+  );
   border-radius: 10rpx;
   font-size: 32rpx;
   font-family: SourceHanSansCN-Regular;

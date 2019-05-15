@@ -1,317 +1,317 @@
 .address {
-    width: 750rpx;
-    box-sizing: border-box;
-    height: 242rpx;
-    background: #f0f2f5;
-    padding: 30rpx;
+  width: 750rpx;
+  box-sizing: border-box;
+  height: 242rpx;
+  background: #f0f2f5;
+  padding: 30rpx;
 }
 
 .whiteBox {
-    position: relative;
-    box-sizing: border-box;
-    padding: 28rpx 30rpx 38rpx 31rpx;
-    width: 690rpx;
-    height: 182rpx;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 25rpx;
+  position: relative;
+  box-sizing: border-box;
+  padding: 28rpx 30rpx 38rpx 31rpx;
+  width: 690rpx;
+  height: 182rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 25rpx;
 }
 
 .zhuzhi {
-    width: 540rpx;
-    height: 70rpx;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 38rpx;
+  width: 540rpx;
+  height: 70rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 38rpx;
 }
 
 .greenBox {
-    float: left;
-    margin-right: 10rpx;
-    width: 54rpx;
-    height: 26rpx;
-    background: rgba(240, 255, 234, 1);
-    border: 1px solid rgba(88, 181, 48, 1);
-    border-radius: 13rpx;
-    text-align: center;
+  float: left;
+  margin-right: 10rpx;
+  width: 54rpx;
+  height: 26rpx;
+  background: rgba(240, 255, 234, 1);
+  border: 1px solid rgba(88, 181, 48, 1);
+  border-radius: 13rpx;
+  text-align: center;
 }
 
 .greenBox .keyword {
-    height: 16rpx;
-    font-size: 16rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(88, 181, 48, 1);
-    line-height: 26rpx;
+  height: 16rpx;
+  font-size: 16rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(88, 181, 48, 1);
+  line-height: 26rpx;
 }
 
 .presonInfo {
-    margin-top: 22rpx;
-    height: 24rpx;
-    font-size: 26rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(102, 102, 102, 1);
-    line-height: 24rpx;
+  margin-top: 22rpx;
+  height: 24rpx;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 24rpx;
 }
 
 .caidai {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 690rpx;
-    height: 7rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 690rpx;
+  height: 7rpx;
 }
 
 .fixedBottom {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 750rpx;
-    height: 96rpx;
-    background: rgba(255, 255, 255, 1);
-    box-shadow: 0px 0px 24rpx 0px rgba(23, 47, 12, 0.26);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 750rpx;
+  height: 96rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 24rpx 0px rgba(23, 47, 12, 0.26);
 }
 
 .fixedBottom .leftBox {
-    float: left;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 508rpx;
-    height: 95rpx;
-    padding: 0 0 0 30rpx;
-    box-sizing: border-box;
+  float: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 508rpx;
+  height: 95rpx;
+  padding: 0 0 0 30rpx;
+  box-sizing: border-box;
 }
 
 .chooseAll {
-    display: inline;
-    margin-left: 18rpx;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(51, 51, 51, 1);
-    line-height: 96rpx;
+  display: inline;
+  margin-left: 18rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 96rpx;
 }
 
 .fixedBottom .rightBox {
-    float: left;
-    position: relative;
-    width: 242rpx;
-    height: 95rpx;
-    background: rgba(88, 181, 48, 1);
-    box-shadow: 0px 0px 24rpx 0px rgba(23, 47, 12, 0.26);
-    text-align: center;
+  float: left;
+  position: relative;
+  width: 242rpx;
+  height: 95rpx;
+  background: rgba(88, 181, 48, 1);
+  box-shadow: 0px 0px 24rpx 0px rgba(23, 47, 12, 0.26);
+  text-align: center;
 }
 
 .fixedBottom .rightBox .text {
-    position: absolute;
-    left: 60rpx;
-    font-size: 30rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 1);
-    line-height: 95rpx;
+  position: absolute;
+  left: 60rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 95rpx;
 }
 
 .toRight {
-    position: absolute;
-    left: 167rpx;
-    top: 39rpx;
-    width: 15rpx;
+  position: absolute;
+  left: 167rpx;
+  top: 39rpx;
+  width: 15rpx;
 }
 
 .leftBox .name {
-    display: inline;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(51, 51, 51, 1);
-    line-height: 27rpx;
+  display: inline;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 27rpx;
 }
 
 .leftBox .price {
-    display: inline;
-    height: 27rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: bold;
-    color: #58b530;
-    font-size: 32rpx;
-    line-height: 27rpx;
+  display: inline;
+  height: 27rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: bold;
+  color: #58b530;
+  font-size: 32rpx;
+  line-height: 27rpx;
 }
 
 .toRight_green {
-    width: 7rpx;
-    height: 13rpx;
+  width: 7rpx;
+  height: 13rpx;
 }
 
 /* foods */
 
 .foods {
-    width: 750rpx;
-    height: 297rpx;
-    box-sizing: border-box;
-    padding: 0 30rpx 33rpx 30rpx;
-    background: rgba(255, 255, 255, 1);
+  width: 750rpx;
+  height: 297rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx 33rpx 30rpx;
+  background: rgba(255, 255, 255, 1);
 }
 
 .foods .titleBox {
-    height: 92rpx;
-    width: 100%;
-    border-bottom: 2px solid rgba(224, 224, 224, 1);
+  height: 92rpx;
+  width: 100%;
+  border-bottom: 2px solid rgba(224, 224, 224, 1);
 }
 
 .titleBox .toPeisong {
-    font-size: 26rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(88, 181, 48, 1);
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(88, 181, 48, 1);
 }
 
 .foods .titleBox .name {
-    font-size: 32rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
 }
 
 .imageBox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
 }
 
 .foodsImgs {
-    width: 550rpx;
+  width: 550rpx;
 }
 
 .foodsImgs image {
-    margin-top: 5rpx;
-    width: 150rpx;
-    height: 150rpx;
-    border-radius: 10rpx;
-    background: pink;
-    margin-right: 30rpx;
+  margin-top: 5rpx;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+  background: pink;
+  margin-right: 30rpx;
 }
 
 .Count {
-    font-size: 20rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(88, 181, 48, 1);
-    line-height: 50rpx;
-    height: 50rpx;
+  font-size: 20rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(88, 181, 48, 1);
+  line-height: 50rpx;
+  height: 50rpx;
 }
 
 .peiSong {
-    width: 11rpx;
-    height: 20rpx;
+  width: 11rpx;
+  height: 20rpx;
 }
 
 .detail {
-    margin-top: 20rpx;
-    width: 750rpx;
-    /* height: 542rpx; */
-    background: #fff;
+  margin-top: 20rpx;
+  width: 750rpx;
+  /* height: 542rpx; */
+  background: #fff;
 }
 
 .line {
-    height: 85rpx;
-    box-sizing: border-box;
-    padding: 0 29rpx 0 31rpx;
+  height: 85rpx;
+  box-sizing: border-box;
+  padding: 0 29rpx 0 31rpx;
 }
 
 .line2 {
-    position: relative;
-    top: 1rpx;
-    height: 91rpx;
-    box-sizing: border-box;
-    padding: 0 29rpx 0 31rpx;
+  position: relative;
+  top: 1rpx;
+  height: 91rpx;
+  box-sizing: border-box;
+  padding: 0 29rpx 0 31rpx;
 }
 
 .line2 image {
-    width: 11rpx;
-    margin-left: 9rpx;
+  width: 11rpx;
+  margin-left: 9rpx;
 }
 
 .line3 {
-    position: relative;
-    top: 1rpx;
-    height: 92rpx;
-    box-sizing: border-box;
-    padding: 0 29rpx 0 31rpx;
+  position: relative;
+  top: 1rpx;
+  height: 92rpx;
+  box-sizing: border-box;
+  padding: 0 29rpx 0 31rpx;
 }
 
 .border_bottom {
-    border-bottom: 1px solid rgba(224, 224, 224, 1);
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
 }
 
 .detail .name {
-    font-size: 26rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 42rpx;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 42rpx;
 }
 
 .detail .content {
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
 }
 
 .selectJF {
-    width: 200rpx !important;
-    height: 60rpx !important;
-    line-height: 60rpx;
-    text-align: right;
+  width: 200rpx !important;
+  height: 60rpx !important;
+  line-height: 60rpx;
+  text-align: right;
 }
 
 .detail .content_orange {
-    color: rgba(255, 93, 22, 1);
+  color: rgba(255, 93, 22, 1);
 }
 
 .name_normal {
-    font-size: 26rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(153, 153, 153, 1);
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
 }
 
 .lineLast {
-    position: relative;
-    top: 2rpx;
-    height: 91rpx;
-    box-sizing: border-box;
-    padding: 0 29rpx 0 31rpx;
+  position: relative;
+  top: 2rpx;
+  height: 91rpx;
+  box-sizing: border-box;
+  padding: 0 29rpx 0 31rpx;
 }
 
 .lineLast .heJiName {
-    display: inline;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(51, 51, 51, 1);
-    line-height: 27rpx;
+  display: inline;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 27rpx;
 }
 
 .lineLast .price {
-    display: inline;
-    height: 27rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: bold;
-    color: #58b530;
-    font-size: 32rpx;
-    line-height: 27rpx;
+  display: inline;
+  height: 27rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: bold;
+  color: #58b530;
+  font-size: 32rpx;
+  line-height: 27rpx;
 }
 
 .rightIcon {
-    position: absolute;
-    top: 74rpx;
-    right: 30rpx;
-    width: 19rpx;
-    height: 34rpx;
+  position: absolute;
+  top: 74rpx;
+  right: 30rpx;
+  width: 19rpx;
+  height: 34rpx;
 }

@@ -1,132 +1,111 @@
 <view class="shoppingCart maskContent">
-    <view class='gap_state '></view>
-    <view class='stateName center'>
-        <image src="../../assets/icon/state.png" mode='widthFix' style='width:69rpx;'> </image>
-        <view class='now_name'>{{orderData.status == 1 ? '待付款' : orderData.status == 2 ? '待配送' : orderData.status == 3 ? '配送中' : orderData.status == 4 ? '已完成' : orderData.status == 5 ? '已取消' : orderData.status == 6 ? '已评论' : ''}}</view>
+  <view class='gap_state '></view>
+  <view class='stateName center'>
+    <image src="../../assets/icon/state.png" mode='widthFix' style='width:69rpx;'></image>
+    <view class='now_name'>
+      {{orderData.status == 1 ? '待付款' : orderData.status == 2 ? '待配送' : orderData.status == 3 ? '配送中' : orderData.status == 4 ? '已完成' : orderData.status == 5 ? '已取消' : orderData.status == 6 ? '已评论' : ''}}
     </view>
-    <view class='address'>
-        <view class='whiteBox'>
-            <view class='zhuzhi'>
-                <view class='greenBox'>
-                    <view class='keyword'>
-                        住宅
-                    </view>
-                </view>
-                {{orderData.con_address}}
-            </view>
-            <view class='presonInfo'>
-                {{orderData.user_name}} {{orderData.mobile}}
-            </view>
+  </view>
+  <view class='address'>
+    <view class='whiteBox'>
+      <view class='zhuzhi'>
+        <view class='greenBox'>
+          <view class='keyword'>住宅</view>
         </view>
+        {{orderData.con_address}}
+      </view>
+      <view class='presonInfo'>{{orderData.user_name}} {{orderData.mobile}}</view>
     </view>
-    <view class='foods' style='margin-top:20rpx;'>
-        <view class='titleBox oneLineBetween'>
-            <view class='name'>配送时间</view>
-            <view class='toPeisong center'>
-                {{orderData.delivery_time}}
-            </view>
-
-        </view>
-        <view class='imageBox'>
-
-            <scroll-view scroll-x class='foodsImgs' style="white-space: nowrap;">
-                <image wx:for="{{orderData.thumb_img}}" wx:key="{{item}}" src="{{item}}"></image>
-            </scroll-view>
-            <view class='Count center' bindtap='toProductList'>共{{orderData.count}}件
-                <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
-            </view>
-        </view>
+  </view>
+  <view class='foods' style='margin-top:20rpx;'>
+    <view class='titleBox oneLineBetween'>
+      <view class='name'>配送时间</view>
+      <view class='toPeisong center'>{{orderData.delivery_time}}</view>
     </view>
-    <view class='yOrder'>
-        <view class='yOrder_item oneLineStart'>
-            订单详细
-        </view>
-        <view class='yOrder_item2 oneLineBetween'>
-            <view>
-                订单编号
-            </view>
-            <view>
-                {{orderData.order_no}}
-            </view>
-        </view>
-        <view class='yOrder_item2 oneLineBetween'>
-            <view>
-                创建时间
-
-            </view>
-            <view>
-                {{orderData.create_time}}
-            </view>
-        </view>
-
+    <view class='imageBox'>
+      <scroll-view scroll-x class='foodsImgs' style="white-space: nowrap;">
+        <image wx:for="{{orderData.thumb_img}}" wx:key="{{item}}" src="{{item}}"></image>
+      </scroll-view>
+      <view class='Count center' bindtap='toProductList'>
+        共{{orderData.count}}件
+        <image mode="widthFix" src='../../assets/icon/toRight_green.png' style='margin-left:7rpx;margin-right:1prx;'></image>
+      </view>
     </view>
-    <view class='detail'>
-        <view class='line border_bottom oneLineBetween'>
-            <view class='name'>商品总价</view>
-            <view class='content'>￥{{orderData.pay_info.amount}}</view>
-        </view>
-        <view class='line2 border_bottom oneLineBetween'>
-            <view class='name'>配送费</view>
-            <block wx:if="{{orderData.pay_info.delivery_fee === 0}}">
-                <view class='content green'>免配送费</view>
-            </block>
-            <block wx:if="{{orderData.pay_info.delivery_fee != 0}}">
-                <view class='content'>￥{{orderData.pay_info.delivery_fee}}</view>
-            </block>
-        </view>
-
-        <block wx:if="{{orderData.pay_info.coupons_money != ''}}">
-            <view class='line2 border_bottom oneLineBetween'>
-                <view class='name'>优惠券优惠金额</view>
-                <view class='content content_orange'>￥{{orderData.pay_info.coupons_money }}</view>
-            </view>
-        </block>
-        <block wx:if="{{orderData.pay_info.use_score != 0}}">
-            <view class='line2 border_bottom oneLineBetween'>
-                <view class='name'> 使用积分</view>
-                <view class='content content_orange'>
-                    {{'- ￥' + orderData.pay_info.use_score /100}}
-                </view>
-            </view>
-        </block>
-        <block wx:if="{{orderData.pay_info.sale_price != 0}}">
-            <view class='line2 border_bottom oneLineStart'>
-                <view class='name green'>本单会员价格为您节省</view>
-                <view class='content green'>{{orderData.pay_info.sale_price}} 元</view>
-            </view>
-        </block>
-
-        <view class='lineLast oneLineEnd'>
-            <view class='heJiName'>付款:
-                <view class='price'>¥{{orderData.money}}</view>
-            </view>
-        </view>
-
+  </view>
+  <view class='yOrder'>
+    <view class='yOrder_item oneLineStart'>订单详细</view>
+    <view class='yOrder_item2 oneLineBetween'>
+      <view>订单编号</view>
+      <view>{{orderData.order_no}}</view>
     </view>
-    <view class='gap_state ' style='height:202rpx;'></view>
-    <view class='fixedBottom' wx:if='{{orderData.status == 1}}'>
-        <view class='leftBox' bindtap='cancel'>取消订单</view>
-        <view class='rightBox' bindtap='toPay'>
-            <view class='text'>去支付</view>
-            <image class='toRight' mode="widthFix" src="../../assets/icon/toRight.png"></image>
-        </view>
+    <view class='yOrder_item2 oneLineBetween'>
+      <view>创建时间</view>
+      <view>{{orderData.create_time}}</view>
     </view>
-    <view class='fixedBottomB' wx:if='{{orderData.status == 3}}'>
-        <view class='rightBoxB' bindtap='confirm'>
-            <view class='textB'>确认收货</view>
-            <image class='toRightB' mode="widthFix" src="../../assets/icon/toRight.png"></image>
-        </view>
+  </view>
+  <view class='detail'>
+    <view class='line border_bottom oneLineBetween'>
+      <view class='name'>商品总价</view>
+      <view class='content'>￥{{orderData.pay_info.amount}}</view>
     </view>
-    <!-- <view class='fixedBottomB' wx:if='{{orderData.status == 4}}'>
+    <view class='line2 border_bottom oneLineBetween'>
+      <view class='name'>配送费</view>
+      <block wx:if="{{orderData.pay_info.delivery_fee === 0}}">
+        <view class='content green'>免配送费</view>
+      </block>
+      <block wx:if="{{orderData.pay_info.delivery_fee != 0}}">
+        <view class='content'>￥{{orderData.pay_info.delivery_fee}}</view>
+      </block>
+    </view>
+    <block wx:if="{{orderData.pay_info.coupons_money != ''}}">
+      <view class='line2 border_bottom oneLineBetween'>
+        <view class='name'>优惠券优惠金额</view>
+        <view class='content content_orange'>￥{{orderData.pay_info.coupons_money }}</view>
+      </view>
+    </block>
+    <block wx:if="{{orderData.pay_info.use_score != 0}}">
+      <view class='line2 border_bottom oneLineBetween'>
+        <view class='name'>使用积分</view>
+        <view class='content content_orange'>{{'- ￥' + orderData.pay_info.use_score /100}}</view>
+      </view>
+    </block>
+    <block wx:if="{{orderData.pay_info.sale_price != 0}}">
+      <view class='line2 border_bottom oneLineStart'>
+        <view class='name green'>本单会员价格为您节省</view>
+        <view class='content green'>{{orderData.pay_info.sale_price}} 元</view>
+      </view>
+    </block>
+    <view class='lineLast oneLineEnd'>
+      <view class='heJiName'>
+        付款:
+        <view class='price'>¥{{orderData.money}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='gap_state ' style='height:202rpx;'></view>
+  <view class='fixedBottom' wx:if='{{orderData.status == 1}}'>
+    <view class='leftBox' bindtap='cancel'>取消订单</view>
+    <view class='rightBox' bindtap='toPay'>
+      <view class='text'>去支付</view>
+      <image class='toRight' mode="widthFix" src="../../assets/icon/toRight.png"></image>
+    </view>
+  </view>
+  <view class='fixedBottomB' wx:if='{{orderData.status == 3}}'>
+    <view class='rightBoxB' bindtap='confirm'>
+      <view class='textB'>确认收货</view>
+      <image class='toRightB' mode="widthFix" src="../../assets/icon/toRight.png"></image>
+    </view>
+  </view>
+  <!-- <view class='fixedBottomB' wx:if='{{orderData.status == 4}}'>
         <view class='rightBoxB' bindtap='toEvaluation'>
             <view class='textB'>评论</view>
             <image class='toRightB' mode="widthFix" src="../../assets/icon/toRight.png"></image>
         </view>
     </view> -->
-    <view class='fixedBottomB' wx:if='{{orderData.status == 5 || orderData.status == 6}}'>
-        <view class='rightBoxB' bindtap='again'>
-            <view class='textB'>再来一单</view>
-            <image class='toRightB' mode="widthFix" src="../../assets/icon/toRight.png"></image>
-        </view>
+  <view class='fixedBottomB' wx:if='{{orderData.status == 5 || orderData.status == 6}}'>
+    <view class='rightBoxB' bindtap='again'>
+      <view class='textB'>再来一单</view>
+      <image class='toRightB' mode="widthFix" src="../../assets/icon/toRight.png"></image>
     </view>
+  </view>
 </view>

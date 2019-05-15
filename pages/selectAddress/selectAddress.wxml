@@ -1,59 +1,59 @@
 <view class="selectAddress maskContent">
-    <block wx:if="{{!onlyShowAddress}}">
-
-        <view class="searchAndNowAddress columnBetweenStart {{keyword ? 'h100':''}} {{dontShowNowLocation ? 'searchInp_H':''}}">
-            <view>
-                <input class='searchInp' focus="{{focus}}" placeholder='请输入您的地址' bindinput='searchInp' placeholder-class='place'></input>
-                <image class='searchIcon' src="../../assets/search.png" mode='widthFix'></image>
-            </view>
-
-            <block wx:if="{{!keyword}}">
-                <block wx:if="{{!dontShowNowLocation}}">
-                    <view class='nowLocation columnBetweenStart'>
-                        <view class='current'>当前定位</view>
-                        <view class='refreshLocation oneLineBetween'>
-                            <block wx:if="{{loading}}">
-                                <view class='currentCityName'>定位中...</view>
-                            </block>
-                            <block wx:elif="{{loading === false}}">
-                                <view class='currentCityName line-clamp' style='width:520rpx;' bindtap='setWithThisAdress'>{{initAddress || reAddress}}</view>
-                            </block>
-                            <view class='refresh' bindtap='reGetLocation'>
-                                <image src="../../assets/icon/location.png" mode='widthFix'></image>
-                                刷新定位</view>
-                        </view>
-                    </view>
-                </block>
-            </block>
-        </view>
-    </block>
-    <block wx:if="{{showMyShoppingAddress && addressData.length > 0}}">
-        <view class='myShippingAddress'>
-            <view class='title'>我的收货地址</view>
-            <view class="itemAddress columnBetween {{addressData.length > 1 && index != addressData.length-1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-info="{{item}}" bindtap="selectGlobalAddress">
-                <view class='upBox oneLineStart'>
-                    <view class='greenBox'>
-                        <view class='text'>{{item.type_name}}</view>
-                    </view>
-                    <view class='address line-clamp2'> {{item.address}} {{item.detail_addr}}</view>
+  <block wx:if="{{!onlyShowAddress}}">
+    <view class="searchAndNowAddress columnBetweenStart {{keyword ? 'h100':''}} {{dontShowNowLocation ? 'searchInp_H':''}}">
+      <view>
+        <input class='searchInp' focus="{{focus}}" placeholder='请输入您的地址' bindinput='searchInp' placeholder-class='place'></input>
+        <image class='searchIcon' src="../../assets/search.png" mode='widthFix'></image>
+      </view>
+      <block wx:if="{{!keyword}}">
+        <block wx:if="{{!dontShowNowLocation}}">
+          <view class='nowLocation columnBetweenStart'>
+            <view class='current'>当前定位</view>
+            <view class='refreshLocation oneLineBetween'>
+              <block wx:if="{{loading}}">
+                <view class='currentCityName'>定位中...</view>
+              </block>
+              <block wx:elif="{{loading === false}}">
+                <view class='currentCityName line-clamp' style='width:520rpx;' bindtap='setWithThisAdress'>
+                  {{initAddress || reAddress}}
                 </view>
-                <view class='underBox'>{{item.name}} {{item.phone}}</view>
+              </block>
+              <view class='refresh' bindtap='reGetLocation'>
+                <image src="../../assets/icon/location.png" mode='widthFix'></image>
+                刷新定位
+              </view>
             </view>
+          </view>
+        </block>
+      </block>
+    </view>
+  </block>
+  <block wx:if="{{showMyShoppingAddress && addressData.length > 0}}">
+    <view class='myShippingAddress'>
+      <view class='title'>我的收货地址</view>
+      <view class="itemAddress columnBetween {{addressData.length > 1 && index != addressData.length-1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-info="{{item}}" bindtap="selectGlobalAddress">
+        <view class='upBox oneLineStart'>
+          <view class='greenBox'>
+            <view class='text'>{{item.type_name}}</view>
+          </view>
+          <view class='address line-clamp2'>{{item.address}} {{item.detail_addr}}</view>
         </view>
-    </block>
-
-    <block wx:if="{{showSearchData && result.length > 0}}">
-        <view class='result'>
-            <view class="item columnBetweenStart {{index != result.length - 1? 'result_border':''}}" data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}" wx:for="{{result}}" wx:key="{{item.id}}" data-info="{{item}}" bindtap="toJump">
-                <view class='name'>{{item.title}}</view>
-                <view class='address'>{{item.address}}</view>
-            </view>
-        </view>
-    </block>
-    <!--  动态调整新增按钮的位置，当收货地址列表数据变多时候 -->
-    <block wx:if="{{onlyShowAddress}}">
-        <view id="addBtn" class='' bindtap='addShippingAddress'>
-            <view class='text'> 新增收货地址</view>
-        </view>
-    </block>
+        <view class='underBox'>{{item.name}} {{item.phone}}</view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{showSearchData && result.length > 0}}">
+    <view class='result'>
+      <view class="item columnBetweenStart {{index != result.length - 1? 'result_border':''}}" data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}" wx:for="{{result}}" wx:key="{{item.id}}" data-info="{{item}}" bindtap="toJump">
+        <view class='name'>{{item.title}}</view>
+        <view class='address'>{{item.address}}</view>
+      </view>
+    </view>
+  </block>
+  <!-- 动态调整新增按钮的位置，当收货地址列表数据变多时候 -->
+  <block wx:if="{{onlyShowAddress}}">
+    <view id="addBtn" class='' bindtap='addShippingAddress'>
+      <view class='text'>新增收货地址</view>
+    </view>
+  </block>
 </view>

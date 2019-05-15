@@ -1,390 +1,391 @@
 /* pages/my/my.wxss */
 
 .my {
-    position: relative;
+  position: relative;
 }
 
 .goOnPlus {
-    position: absolute;
-    right: 19rpx;
+  position: absolute;
+  right: 19rpx;
 }
 
 .goOnPlus_text {
-    font-size: 26rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 1);
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
 }
 
 .plusBg {
-    width: 176rpx;
-    height: 56rpx;
+  width: 176rpx;
+  height: 56rpx;
 }
 
 .showQuan {
-    position: absolute;
-    left: 313rpx;
-    top: 82rpx;
-    color: #fff;
-    z-index: 1000;
-    height: 30rpx;
-    font-size: 32rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    line-height: 30rpx;
+  position: absolute;
+  left: 313rpx;
+  top: 82rpx;
+  color: #fff;
+  z-index: 1000;
+  height: 30rpx;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  line-height: 30rpx;
 }
 
 .showQuan_login {
-    position: absolute;
-    top: 57rpx;
-    left: 282rpx;
-    z-index: 999;
-    width: 187rpx;
-    height: 80rpx;
+  position: absolute;
+  top: 57rpx;
+  left: 282rpx;
+  z-index: 999;
+  width: 187rpx;
+  height: 80rpx;
 }
 
 .greenBox {
-    box-sizing: border-box;
-    width: 750rpx;
-    height: 340rpx;
-    padding: 72rpx 0 71rpx 0;
+  box-sizing: border-box;
+  width: 750rpx;
+  height: 340rpx;
+  padding: 72rpx 0 71rpx 0;
 }
 
 .avator {
-    width: 100rpx;
-    height: 100rpx;
-    position: absolute;
-    top: 54rpx;
-    left: 31rpx;
-    background: #fff;
-    border-radius: 50%;
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 54rpx;
+  left: 31rpx;
+  background: #fff;
+  border-radius: 50%;
 }
 
 .greenBg {
-    position: absolute;
-    top: 0;
-    width: 750rpx;
-    height: 340rpx;
-    max-height: 340rpx;
+  position: absolute;
+  top: 0;
+  width: 750rpx;
+  height: 340rpx;
+  max-height: 340rpx;
 }
 
 .user {
-    height: 64rpx;
+  height: 64rpx;
 }
 
 .userInfo {
-    position: absolute;
-    left: 159rpx;
-    top: 72rpx;
-    width: 549rpx;
-    height: 64rpx;
-    z-index: 999;
+  position: absolute;
+  left: 159rpx;
+  top: 72rpx;
+  width: 549rpx;
+  height: 64rpx;
+  z-index: 999;
 }
 
 .userBox {
-    width: 300rpx;
-    height: 32rpx;
+  width: 300rpx;
+  height: 32rpx;
 }
 
 .username {
-    height: 32rpx;
-    font-size: 32rpx;
-    font-family: SourceHanSansCN-Bold;
-    font-weight: bold;
-    color: rgba(255, 255, 255, 1);
-    line-height: 32rpx;
-    margin-right: 30rpx;
-    max-width: 196rpx;
+  height: 32rpx;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  line-height: 32rpx;
+  margin-right: 30rpx;
+  max-width: 196rpx;
 }
 
 .tel {
-    height: 18rpx;
-    font-size: 22rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 1);
-    line-height: 18rpx;
-    align-self: flex-start;
+  height: 18rpx;
+  font-size: 22rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 18rpx;
+  align-self: flex-start;
 }
 
 .memberInfo {
-    width: 157rpx;
-    height: 48rpx;
+  width: 157rpx;
+  height: 48rpx;
 }
 
 .memberGrade {
-    width: 79rpx;
-    height: 26rpx;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 13rpx;
-    text-align: center;
+  width: 79rpx;
+  height: 26rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 13rpx;
+  text-align: center;
 }
 
 .memberGrade .text {
-    font-size: 16rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(221, 185, 100, 1);
-    line-height: 26rpx;
+  font-size: 16rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(221, 185, 100, 1);
+  line-height: 26rpx;
 }
 
 .sysInfo {
-    position: absolute;
-    top: 205rpx;
-    left: 0;
-    width: 750rpx;
-    height: 67rpx;
-    padding: 0 89rpx 0 119rpx;
-    box-sizing: border-box;
+  position: absolute;
+  top: 205rpx;
+  left: 0;
+  width: 750rpx;
+  height: 67rpx;
+  padding: 0 89rpx 0 119rpx;
+  box-sizing: border-box;
 }
 
 .sysInfo .item {
-    padding: 20rpx 0;
-    height: 107rpx;
-    box-sizing: border-box;
+  padding: 20rpx 0;
+  height: 107rpx;
+  box-sizing: border-box;
 }
 
 .sysInfo .sysLine {
-    width: 1px;
-    height: 43rpx;
-    background: #fff;
-    opacity: 0.5;
+  width: 1px;
+  height: 43rpx;
+  background: #fff;
+  opacity: 0.5;
 }
 
 .sysInfo .item .number {
-    height: 22rpx;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: #fff;
-    line-height: 22rpx;
+  height: 22rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: #fff;
+  line-height: 22rpx;
 }
 
 .sysInfo .item .sysName {
-    height: 26rpx;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: #fff;
-    line-height: 26rpx;
+  height: 26rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: #fff;
+  line-height: 26rpx;
 }
 
 .grade {
-    position: relative;
-    left: 30rpx;
-    top: -31rpx;
-    width: 690rpx;
-    height: 129rpx;
-    background: rgba(255, 255, 255, 1);
-    box-sizing: border-box;
-    padding: 30rpx 18rpx 30rpx 41rpx;
-    box-shadow: 0px 17rpx 43rpx 0px rgba(240, 240, 240, 1);
-    border-radius: 10rpx;
+  position: relative;
+  left: 30rpx;
+  top: -31rpx;
+  width: 690rpx;
+  height: 129rpx;
+  background: rgba(255, 255, 255, 1);
+  box-sizing: border-box;
+  padding: 30rpx 18rpx 30rpx 41rpx;
+  box-shadow: 0px 17rpx 43rpx 0px rgba(240, 240, 240, 1);
+  border-radius: 10rpx;
 }
 
 .myOrder {
-    position: absolute;
-    left: 30rpx;
-    top: 458rpx;
-    width: 690rpx;
-    height: 233rpx;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 10rpx;
+  position: absolute;
+  left: 30rpx;
+  top: 458rpx;
+  width: 690rpx;
+  height: 233rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
 }
 
-.myOrder .title, .myService .title {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 30rpx 0 32rpx;
-    height: 83rpx;
-    border-bottom: 1px solid rgba(224, 224, 224, 1);
+.myOrder .title,
+.myService .title {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 30rpx 0 32rpx;
+  height: 83rpx;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
 }
 
 .myOrder .title .content {
-    font-size: 22rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    height: 83rpx;
-    line-height: 83rpx;
-    color: rgba(153, 153, 153, 1);
+  font-size: 22rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  height: 83rpx;
+  line-height: 83rpx;
+  color: rgba(153, 153, 153, 1);
 }
 
 .myOrder .title .content image {
-    width: 10rpx;
-    margin-left: 9rpx;
+  width: 10rpx;
+  margin-left: 9rpx;
 }
 
 .myService {
-    position: absolute;
-    left: 30rpx;
-    top: 711rpx;
-    width: 690rpx;
-    height: 241rpx;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 10rpx;
+  position: absolute;
+  left: 30rpx;
+  top: 711rpx;
+  width: 690rpx;
+  height: 241rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
 }
 
 .name {
-    font-size: 32rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 1);
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
 }
 
 .myService .menuBox {
-    height: 170rpx;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 31rpx 49rpx 40rpx 50rpx;
+  height: 170rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 31rpx 49rpx 40rpx 50rpx;
 }
 
 .myService .menu_item {
-    height: 100%;
+  height: 100%;
 }
 
 .myService .menu_item image {
-    width: 49rpx;
+  width: 49rpx;
 }
 
 .myService .menu_item .text {
-    height: 24rpx;
-    font-size: 26rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 24rpx;
+  height: 24rpx;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 24rpx;
 }
 
 .myOrder .menuBox {
-    height: 149rpx;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 31rpx 52rpx 30rpx 46rpx;
+  height: 149rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 31rpx 52rpx 30rpx 46rpx;
 }
 
-.myOrder .menuBox  image {
-    width: 64rpx;
+.myOrder .menuBox image {
+  width: 64rpx;
 }
 
 .myOrder .menuBox .text {
-    height: 24rpx;
-    font-size: 26rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 24rpx;
+  height: 24rpx;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 24rpx;
 }
 
 .myOrder .menuBox .menu_item {
-    position: relative;
-    height: 100%;
+  position: relative;
+  height: 100%;
 }
 
 /* 会员等级 */
 
 .grade image {
-    width: 176rpx;
+  width: 176rpx;
 }
 
 .grade .plusText {
-    width: 67rpx;
-    height: 71rpx;
-    font-size: 32rpx;
-    font-family: SourceHanSansCN-Heavy;
-    font-weight: 800;
-    color: rgba(221, 185, 100, 1);
-    line-height: 32rpx;
+  width: 67rpx;
+  height: 71rpx;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Heavy;
+  font-weight: 800;
+  color: rgba(221, 185, 100, 1);
+  line-height: 32rpx;
 }
 
 .grade .line {
-    position: absolute;
-    left: 157rpx;
-    width: 1px;
-    height: 71rpx;
-    background: rgba(224, 224, 224, 1);
+  position: absolute;
+  left: 157rpx;
+  width: 1px;
+  height: 71rpx;
+  background: rgba(224, 224, 224, 1);
 }
 
 .grade .propaganda {
-    position: absolute;
-    left: 189rpx;
-    height: 100%;
-    font-size: 26rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 1);
-    line-height: 42rpx;
-    padding: 30rpx 0 33rpx 0;
-    box-sizing: border-box;
+  position: absolute;
+  left: 189rpx;
+  height: 100%;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  line-height: 42rpx;
+  padding: 30rpx 0 33rpx 0;
+  box-sizing: border-box;
 }
 
 /* callMeMask */
 
 .callMeMask {
-    position: fixed;
-    width: 750rpx;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 99999;
+  position: fixed;
+  width: 750rpx;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
 }
 
 .controlBox {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 759rpx;
-    height: 193rpx;
-    background: #e0e0e0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 759rpx;
+  height: 193rpx;
+  background: #e0e0e0;
 }
 
 .controlBox .contactTel {
-    width: 750rpx;
-    height: 86rpx;
-    background: rgba(255, 255, 255, 1);
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: #1a1a1a;
-    line-height: 86rpx;
-    text-align: center;
+  width: 750rpx;
+  height: 86rpx;
+  background: rgba(255, 255, 255, 1);
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: #1a1a1a;
+  line-height: 86rpx;
+  text-align: center;
 }
 
 .controlBox .tel {
-    display: inline;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    color: #1a1a1a;
-    line-height: 86rpx;
-    font-weight: bold;
+  display: inline;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  color: #1a1a1a;
+  line-height: 86rpx;
+  font-weight: bold;
 }
 
 .controlBox .cancel {
-    width: 750rpx;
-    height: 88rpx;
-    background: #fff;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 88rpx;
-    text-align: center;
+  width: 750rpx;
+  height: 88rpx;
+  background: #fff;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 88rpx;
+  text-align: center;
 }
 
 .news_num_box {
-    position: absolute;
-    right: 0;
-    top: -10rpx;
-    width: 27rpx;
-    height: 27rpx;
-    background: rgba(255, 255, 255, 1);
-    border: 1rpx solid rgba(47, 202, 131, 1);
-    border-radius: 50%;
-    text-align: center;
+  position: absolute;
+  right: 0;
+  top: -10rpx;
+  width: 27rpx;
+  height: 27rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1rpx solid rgba(47, 202, 131, 1);
+  border-radius: 50%;
+  text-align: center;
 }
 
 .news_num {
-    font-size: 22rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(47, 202, 131, 1);
-    line-height: 27rpx;
+  font-size: 22rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(47, 202, 131, 1);
+  line-height: 27rpx;
 }

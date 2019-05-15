@@ -1,205 +1,214 @@
 .serviceType {
-    position: absolute;
-    top: 20rpx;
-    width: 750rpx;
-    height: 89rpx;
-    box-sizing: border-box;
-    padding: 0rpx 30rpx 0 29rpx;
-    background: #fff;
+  position: absolute;
+  top: 20rpx;
+  width: 750rpx;
+  height: 89rpx;
+  box-sizing: border-box;
+  padding: 0rpx 30rpx 0 29rpx;
+  background: #fff;
 }
 
-.serviceType  .imgBox {
-    width: 18rpx;
-    height: 15rpx;
+.serviceType .imgBox {
+  width: 18rpx;
+  height: 15rpx;
 }
 
-.serviceType .imgBox  image, .imgBox image {
-    width: 18rpx;
+.serviceType .imgBox image,
+.imgBox image {
+  width: 18rpx;
 }
 
 .serviceType .name {
-    font-size: 32rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 89rpx;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 89rpx;
 }
 
 .serviceType .content {
-    position: absolute;
-    left: 203rpx;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(153, 153, 153, 1);
-    line-height: 89rpx;
+  position: absolute;
+  left: 203rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 89rpx;
 }
 
 .serviceType .content2 {
-    color: rgba(26, 26, 26, 1);
+  color: rgba(26, 26, 26, 1);
 }
 
 .userInfo {
-    position: absolute;
-    top: 129rpx;
-    width: 750rpx;
-    height: 175rpx;
-    background: #fff;
-    padding: 0 30rpx;
-    box-sizing: border-box;
+  position: absolute;
+  top: 129rpx;
+  width: 750rpx;
+  height: 175rpx;
+  background: #fff;
+  padding: 0 30rpx;
+  box-sizing: border-box;
 }
 
 .b_border {
-    border-bottom: 1px solid rgba(224, 224, 224, 1);
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
 }
 
 .fixHeight {
-    width: 100%;
-    height: 87rpx;
+  width: 100%;
+  height: 87rpx;
 }
 
 .firstBlock {
-    width: 173rpx;
-    height: 100%;
-    line-height: 86rpx;
-    text-align: left;
-    font-size: 32rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
+  width: 173rpx;
+  height: 100%;
+  line-height: 86rpx;
+  text-align: left;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
 }
 
 .userInfo input {
-    width: 300rpx;
-    height: 100%;
-    line-height: 86rpx;
-    font-size: 28rpx;
+  width: 300rpx;
+  height: 100%;
+  line-height: 86rpx;
+  font-size: 28rpx;
 }
 
 .place {
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(153, 153, 153, 1);
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
 }
 
 .textareaBox {
-    position: absolute;
-    top: 324rpx;
-    width: 750rpx;
-    height: 292rpx;
-    background: rgba(255, 255, 255, 1);
-    box-sizing: border-box;
-    padding: 30rpx 29rpx 31rpx;
+  position: absolute;
+  top: 324rpx;
+  width: 750rpx;
+  height: 292rpx;
+  background: rgba(255, 255, 255, 1);
+  box-sizing: border-box;
+  padding: 30rpx 29rpx 31rpx;
 }
 
 .textareaBox textarea {
-    width: 691rpx;
-    height: 100%;
-    background: rgba(240, 240, 240, 1);
-    border: 1px solid rgba(224, 224, 224, 1);
-    border-radius: 10rpx;
-    box-sizing: border-box;
-    padding: 20rpx 22rpx;
-    font-size: 28rpx;
+  width: 691rpx;
+  height: 100%;
+  background: rgba(240, 240, 240, 1);
+  border: 1px solid rgba(224, 224, 224, 1);
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  padding: 20rpx 22rpx;
+  font-size: 28rpx;
 }
 
 .textarea_place {
-    height: 26rpx;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(179, 179, 179, 1);
-    line-height: 26rpx;
+  height: 26rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(179, 179, 179, 1);
+  line-height: 26rpx;
 }
 
 .submit {
-    position: absolute;
-    top: 1076rpx;
-    left: 80rpx;
-    width: 590rpx;
-    height: 80rpx;
-    background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
-    border-radius: 10rpx;
-    font-size: 30rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 1);
-    line-height: 80rpx;
-    text-align: center;
+  position: absolute;
+  top: 1076rpx;
+  left: 80rpx;
+  width: 590rpx;
+  height: 80rpx;
+  background: linear-gradient(
+    0deg,
+    rgba(122, 201, 89, 1),
+    rgba(153, 218, 125, 1)
+  );
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+  text-align: center;
 }
 
 .popoutMenu {
-    position: absolute;
-    left: 172rpx;
-    top: 89rpx;
-    width: 578rpx;
-    background: rgba(255, 255, 255, 1);
-    z-index: 99;
-    box-sizing: border-box;
-    padding: 0 30rpx;
+  position: absolute;
+  left: 172rpx;
+  top: 89rpx;
+  width: 578rpx;
+  background: rgba(255, 255, 255, 1);
+  z-index: 99;
+  box-sizing: border-box;
+  padding: 0 30rpx;
 }
 
 .row {
-    width: 100%;
-    height: 66rpx;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 66rpx;
-    border-bottom: 1rpx rgba(224, 224, 224, 1) solid;
+  width: 100%;
+  height: 66rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 66rpx;
+  border-bottom: 1rpx rgba(224, 224, 224, 1) solid;
 }
 
 .line {
-    width: 100%;
-    height: 1px;
-    background: rgba(224, 224, 224, 1);
+  width: 100%;
+  height: 1px;
+  background: rgba(224, 224, 224, 1);
 }
 
 .toTop {
-    position: absolute;
-    transition: 0.5s all;
-    transform: rotate(180deg);
+  position: absolute;
+  transition: 0.5s all;
+  transform: rotate(180deg);
 }
 
 /* successBox */
 
 .successBox {
-    position: relative;
-    height: 100%;
+  position: relative;
+  height: 100%;
 }
 
 .successBox image {
-    position: absolute;
-    top: 311rpx;
-    width: 176rpx;
+  position: absolute;
+  top: 311rpx;
+  width: 176rpx;
 }
 
 .successText {
-    position: absolute;
-    top: 536rpx;
-    width: 100%;
-    height: 40rpx;
-    font-size: 42rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 40rpx;
-    text-align: center;
+  position: absolute;
+  top: 536rpx;
+  width: 100%;
+  height: 40rpx;
+  font-size: 42rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 40rpx;
+  text-align: center;
 }
 
 .successToIndex {
-    position: absolute;
-    top: 694rpx;
-    width: 590rpx;
-    height: 80rpx;
-    background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
-    border-radius: 10rpx;
-    font-size: 32rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 1);
-    line-height: 80rpx;
-    text-align: center;
+  position: absolute;
+  top: 694rpx;
+  width: 590rpx;
+  height: 80rpx;
+  background: linear-gradient(
+    0deg,
+    rgba(122, 201, 89, 1),
+    rgba(153, 218, 125, 1)
+  );
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+  text-align: center;
 }

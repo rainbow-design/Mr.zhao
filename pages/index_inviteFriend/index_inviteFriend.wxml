@@ -1,8 +1,6 @@
 <view class="invite">
   <image class='img' src="../../assets/yaoqinghaoyou.png" mode="widthFix"></image>
-  <button class='btn'  open-type='share'>
-  <view class='text'>
-  立即邀请
-  </view>
+  <button class='btn' open-type='share'>
+    <view class='text'>立即邀请</view>
   </button>
 </view>

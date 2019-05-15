@@ -1,37 +1,32 @@
 <view class="shoppingAddress maskContent">
-    <block wx:if="{{addressData.length === 0 }}">
-        <view class='nodata columnBetween'>
-            <image src="../../assets/nodata/addressList.png" mode="widthFix" style='width:430rpx;'></image>
-            <view class='nodata_content'>您还没有添加收货地址</view>
-
-            <view id='addBtn' bindtap='toAddShippingAddress' style='top:726rpx;'>
-                <view class='text'> 新增收货地址</view>
+  <block wx:if="{{addressData.length === 0 }}">
+    <view class='nodata columnBetween'>
+      <image src="../../assets/nodata/addressList.png" mode="widthFix" style='width:430rpx;'></image>
+      <view class='nodata_content'>您还没有添加收货地址</view>
+      <view id='addBtn' bindtap='toAddShippingAddress' style='top:726rpx;'>
+        <view class='text'>新增收货地址</view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{addressData.length > 0}}">
+    <view id='addressList'>
+      <view class="item oneLineBetween {{index != addressData.length - 1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-isdefault="{{item.is_default}}" data-item="{{item}}" bindtap='toEdit'>
+        <view class='leftAddress columnBetweenStart'>
+          <view class='upBox oneLineStart'>
+            <view class='name'>{{item.name}}</view>
+            <view class='phoneNumber'>{{item.phone}}</view>
+            <view class='greenBox'>
+              <view class='text'>{{item.type_name}}</view>
             </view>
+          </view>
+          <view class='bottomBox line-clamp2'>{{item.address}} {{item.detail_addr}}</view>
         </view>
-    </block>
-    <block wx:if="{{addressData.length > 0}}">
-        <view id='addressList'>
-
-            <view class="item oneLineBetween {{index != addressData.length - 1 ?'borderBottom':''}}" wx:for="{{addressData}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-isdefault="{{item.is_default}}" data-item="{{item}}" bindtap='toEdit'>
-                <view class='leftAddress columnBetweenStart'>
-                    <view class='upBox oneLineStart'>
-                        <view class='name'>{{item.name}}</view>
-                        <view class='phoneNumber'>{{item.phone}}</view>
-                        <view class='greenBox'>
-                            <view class='text'>{{item.type_name}}</view>
-                        </view>
-                    </view>
-                    <view class='bottomBox line-clamp2'>
-                        {{item.address}} {{item.detail_addr}}
-                    </view>
-
-                </view>
-                <image mode='widthFix' data-item="{{item}}" src="../../assets/icon/edit.png" catchtap='toEdit'></image>
-            </view>
-        </view>
-        <!--  动态调整新增按钮的位置，当收货地址列表数据变多时候 -->
-        <view id="addBtn" class='{{addressList_H > btn_T -20 ? "addbtn_addressArriveToBtn":""}}' bindtap='toAddShippingAddress'>
-            <view class='text'> 新增收货地址</view>
-        </view>
-    </block>
+        <image mode='widthFix' data-item="{{item}}" src="../../assets/icon/edit.png" catchtap='toEdit'></image>
+      </view>
+    </view>
+    <!-- 动态调整新增按钮的位置，当收货地址列表数据变多时候 -->
+    <view id="addBtn" class='{{addressList_H > btn_T -20 ? "addbtn_addressArriveToBtn":""}}' bindtap='toAddShippingAddress'>
+      <view class='text'>新增收货地址</view>
+    </view>
+  </block>
 </view>

@@ -1,40 +1,44 @@
 <view class="leaveAMessage maskContent">
-    <block wx:if="{{submit_success}}">
-        <view class='successBox columnAround'>
-            <image src="../../assets/icon/right_big.png" mode='widthFix'></image>
-            <view class='successText'>恭喜提交成功</view>
-            <view class='successToIndex' bindtap='toIndex'>返回首页</view>
-        </view>
-    </block>
-    <block wx:if="{{!submit_success}}">
-        <view class='serviceType oneLineBetween' bindtap='showPopoutMenu'>
-            <view class='name'>服务类型</view>
-            <view class="content {{ !s_id ? '' : 'content2' }}">{{!contentText ? '请选择服务' : contentText}}</view>
-            <view class='imgBox'>
-                <image class="{{showPopoutMenu ? 'toTop' :'show'}}" src="../../assets/icon/toBottom.png" mode='widthFix'></image>
+  <block wx:if="{{submit_success}}">
+    <view class='successBox columnAround'>
+      <image src="../../assets/icon/right_big.png" mode='widthFix'></image>
+      <view class='successText'>恭喜提交成功</view>
+      <view class='successToIndex' bindtap='toIndex'>返回首页</view>
+    </view>
+  </block>
+  <block wx:if="{{!submit_success}}">
+    <view class='serviceType oneLineBetween' bindtap='showPopoutMenu'>
+      <view class='name'>服务类型</view>
+      <view class="content {{ !s_id ? '' : 'content2' }}">
+        {{!contentText ? '请选择服务' : contentText}}
+      </view>
+      <view class='imgBox'>
+        <image class="{{showPopoutMenu ? 'toTop' :'show'}}" src="../../assets/icon/toBottom.png" mode='widthFix'></image>
+      </view>
+      <block wx:if="{{showPopoutMenu}}">
+        <view class='popoutMenu'>
+          <block wx:for="{{lifeList}}" wx:item="item" wx:key="">
+            <view class='row' bindtap='chooseType' data-s_id="{{item.id}}" data-text="{{item.name}}">
+              {{item.name}}
             </view>
-            <block wx:if="{{showPopoutMenu}}">
-                <view class='popoutMenu'>
-                    <block wx:for="{{lifeList}}" wx:item="item" wx:key="">
-                        <view class='row' bindtap='chooseType' data-s_id="{{item.id}}" data-text="{{item.name}}">{{item.name}}</view>
-                    </block>
-                </view>
-            </block>
+          </block>
         </view>
-        <view class='userInfo columnCenter'>
-            <view class='b_border fixHeight oneLineStart'>
-                <label class='firstBlock'>姓 名</label>
-                <input placeholder='请输入您的姓名' placeholder-class='place' bindinput='inputData' data-name="name"></input>
-            </view>
-            <view class='fixHeight oneLineStart'>
-                <label class='firstBlock'>手机号</label>
-                <input placeholder='请输入您的手机号' type='number'  maxlength="11" placeholder-class='place' bindinput='inputData' data-name="phone"></input>
-                <!-- <view class='verificationCode'>获取验证码</view> -->
-            </view>
-        </view>
-        <view class='textareaBox'>
-            <textarea placeholder-class='textarea_place' placeholder='详细描述' bindinput='inputData' data-name="content"></textarea>
-        </view>
-        <view class='submit' bindtap='submitMessage'>提交</view>
-    </block>
+      </block>
+    </view>
+    <view class='userInfo columnCenter'>
+      <view class='b_border fixHeight oneLineStart'>
+        <label class='firstBlock'>姓 名</label>
+        <input placeholder='请输入您的姓名' placeholder-class='place' bindinput='inputData' data-name="name"></input>
+      </view>
+      <view class='fixHeight oneLineStart'>
+        <label class='firstBlock'>手机号</label>
+        <input placeholder='请输入您的手机号' type='number' maxlength="11" placeholder-class='place' bindinput='inputData' data-name="phone"></input>
+        <!-- <view class='verificationCode'>获取验证码</view> -->
+      </view>
+    </view>
+    <view class='textareaBox'>
+      <textarea placeholder-class='textarea_place' placeholder='详细描述' bindinput='inputData' data-name="content"></textarea>
+    </view>
+    <view class='submit' bindtap='submitMessage'>提交</view>
+  </block>
 </view>

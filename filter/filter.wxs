@@ -1,66 +1,66 @@
 // 不支持es6，Date,Number
 
 function splitByC(str) {
-    return str.split(',');
+  return str.split(",");
 }
-function splitByCAndConcatByS(str){
-    return str.split(',').join(' ')
+function splitByCAndConcatByS(str) {
+  return str.split(",").join(" ");
 }
 
 function splitByS(str) {
-    return str.split(' ');
+  return str.split(" ");
 }
 
 function filterPhoneByStar(str) {
-    return str.slice(0, 3) + '****' + str.slice(-4)
+  return str.slice(0, 3) + "****" + str.slice(-4);
 }
 
 function filterImgUrl(str) {
-    var RootUrl = 'http://admin.zxssxcs.cn';
-    return str.indexOf('/') === 0 ? RootUrl + str : str;
+  var RootUrl = "http://admin.zxssxcs.cn";
+  return str.indexOf("/") === 0 ? RootUrl + str : str;
 }
 
 function filterOrderTitleName(status) {
-    switch (status) {
-        case '1':
-            return '待支付'
-        case '2':
-            return '待配送'
-        case '3':
-            return '配送中'
-        case '4':
-            return '已完成'
-    }
+  switch (status) {
+    case "1":
+      return "待支付";
+    case "2":
+      return "待配送";
+    case "3":
+      return "配送中";
+    case "4":
+      return "已完成";
+  }
 }
 
 function filterOrderDetailStateName(state) {
-    switch (state) {
-        case '1':
-            return '待付款'
-        case '2':
-            return '待配送'
-        case '3':
-            return '配送中'
-        case '4':
-            return '已完成'
-    }
+  switch (state) {
+    case "1":
+      return "待付款";
+    case "2":
+      return "待配送";
+    case "3":
+      return "配送中";
+    case "4":
+      return "已完成";
+  }
 }
 
 function filterPrice(str) {
-    // 四舍五入 格式化数字
-    // toFix(8440.55,1) => 8440.6
-    var times = Math.pow(10, 2);
-    var roundNum = Math.round(str * times) / times;
-    return roundNum.toFixed(2);
+  // 四舍五入 格式化数字
+  // toFix(8440.55,1) => 8440.6
+  var times = Math.pow(10, 2);
+  var roundNum = Math.round(str * times) / times;
+  return roundNum.toFixed(2);
 }
 
 module.exports = {
-    splitByC: splitByC, // my_coupon 有使用
-    splitByS: splitByS,
-    filterPhoneByStar: filterPhoneByStar,
-    filterImgUrl: filterImgUrl,
-    filterOrderTitleName: filterOrderTitleName,
-    filterOrderDetailStateName: filterOrderDetailStateName,
-    filterPrice: filterPrice,
-    splitByCAndConcatByS: splitByCAndConcatByS
-}
+  splitByC: splitByC, // my_coupon 有使用
+  splitByS: splitByS,
+  filterPhoneByStar: filterPhoneByStar,
+  filterImgUrl: filterImgUrl,
+  filterOrderTitleName: filterOrderTitleName,
+  filterOrderDetailStateName: filterOrderDetailStateName,
+  filterPrice: filterPrice,
+  splitByCAndConcatByS: splitByCAndConcatByS
+};

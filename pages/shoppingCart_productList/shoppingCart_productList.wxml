@@ -8,7 +8,7 @@
                     {{item.name}}
                 </view>
                 <view class='introduction line-clamp'> {{item.desc}} </view>
-                <view class='price nowrap'>{{item.price}}</view>
+                <view class='price nowrap'>¥{{item.price}}</view>
                 <view class='offerPrice nowrap'>¥{{item.plus_price}}
                     <image class='youhuiBox' src="../../assets/youhuiBox.png">
                         <view class='youhuiText'>会员{{item.plus}}折</view>
@@ -16,6 +16,7 @@
                 </view>
             </view>
             <view class='amount'>
+            X {{item.num}}
             </view>
         </view>
     </view>

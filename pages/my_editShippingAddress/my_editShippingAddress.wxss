@@ -15,7 +15,11 @@
   top: 966rpx;
   width: 590rpx;
   height: 80rpx;
-  background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
+  background: linear-gradient(
+    0deg,
+    rgba(122, 201, 89, 1),
+    rgba(153, 218, 125, 1)
+  );
   border-radius: 10rpx;
   font-size: 30rpx;
   font-family: SourceHanSansCN-Regular;

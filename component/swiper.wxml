@@ -1,12 +1,12 @@
 <template name="swiper">
-    <swiper current="{{swiperCurrent}}" circular="true" bindchange="swiperChange" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="1000">
-        <swiper-item wx:for="{{bannerList}}"  bindtap="toHref" wx:key="{{index}}" bindtap='toHref' data-type="{{item.type}}" data-id="{{item.goods_id}}" data-content="{{item.content}}"  data-link="{{item.link}}" >
-            <image src="{{item.img_url}}" class="slide-image" />
-        </swiper-item>
-    </swiper>
-    <view id="boxCell">
-        <block wx:for="{{bannerList.length > 1 ? bannerList:[]}}" wx:for-index="index" wx:key="{{item.banner}}">
-            <view id="{{index}}" class="dot {{index === swiperCurrent ? 'dot_active':''}}" bindtap="selectCarouselByIndex" />
-        </block>
-    </view>
+  <swiper current="{{swiperCurrent}}" circular="true" bindchange="swiperChange" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="1000">
+    <swiper-item wx:for="{{bannerList}}" bindtap="toHref" wx:key="{{index}}" bindtap='toHref' data-type="{{item.type}}" data-id="{{item.goods_id}}" data-content="{{item.content}}" data-link="{{item.link}}">
+      <image src="{{item.img_url}}" class="slide-image" />
+    </swiper-item>
+  </swiper>
+  <view id="boxCell">
+    <block wx:for="{{bannerList.length > 1 ? bannerList:[]}}" wx:for-index="index" wx:key="{{item.banner}}">
+      <view id="{{index}}" class="dot {{index === swiperCurrent ? 'dot_active':''}}" bindtap="selectCarouselByIndex" />
+    </block>
+  </view>
 </template>

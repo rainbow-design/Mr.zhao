@@ -1,80 +1,80 @@
 /* nodata */
 
 .nodata {
-    width: 750rpx;
-    height: 100%;
+  width: 750rpx;
+  height: 100%;
 }
 
 .nodata image {
-    position: absolute;
-    top: 344rpx;
+  position: absolute;
+  top: 344rpx;
 }
 
 .nodata .nodata_content {
-    position: absolute;
-    top: 631rpx;
-    height: 40rpx;
-    font-size: 42rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 40rpx;
+  position: absolute;
+  top: 631rpx;
+  height: 40rpx;
+  font-size: 42rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 40rpx;
 }
 
 .invitList {
-    position: relative;
-    top: 20rpx;
-    width: 750rpx;
-    background: #fff;
+  position: relative;
+  top: 20rpx;
+  width: 750rpx;
+  background: #fff;
 }
 
 .item {
-    height: 158rpx;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 0 30rpx 0 31rpx;
+  height: 158rpx;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 30rpx 0 31rpx;
 }
 
 .avator {
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: 50%;
-    background: pink;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: pink;
 }
 
 .personInfo .name {
-    height: 30rpx;
-    font-size: 32rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 30rpx;
+  height: 30rpx;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 30rpx;
 }
 
 .personInfo {
-    position: absolute;
-    left: 164rpx;
-    height: 63rpx;
+  position: absolute;
+  left: 164rpx;
+  height: 63rpx;
 }
 
 .personInfo .phone {
-    height: 18rpx;
-    font-size: 22rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(102, 102, 102, 1);
-    line-height: 18rpx;
+  height: 18rpx;
+  font-size: 22rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 18rpx;
 }
 
 .item .date {
-    height: 22rpx;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(153, 153, 153, 1);
-    line-height: 22rpx;
+  height: 22rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 22rpx;
 }
 
 .borderTop {
-    border-top: 2rpx solid rgba(224, 224, 224, 1);
+  border-top: 2rpx solid rgba(224, 224, 224, 1);
 }

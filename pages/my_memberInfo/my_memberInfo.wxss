@@ -55,11 +55,13 @@ page {
   width: 400rpx;
 }
 
-.man, .women {
+.man,
+.women {
   width: 139rpx;
 }
 
-.man .text, .women .text {
+.man .text,
+.women .text {
   display: inline;
   height: 30rpx;
   margin-left: 11rpx;
@@ -97,7 +99,11 @@ page {
   top: 1076rpx;
   width: 590rpx;
   height: 80rpx;
-  background: linear-gradient(0deg, rgba(122, 201, 89, 1), rgba(153, 218, 125, 1));
+  background: linear-gradient(
+    0deg,
+    rgba(122, 201, 89, 1),
+    rgba(153, 218, 125, 1)
+  );
   border-radius: 10rpx;
   text-align: center;
   line-height: 80rpx;

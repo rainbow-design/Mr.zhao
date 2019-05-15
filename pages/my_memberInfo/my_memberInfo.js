@@ -3,160 +3,146 @@ const app = getApp();
 const util = require("../../utils/util.js");
 const api = require("../../utils/api.js");
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     initData: [],
-    nickname: '',
-    phone: '',
-    sex: '',
-    birthday: '',
-    date: '2016-09-01',
-    noBirthDay: '',
-    birthdayColor: '#999'
+    nickname: "",
+    phone: "",
+    sex: "",
+    birthday: "",
+    date: "2016-09-01",
+    noBirthDay: "",
+    birthdayColor: "#999"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var y = this;
-    wx.yue.sub("userInfo", function (data) {
-      var birthdatyStr = '';
+    wx.yue.sub("userInfo", function(data) {
+      var birthdatyStr = "";
       if (data.birthday === null) {
-        birthdatyStr = '请选择您的生日'
+        birthdatyStr = "请选择您的生日";
         y.setData({
           initData: data,
           birthday: birthdatyStr,
-          noBirthDay: true,
-        })
+          noBirthDay: true
+        });
       } else {
-        birthdatyStr = data.birthday.split(' ')[0];
+        birthdatyStr = data.birthday.split(" ")[0];
         y.setData({
           initData: data,
           birthday: birthdatyStr,
           noBirthDay: false
-        })
+        });
       }
-
     });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () { },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function() {},
   changeInput(e) {
     var name = e.currentTarget.dataset.name;
     var thisData = this.data;
     this.setData({
-      [name]: e.detail.value,
-
-    })
+      [name]: e.detail.value
+    });
   },
   selectSex(e) {
     // 男，女
     var sex = e.currentTarget.dataset.sex;
 
     this.setData({
-      sex: sex == '男' ? '0' : '1',
-      'initData.sex_name': sex
-
-    })
+      sex: sex == "男" ? "0" : "1",
+      "initData.sex_name": sex
+    });
   },
   bindDateChange(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    console.log("picker发送选择改变，携带值为", e.detail.value);
     this.setData({
       birthday: e.detail.value,
-      birthdayColor: 'rgba(26, 26, 26, 1)'
-    })
+      birthdayColor: "rgba(26, 26, 26, 1)"
+    });
   },
   saveUserInfo() {
     var y = this;
     var thisData = this.data;
-    var getBirthday = function (str) {
-      return str.split(' ')[0]
-    }
+    var getBirthday = function(str) {
+      return str.split(" ")[0];
+    };
     let nickname = this.data.nickname || thisData.initData.nickname;
     let sex = this.data.sex || thisData.initData.sex;
     let mobile = thisData.mobile;
-    let birthday = this.data.birthday || getBirthday(thisData.initData.birthday);
+    let birthday =
+      this.data.birthday || getBirthday(thisData.initData.birthday);
 
-    util.promiseRequest(api.add_user_info, {
-      access_token: app.globalData.access_token,
-      nickname: nickname,
-      sex: sex,
-      birthday: birthday
-    }).then(res => {
-      var data = res.data.response_data.lists;
-      if (data == 1) {
-        wx.showToast({
-          title: '更新成功...',
-          icon: 'none',
-          duration: 1000,
-          complete: function () {
-            setTimeout(() => {
-              app.returnLastPage();
-            }, 1000)
-          }
-        })
-      } else {
-        wx.showToast({
-          title: '重置失败...',
-          icon: 'none',
-          duration: 1000,
-          complete: function () {
-            setTimeout(() => {
-              app.returnLastPage();
-            }, 1000)
-          }
-        })
-      }
-
-    })
+    util
+      .promiseRequest(api.add_user_info, {
+        access_token: app.globalData.access_token,
+        nickname: nickname,
+        sex: sex,
+        birthday: birthday
+      })
+      .then(res => {
+        var data = res.data.response_data.lists;
+        if (data == 1) {
+          wx.showToast({
+            title: "更新成功...",
+            icon: "none",
+            duration: 1000,
+            complete: function() {
+              setTimeout(() => {
+                app.returnLastPage();
+              }, 1000);
+            }
+          });
+        } else {
+          wx.showToast({
+            title: "重置失败...",
+            icon: "none",
+            duration: 1000,
+            complete: function() {
+              setTimeout(() => {
+                app.returnLastPage();
+              }, 1000);
+            }
+          });
+        }
+      });
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
-})
+  onShareAppMessage: function() {}
+});

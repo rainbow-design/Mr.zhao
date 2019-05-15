@@ -1,210 +1,212 @@
 /* nodata */
 
 .nodata {
-    width: 750rpx;
-    height: 100%;
-    position: relative;
+  width: 750rpx;
+  height: 100%;
+  position: relative;
 }
 
 .nodata image {
-    position: absolute;
-    top: 264rpx;
-    z-index: 1000;
+  position: absolute;
+  top: 264rpx;
+  z-index: 1000;
 }
 
 .nodata .nodata_content {
-    position: absolute;
-    top: 530rpx;
-    height: 40rpx;
-    font-size: 42rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 40rpx;
+  position: absolute;
+  top: 530rpx;
+  height: 40rpx;
+  font-size: 42rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 40rpx;
 }
 
 .coupon {
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .swiper-tab {
-    width: 100%;
-    text-align: center;
-    height: 88rpx;
-    line-height: 88rpx;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    font-size: 32rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    background: #fff;
-    z-index: 99;
+  width: 100%;
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  background: #fff;
+  z-index: 99;
 }
 
 .swiper-item {
-    height: 1117rpx;
+  height: 1117rpx;
 }
 
 .border {
-    position: absolute;
-    left: 94rpx;
-    width: 34rpx;
-    height: 3rpx;
-    background: rgba(88, 181, 48, 1);
+  position: absolute;
+  left: 94rpx;
+  width: 34rpx;
+  height: 3rpx;
+  background: rgba(88, 181, 48, 1);
 }
 
 swiper {
-    text-align: center;
-    display: flex;
-    flex: 1;
+  text-align: center;
+  display: flex;
+  flex: 1;
 }
 
 .swiper-tab-item {
-    position: relative;
-    width: 30%;
-    color: #999;
-    font-size: 32rpx;
+  position: relative;
+  width: 30%;
+  color: #999;
+  font-size: 32rpx;
 }
 
 .active {
-    color: #58b530;
+  color: #58b530;
 }
 
 swiper {
-    text-align: center;
+  text-align: center;
 }
 
 .ticket {
-    position: relative;
-    margin: 30rpx 31rpx 0 29rpx;
-    width: 690rpx;
-    height: 234rpx;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 10rpx;
-    overflow: hidden;
+  position: relative;
+  margin: 30rpx 31rpx 0 29rpx;
+  width: 690rpx;
+  height: 234rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
+  overflow: hidden;
 }
 
 .upBox {
-    height: 171rpx;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 30rpx 0 32rpx 29rpx;
-    border-bottom: 1px dashed #e0e0e0;
+  height: 171rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30rpx 0 32rpx 29rpx;
+  border-bottom: 1px dashed #e0e0e0;
 }
 
 .bottomBox {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20rpx 0 19rpx 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 0 19rpx 30rpx;
 }
 
 .bottomBox .text {
-    height: 23rpx;
-    font-size: 24rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(153, 153, 153, 1);
-    line-height: 23rpx;
-    text-align: left;
+  height: 23rpx;
+  font-size: 24rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 23rpx;
+  text-align: left;
 }
 
 /* 优惠券主要结构 */
 
 .contentBox {
-    position: absolute;
-    left: 240rpx;
-    top: 30rpx;
-    width: 260rpx;
-    height: 106rpx;
+  position: absolute;
+  left: 240rpx;
+  top: 30rpx;
+  width: 260rpx;
+  height: 106rpx;
 }
 
 .contentBox .title {
-    height: 28rpx;
-    font-size: 30rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(26, 26, 26, 1);
-    line-height: 28rpx;
+  height: 28rpx;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 1);
+  line-height: 28rpx;
 }
 
 .contentBox .normal {
-    height: 25rpx;
-    font-size: 26rpx;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: rgba(153, 153, 153, 1);
-    line-height: 25rpx;
+  height: 25rpx;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 25rpx;
 }
 
 .contentBox .view {
-    text-align: left;
+  text-align: left;
 }
 
 /* priceBox */
 
 .priceBox {
-    position: absolute;
-    left: 29rpx;
-    top: 31rpx;
-    width: 144rpx;
-    height: 108rpx;
+  position: absolute;
+  left: 29rpx;
+  top: 31rpx;
+  width: 144rpx;
+  height: 108rpx;
 }
 
 .bigPrice {
-    width: 100%;
-    height: 62rpx;
+  width: 100%;
+  height: 62rpx;
 }
 
 .bigPrice .symbol {
-    display: inline;
-    font-size: 42rpx;
-    font-family: SourceHanSansCN-Bold;
-    font-weight: bold;
-    color: rgba(255, 93, 22, 1);
-    line-height: 42rpx;
+  display: inline;
+  font-size: 42rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 93, 22, 1);
+  line-height: 42rpx;
 }
 
 .bigPrice .price {
-    display: inline;
-    font-size: 80rpx;
-    font-family: SourceHanSansCN-Bold;
-    font-weight: bold;
-    color: rgba(255, 93, 22, 1);
-    height: 62rpx;
-    line-height: 62rpx;
+  display: inline;
+  font-size: 80rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 93, 22, 1);
+  height: 62rpx;
+  line-height: 62rpx;
 }
 
 .condition {
-    height: 26rpx;
-    font-size: 28rpx;
-    font-family: SourceHanSansCN-Bold;
-    font-weight: bold;
-    color: rgba(255, 93, 22, 1);
-    line-height: 26rpx;
+  height: 26rpx;
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 93, 22, 1);
+  line-height: 26rpx;
 }
 
 /* 已失效 */
 
 .used .contentBox .title {
-    color: rgba(153, 153, 153, 1) !important;
+  color: rgba(153, 153, 153, 1) !important;
 }
 
-.used .bigPrice .symbol, .used .bigPrice .price, .used .condition {
-    color: #999 !important;
+.used .bigPrice .symbol,
+.used .bigPrice .price,
+.used .condition {
+  color: #999 !important;
 }
 
 .used image:first-child {
-    position: absolute;
-    left: 570rpx;
-    bottom: 122rpx;
+  position: absolute;
+  left: 570rpx;
+  bottom: 122rpx;
 }
 
 .expired image:first-child {
-    position: absolute;
-    left: 570rpx;
-    bottom: 122rpx;
+  position: absolute;
+  left: 570rpx;
+  bottom: 122rpx;
 }

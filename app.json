@@ -1,80 +1,81 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/index_search/index_search",
-        "pages/index_lifeService/index_lifeService",
-        "pages/index_inviteFriend/index_inviteFriend",
-        "pages/index_plus/index_plus",
-        "pages/sort/sort",
-        "pages/sort_detail/sort_detail",
-        "pages/shoppingCart/shoppingCart",
-        "pages/shoppingCart_confirm/shoppingCart_confirm",
-        "pages/my/my",
-        "pages/authorizationLogin/authorizationLogin",
-        "pages/logs/logs",
-        "pages/my_memberInfo/my_memberInfo",
-        "pages/my_integral/my_integral",
-        "pages/my_coupon/my_coupon",
-        "pages/my_invite/my_invite",
-        "pages/my_order/my_order",
-        "pages/my_evaluation/my_evaluation",
-        "pages/my_shippingAddress/my_shippingAddress",
-        "pages/my_addShippingAddress/my_addShippingAddress",
-        "pages/my_editShippingAddress/my_editShippingAddress",
-        "pages/selectAddress/selectAddress",
-        "pages/shoppingCart_productList/shoppingCart_productList",
-        "pages/shoppingCart_paySuccess/shoppingCart_paySuccess",
-        "pages/shoppingCart_coupon/shoppingCart_coupon",
-        "pages/index_openPlus/index_openPlus",
-        "pages/index_leaveAMessage/index_leaveAMessage",
-        "pages/my_orderDetail/my_orderDetail"
-    ],
-    "window": {
-        "backgroundTextStyle": "dark",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "兆鲜生",
-        "navigationBarTextStyle": "black"
-    },
-    "tabBar": {
-        "backgroundColor": "#fff",
-        "color": "#646663",
-        "selectedColor": "#58B530",
-        "borderStyle": "white",
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "text": "首页",
-                "iconPath": "assets/tabIcon/tab_1.png",
-                "selectedIconPath": "assets/tabIcon/tab_1_act.png"
-            },
-            {
-                "pagePath": "pages/sort/sort",
-                "text": "分类",
-                "iconPath": "assets/tabIcon/tab_2.png",
-                "selectedIconPath": "assets/tabIcon/tab_2_act.png"
-            },
-            {
-                "pagePath": "pages/shoppingCart/shoppingCart",
-                "text": "购物车",
-                "iconPath": "assets/tabIcon/tab_3.png",
-                "selectedIconPath": "assets/tabIcon/tab_3_act.png"
-            },
-            {
-                "pagePath": "pages/my/my",
-                "text": "我的",
-                "iconPath": "assets/tabIcon/tab_4.png",
-                "selectedIconPath": "assets/tabIcon/tab_4_act.png"
-            }
-        ]
-    },
-    "networkTimeout": {
-        "request": 10000,
-        "downloadFile": 10000
-    },
-    "debug": true,
-    "permission": {
-        "scope.userLocation": {
-            "desc": "你的位置信息将用于小程序位置接口的效果展示"
-        }
+  "pages": [
+    "pages/index/index",
+    "pages/index_search/index_search",
+    "pages/index_lifeService/index_lifeService",
+    "pages/index_inviteFriend/index_inviteFriend",
+    "pages/index_plus/index_plus",
+    "pages/sort/sort",
+    "pages/sort_detail/sort_detail",
+    "pages/shoppingCart/shoppingCart",
+    "pages/shoppingCart_confirm/shoppingCart_confirm",
+    "pages/my/my",
+    "pages/authorizationLogin/authorizationLogin",
+    "pages/logs/logs",
+    "pages/my_memberInfo/my_memberInfo",
+    "pages/my_integral/my_integral",
+    "pages/my_coupon/my_coupon",
+    "pages/my_invite/my_invite",
+    "pages/my_order/my_order",
+    "pages/my_evaluation/my_evaluation",
+    "pages/my_shippingAddress/my_shippingAddress",
+    "pages/my_addShippingAddress/my_addShippingAddress",
+    "pages/my_editShippingAddress/my_editShippingAddress",
+    "pages/selectAddress/selectAddress",
+    "pages/shoppingCart_productList/shoppingCart_productList",
+    "pages/shoppingCart_paySuccess/shoppingCart_paySuccess",
+    "pages/shoppingCart_coupon/shoppingCart_coupon",
+    "pages/index_openPlus/index_openPlus",
+    "pages/index_leaveAMessage/index_leaveAMessage",
+    "pages/my_orderDetail/my_orderDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "兆鲜生",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "color": "#646663",
+    "selectedColor": "#58B530",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/tabIcon/tab_1.png",
+        "selectedIconPath": "assets/tabIcon/tab_1_act.png"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "text": "分类",
+        "iconPath": "assets/tabIcon/tab_2.png",
+        "selectedIconPath": "assets/tabIcon/tab_2_act.png"
+      },
+      {
+        "pagePath": "pages/shoppingCart/shoppingCart",
+        "text": "购物车",
+        "iconPath": "assets/tabIcon/tab_3.png",
+        "selectedIconPath": "assets/tabIcon/tab_3_act.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "assets/tabIcon/tab_4.png",
+        "selectedIconPath": "assets/tabIcon/tab_4_act.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
+  },
+  "sitemapLocation": "sitemap.json"
 }

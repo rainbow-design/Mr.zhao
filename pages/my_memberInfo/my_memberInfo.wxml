@@ -7,38 +7,33 @@
     </view>
     <view class='line'>
       <label class='name firstBox nowrap'>手机号</label>
-      <view class='content' maxlength="11">{{initData.mobile}} </view>
+      <view class='content' maxlength="11">{{initData.mobile}}</view>
     </view>
     <view class='line'>
       <label class='name firstBox'>性别</label>
       <view class='sex oneLineStart'>
         <block wx:if="{{initData.sex_name === '男'}}">
           <view class="man {{initData.sex_name === '男'?'green_act' :''}}" data-sex="男" bindtap='selectSex'>
-            <image  style='max-height:30rpx' mode='widthFix' src="../../assets/icon/checkBox_act.png"></image>
-
+            <image style='max-height:30rpx' mode='widthFix' src="../../assets/icon/checkBox_act.png"></image>
             <view class='text'>男</view>
           </view>
-
         </block>
         <block wx:elif="{{initData.sex_name != '男'}}">
           <view class="man" data-sex="男" bindtap='selectSex'>
             <image style='max-height:30rpx' mode='widthFix' src="../../assets/icon/checkBox.png"></image>
-
             <view class='text'>男</view>
           </view>
         </block>
         <!-- 女 -->
         <block wx:if="{{initData.sex_name === '女'}}">
           <view class="women green_act" data-sex="女" bindtap='selectSex'>
-            <image  style='max-height:30rpx' mode='widthFix' src="../../assets/icon/checkBox_act.png"></image>
+            <image style='max-height:30rpx' mode='widthFix' src="../../assets/icon/checkBox_act.png"></image>
             <view class='text'>女</view>
           </view>
-
         </block>
         <block wx:elif="{{initData.sex_name != '女'}}">
           <view class="man" data-sex="女" bindtap='selectSex'>
-            <image  style='max-height:30rpx' mode='widthFix' src="../../assets/icon/checkBox.png"></image>
-
+            <image style='max-height:30rpx' mode='widthFix' src="../../assets/icon/checkBox.png"></image>
             <view class='text'>女</view>
           </view>
         </block>
@@ -48,16 +43,11 @@
       <label class='name firstBox'>生日</label>
       <picker class='content' mode="date" start="1950-09-01" end="2017-09-01" bindchange="bindDateChange" style='color:rgba(26, 26, 26, 1)'>
         <block wx:if="{{noBirthDay}}">
-          <view class="content" style='height:100%;color:{{birthdayColor}}'>
-            {{birthday}}
-          </view>
+          <view class="content" style='height:100%;color:{{birthdayColor}}'>{{birthday}}</view>
         </block>
         <block wx:elif="{{!noBirthDay}}">
-          <view class="content" style='height:100%;'>
-            {{birthday}}
-          </view>
+          <view class="content" style='height:100%;'>{{birthday}}</view>
         </block>
-
       </picker>
       <!-- <view class='selectDate'>{{initData.birthday}} </view> -->
       <!-- 点击选择日期 -->

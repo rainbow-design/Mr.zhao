@@ -1,19 +1,17 @@
 <template name="shoppingListItem">
-    <view class='hotSellItem borderBox oneLineBetween bor_Bottom'>
-     <image  style='width:150rpx;max-height:150rpx;' src="{{item.thumb_img}}" mode="widthFix"> </image>
-        <view class='hotSellItem_content hotContentFlexStyle'>
-            <view class='title line-clamp '>
-                {{item.name}}
-            </view>
-            <view class='introduction line-clamp'>{{item.desc}}</view>
-            <view class='price nowrap'>¥{{item.price}}</view>
-            <view class='offerPrice nowrap'>¥{{item.plus_price}}
-                <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
-                    <view class='youhuiText'>会员{{item.plus}}折</view>
-                </image>
-            </view>
-
-            <image class='shopping' data-id="{{item.id}}" data-index="{{index}}" catchtap='addToCart' src="../../assets/shopping.png" mode="widthFix"></image>
-        </view>
+  <view class='hotSellItem borderBox oneLineBetween bor_Bottom'>
+    <image style='width:150rpx;max-height:150rpx;' src="{{item.thumb_img}}" mode="widthFix"></image>
+    <view class='hotSellItem_content hotContentFlexStyle'>
+      <view class='title line-clamp '>{{item.name}}</view>
+      <view class='introduction line-clamp'>{{item.desc}}</view>
+      <view class='price nowrap'>¥{{item.price}}</view>
+      <view class='offerPrice nowrap'>
+        ¥{{item.plus_price}}
+        <image class='youhuiBox' src="../../assets/youhuiBox.png" mode="widthFix">
+          <view class='youhuiText'>会员{{item.plus}}折</view>
+        </image>
+      </view>
+      <image class='shopping' data-id="{{item.id}}" data-index="{{index}}" catchtap='addToCart' src="../../assets/shopping.png" mode="widthFix"></image>
     </view>
+  </view>
 </template>
