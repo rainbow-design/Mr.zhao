@@ -252,7 +252,7 @@ function checkType(str, type) {
     case "email":
       return /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(str);
     case "phone":
-      return /^1[3|4|5|7|8][0-9]{9}$/.test(str);
+      return /^1[3|4|5|6|7|8][0-9]{9}$/.test(str);
     case "tel":
       return /^(0\d{2,3}-\d{7,8})(-\d{1,4})?$/.test(str);
     case "number":
