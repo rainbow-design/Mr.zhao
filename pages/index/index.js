@@ -2,7 +2,7 @@
 //获取应用实例
 const app = getApp();
 const util = require("../../utils/util.js");
-const api = require("../../utils/api.js");
+const api = require("../../api/index.js");
 const regeneratorRuntime = require("../../utils/runtime.js");
 Page({
   /**

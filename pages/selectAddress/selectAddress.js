@@ -2,7 +2,7 @@
 const app = getApp();
 var QQMapWX = require("../../libs/qqmap-wx-jssdk.min.js");
 const util = require("../../utils/util.js");
-const api = require("../../utils/api.js");
+const api = require("../../api/index.js");
 const qqmapsdk = new QQMapWX({
   key: wx.mapKey // 必填
 });

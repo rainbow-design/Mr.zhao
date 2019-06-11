@@ -1,23 +1,20 @@
 <view class="productList maskContent">
-    <view class='gap20'></view>
-    <view class='productsBox'>
-        <view class='item oneLineBetween bor_Bottom' wx:for="{{initData}}" wx:key="{{item.id}}">
-            <image class='productImg' src="{{item.thumb_img}}"></image>
-            <view class='contentItem flexStyle'>
-                <view class='title line-clamp '>
-                    {{item.name}}
-                </view>
-                <view class='introduction line-clamp'> {{item.desc}} </view>
-                <view class='price nowrap'>¥{{item.price}}</view>
-                <view class='offerPrice nowrap'>¥{{item.plus_price}}
-                    <image class='youhuiBox' src="../../assets/youhuiBox.png">
-                        <view class='youhuiText'>会员{{item.plus}}折</view>
-                    </image>
-                </view>
-            </view>
-            <view class='amount'>
-            X {{item.num}}
-            </view>
+  <view class='gap20'></view>
+  <view class='productsBox'>
+    <view class='item oneLineBetween bor_Bottom' wx:for="{{initData}}" wx:key="{{item.id}}">
+      <image class='productImg' src="{{item.thumb_img}}"></image>
+      <view class='contentItem flexStyle'>
+        <view class='title line-clamp '>{{item.name}}</view>
+        <view class='introduction line-clamp'>{{item.desc}}</view>
+        <view class='price nowrap'>¥{{item.price}}</view>
+        <view class='offerPrice nowrap'>
+          ¥{{item.plus_price}}
+          <image class='youhuiBox' src="../../assets/youhuiBox.png">
+            <view class='youhuiText'>会员{{item.plus}}折</view>
+          </image>
         </view>
+      </view>
+      <view class='amount'>x {{item.num}}</view>
     </view>
+  </view>
 </view>

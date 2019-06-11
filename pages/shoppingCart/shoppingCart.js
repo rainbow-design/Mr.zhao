@@ -1,7 +1,7 @@
 // pages/my.js
 const app = getApp();
 const util = require("../../utils/util.js");
-const api = require("../../utils/api.js");
+const api = require("../../api/index.js");
 var QQMapWX = require("../../libs/qqmap-wx-jssdk.min.js");
 const mock = require("../../mock/mock.js");
 // https://juejin.im/post/5c14b253e51d452f8e603896

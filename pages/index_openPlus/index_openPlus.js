@@ -1,6 +1,6 @@
 // pages/index_openPlus/index_openPlus.js
 const util = require("../../utils/util.js");
-const api = require("../../utils/api.js");
+const api = require("../../api/index.js");
 const mock = require("../../mock/mock.js");
 var app = getApp();
 

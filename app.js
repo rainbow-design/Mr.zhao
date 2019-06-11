@@ -1,6 +1,6 @@
 //app.js
 const util = require("./utils/util.js");
-const api = require("./utils/api.js");
+const api = require("./api/index.js");
 var app = getApp();
 const Storage = {
   //  第一个 key 参数可以省略，直接传递 obj 对象，支持 callback

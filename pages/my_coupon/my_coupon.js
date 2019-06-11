@@ -1,7 +1,7 @@
 // pages/my_integral/my_integral.js
 const app = getApp();
 const util = require("../../utils/util.js");
-const api = require("../../utils/api.js");
+const api = require("../../api/index.js");
 // 开关控制，避免点击tab触发 swiper 的移动事件两次执行
 let isClick = false;
 Page({

@@ -1,6 +1,6 @@
 // pages/my_addShippingAddress/my_addShippingAddress.js
 const util = require("../../utils/util.js");
-const api = require("../../utils/api.js");
+const api = require("../../api/index.js");
 const app = getApp();
 Page({
   /**
