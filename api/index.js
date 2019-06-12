@@ -106,6 +106,5 @@ module.exports = {
   addr_list,
   edit_addr,
   remove_addr,
-  cart_add,
   kf_telephone
 };
