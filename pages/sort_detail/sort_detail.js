@@ -8,7 +8,8 @@ Page({
    */
   data: {
     hasYouhuiQuan: true,
-    productList: [],
+    productList: null,
+    isLoaded: false,
     id: "",
     detailText: {
       content: ""
@@ -19,9 +20,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    if (!this.data.isLoaded) {
+      util.openLoading();
+    }
     this.setData({
       id: options.id
     });
+
     this.getproduct_detail();
   },
 
@@ -58,8 +63,10 @@ Page({
     };
     util.promiseRequest(api.product_detail, params).then(res => {
       var data = res.data.response_data[0];
+      util.closeLoading();
       that.setData({
         productList: data,
+        isLoaded: true,
         detailText: {
           content: WxParse.wxParse("detailTextt", "html", data.content, that)
         }

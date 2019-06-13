@@ -61,6 +61,7 @@ Page({
       var that = this;
       util.openLoading();
       that.setData({
+        loading: true,
         currentTab: e.detail.current
       });
       that.getMy_coupon(e.detail.current);
@@ -77,6 +78,7 @@ Page({
     } else {
       that.getMy_coupon(index);
       that.setData({
+        loading: true,
         couponData: false,
         currentTab: index
       });

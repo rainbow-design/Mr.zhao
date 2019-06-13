@@ -193,7 +193,7 @@ Page({
   },
   addShippingAddress() {
     wx.navigateTo({
-      url: `../my_addShippingAddress/my_addShippingAddress`
+      url: `../my_addShoppingAddress/my_addShoppingAddress`
     });
   },
   toJump(e) {
@@ -203,13 +203,13 @@ Page({
       wx.yue.pub("addAddress", data.info);
       app.returnLastPage();
       // wx.redirectTo({
-      //     url: `../my_addShippingAddress/my_addShippingAddress`
+      //     url: `../my_addShoppingAddress/my_addShoppingAddress`
       // })
     } else if (yData.formEditAddress) {
       wx.yue.pub("editAddress_selectAddress", data.info);
       app.returnLastPage();
       // wx.redirectTo({
-      //     url: `../my_editShippingAddress/my_editShippingAddress`
+      //     url: `../my_editShoppingAddress/my_editShoppingAddress`
       // })
     } else {
       wx.Storage.setItem("address", data.info.address);

@@ -68,7 +68,7 @@
           </view>
           <!-- --------- 全部--------end -->
           <!-- 无数据项 start -->
-          <block wx:if="{{selectTabData.length === 0}}">
+          <block wx:if="{{selectTabData.length === 0 && !loading}}">
             <view class='nodata columnBetween'>
               <image src="../../assets/nodata/order.png" mode="widthFix" style='width:430rpx;'></image>
               <view class='nodata_content'>您还没有相关订单</view>
@@ -106,7 +106,7 @@
           </view>
           <!-- --------- 全部--------end -->
           <!-- 无数据项 start -->
-          <block wx:if="{{selectTabData.length === 0}}">
+          <block wx:if="{{selectTabData.length === 0 && !loading}}">
             <view class='nodata columnBetween'>
               <image src="../../assets/nodata/order.png" mode="widthFix" style='width:430rpx;'></image>
               <view class='nodata_content'>您还没有相关订单</view>
@@ -141,7 +141,7 @@
           </view>
           <!-- --------- 待配送--------end -->
           <!-- 无数据项 start -->
-          <block wx:if="{{selectTabData.length === 0}}">
+          <block wx:if="{{selectTabData.length === 0 && !loading}}">
             <view class='nodata columnBetween'>
               <image src="../../assets/nodata/order.png" mode="widthFix" style='width:430rpx;'></image>
               <view class='nodata_content'>您还没有相关订单</view>
@@ -179,7 +179,7 @@
           </view>
           <!-- --------- 配送中--------end -->
           <!-- 无数据项 start -->
-          <block wx:if="{{selectTabData.length === 0}}">
+          <block wx:if="{{selectTabData.length === 0 && !loading}}">
             <view class='nodata columnBetween'>
               <image src="../../assets/nodata/order.png" mode="widthFix" style='width:430rpx;'></image>
               <view class='nodata_content'>您还没有相关订单</view>
@@ -220,7 +220,7 @@
           </view>
           <!-- --------- 已完成--------end -->
           <!-- 无数据项 start -->
-          <block wx:if="{{selectTabData.length === 0}}">
+          <block wx:if="{{selectTabData.length === 0 && !loading}}">
             <view class='nodata columnBetween'>
               <image src="../../assets/nodata/order.png" mode="widthFix" style='width:430rpx;'></image>
               <view class='nodata_content'>您还没有相关订单</view>

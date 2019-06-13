@@ -88,7 +88,8 @@ Page({
         currentTab: tabIndex,
         page: 1,
         num: 5,
-        oldNum: 5
+        oldNum: 5,
+        loading: true
       },
       function() {
         that.getSelectTabData(yData.page, yData.num, tabIndex);
@@ -112,7 +113,8 @@ Page({
           currentTab: tabIndex,
           page: 1,
           num: 5,
-          oldNum: 5
+          oldNum: 5,
+          loading: true
         },
         function() {
           that.getSelectTabData(yData.page, yData.num, tabIndex);

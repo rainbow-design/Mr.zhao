@@ -193,7 +193,7 @@ Page({
   toShippingAddress() {
     app.isLogin(() => {
       wx.navigateTo({
-        url: `../my_shippingAddress/my_shippingAddress`
+        url: `../my_shoppingAddress/my_shoppingAddress`
       });
     });
   },

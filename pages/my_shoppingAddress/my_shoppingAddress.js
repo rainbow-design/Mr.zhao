@@ -39,7 +39,7 @@ Page({
     var data = e.currentTarget.dataset;
     var action = "edit";
     wx.navigateTo({
-      url: `../my_editShippingAddress/my_editShippingAddress?action=${action}`
+      url: `../my_editShoppingAddress/my_editShoppingAddress?action=${action}`
     });
     wx.yue.pub("editAddress", data);
   },
@@ -81,7 +81,7 @@ Page({
   },
   toAddShippingAddress() {
     wx.navigateTo({
-      url: `../my_addShippingAddress/my_addShippingAddress`
+      url: `../my_addShoppingAddress/my_addShoppingAddress`
     });
   },
 
