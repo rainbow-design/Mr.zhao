@@ -1,0 +1,144 @@
+﻿.ax_default {
+  font-family:'ArialMT', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  color:#333333;
+  text-align:center;
+  line-height:normal;
+}
+._一级标题 {
+  font-family:'ArialMT', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:32px;
+  text-align:left;
+}
+._二级标题 {
+  font-family:'ArialMT', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:24px;
+  text-align:left;
+}
+._三级标题 {
+  font-family:'ArialMT', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:18px;
+  text-align:left;
+}
+._四级标题 {
+  font-family:'ArialMT', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:14px;
+  text-align:left;
+}
+._五级标题 {
+  font-family:'ArialMT', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  text-align:left;
+}
+._六级标题 {
+  font-family:'ArialMT', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:10px;
+  text-align:left;
+}
+._形状 {
+  font-family:'ArialMT', 'Arial';
+  font-weight:normal;
+  font-style:normal;
+}
+._文本框 {
+  color:#000000;
+  text-align:left;
+}
+.label {
+  font-size:14px;
+  text-align:left;
+}
+.icon {
+}
+._文本段落 {
+  text-align:left;
+}
+._流程形状 {
+}
+._连接线 {
+  color:#FF6600;
+}
+._图片 {
+  color:#000000;
+}
+._形状1 {
+}
+._水平线 {
+}
+.heading_1 {
+  font-family:'ArialMT', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:32px;
+  text-align:left;
+}
+.image {
+  font-family:'ArialMT', 'Arial';
+  font-weight:normal;
+  font-style:normal;
+  font-size:13px;
+  color:#000000;
+}
+.box_1 {
+}
+.ellipse {
+}
+.text_field {
+  color:#000000;
+  text-align:left;
+}
+.line {
+}
+.droplist {
+  color:#000000;
+  text-align:left;
+}
+._图片1 {
+}
+.box_2 {
+}
+.image1 {
+}
+.button {
+}
+.primary_button {
+  color:#FFFFFF;
+}
+._默认样式 {
+}
+._文本链接 {
+  color:#0000FF;
+}
+._文本段落1 {
+  text-align:left;
+}
+._一级标题1 {
+  font-family:'Arial-BoldMT', 'Arial Bold', 'Arial';
+  font-weight:700;
+  font-style:normal;
+  font-size:32px;
+  text-align:left;
+}
+._图片2 {
+  color:#000000;
+}
+.placeholder {
+}
+._图片3 {
+  color:#000000;
+}
+.box_3 {
+}
